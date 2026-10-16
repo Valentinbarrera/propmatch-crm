@@ -24,8 +24,8 @@ import { LABEL, stateLabel } from "./labels";
 import { AppPropMatchCard } from "@/features/appSync/PublishAllToApp";
 import { GoogleCalendarCard } from "./GoogleCalendarCard";
 
-const INK = "#1F0A3C";
-const MUTED = "#6B5A8E";
+const INK = "#1A1A1A";
+const MUTED = "#6B7280";
 
 /** Motivos de vuelta del login de Mercado Libre (?meli=error&reason=…), en criollo. */
 const MELI_REASONS: Record<string, string> = {
@@ -77,9 +77,9 @@ export default function IntegracionesPage() {
           type="button"
           onClick={() => navigate("/configuracion")}
           className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm border hover:bg-violet-50"
-          style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+          style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "white" }}
         >
-          <ChevronLeftIcon size={14} color="#7C3AED" /> Configuración
+          <ChevronLeftIcon size={14} color="#9B21FF" /> Configuración
         </button>
       </AppHeader>
 
@@ -99,7 +99,7 @@ export default function IntegracionesPage() {
               <li>Podés desconectar cuando quieras: lo que ya está publicado sigue en el portal.</li>
             </ul>
             {!loading && !serverError && !isAdmin && (
-              <p className="mt-3 text-xs px-3 py-2 rounded-lg" style={{ background: "#F5F3FF", color: "#5B21B6" }}>
+              <p className="mt-3 text-xs px-3 py-2 rounded-lg" style={{ background: "#F7F0FF", color: "#7C0BD8" }}>
                 Solo los administradores de la inmobiliaria pueden conectar o desconectar portales. Vos ves el estado.
               </p>
             )}
@@ -127,7 +127,7 @@ export default function IntegracionesPage() {
           </ul>
 
           <p className="text-xs" style={{ color: MUTED }}>
-            ¿Querés publicar? Andá a <Link to="/publicador" className="underline" style={{ color: "#7C3AED", fontWeight: 700 }}>Publicaciones</Link> o
+            ¿Querés publicar? Andá a <Link to="/publicador" className="underline" style={{ color: "#9B21FF", fontWeight: 700 }}>Publicaciones</Link> o
             abrí una propiedad y tocá «Publicar en portales».
           </p>
         </div>
@@ -236,7 +236,7 @@ function PortalCard({
             </dd>
           )}
           {s.availability.state !== "available" && !isMeta && (
-            <dd className="px-3 py-2 rounded-lg mt-1" style={{ background: "#F5F3FF", color: "#5B21B6" }}>{s.availability.reason}</dd>
+            <dd className="px-3 py-2 rounded-lg mt-1" style={{ background: "#F7F0FF", color: "#7C0BD8" }}>{s.availability.reason}</dd>
           )}
         </dl>
       )}
@@ -248,11 +248,11 @@ function PortalCard({
           aria-controls={helpId}
           onClick={() => setOpen((o) => !o)}
           className={`${outline} flex-1 flex items-center justify-center gap-2`}
-          style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+          style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
         >
           Cómo conectar
           <span style={{ transform: open ? "rotate(180deg)" : undefined, display: "inline-flex" }} aria-hidden="true">
-            <ChevronDownIcon size={16} color="#5B21B6" />
+            <ChevronDownIcon size={16} color="#7C0BD8" />
           </span>
         </button>
 
@@ -272,7 +272,7 @@ function PortalCard({
           </button>
         ) : (
           <div className="flex-1 flex gap-2">
-            <button type="button" disabled={busy || loading} onClick={() => void connect()} className={`${primary} flex-1`} style={{ background: "#7C3AED", fontWeight: 700 }}>
+            <button type="button" disabled={busy || loading} onClick={() => void connect()} className={`${primary} flex-1`} style={{ background: "#9B21FF", fontWeight: 700 }}>
               {busy ? "Abriendo…" : reconnect ? "Reconectar" : `Conectar ${p.id === "mercadolibre" ? "Mercado Libre" : p.name}`}
             </button>
             {reconnect && (
@@ -288,7 +288,7 @@ function PortalCard({
       {p.id === "mercadolibre" && connected && !reconnect && !loading && (
         <MeliImportButton
           className="mt-2 w-full min-h-[44px] px-4 rounded-xl text-sm border bg-white hover:bg-violet-50"
-          style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+          style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
         />
       )}
 

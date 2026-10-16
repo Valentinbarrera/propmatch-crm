@@ -25,7 +25,7 @@ export function ProppiSettingsCard({ onSaved }: { onSaved: (msg: string) => void
       <div className="p-5 grid gap-5 md:grid-cols-2">
         <div className="space-y-3">
           {!available && (
-            <p className="text-xs rounded-xl px-3 py-2" style={{ background: "#F5F3FF", color: "#6D28D9", fontWeight: 600 }}>
+            <p className="text-xs rounded-xl px-3 py-2" style={{ background: "#F7F0FF", color: "#7C0BD8", fontWeight: 600 }}>
               Proppi está disponible con tu cuenta de inmobiliaria conectada. En la demo podés ver la configuración, pero no consultar.
             </p>
           )}
@@ -45,7 +45,7 @@ export function ProppiSettingsCard({ onSaved }: { onSaved: (msg: string) => void
           <Toggle label="Respuesta automática fuera de horario" checked={false} disabled onChange={() => undefined} badge="Próximamente" />
 
           <fieldset className="pt-2">
-            <legend className="text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+            <legend className="text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
               Tono de los borradores para clientes
             </legend>
             <div className="flex flex-wrap gap-2">
@@ -59,9 +59,9 @@ export function ProppiSettingsCard({ onSaved }: { onSaved: (msg: string) => void
                   key={value}
                   className="flex items-center gap-2 min-h-[40px] px-3 rounded-xl border text-sm cursor-pointer"
                   style={{
-                    borderColor: form.tone === value ? "#7C3AED" : "#EDE9FE",
-                    background: form.tone === value ? "#F5F3FF" : "white",
-                    color: "#1F0A3C",
+                    borderColor: form.tone === value ? "#9B21FF" : "#E9E5DE",
+                    background: form.tone === value ? "#F7F0FF" : "white",
+                    color: "#1A1A1A",
                     fontWeight: 600,
                   }}
                 >
@@ -72,7 +72,7 @@ export function ProppiSettingsCard({ onSaved }: { onSaved: (msg: string) => void
                     checked={form.tone === value}
                     disabled={!canEdit}
                     onChange={() => set("tone", value)}
-                    className="accent-[#7C3AED]"
+                    className="accent-[#9B21FF]"
                   />
                   {label}
                 </label>
@@ -81,7 +81,7 @@ export function ProppiSettingsCard({ onSaved }: { onSaved: (msg: string) => void
           </fieldset>
 
           <label className="block">
-            <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+            <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
               Firma de los borradores
             </span>
             <textarea
@@ -96,7 +96,7 @@ export function ProppiSettingsCard({ onSaved }: { onSaved: (msg: string) => void
           </label>
 
           <label className="block">
-            <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+            <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
               Tope de consultas por mes (0 = sin tope)
             </span>
             <input
@@ -108,7 +108,7 @@ export function ProppiSettingsCard({ onSaved }: { onSaved: (msg: string) => void
               onChange={(e) => set("monthlyLimit", Math.max(0, Math.round(Number(e.target.value) || 0)))}
               className={`${inputClass} max-w-[160px]`}
             />
-            <span className="block text-xs mt-1" style={{ color: "#7458C4" }}>
+            <span className="block text-xs mt-1" style={{ color: "#6B7280" }}>
               Este mes, en este navegador: {used} {used === 1 ? "consulta" : "consultas"}.
             </span>
           </label>
@@ -116,7 +116,7 @@ export function ProppiSettingsCard({ onSaved }: { onSaved: (msg: string) => void
 
         <div className="flex flex-col">
           <label className="block flex-1">
-            <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+            <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
               Conocimiento de la inmobiliaria
             </span>
             <textarea
@@ -131,13 +131,13 @@ export function ProppiSettingsCard({ onSaved }: { onSaved: (msg: string) => void
               }
               className={`${inputClass} h-full min-h-[220px]`}
             />
-            <span className="block text-xs mt-1" style={{ color: "#7458C4" }}>
+            <span className="block text-xs mt-1" style={{ color: "#6B7280" }}>
               Proppi lo usa para responder y para los borradores. {form.knowledge.length}/6000
             </span>
           </label>
-          <div className="mt-4 flex gap-3 rounded-xl px-3.5 py-3" style={{ background: "#F9F7FF", border: "1px solid #EDE9FE" }}>
-            <ProppiIcon size={20} color="#7C3AED" />
-            <p className="text-xs" style={{ color: "#4C3A6B" }}>
+          <div className="mt-4 flex gap-3 rounded-xl px-3.5 py-3" style={{ background: "#FAF8F5", border: "1px solid #E9E5DE" }}>
+            <ProppiIcon size={20} color="#9B21FF" />
+            <p className="text-xs" style={{ color: "#374151" }}>
               <strong style={{ fontWeight: 700 }}>Privacidad:</strong> lo que Proppi lee se envía a Anthropic para generar la
               respuesta. Proppi solo lee: no manda mensajes ni cambia datos, y los borradores siempre los revisás vos.
             </p>
@@ -145,7 +145,7 @@ export function ProppiSettingsCard({ onSaved }: { onSaved: (msg: string) => void
         </div>
       </div>
       {canEdit && (
-        <div className="px-5 py-3.5 border-t flex items-center justify-end gap-3" style={{ borderColor: "#F3F0FF", background: "#FDFCFF" }}>
+        <div className="px-5 py-3.5 border-t flex items-center justify-end gap-3" style={{ borderColor: "#F0EDE6", background: "#FAF8F5" }}>
           <button
             onClick={() => {
               save(form);
@@ -178,10 +178,10 @@ function Toggle({
 }) {
   return (
     <label className={`flex items-center justify-between gap-3 min-h-[40px] ${disabled ? "cursor-not-allowed" : "cursor-pointer"}`}>
-      <span className="text-sm flex items-center gap-2" style={{ color: disabled ? "#7C6A99" : "#1F0A3C", fontWeight: 600 }}>
+      <span className="text-sm flex items-center gap-2" style={{ color: disabled ? "#6B7280" : "#1A1A1A", fontWeight: 600 }}>
         {label}
         {badge && (
-          <span className="text-[11px] px-2 py-0.5 rounded-full" style={{ background: "#F5F3FF", color: "#6D28D9", fontWeight: 700 }}>
+          <span className="text-[11px] px-2 py-0.5 rounded-full" style={{ background: "#F7F0FF", color: "#7C0BD8", fontWeight: 700 }}>
             {badge}
           </span>
         )}
@@ -197,13 +197,13 @@ function Toggle({
         />
         <span
           aria-hidden="true"
-          className="w-10 h-6 rounded-full transition-colors peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[#7C3AED] peer-disabled:opacity-50"
-          style={{ background: checked ? "#7C3AED" : "#DDD6FE" }}
+          className="w-10 h-6 rounded-full transition-colors peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[#9B21FF] peer-disabled:opacity-50"
+          style={{ background: checked ? "#9B21FF" : "#DDD8CF" }}
         />
         <span
           aria-hidden="true"
           className="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white transition-transform"
-          style={{ transform: checked ? "translateX(16px)" : undefined, boxShadow: "0 1px 2px rgba(31,10,60,0.2)" }}
+          style={{ transform: checked ? "translateX(16px)" : undefined, boxShadow: "0 1px 2px rgba(8, 11, 31,0.2)" }}
         />
       </span>
     </label>
@@ -212,5 +212,5 @@ function Toggle({
 
 const inputClass =
   "w-full px-4 py-2.5 rounded-xl text-sm border outline-none transition-all bg-white resize-y " +
-  "text-[#1F0A3C] placeholder:text-[#7C6A99] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE] " +
-  "disabled:bg-[#FAFAFF] disabled:text-[#7C6A99] disabled:cursor-not-allowed";
+  "text-[#1A1A1A] placeholder:text-[#6B7280] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE] " +
+  "disabled:bg-[#FAF8F5] disabled:text-[#6B7280] disabled:cursor-not-allowed";

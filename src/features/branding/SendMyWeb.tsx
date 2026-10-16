@@ -6,8 +6,8 @@ import { useAgencyBrand } from "@/lib/branding";
 import { previewUrl, sitePropertyUrl, siteUrl } from "@/features/sitio/siteUrl";
 import type { Contact } from "@/types/db";
 
-const INK = "#1F0A3C";
-const SOFT = "#6B5A8E";
+const INK = "#1A1A1A";
+const SOFT = "#6B7280";
 const firstName = (full: string | undefined) => (full ?? "").trim().split(/\s+/)[0] ?? "";
 
 /**
@@ -27,7 +27,7 @@ export function SendMyWebButton({ contact, variant = "secondary" }: { contact?: 
         style={
           variant === "primary"
             ? { background: "var(--gradient-brand)", fontWeight: 700 }
-            : { borderColor: "#EDE9FE", background: "white", color: "#7C3AED", fontWeight: 600 }
+            : { borderColor: "#E9E5DE", background: "white", color: "#9B21FF", fontWeight: 600 }
         }
       >
         Mandar mi web
@@ -103,7 +103,7 @@ export function SendMyWebModal({ contact, onClose }: { contact?: Contact; onClos
   const mailto = `mailto:${contact?.email ?? ""}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(31,10,60,0.4)" }} role="dialog" aria-modal="true" aria-labelledby={`${id}-t`} onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(8, 11, 31,0.4)" }} role="dialog" aria-modal="true" aria-labelledby={`${id}-t`} onClick={onClose}>
       <div className="bg-white rounded-2xl w-full max-w-lg p-5 max-h-[90vh] overflow-y-auto" style={{ boxShadow: "var(--shadow-pop)" }} onClick={(e) => e.stopPropagation()}>
         <div className="flex items-start justify-between gap-3">
           <div>
@@ -119,9 +119,9 @@ export function SendMyWebModal({ contact, onClose }: { contact?: Contact; onClos
           </button>
         </div>
 
-        <label className="block text-xs mt-4" style={{ color: "#7C6A99", fontWeight: 600 }}>
+        <label className="block text-xs mt-4" style={{ color: "#6B7280", fontWeight: 600 }}>
           Qué mandar
-          <select value={what} onChange={(e) => setWhat(e.target.value)} className="mt-1 w-full px-3 py-2 rounded-xl text-sm border bg-white" style={{ borderColor: "#EDE9FE", color: INK }}>
+          <select value={what} onChange={(e) => setWhat(e.target.value)} className="mt-1 w-full px-3 py-2 rounded-xl text-sm border bg-white" style={{ borderColor: "#E9E5DE", color: INK }}>
             <option value="web">Mi web (todas las propiedades)</option>
             {available.map((p) => (
               <option key={p.id} value={p.id}>
@@ -138,7 +138,7 @@ export function SendMyWebModal({ contact, onClose }: { contact?: Contact; onClos
             "Tu web pública se activa con la cuenta de tu inmobiliaria. Este link es la vista previa y solo se ve en este navegador: para clientes, mandá una propiedad (va su ficha)."}
         </p>
 
-        <label className="block text-xs mt-3" style={{ color: "#7C6A99", fontWeight: 600 }}>
+        <label className="block text-xs mt-3" style={{ color: "#6B7280", fontWeight: 600 }}>
           Mensaje
           <textarea
             value={text}
@@ -148,7 +148,7 @@ export function SendMyWebModal({ contact, onClose }: { contact?: Contact; onClos
             }}
             rows={5}
             className="mt-1 w-full px-3 py-2 rounded-xl text-sm border bg-white"
-            style={{ borderColor: "#EDE9FE", color: INK }}
+            style={{ borderColor: "#E9E5DE", color: INK }}
           />
         </label>
 
@@ -162,10 +162,10 @@ export function SendMyWebModal({ contact, onClose }: { contact?: Contact; onClos
           >
             {contact?.phone ? "Mandar por WhatsApp" : "Elegir chat en WhatsApp"}
           </a>
-          <a href={mailto} className="min-h-[44px] px-4 rounded-xl text-sm border bg-white inline-flex items-center" style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}>
+          <a href={mailto} className="min-h-[44px] px-4 rounded-xl text-sm border bg-white inline-flex items-center" style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}>
             Mandar por mail
           </a>
-          <button onClick={copy} className="min-h-[44px] px-4 rounded-xl text-sm border bg-white" style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}>
+          <button onClick={copy} className="min-h-[44px] px-4 rounded-xl text-sm border bg-white" style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}>
             Copiar mensaje
           </button>
         </div>

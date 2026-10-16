@@ -62,12 +62,12 @@ export default function OfertasPage() {
             {sorted.length === 0 ? (
               <EmptyState
                 compact
-                icon={<OpportunitiesIcon size={22} color="#7C3AED" />}
+                icon={<OpportunitiesIcon size={22} color="#9B21FF" />}
                 title="Todavía no llegó ninguna oferta"
                 description="Cuando alguien haga una oferta real sobre una de tus propiedades, va a aparecer acá."
               />
             ) : (
-              <div className="divide-y" style={{ borderColor: "#F3F0FF" }}>
+              <div className="divide-y" style={{ borderColor: "#F0EDE6" }}>
                 {sorted.map((offer) => {
                   const contact = contactById(offer.contact_id);
                   const property = propertyById(offer.property_id);
@@ -82,7 +82,7 @@ export default function OfertasPage() {
                       <div className="flex-1 min-w-0">
                         <p
                           className="text-sm hover:underline cursor-pointer inline-block"
-                          style={{ color: "#1F0A3C", fontWeight: 700 }}
+                          style={{ color: "#1A1A1A", fontWeight: 700 }}
                           onClick={() => navigate(`/contactos/${offer.contact_id}`)}
                         >
                           {contact?.full_name ?? "Sin contacto"}
@@ -90,17 +90,17 @@ export default function OfertasPage() {
                         <SampleBadge record={offer} />
                         <p
                           className="text-xs mt-0.5 hover:underline cursor-pointer"
-                          style={{ color: "#7458C4" }}
+                          style={{ color: "#6B7280" }}
                           onClick={() => navigate(`/propiedades/${offer.property_id}`)}
                         >
                           {property?.title ?? "Sin propiedad"}
                         </p>
-                        <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
+                        <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
                           {relativeTime(offer.created_at)}
                         </p>
                       </div>
                       <div className="text-right flex-shrink-0">
-                        <p className="text-sm mb-2" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+                        <p className="text-sm mb-2" style={{ color: "#1A1A1A", fontWeight: 800 }}>
                           {money(offer.amount_usd, "USD")}
                         </p>
                         {offer.status === "accepted" ? (
@@ -125,7 +125,7 @@ export default function OfertasPage() {
                               disabled={respondingId === offer.app_offer_id}
                               onClick={() => handleRespond(offer.app_offer_id, "reject")}
                               className="text-xs px-3 py-1.5 rounded-lg border disabled:opacity-50"
-                              style={{ borderColor: "#EDE9FE", color: "#7C6A99", fontWeight: 600 }}
+                              style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 600 }}
                             >
                               Rechazar
                             </button>

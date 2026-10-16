@@ -79,7 +79,7 @@ function FocalEditor({ photo, info, format, onFocal }: { photo: IgPhoto; info: I
       onPointerCancel={() => (drag.current = null)}
       onKeyDown={onKey}
       className="relative overflow-hidden rounded-xl border cursor-grab active:cursor-grabbing touch-none"
-      style={{ aspectRatio: String(format.ratio), maxHeight: 340, maxWidth: "100%", margin: "0 auto", borderColor: "#DDD6FE", background: "#F3F4F6" }}
+      style={{ aspectRatio: String(format.ratio), maxHeight: 340, maxWidth: "100%", margin: "0 auto", borderColor: "#DDD8CF", background: "#F3F4F6" }}
     >
       <img
         src={photo.url}
@@ -123,23 +123,23 @@ export function PhotoPanel({ photos, infos, format, selectedId, onSelect, onChan
 
   return (
     <Card>
-      <div className="px-5 py-4 border-b flex flex-wrap items-center gap-3" style={{ borderColor: "#F3F0FF" }}>
+      <div className="px-5 py-4 border-b flex flex-wrap items-center gap-3" style={{ borderColor: "#F0EDE6" }}>
         <div className="flex-1 min-w-0">
-          <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>Fotos</h3>
-          <p className="text-xs mt-0.5" style={{ color: "#6B5A8A" }}>
+          <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>Fotos</h3>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
             Tildá las que van, ordenalas y elegí el encuadre. La primera es la portada y define el recorte de todo el carrusel.
           </p>
         </div>
-        <Badge bg={included.length > IG_LIMITS.carouselMax ? "#FFE4E6" : "#F5F3FF"} text={included.length > IG_LIMITS.carouselMax ? "#BE123C" : "#7458C4"} size="xs">
+        <Badge bg={included.length > IG_LIMITS.carouselMax ? "#FFE4E6" : "#F7F0FF"} text={included.length > IG_LIMITS.carouselMax ? "#BE123C" : "#6B7280"} size="xs">
           {included.length}/{IG_LIMITS.carouselMax}
         </Badge>
         <button
           type="button"
           onClick={() => fileRef.current?.click()}
           className="px-3 min-h-11 md:min-h-9 rounded-xl text-xs border flex items-center gap-1.5 hover:bg-violet-50"
-          style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700 }}
+          style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}
         >
-          <PlusIcon size={12} color="#7458C4" /> Subir fotos
+          <PlusIcon size={12} color="#6B7280" /> Subir fotos
         </button>
         <input
           ref={fileRef}
@@ -158,12 +158,12 @@ export function PhotoPanel({ photos, infos, format, selectedId, onSelect, onChan
       <p role="status" aria-live="polite" className={notice ? "px-5 py-2 text-sm" : "sr-only"} style={{ background: notice ? "#FEF3C7" : undefined, color: "#92400E" }}>
         {notice}
       </p>
-      <p className="px-5 pt-3 text-xs" style={{ color: "#6B5A8A" }}>
+      <p className="px-5 pt-3 text-xs" style={{ color: "#6B7280" }}>
         Las fotos subidas desde tu equipo solo viven en esta pantalla: no se guardan en la propiedad ni en el borrador.
       </p>
 
       {photos.length === 0 ? (
-        <p className="px-5 py-8 text-sm text-center" style={{ color: "#7458C4" }}>
+        <p className="px-5 py-8 text-sm text-center" style={{ color: "#6B7280" }}>
           Esta propiedad todavía no tiene fotos. Subí algunas desde tu equipo para armar la publicación.
         </p>
       ) : (
@@ -184,8 +184,8 @@ export function PhotoPanel({ photos, infos, format, selectedId, onSelect, onChan
                 onDragEnd={() => { setDragId(null); setOverId(null); }}
                 className="rounded-xl border p-2 flex flex-wrap items-center gap-2"
                 style={{
-                  borderColor: selectedId === p.id ? "#7C3AED" : overId === p.id ? "#A78BFA" : "#EDE9FE",
-                  background: p.included ? "white" : "#FAFAFC",
+                  borderColor: selectedId === p.id ? "#9B21FF" : overId === p.id ? "#BF7FFF" : "#E9E5DE",
+                  background: p.included ? "white" : "#FAF8F5",
                   opacity: dragId === p.id ? 0.5 : 1,
                 }}
               >
@@ -195,7 +195,7 @@ export function PhotoPanel({ photos, infos, format, selectedId, onSelect, onChan
                   onChange={() => toggle(p)}
                   aria-label={`Incluir la foto ${i + 1} en la publicación`}
                   className="w-5 h-5 mx-1 cursor-pointer"
-                  style={{ accentColor: "#7C3AED" }}
+                  style={{ accentColor: "#9B21FF" }}
                 />
                 <button
                   type="button"
@@ -207,7 +207,7 @@ export function PhotoPanel({ photos, infos, format, selectedId, onSelect, onChan
                 >
                   <img src={p.url} alt="" draggable={false} className="w-full h-full object-cover" />
                   {order > 0 && (
-                    <span className="absolute left-0.5 top-0.5 px-1.5 rounded-full text-white text-[10px]" style={{ background: "rgba(31,10,60,.8)", fontWeight: 700 }}>
+                    <span className="absolute left-0.5 top-0.5 px-1.5 rounded-full text-white text-[10px]" style={{ background: "rgba(8, 11, 31,.8)", fontWeight: 700 }}>
                       {order}
                     </span>
                   )}
@@ -216,7 +216,7 @@ export function PhotoPanel({ photos, infos, format, selectedId, onSelect, onChan
                   <p className="text-xs flex items-center gap-1.5" style={{ color: st.text, fontWeight: 700 }}>
                     <span aria-hidden="true" className="inline-block w-2 h-2 rounded-full" style={{ background: st.dot }} />
                     {info?.status === "loading" || !info ? "Analizando…" : info.status === "error" ? "No se pudo leer" : st.word}
-                    {order === 1 && <Badge bg="#F5F3FF" text="#7458C4" size="xs">Portada</Badge>}
+                    {order === 1 && <Badge bg="#F7F0FF" text="#6B7280" size="xs">Portada</Badge>}
                     {p.source === "upload" && <Badge bg="#F3F4F6" text="#4B5563" size="xs">Subida</Badge>}
                   </p>
                   <input
@@ -227,17 +227,17 @@ export function PhotoPanel({ photos, infos, format, selectedId, onSelect, onChan
                     placeholder="Texto alternativo (opcional)"
                     aria-label={`Texto alternativo de la foto ${i + 1}`}
                     className="mt-1 w-full text-xs rounded-lg border px-2 min-h-11 md:min-h-8"
-                    style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }}
+                    style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }}
                   />
                 </div>
                 <div className="flex items-center gap-1 ml-auto">
-                  <button type="button" className={iconBtn} style={{ borderColor: "#EDE9FE", color: "#7458C4" }} disabled={i === 0} onClick={() => move(i, i - 1)} aria-label={`Subir la foto ${i + 1}`}>↑</button>
-                  <button type="button" className={iconBtn} style={{ borderColor: "#EDE9FE", color: "#7458C4" }} disabled={i === photos.length - 1} onClick={() => move(i, i + 1)} aria-label={`Bajar la foto ${i + 1}`}>↓</button>
+                  <button type="button" className={iconBtn} style={{ borderColor: "#E9E5DE", color: "#6B7280" }} disabled={i === 0} onClick={() => move(i, i - 1)} aria-label={`Subir la foto ${i + 1}`}>↑</button>
+                  <button type="button" className={iconBtn} style={{ borderColor: "#E9E5DE", color: "#6B7280" }} disabled={i === photos.length - 1} onClick={() => move(i, i + 1)} aria-label={`Bajar la foto ${i + 1}`}>↓</button>
                   {p.included && order !== 1 && (
                     <button
                       type="button"
                       className="px-2 min-h-11 md:min-h-9 rounded-lg border text-xs hover:bg-violet-50"
-                      style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700 }}
+                      style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}
                       onClick={() => move(i, photos.indexOf(included[0]))}
                     >
                       Hacer portada
@@ -251,8 +251,8 @@ export function PhotoPanel({ photos, infos, format, selectedId, onSelect, onChan
       )}
 
       {selected && (
-        <div className="px-5 pb-5 pt-2 border-t" style={{ borderColor: "#F3F0FF" }}>
-          <p className="text-sm mt-3 mb-2" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <div className="px-5 pb-5 pt-2 border-t" style={{ borderColor: "#F0EDE6" }}>
+          <p className="text-sm mt-3 mb-2" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             Encuadre ({format.ratioLabel}) · {format.width}×{format.height}
           </p>
           <FocalEditor photo={selected} info={infos[selected.url]} format={format} onFocal={(focal) => patch(selected.id, { focal })} />
@@ -261,7 +261,7 @@ export function PhotoPanel({ photos, infos, format, selectedId, onSelect, onChan
               type="button"
               onClick={() => patch(selected.id, { focal: { x: 0.5, y: 0.5 } })}
               className="px-3 min-h-11 md:min-h-9 rounded-lg border text-xs hover:bg-violet-50"
-              style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700 }}
+              style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}
             >
               Centrar
             </button>
@@ -275,7 +275,7 @@ export function PhotoPanel({ photos, infos, format, selectedId, onSelect, onChan
                     <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: s.bg }} aria-hidden="true">
                       {c.level === "ok" ? <CheckIcon size={11} color={s.dot} /> : <AlertTriangleIcon size={11} color={s.dot} />}
                     </span>
-                    <span style={{ color: "#1F0A3C" }}>
+                    <span style={{ color: "#1A1A1A" }}>
                       <strong>{c.label}:</strong> <span className="sr-only">{s.word}. </span>
                       <span style={{ color: s.text }}>{c.detail}</span>
                     </span>
@@ -284,7 +284,7 @@ export function PhotoPanel({ photos, infos, format, selectedId, onSelect, onChan
               })}
             </ul>
           ) : (
-            <p className="mt-3 text-xs" style={{ color: "#6B5A8A" }}>Leyendo la imagen para calcular los chequeos…</p>
+            <p className="mt-3 text-xs" style={{ color: "#6B7280" }}>Leyendo la imagen para calcular los chequeos…</p>
           )}
         </div>
       )}

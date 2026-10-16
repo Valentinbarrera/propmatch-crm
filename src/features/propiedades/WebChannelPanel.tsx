@@ -7,7 +7,7 @@ import { decodeExactGeo } from "../../../shared/publicSite";
 import { previewUrl, sitePropertyUrl } from "@/features/sitio/siteUrl";
 import type { ChannelState } from "./usePublications";
 
-const INK = "#1F0A3C";
+const INK = "#1A1A1A";
 
 /**
  * «Mi web» por propiedad: mostrar u ocultar en la web pública y, si la
@@ -59,7 +59,7 @@ export function WebChannelPanel({
 
   return (
     <Card>
-      <div className="px-5 py-4 border-b flex flex-wrap items-center gap-2" style={{ borderColor: "#F3F0FF" }}>
+      <div className="px-5 py-4 border-b flex flex-wrap items-center gap-2" style={{ borderColor: "#F0EDE6" }}>
         <h3 className="text-base" style={{ color: INK, fontWeight: 700 }}>Mi web</h3>
         <Badge bg={line.bg} text={line.fg} size="xs">{line.text}</Badge>
       </div>
@@ -75,11 +75,11 @@ export function WebChannelPanel({
                 disabled={busy}
                 onChange={(e) => void save({ visible: e.target.checked, exact: !!exact })}
                 className="w-5 h-5 mt-0.5"
-                style={{ accentColor: "#7C3AED" }}
+                style={{ accentColor: "#9B21FF" }}
               />
               <span>
                 <span className="block text-sm" style={{ color: INK, fontWeight: 700 }}>Mostrar en mi web</span>
-                <span className="block text-xs" style={{ color: "#6B5A8E" }}>Solo aparecen las propiedades disponibles. Las vendidas, alquiladas o pausadas salen solas.</span>
+                <span className="block text-xs" style={{ color: "#6B7280" }}>Solo aparecen las propiedades disponibles. Las vendidas, alquiladas o pausadas salen solas.</span>
               </span>
             </label>
             <label className="flex items-start gap-3 min-h-11 cursor-pointer" style={{ opacity: hasCoords ? 1 : 0.6 }}>
@@ -89,11 +89,11 @@ export function WebChannelPanel({
                 disabled={busy || !hasCoords || !visible}
                 onChange={(e) => void save({ visible, exact: e.target.checked })}
                 className="w-5 h-5 mt-0.5"
-                style={{ accentColor: "#7C3AED" }}
+                style={{ accentColor: "#9B21FF" }}
               />
               <span>
                 <span className="block text-sm" style={{ color: INK, fontWeight: 700 }}>Mostrar ubicación exacta en el mapa</span>
-                <span className="block text-xs" style={{ color: "#6B5A8E" }}>
+                <span className="block text-xs" style={{ color: "#6B7280" }}>
                   {hasCoords
                     ? "Por defecto la web muestra solo el barrio. Activalo si el propietario está de acuerdo."
                     : "Cargá la ubicación en el mapa de la propiedad para poder activarlo. Mientras tanto se muestra el barrio."}
@@ -106,7 +106,7 @@ export function WebChannelPanel({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-4 min-h-11 inline-flex items-center rounded-xl text-sm border hover:bg-violet-50"
-                style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+                style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
               >
                 {url ? "Ver en mi web" : "Ver vista previa"}
                 <span className="sr-only"> (se abre en otra pestaña)</span>

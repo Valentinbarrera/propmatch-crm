@@ -77,10 +77,10 @@ export function AppLeadsSection({ query }: { query: string }) {
   return (
     <section className="mt-6 px-4 md:px-8">
       <div className="flex items-baseline gap-2 flex-wrap">
-        <h2 className="text-base" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+        <h2 className="text-base" style={{ color: "#1A1A1A", fontWeight: 800 }}>
           Desde la app PropMatch
         </h2>
-        <span className="text-xs" style={{ color: "#7458C4" }}>
+        <span className="text-xs" style={{ color: "#6B7280" }}>
           Personas reales que pusieron «me gusta» o hicieron match con tus propiedades.
         </span>
       </div>
@@ -102,7 +102,7 @@ export function AppLeadsSection({ query }: { query: string }) {
           const pending = !lead.matched && swipe === "pending";
           const openContact = () => navigate(`/contactos/${lead.contact.id}`);
           return (
-            <div key={lead.key} className="rounded-2xl border bg-white p-4" style={{ borderColor: "#EDE9FE" }}>
+            <div key={lead.key} className="rounded-2xl border bg-white p-4" style={{ borderColor: "#E9E5DE" }}>
               <div className="flex items-start gap-3">
                 <button
                   type="button"
@@ -119,7 +119,7 @@ export function AppLeadsSection({ query }: { query: string }) {
                     type="button"
                     onClick={openContact}
                     className="block max-w-full text-left text-sm truncate hover:underline"
-                    style={{ color: "#1F0A3C", fontWeight: 700 }}
+                    style={{ color: "#1A1A1A", fontWeight: 700 }}
                   >
                     {lead.contact.full_name}
                   </button>
@@ -127,7 +127,7 @@ export function AppLeadsSection({ query }: { query: string }) {
                     type="button"
                     onClick={() => navigate(`/propiedades/${lead.property.id}`)}
                     className="block max-w-full text-left text-xs truncate hover:underline"
-                    style={{ color: "#7458C4" }}
+                    style={{ color: "#6B7280" }}
                   >
                     {lead.property.title} · {money(lead.property.price, lead.property.currency)}
                   </button>
@@ -170,7 +170,7 @@ export function AppLeadsSection({ query }: { query: string }) {
                     type="button"
                     onClick={() => navigate("/inbox")}
                     className="px-3 py-1.5 rounded-lg text-xs border hover:bg-violet-50"
-                    style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 700 }}
+                    style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 700 }}
                   >
                     Ir al chat
                   </button>
@@ -180,7 +180,7 @@ export function AppLeadsSection({ query }: { query: string }) {
                     type="button"
                     onClick={() => navigate("/oportunidades")}
                     className="px-3 py-1.5 rounded-lg text-xs border hover:bg-violet-50"
-                    style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 700 }}
+                    style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 700 }}
                   >
                     Ver oportunidad
                   </button>

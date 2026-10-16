@@ -35,8 +35,8 @@ export function ScoreRing({
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
         <defs>
           <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#7C3AED" />
-            <stop offset="100%" stopColor="#EC4899" />
+            <stop offset="0%" stopColor="#9B21FF" />
+            <stop offset="100%" stopColor="#FF5ECA" />
           </linearGradient>
         </defs>
         <circle
@@ -44,7 +44,7 @@ export function ScoreRing({
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="#EDE9FE"
+          stroke="#E9E5DE"
           strokeWidth={strokeWidth}
         />
         <circle
@@ -68,7 +68,7 @@ export function ScoreRing({
           </span>
           {size >= 90 && (
             <span
-              style={{ color: "#7C3AED", fontWeight: 800, fontSize: "8px", letterSpacing: "0.1em" }}
+              style={{ color: "#9B21FF", fontWeight: 800, fontSize: "8px", letterSpacing: "0.1em" }}
             >
               MATCH
             </span>
@@ -105,7 +105,7 @@ export function FactorBar({
           className="text-xs"
           style={{
             fontWeight: 800,
-            background: `linear-gradient(90deg, ${color}, #EC4899)`,
+            background: `linear-gradient(90deg, ${color}, #FF5ECA)`,
             WebkitBackgroundClip: "text",
             backgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -114,12 +114,12 @@ export function FactorBar({
           {pct}%
         </span>
       </div>
-      <div className="h-2 rounded-full overflow-hidden" style={{ background: "#F5F3FF" }}>
+      <div className="h-2 rounded-full overflow-hidden" style={{ background: "#F7F0FF" }}>
         <div
           className="h-full rounded-full"
           style={{
             width: `${pct}%`,
-            background: `linear-gradient(90deg, ${color}, #EC4899)`,
+            background: `linear-gradient(90deg, ${color}, #FF5ECA)`,
             transition: "width 0.6s ease",
           }}
         />
@@ -130,9 +130,9 @@ export function FactorBar({
 
 /** Los 5 factores del motor, con el color que les asigna el diseño. */
 export const MATCH_FACTORS = [
-  { key: "score_location", label: "Ubicación", color: "#7C3AED" },
-  { key: "score_budget", label: "Presupuesto", color: "#EC4899" },
+  { key: "score_location", label: "Ubicación", color: "#9B21FF" },
+  { key: "score_budget", label: "Presupuesto", color: "#FF5ECA" },
   { key: "score_type", label: "Tipo de propiedad", color: "#3B82F6" },
-  { key: "score_size", label: "Ambientes y superficie", color: "#A855F7" },
+  { key: "score_size", label: "Ambientes y superficie", color: "#A855FF" },
   { key: "score_features", label: "Características", color: "#06B6D4" },
 ] as const;

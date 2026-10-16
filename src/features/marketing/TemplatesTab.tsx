@@ -20,7 +20,7 @@ export function TemplatesTab() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm" style={{ color: "#7C6A99" }}>
+        <p className="text-sm" style={{ color: "#6B7280" }}>
           Variables: {MARKETING_VARIABLES.map((v) => `{{${v.key}}}`).join(", ")}. El pie con tus datos y el link de baja se agrega solo.
         </p>
         <div className="flex gap-2">
@@ -40,12 +40,12 @@ export function TemplatesTab() {
             <Card key={t.id} padded hover>
               <button className="w-full text-left" onClick={() => setEditing(t)}>
                 <div className="flex items-center gap-2">
-                  {t.channel === "email" ? <MailIcon size={14} color="#7C3AED" /> : <WhatsAppIcon size={14} color="#16A34A" />}
-                  <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                  {t.channel === "email" ? <MailIcon size={14} color="#9B21FF" /> : <WhatsAppIcon size={14} color="#16A34A" />}
+                  <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                     {t.name}
                   </p>
                 </div>
-                <p className="text-xs mt-1 line-clamp-2" style={{ color: "#7C6A99" }}>
+                <p className="text-xs mt-1 line-clamp-2" style={{ color: "#6B7280" }}>
                   {t.channel === "email" ? t.subject : `Meta: ${t.waName} (${t.waLanguage})`}
                 </p>
               </button>
@@ -165,7 +165,7 @@ function EmailTemplateEditor({ template, onClose, onSave, onDelete }: { template
             Agregar propiedades recomendadas por matching
             <select
               className="ml-auto px-2 py-1 rounded-lg border text-sm"
-              style={{ borderColor: "#EDE9FE" }}
+              style={{ borderColor: "#E9E5DE" }}
               value={t.recommendationsCount}
               disabled={!t.includeRecommendations}
               onChange={(e) => set({ recommendationsCount: Number(e.target.value) })}
@@ -193,7 +193,7 @@ function EmailTemplateEditor({ template, onClose, onSave, onDelete }: { template
                 title="Vista previa del email"
                 sandbox=""
                 className="w-full rounded-xl border"
-                style={{ height: 560, borderColor: "#EDE9FE", background: "#F3F4F6" }}
+                style={{ height: 560, borderColor: "#E9E5DE", background: "#F3F4F6" }}
                 srcDoc={fillUnsubscribe(preview.html, "#vista-previa-baja")}
               />
             </>
@@ -336,8 +336,8 @@ function WhatsAppTemplateEditor({
               {preview.missing.length > 0 && <p className="text-xs mt-2" style={{ color: "#B45309" }}>Sin dato para {preview.missing.join(", ")}: WhatsApp rechaza variables vacías y ese contacto va a fallar.</p>}
             </div>
           )}
-          <div className="rounded-2xl border p-4 text-xs space-y-1.5" style={{ borderColor: "#EDE9FE", color: "#4B5563" }}>
-            <p style={{ fontWeight: 700, color: "#1F0A3C" }}>Para crearla en Meta (WhatsApp Manager)</p>
+          <div className="rounded-2xl border p-4 text-xs space-y-1.5" style={{ borderColor: "#E9E5DE", color: "#4B5563" }}>
+            <p style={{ fontWeight: 700, color: "#1A1A1A" }}>Para crearla en Meta (WhatsApp Manager)</p>
             <p>Categoría: MARKETING · Idioma: {t.waLanguage || "es_AR"} · Nombre: {t.waName || "(sin nombre)"}</p>
             <p>Cuerpo: el de la izquierda, con ejemplos para cada variable.</p>
             <p>

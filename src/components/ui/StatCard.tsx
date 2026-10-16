@@ -38,7 +38,7 @@ export function StatCard({
   return (
     <div
       className="rounded-2xl p-5 border flex flex-col gap-4 transition-all hover:shadow-md"
-      style={{ background: "white", borderColor: "#EDE9FE", boxShadow: "var(--shadow-card)" }}
+      style={{ background: "white", borderColor: "#E9E5DE", boxShadow: "var(--shadow-card)" }}
     >
       <div className="flex items-start justify-between">
         <div
@@ -59,12 +59,12 @@ export function StatCard({
 
       <div>
         {loading ? (
-          <div className="h-8 w-24 rounded-lg animate-pulse" style={{ background: "#F5F3FF" }} />
+          <div className="h-8 w-24 rounded-lg animate-pulse" style={{ background: "#F7F0FF" }} />
         ) : (
           <p
             className="tracking-tight"
             style={{
-              color: "#1F0A3C",
+              color: "#1A1A1A",
               fontWeight: 800,
               // El prototipo achicaba la tipografía cuando el valor era largo
               // ("USD 1.250.000"). Se conserva el mismo umbral.
@@ -78,13 +78,13 @@ export function StatCard({
           {label}
         </p>
         {sub && (
-          <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
+          <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
             {sub}
           </p>
         )}
       </div>
 
-      <div className="h-1.5 rounded-full" style={{ background: "#F5F3FF" }}>
+      <div className="h-1.5 rounded-full" style={{ background: "#F7F0FF" }}>
         <div
           className="h-full rounded-full transition-all duration-500"
           style={{ width: `${Math.min(100, Math.max(0, barWidth))}%`, background: bar }}

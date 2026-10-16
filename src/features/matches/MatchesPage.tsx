@@ -141,8 +141,8 @@ export default function MatchesPage() {
               label="Matches activos"
               sub={appLeads.length > 0 ? `${appLeads.length} desde la app · ${all.length} compatibles` : "Sobre tu cartera actual"}
               icon={<MatchesSolidIcon size={26} color="white" />}
-              grad="linear-gradient(135deg,#7C3AED,#A855F7)"
-              light="#F5F3FF"
+              grad="var(--gradient-brand)"
+              light="#F7F0FF"
               barWidth={100}
             />
             <OverviewCard
@@ -150,8 +150,8 @@ export default function MatchesPage() {
               label="Alta compatibilidad"
               sub="85% o más de coincidencia"
               icon={<StarOutlineIcon size={26} color="white" />}
-              grad="linear-gradient(135deg,#A855F7,#EC4899)"
-              light="#FDF2F8"
+              grad="var(--gradient-brand)"
+              light="#FFF1FA"
               barWidth={(stats.high / Math.max(1, stats.total)) * 100}
             />
             <OverviewCard
@@ -159,8 +159,8 @@ export default function MatchesPage() {
               label="Nuevos matches hoy"
               sub="Últimas 24 horas"
               icon={<OpportunitiesIcon size={26} color="white" />}
-              grad="linear-gradient(135deg,#EC4899,#F472B6)"
-              light="#FDF2F8"
+              grad="linear-gradient(135deg,#FF5ECA,#FF7ED5)"
+              light="#FFF1FA"
               barWidth={(stats.today / Math.max(1, stats.total)) * 100}
             />
           </div>
@@ -177,8 +177,8 @@ export default function MatchesPage() {
               value={minScore}
               onChange={setMinScore}
             />
-            <span className="text-sm whitespace-nowrap" style={{ color: "#7458C4" }}>
-              <span style={{ color: "#1F0A3C", fontWeight: 700 }}>{filtered.length}</span> matches
+            <span className="text-sm whitespace-nowrap" style={{ color: "#6B7280" }}>
+              <span style={{ color: "#1A1A1A", fontWeight: 700 }}>{filtered.length}</span> matches
             </span>
           </div>
         </div>
@@ -186,7 +186,7 @@ export default function MatchesPage() {
         {/* Interesados reales de la app, arriba de los compatibles que calcula el CRM. */}
         <AppLeadsSection query={query} />
         {appLeads.length > 0 && (
-          <h2 className="mt-8 px-4 md:px-8 text-base" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+          <h2 className="mt-8 px-4 md:px-8 text-base" style={{ color: "#1A1A1A", fontWeight: 800 }}>
             Compatibles de tu cartera
           </h2>
         )}
@@ -194,7 +194,7 @@ export default function MatchesPage() {
         {filtered.length === 0 ? (
           <div className="px-4 md:px-8">
             <EmptyState
-              icon={<MatchesIcon size={24} color="#7C3AED" />}
+              icon={<MatchesIcon size={24} color="#9B21FF" />}
               title={all.length === 0 ? (appLeads.length > 0 ? "Todavía no hay compatibles calculados" : "Todavía no hay matches") : "Sin resultados"}
               description={
                 all.length === 0
@@ -212,10 +212,10 @@ export default function MatchesPage() {
           <div className="mt-5 px-4 md:px-8 pb-8 grid gap-5 items-start grid-cols-1 lg:grid-cols-[minmax(0,1fr)_360px]">
             <div className="space-y-4 min-w-0">
               <div>
-                <h2 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                <h2 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                   Mejores matches para revisar
                 </h2>
-                <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+                <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                   Ordenados por compatibilidad · calculados sobre datos actuales
                 </p>
               </div>
@@ -268,7 +268,7 @@ function OverviewCard({
   return (
     <div
       className="rounded-2xl overflow-hidden border transition-all hover:shadow-lg"
-      style={{ borderColor: "#EDE9FE", boxShadow: "var(--shadow-card-lg)" }}
+      style={{ borderColor: "#E9E5DE", boxShadow: "var(--shadow-card-lg)" }}
     >
       <div className="px-5 pt-5 pb-4 relative overflow-hidden" style={{ background: light }}>
         <div className="absolute -right-4 -top-4 w-20 h-20 rounded-full opacity-10" style={{ background: grad }} />
@@ -294,13 +294,13 @@ function OverviewCard({
         </div>
       </div>
       <div className="px-5 pb-4 bg-white">
-        <p className="text-sm mt-2" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <p className="text-sm mt-2" style={{ color: "#1A1A1A", fontWeight: 700 }}>
           {label}
         </p>
-        <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+        <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
           {sub}
         </p>
-        <div className="h-1 rounded-full mt-3" style={{ background: "#F5F3FF" }}>
+        <div className="h-1 rounded-full mt-3" style={{ background: "#F7F0FF" }}>
           <div className="h-full rounded-full" style={{ width: `${barWidth}%`, background: grad }} />
         </div>
       </div>
@@ -330,17 +330,17 @@ function MatchCard({
       className="rounded-2xl border overflow-hidden cursor-pointer transition-all"
       style={{
         background: "white",
-        borderColor: isSelected ? "#A855F7" : "#EDE9FE",
+        borderColor: isSelected ? "#A855FF" : "#E9E5DE",
         boxShadow: isSelected
-          ? "0 0 0 3px rgba(124,58,237,0.12), 0 4px 20px rgba(124,58,237,0.12)"
-          : "0 2px 10px rgba(124,58,237,0.06)",
+          ? "0 0 0 3px rgba(168, 85, 255,0.12), 0 4px 20px rgba(168, 85, 255,0.12)"
+          : "0 2px 10px rgba(168, 85, 255,0.06)",
       }}
     >
       <div className="flex flex-col lg:flex-row">
         {/* Cliente */}
         <div
           className="lg:w-52 flex-shrink-0 p-5 flex flex-col justify-between border-b lg:border-b-0 lg:border-r"
-          style={{ borderColor: "#F5F3FF" }}
+          style={{ borderColor: "#F7F0FF" }}
         >
           <div>
             {isNew && (
@@ -362,23 +362,23 @@ function MatchCard({
             >
               {initials(contact.full_name)}
             </div>
-            <p className="text-sm leading-tight" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+            <p className="text-sm leading-tight" style={{ color: "#1A1A1A", fontWeight: 700 }}>
               {contact.full_name} <SampleBadge record={match} />
             </p>
-            <p className="text-xs mt-1" style={{ color: "#7458C4" }}>
+            <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
               Busca: {requirement.property_types.map((t) => PROPERTY_TYPE_LABEL[t]).join(", ")}
             </p>
           </div>
           <div className="mt-3 space-y-1">
             <div className="flex items-center gap-1.5">
-              <MapPinIcon size={11} color="#C4B5FD" />
-              <span className="text-xs" style={{ color: "#7C6A99" }}>
+              <MapPinIcon size={11} color="#D4AAFF" />
+              <span className="text-xs" style={{ color: "#6B7280" }}>
                 {requirement.zones.join(" · ")}
               </span>
             </div>
             <div className="flex items-center gap-1.5">
-              <span style={{ color: "#7C6A99", fontSize: 11 }}>$</span>
-              <span className="text-xs" style={{ color: "#7C6A99" }}>
+              <span style={{ color: "#6B7280", fontSize: 11 }}>$</span>
+              <span className="text-xs" style={{ color: "#6B7280" }}>
                 {money(requirement.budget_min, requirement.currency)} –{" "}
                 {money(requirement.budget_max, requirement.currency)}
               </span>
@@ -389,17 +389,17 @@ function MatchCard({
         {/* Score */}
         <div
           className="flex-shrink-0 lg:w-44 flex flex-col items-center justify-center px-4 py-5"
-          style={{ background: "linear-gradient(180deg, #FDFCFF 0%, #F9F6FF 100%)" }}
+          style={{ background: "linear-gradient(180deg, #FAF8F5 0%, #FAF8F5 100%)" }}
         >
           <ScoreRing score={match.score} size={100} />
           <div className="flex items-center gap-1 mt-3">
-            <span className="text-xs" style={{ color: "#7C6A99", fontSize: "10px" }}>
+            <span className="text-xs" style={{ color: "#6B7280", fontSize: "10px" }}>
               {MATCH_FACTORS.length} factores evaluados
             </span>
           </div>
           <p
             className="text-xs mt-1.5 text-center leading-tight"
-            style={{ color: "#7458C4", fontSize: "10px" }}
+            style={{ color: "#6B7280", fontSize: "10px" }}
           >
             Compatibilidad calculada
           </p>
@@ -407,11 +407,11 @@ function MatchCard({
 
         {/* Propiedad */}
         <div className="flex-1 flex flex-col overflow-hidden min-w-0">
-          <div className="relative h-32 overflow-hidden flex-shrink-0" style={{ background: "#F5F3FF" }}>
+          <div className="relative h-32 overflow-hidden flex-shrink-0" style={{ background: "#F7F0FF" }}>
             {photo && <img src={photo} alt={property.title} loading="lazy" className="w-full h-full object-cover" />}
             <div
               className="absolute inset-0"
-              style={{ background: "linear-gradient(to top, rgba(31,10,60,0.45) 0%, transparent 55%)" }}
+              style={{ background: "linear-gradient(to top, rgba(8, 11, 31,0.45) 0%, transparent 55%)" }}
             />
             <div className="absolute bottom-2.5 left-3 right-3">
               <p className="text-white text-xs leading-tight" style={{ fontWeight: 700 }}>
@@ -429,7 +429,7 @@ function MatchCard({
                 className="text-xs px-2 py-0.5 rounded-full"
                 style={{
                   background: "rgba(255,255,255,0.9)",
-                  color: "#7C3AED",
+                  color: "#9B21FF",
                   fontWeight: 700,
                   fontSize: "10px",
                 }}
@@ -441,10 +441,10 @@ function MatchCard({
 
           <div className="flex-1 p-4">
             <div className="flex items-center justify-between mb-2 gap-2">
-              <span className="text-base" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+              <span className="text-base" style={{ color: "#1A1A1A", fontWeight: 800 }}>
                 {money(property.price, property.currency)}
               </span>
-              <span className="text-xs whitespace-nowrap" style={{ color: "#7C6A99" }}>
+              <span className="text-xs whitespace-nowrap" style={{ color: "#6B7280" }}>
                 {relativeTime(match.created_at)}
               </span>
             </div>
@@ -468,9 +468,9 @@ function MatchCard({
                 <span
                   key={reason}
                   className="flex items-center gap-1 text-xs px-2.5 py-1 rounded-full"
-                  style={{ background: "#F5F3FF", color: "#7C3AED", fontWeight: 600, fontSize: "11px" }}
+                  style={{ background: "#F7F0FF", color: "#9B21FF", fontWeight: 600, fontSize: "11px" }}
                 >
-                  <CheckIcon size={9} color="#7C3AED" />
+                  <CheckIcon size={9} color="#9B21FF" />
                   {reason}
                 </span>
               ))}
@@ -483,7 +483,7 @@ function MatchCard({
                   onDetail();
                 }}
                 className="flex-1 py-2 rounded-xl text-xs border transition-all hover:border-violet-300"
-                style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "#F9F7FF" }}
+                style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "#FAF8F5" }}
               >
                 Ver detalle
               </button>
@@ -500,7 +500,7 @@ function MatchCard({
                     : {
                         background: "var(--gradient-brand)",
                         fontWeight: 600,
-                        boxShadow: "0 3px 10px rgba(124,58,237,0.3)",
+                        boxShadow: "0 3px 10px rgba(168, 85, 255,0.3)",
                       }
                 }
               >
@@ -521,7 +521,7 @@ function WhyMatchPanel({ item, onCreateOpp }: { item: HydratedMatch; onCreateOpp
     <div className="space-y-4 sticky top-0">
       <div
         className="rounded-2xl overflow-hidden border"
-        style={{ borderColor: "#EDE9FE", boxShadow: "0 2px 12px rgba(124,58,237,0.08)" }}
+        style={{ borderColor: "#E9E5DE", boxShadow: "0 2px 12px rgba(168, 85, 255,0.08)" }}
       >
         <div className="px-5 py-5 relative overflow-hidden" style={{ background: "var(--gradient-brand-wide)" }}>
           <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full opacity-20" style={{ background: "white" }} />
@@ -546,7 +546,7 @@ function WhyMatchPanel({ item, onCreateOpp }: { item: HydratedMatch; onCreateOpp
         </div>
 
         {/* Cliente ↔ Propiedad */}
-        <div className="p-4 bg-white border-b" style={{ borderColor: "#F3F0FF" }}>
+        <div className="p-4 bg-white border-b" style={{ borderColor: "#F0EDE6" }}>
           <div className="flex items-center gap-3">
             <div
               className={`w-10 h-10 rounded-full bg-gradient-to-br ${avatarGradient(contact.full_name)} flex items-center justify-center text-white flex-shrink-0`}
@@ -555,33 +555,33 @@ function WhyMatchPanel({ item, onCreateOpp }: { item: HydratedMatch; onCreateOpp
               {initials(contact.full_name)}
             </div>
             <div className="flex-1 flex items-center gap-1.5">
-              <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, #EDE9FE, #7C3AED66)" }} />
+              <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, #E9E5DE, #7C3AED66)" }} />
               <div
                 className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0"
                 style={{ background: "var(--gradient-brand)" }}
               >
                 <MatchesSolidIcon size={11} />
               </div>
-              <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, #EC489966, #EDE9FE)" }} />
+              <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, #EC489966, #E9E5DE)" }} />
             </div>
-            <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0" style={{ background: "#F5F3FF" }}>
+            <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0" style={{ background: "#F7F0FF" }}>
               {photo && <img src={photo} alt="" loading="lazy" className="w-full h-full object-cover" />}
             </div>
           </div>
           <div className="flex justify-between mt-2.5 gap-2">
             <div className="min-w-0">
-              <p className="text-xs truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+              <p className="text-xs truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                 {contact.full_name} <SampleBadge record={match} />
               </p>
-              <p className="text-xs" style={{ color: "#7458C4", fontSize: "10px" }}>
+              <p className="text-xs" style={{ color: "#6B7280", fontSize: "10px" }}>
                 Cliente
               </p>
             </div>
             <div className="text-right min-w-0">
-              <p className="text-xs truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+              <p className="text-xs truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                 {property.title}
               </p>
-              <p className="text-xs" style={{ color: "#7458C4", fontSize: "10px" }}>
+              <p className="text-xs" style={{ color: "#6B7280", fontSize: "10px" }}>
                 Propiedad
               </p>
             </div>
@@ -597,14 +597,14 @@ function WhyMatchPanel({ item, onCreateOpp }: { item: HydratedMatch; onCreateOpp
 
         <div
           className="mx-4 mb-4 p-3.5 rounded-xl flex items-center gap-4"
-          style={{ background: "var(--gradient-soft)", border: "1px solid #EDE9FE" }}
+          style={{ background: "var(--gradient-soft)", border: "1px solid #E9E5DE" }}
         >
           <ScoreRing score={match.score} size={84} />
           <div className="min-w-0">
-            <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+            <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
               Compatibilidad total
             </p>
-            <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
+            <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
               {matchQuality(match.score)}
             </p>
             <div className="flex flex-wrap gap-1 mt-1.5">
@@ -612,7 +612,7 @@ function WhyMatchPanel({ item, onCreateOpp }: { item: HydratedMatch; onCreateOpp
                 <span
                   key={r}
                   className="text-xs px-2 py-0.5 rounded-full"
-                  style={{ background: "#EDE9FE", color: "#7C3AED", fontWeight: 600, fontSize: "9px" }}
+                  style={{ background: "#E9E5DE", color: "#9B21FF", fontWeight: 600, fontSize: "9px" }}
                 >
                   ✓ {r}
                 </span>
@@ -625,11 +625,11 @@ function WhyMatchPanel({ item, onCreateOpp }: { item: HydratedMatch; onCreateOpp
       {/* Acciones rápidas */}
       <div
         className="rounded-2xl border p-4"
-        style={{ borderColor: "#EDE9FE", background: "white", boxShadow: "var(--shadow-card)" }}
+        style={{ borderColor: "#E9E5DE", background: "white", boxShadow: "var(--shadow-card)" }}
       >
         <p
           className="text-xs uppercase mb-3"
-          style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.1em" }}
+          style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.1em" }}
         >
           Acciones rápidas
         </p>
@@ -644,7 +644,7 @@ function WhyMatchPanel({ item, onCreateOpp }: { item: HydratedMatch; onCreateOpp
                 : {
                     background: "var(--gradient-brand)",
                     fontWeight: 600,
-                    boxShadow: "0 3px 10px rgba(124,58,237,0.28)",
+                    boxShadow: "0 3px 10px rgba(168, 85, 255,0.28)",
                   }
             }
           >
@@ -655,7 +655,7 @@ function WhyMatchPanel({ item, onCreateOpp }: { item: HydratedMatch; onCreateOpp
             <a
               href={`tel:${contact.phone}`}
               className="w-full py-2.5 rounded-xl text-sm border transition-all hover:border-violet-300 flex items-center justify-center gap-2"
-              style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "#F9F7FF" }}
+              style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "#FAF8F5" }}
             >
               <PhoneIcon size={13} />
               Llamar a {contact.full_name.split(" ")[0]}
@@ -666,7 +666,7 @@ function WhyMatchPanel({ item, onCreateOpp }: { item: HydratedMatch; onCreateOpp
             <a
               href={`mailto:${contact.email}?subject=${encodeURIComponent(property.title)}`}
               className="w-full py-2.5 rounded-xl text-sm border transition-all hover:border-pink-200 flex items-center justify-center gap-2"
-              style={{ borderColor: "#FCE7F3", color: "#EC4899", fontWeight: 600, background: "#FDF2F8" }}
+              style={{ borderColor: "#FFF1FA", color: "#FF5ECA", fontWeight: 600, background: "#FFF1FA" }}
             >
               <MailIcon size={13} />
               Enviar propiedad por email

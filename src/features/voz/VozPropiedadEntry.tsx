@@ -30,14 +30,14 @@ export function VozPropiedadEntry({ isNew, setForm }: { isNew: boolean; setForm:
         <div
           role="status"
           className="fixed z-40 left-4 right-4 sm:left-auto sm:right-6 bottom-[calc(88px+env(safe-area-inset-bottom))] lg:bottom-6 sm:max-w-sm rounded-2xl border px-4 py-3 bg-white"
-          style={{ borderColor: "#DDD6FE", boxShadow: "var(--shadow-pop)" }}
+          style={{ borderColor: "#DDD8CF", boxShadow: "var(--shadow-pop)" }}
         >
           <div className="flex items-start gap-3">
             <div className="flex-1 min-w-0">
-              <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+              <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                 Completé {notice.count} {notice.count === 1 ? "campo" : "campos"} con lo dictado
               </p>
-              <p className="text-xs mt-0.5" style={{ color: "#4C3A6B" }}>
+              <p className="text-xs mt-0.5" style={{ color: "#374151" }}>
                 Revisalos en el formulario. No se guardó nada todavía.
               </p>
               {notice.notes.length > 0 && (
@@ -58,7 +58,7 @@ export function VozPropiedadEntry({ isNew, setForm }: { isNew: boolean; setForm:
               onClick={() => setNotice(null)}
               aria-label="Cerrar aviso"
               className="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-violet-50 flex-shrink-0"
-              style={{ color: "#7458C4", fontSize: 18, lineHeight: 1 }}
+              style={{ color: "#6B7280", fontSize: 18, lineHeight: 1 }}
             >
               ×
             </button>

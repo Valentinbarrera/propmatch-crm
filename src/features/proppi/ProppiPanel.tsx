@@ -216,24 +216,24 @@ function ProppiDrawer({
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
-      <div className="absolute inset-0 hidden sm:block" style={{ background: "rgba(31,10,60,0.25)" }} onClick={onClose} aria-hidden="true" />
+      <div className="absolute inset-0 hidden sm:block" style={{ background: "rgba(8, 11, 31,0.25)" }} onClick={onClose} aria-hidden="true" />
       <div
         ref={panel}
         role="dialog"
         aria-modal="true"
         aria-labelledby="proppi-title"
         className="relative flex flex-col w-full sm:w-[420px] h-full bg-white"
-        style={{ boxShadow: "var(--shadow-pop)", borderLeft: "1px solid #EDE9FE" }}
+        style={{ boxShadow: "var(--shadow-pop)", borderLeft: "1px solid #E9E5DE" }}
       >
-        <header className="flex items-center gap-3 px-4 py-3 border-b flex-shrink-0" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+        <header className="flex items-center gap-3 px-4 py-3 border-b flex-shrink-0" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
           <span className="w-9 h-9 rounded-full flex items-center justify-center" style={{ background: "var(--gradient-brand)" }}>
             <ProppiIcon size={20} color="white" />
           </span>
           <div className="flex-1 min-w-0">
-            <h2 id="proppi-title" className="text-sm" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <h2 id="proppi-title" className="text-sm" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               Proppi
             </h2>
-            <p className="text-xs" style={{ color: "#7458C4" }}>
+            <p className="text-xs" style={{ color: "#6B7280" }}>
               Tu asistente del CRM · solo lectura
             </p>
           </div>
@@ -241,7 +241,7 @@ function ProppiDrawer({
             <button
               onClick={reset}
               className="min-h-[36px] px-3 rounded-xl text-xs border hover:border-violet-300"
-              style={{ borderColor: "#EDE9FE", color: "#6D28D9", fontWeight: 600 }}
+              style={{ borderColor: "#E9E5DE", color: "#7C0BD8", fontWeight: 600 }}
             >
               Nueva conversación
             </button>
@@ -250,7 +250,7 @@ function ProppiDrawer({
             onClick={onClose}
             aria-label="Cerrar Proppi"
             className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-violet-50"
-            style={{ color: "#6D28D9" }}
+            style={{ color: "#7C0BD8" }}
           >
             <CloseIcon />
           </button>
@@ -268,10 +268,10 @@ function ProppiDrawer({
             <Unavailable />
           ) : empty ? (
             <div className="pt-6">
-              <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+              <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                 ¡Hola! Soy Proppi.
               </p>
-              <p className="text-sm mt-1" style={{ color: "#4C3A6B" }}>
+              <p className="text-sm mt-1" style={{ color: "#374151" }}>
                 Te ayudo a encontrar datos de tus contactos, propiedades, agenda y conversaciones, y a preparar borradores de mensajes.
               </p>
               <div className="mt-4 flex flex-col gap-2">
@@ -281,7 +281,7 @@ function ProppiDrawer({
                     onClick={() => ask(s)}
                     disabled={limitReached}
                     className="text-left min-h-[44px] px-3.5 py-2 rounded-xl text-sm border hover:border-violet-300 disabled:opacity-50"
-                    style={{ borderColor: "#EDE9FE", color: "#6D28D9", background: "#F9F7FF", fontWeight: 600 }}
+                    style={{ borderColor: "#E9E5DE", color: "#7C0BD8", background: "#FAF8F5", fontWeight: 600 }}
                   >
                     {s}
                   </button>
@@ -298,7 +298,7 @@ function ProppiDrawer({
           )}
         </div>
 
-        <p role="status" className="px-4 text-xs min-h-[20px] flex-shrink-0" style={{ color: "#7458C4", fontWeight: 600 }}>
+        <p role="status" className="px-4 text-xs min-h-[20px] flex-shrink-0" style={{ color: "#6B7280", fontWeight: 600 }}>
           {busy && (status ? `Proppi está ${status}…` : streaming ? "" : "Proppi está pensando…")}
         </p>
 
@@ -309,9 +309,9 @@ function ProppiDrawer({
               type="button"
               onClick={() => onDictate(k)}
               className="flex items-center gap-1.5 min-h-[36px] px-3 rounded-xl text-xs border hover:border-violet-300"
-              style={{ borderColor: "#EDE9FE", color: "#6D28D9", background: "#F9F7FF", fontWeight: 600 }}
+              style={{ borderColor: "#E9E5DE", color: "#7C0BD8", background: "#FAF8F5", fontWeight: 600 }}
             >
-              <MicIcon size={13} color="#6D28D9" />
+              <MicIcon size={13} color="#7C0BD8" />
               {k === "propiedad" ? "Dictá una propiedad" : "Dictá una búsqueda"}
             </button>
           ))}
@@ -319,7 +319,7 @@ function ProppiDrawer({
 
         <form
           className="border-t px-3 pt-2 pb-3 flex-shrink-0"
-          style={{ borderColor: "#EDE9FE" }}
+          style={{ borderColor: "#E9E5DE" }}
           onSubmit={(e) => {
             e.preventDefault();
             ask(draft);
@@ -340,14 +340,14 @@ function ProppiDrawer({
               }}
               aria-label="Preguntale a Proppi"
               placeholder={limitReached ? "Llegaste al tope de consultas del mes" : "Preguntale algo a Proppi…"}
-              className="flex-1 px-3.5 py-2.5 rounded-xl text-sm border outline-none resize-none bg-white text-[#1F0A3C] placeholder:text-[#7C6A99] border-[#EDE9FE] focus:border-[#7C3AED] disabled:bg-[#FAFAFF]"
+              className="flex-1 px-3.5 py-2.5 rounded-xl text-sm border outline-none resize-none bg-white text-[#1A1A1A] placeholder:text-[#6B7280] border-[#E9E5DE] focus:border-[#9B21FF] disabled:bg-[#FAF8F5]"
             />
             {busy ? (
               <button
                 type="button"
                 onClick={() => abortRef.current?.abort()}
                 className="min-h-[44px] px-4 rounded-xl text-sm border"
-                style={{ borderColor: "#DDD6FE", color: "#6D28D9", fontWeight: 600 }}
+                style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 600 }}
               >
                 Detener
               </button>
@@ -362,7 +362,7 @@ function ProppiDrawer({
               </button>
             )}
           </div>
-          <p className="mt-2 text-[11px]" style={{ color: "#7C6A99" }}>
+          <p className="mt-2 text-[11px]" style={{ color: "#6B7280" }}>
             Lo que Proppi lee se envía a Anthropic para generar la respuesta. Revisá siempre los borradores antes de mandarlos.
           </p>
         </form>
@@ -374,13 +374,13 @@ function ProppiDrawer({
 function Unavailable() {
   return (
     <div className="pt-8 text-center px-4">
-      <span className="inline-flex w-12 h-12 rounded-full items-center justify-center" style={{ background: "#F5F3FF" }}>
-        <ProppiIcon size={26} color="#7C3AED" />
+      <span className="inline-flex w-12 h-12 rounded-full items-center justify-center" style={{ background: "#F7F0FF" }}>
+        <ProppiIcon size={26} color="#9B21FF" />
       </span>
-      <p className="mt-3 text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+      <p className="mt-3 text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
         Disponible con tu cuenta
       </p>
-      <p className="mt-1 text-sm" style={{ color: "#4C3A6B" }}>
+      <p className="mt-1 text-sm" style={{ color: "#374151" }}>
         Proppi funciona con una cuenta de inmobiliaria conectada. En la demo no está activo.
       </p>
     </div>
@@ -402,8 +402,8 @@ function Bubble({ item, live = false }: { item: Item; live?: boolean }) {
       <div
         className="max-w-[90%] rounded-2xl px-3.5 py-2.5"
         style={{
-          background: mine ? "#7C3AED" : "#F5F3FF",
-          color: mine ? "white" : "#1F0A3C",
+          background: mine ? "#9B21FF" : "#F7F0FF",
+          color: mine ? "white" : "#1A1A1A",
           borderBottomRightRadius: mine ? 6 : undefined,
           borderBottomLeftRadius: mine ? undefined : 6,
         }}
@@ -421,7 +421,7 @@ function Bubble({ item, live = false }: { item: Item; live?: boolean }) {
               );
             }}
             className="mt-1.5 inline-flex items-center gap-1 text-[11px] min-h-[28px] rounded-lg px-1.5 -ml-1.5 hover:bg-white"
-            style={{ color: "#6D28D9", fontWeight: 600 }}
+            style={{ color: "#7C0BD8", fontWeight: 600 }}
           >
             <CopyIcon size={13} />
             {copied ? "Copiado" : "Copiar"}

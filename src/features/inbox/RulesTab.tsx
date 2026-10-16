@@ -98,14 +98,14 @@ export function RulesTab({
       </div>
 
       {config.rules.length === 0 && (
-        <p className="text-sm" style={{ color: "#6B5A8E" }}>
+        <p className="text-sm" style={{ color: "#6B7280" }}>
           Todavía no tenés reglas. Empezá con una plantilla sugerida o creá la tuya.
         </p>
       )}
 
       <ul className="space-y-2">
         {config.rules.map((r) => (
-          <li key={r.id} className="rounded-xl border p-3 space-y-2 bg-white" style={{ borderColor: "#EDE9FE" }}>
+          <li key={r.id} className="rounded-xl border p-3 space-y-2 bg-white" style={{ borderColor: "#E9E5DE" }}>
             <div className="flex items-start gap-2">
               <div className="flex-1 min-w-0 space-y-1">
                 <div className="flex items-center gap-2 flex-wrap">
@@ -115,7 +115,7 @@ export function RulesTab({
                   <Pill tone={r.enabled ? "green" : "gray"}>{r.enabled ? "Activa" : "Pausada"}</Pill>
                   {config.paused && r.enabled && <Pill tone="amber">En pausa general</Pill>}
                 </div>
-                <p className="text-xs" style={{ color: "#4B3B73" }}>
+                <p className="text-xs" style={{ color: "#374151" }}>
                   {summarizeRule(r)}
                 </p>
                 {TRIGGER_META[r.trigger].proactive && (
@@ -184,12 +184,12 @@ export function RulesTab({
           </h3>
           <ul className="space-y-2">
             {suggestions.map((t) => (
-              <li key={t.id} className="rounded-xl border border-dashed p-3 flex items-center gap-3" style={{ borderColor: "#DDD6FE", background: "#FDFCFF" }}>
+              <li key={t.id} className="rounded-xl border border-dashed p-3 flex items-center gap-3" style={{ borderColor: "#DDD8CF", background: "#FAF8F5" }}>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm" style={{ color: INK, fontWeight: 700 }}>
                     {t.title}
                   </p>
-                  <p className="text-xs" style={{ color: "#4B3B73" }}>
+                  <p className="text-xs" style={{ color: "#374151" }}>
                     {t.description}
                   </p>
                 </div>
@@ -226,12 +226,12 @@ function HoursEditor({ config, update }: { config: AutomationConfig; update: Upd
   const setDay = (i: number, patch: Partial<AutomationConfig["hours"]["days"][number]>) =>
     update((c) => ({ ...c, hours: { days: c.hours.days.map((d, k) => (k === i ? { ...d, ...patch } : d)) } }));
   return (
-    <details className="rounded-xl border bg-white" style={{ borderColor: "#EDE9FE" }}>
+    <details className="rounded-xl border bg-white" style={{ borderColor: "#E9E5DE" }}>
       <summary className="px-3.5 min-h-[44px] flex items-center cursor-pointer text-sm" style={{ color: INK, fontWeight: 700 }}>
         Horario de atención ({summarizeHours(config.hours)})
       </summary>
       <div className="px-3.5 pb-3 space-y-3">
-        <p className="text-xs" style={{ color: "#6B5A8E" }}>
+        <p className="text-xs" style={{ color: "#6B7280" }}>
           Hora de Buenos Aires (America/Argentina/Buenos_Aires). Lo usa la regla "Fuera de horario" y la variable{" "}
           <code>{"{{horario}}"}</code>.
         </p>
@@ -241,11 +241,11 @@ function HoursEditor({ config, update }: { config: AutomationConfig; update: Upd
             return (
               <li key={i} className="flex flex-wrap items-center gap-2">
                 <label className="flex items-center gap-2 min-h-[44px] w-32 text-sm" style={{ color: INK }}>
-                  <input type="checkbox" className="w-5 h-5 accent-[#7C3AED]" checked={d.enabled} onChange={(e) => setDay(i, { enabled: e.target.checked })} />
+                  <input type="checkbox" className="w-5 h-5 accent-[#9B21FF]" checked={d.enabled} onChange={(e) => setDay(i, { enabled: e.target.checked })} />
                   {DAYS[i]}
                 </label>
                 <input type="time" aria-label={`${DAYS[i]}: desde`} disabled={!d.enabled} value={d.from} onChange={(e) => e.target.value && setDay(i, { from: e.target.value })} className={`${inputCls} !w-auto disabled:opacity-50`} />
-                <span className="text-xs" style={{ color: "#6B5A8E" }}>
+                <span className="text-xs" style={{ color: "#6B7280" }}>
                   a
                 </span>
                 <input type="time" aria-label={`${DAYS[i]}: hasta`} disabled={!d.enabled} value={d.to} onChange={(e) => e.target.value && setDay(i, { to: e.target.value })} className={`${inputCls} !w-auto disabled:opacity-50`} />
@@ -355,7 +355,7 @@ function RuleEditor({
         </Field>
       )}
       {r.trigger === "off_hours" && (
-        <p className="text-xs" style={{ color: "#4B3B73" }}>
+        <p className="text-xs" style={{ color: "#374151" }}>
           Horario de atención actual: {summarizeHours(config.hours)}. Se cambia en la solapa Automatizaciones, arriba de la lista.
         </p>
       )}
@@ -365,11 +365,11 @@ function RuleEditor({
           Canal
         </legend>
         <label className="flex items-center gap-2 min-h-[44px] text-sm" style={{ color: INK }}>
-          <input type="radio" checked readOnly className="w-5 h-5 accent-[#7C3AED]" />
+          <input type="radio" checked readOnly className="w-5 h-5 accent-[#9B21FF]" />
           {CHANNEL_META.app.label}
         </label>
         {SOON_CHANNELS.map((ch) => (
-          <label key={ch} className="flex items-center gap-2 min-h-[36px] text-sm opacity-60 cursor-not-allowed" style={{ color: "#4B3B73" }}>
+          <label key={ch} className="flex items-center gap-2 min-h-[36px] text-sm opacity-60 cursor-not-allowed" style={{ color: "#374151" }}>
             <input type="radio" disabled className="w-5 h-5" />
             {CHANNEL_META[ch].label}
             <span className="text-xs">· Disponible al conectar tu cuenta</span>
@@ -389,13 +389,13 @@ function RuleEditor({
           Firma
         </legend>
         <label className="flex items-center gap-2 min-h-[44px] text-sm" style={{ color: INK }}>
-          <input type="checkbox" className="w-5 h-5 accent-[#7C3AED]" checked={r.signature.enabled} onChange={(e) => set({ signature: { ...r.signature, enabled: e.target.checked } })} />
+          <input type="checkbox" className="w-5 h-5 accent-[#9B21FF]" checked={r.signature.enabled} onChange={(e) => set({ signature: { ...r.signature, enabled: e.target.checked } })} />
           Agregar firma al final
         </label>
         {r.signature.enabled && (
           <input aria-label="Texto de la firma" className={inputCls} maxLength={200} value={r.signature.text} onChange={(e) => set({ signature: { ...r.signature, text: e.target.value } })} />
         )}
-        <p className="text-xs" style={{ color: "#6B5A8E" }}>
+        <p className="text-xs" style={{ color: "#6B7280" }}>
           Recomendado: avisa a quien recibe que el mensaje es automático. Por defecto: "{DEFAULT_SIGNATURE}".
         </p>
       </fieldset>
@@ -404,19 +404,19 @@ function RuleEditor({
         <legend className="text-xs mb-1" style={{ color: INK, fontWeight: 700 }}>
           Filtros (opcional)
         </legend>
-        <p className="text-xs" style={{ color: "#6B5A8E" }}>
+        <p className="text-xs" style={{ color: "#6B7280" }}>
           Sin filtros, la regla aplica a todas las conversaciones.
         </p>
         <div className="flex flex-wrap gap-x-4">
           {(Object.keys(OPERATION_LABEL) as OperationFilter[]).map((o) => (
             <label key={o} className="flex items-center gap-2 min-h-[44px] text-sm" style={{ color: INK }}>
-              <input type="checkbox" className="w-5 h-5 accent-[#7C3AED]" checked={r.filters.operations.includes(o)} onChange={() => toggleOp(o)} />
+              <input type="checkbox" className="w-5 h-5 accent-[#9B21FF]" checked={r.filters.operations.includes(o)} onChange={() => toggleOp(o)} />
               {OPERATION_LABEL[o]}
             </label>
           ))}
         </div>
         {properties.length > 0 && (
-          <details className="rounded-xl border" style={{ borderColor: "#EDE9FE" }}>
+          <details className="rounded-xl border" style={{ borderColor: "#E9E5DE" }}>
             <summary className="px-3 min-h-[44px] flex items-center cursor-pointer text-sm" style={{ color: LILAC, fontWeight: 600 }}>
               Solo ciertas propiedades ({r.filters.propertyIds.length || "todas"})
             </summary>
@@ -424,7 +424,7 @@ function RuleEditor({
               {properties.map((p) => (
                 <li key={p.id}>
                   <label className="flex items-center gap-2 min-h-[44px] md:min-h-[32px] text-sm" style={{ color: INK }}>
-                    <input type="checkbox" className="w-5 h-5 accent-[#7C3AED]" checked={r.filters.propertyIds.includes(p.id)} onChange={() => toggleProp(p.id)} />
+                    <input type="checkbox" className="w-5 h-5 accent-[#9B21FF]" checked={r.filters.propertyIds.includes(p.id)} onChange={() => toggleProp(p.id)} />
                     <span className="truncate">{p.title}</span>
                   </label>
                 </li>
@@ -441,7 +441,7 @@ function RuleEditor({
         </span>
       </div>
       {r.enabled && (
-        <p className="text-xs" style={{ color: "#6B5A8E" }}>
+        <p className="text-xs" style={{ color: "#6B7280" }}>
           Solo responde a mensajes que lleguen desde que la activás.
         </p>
       )}

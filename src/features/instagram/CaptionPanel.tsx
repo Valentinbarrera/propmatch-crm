@@ -57,13 +57,13 @@ export function CaptionPanel({ body, onBody, hashtags, suggested, onHashtags, op
 
   return (
     <Card>
-      <div className="px-5 py-4 border-b" style={{ borderColor: "#F3F0FF" }}>
-        <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>Texto de la publicación</h3>
-        <p className="text-xs mt-0.5" style={{ color: "#6B5A8A" }}>
+      <div className="px-5 py-4 border-b" style={{ borderColor: "#F0EDE6" }}>
+        <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>Texto de la publicación</h3>
+        <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
           {intro ?? "Se arma con los datos reales de la propiedad. Editalo libremente."}
         </p>
         {isStory && (
-          <p className="text-xs mt-2 px-3 py-2 rounded-lg" style={{ background: "#F5F3FF", color: "#5B3FA8" }}>
+          <p className="text-xs mt-2 px-3 py-2 rounded-lg" style={{ background: "#F7F0FF", color: "#7C0BD8" }}>
             Las Stories no llevan texto de publicación; este texto aplica si cambiás a un formato de feed.
           </p>
         )}
@@ -71,13 +71,13 @@ export function CaptionPanel({ body, onBody, hashtags, suggested, onHashtags, op
       <div className="p-5 flex flex-col gap-4">
         {extra}
         <fieldset>
-          <legend className="text-xs mb-1.5" style={{ color: "#7458C4", fontWeight: 700 }}>Tono</legend>
+          <legend className="text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 700 }}>Tono</legend>
           <div className="flex flex-wrap gap-2">
             {TONES.map((t) => (
               <label
                 key={t.id}
                 className="px-3 min-h-11 md:min-h-9 rounded-xl border text-sm flex items-center gap-2 cursor-pointer has-[:focus-visible]:outline-2"
-                style={{ borderColor: options.tone === t.id ? "#7C3AED" : "#EDE9FE", background: options.tone === t.id ? "#F5F3FF" : "white", color: "#1F0A3C", fontWeight: 600 }}
+                style={{ borderColor: options.tone === t.id ? "#9B21FF" : "#E9E5DE", background: options.tone === t.id ? "#F7F0FF" : "white", color: "#1A1A1A", fontWeight: 600 }}
                 title={t.hint}
               >
                 <input type="radio" name="ig-tone" className="sr-only" checked={options.tone === t.id} onChange={() => onOptions({ ...options, tone: t.id })} />
@@ -88,20 +88,20 @@ export function CaptionPanel({ body, onBody, hashtags, suggested, onHashtags, op
         </fieldset>
 
         <fieldset>
-          <legend className="text-xs mb-1.5" style={{ color: "#7458C4", fontWeight: 700 }}>Bloques</legend>
+          <legend className="text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 700 }}>Bloques</legend>
           <div className="flex flex-wrap gap-x-4">
             {toggles.map((t) => (
-              <label key={t.key} className="flex items-center gap-2 text-sm min-h-11 md:min-h-8 cursor-pointer" style={{ color: "#1F0A3C" }}>
-                <input type="checkbox" className="w-5 h-5" style={{ accentColor: "#7C3AED" }} checked={options[t.key]} onChange={(e) => onOptions({ ...options, [t.key]: e.target.checked })} />
+              <label key={t.key} className="flex items-center gap-2 text-sm min-h-11 md:min-h-8 cursor-pointer" style={{ color: "#1A1A1A" }}>
+                <input type="checkbox" className="w-5 h-5" style={{ accentColor: "#9B21FF" }} checked={options[t.key]} onChange={(e) => onOptions({ ...options, [t.key]: e.target.checked })} />
                 {t.label}
               </label>
             ))}
           </div>
           {!hasPhone && options.contact && (
-            <p className="text-xs mt-1" style={{ color: "#6B5A8A" }}>La agencia no tiene teléfono cargado: el contacto muestra solo el nombre.</p>
+            <p className="text-xs mt-1" style={{ color: "#6B7280" }}>La agencia no tiene teléfono cargado: el contacto muestra solo el nombre.</p>
           )}
           {options.linkInBio && (
-            <p className="text-xs mt-1" style={{ color: "#6B5A8A" }}>
+            <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
               Los links dentro del texto de Instagram no son clicables. Por eso proponemos «link en la bio»: poné el enlace de la ficha en tu perfil.
             </p>
           )}
@@ -109,40 +109,40 @@ export function CaptionPanel({ body, onBody, hashtags, suggested, onHashtags, op
             type="button"
             onClick={onRegenerate}
             className="mt-2 px-3 min-h-11 md:min-h-9 rounded-xl border text-xs hover:bg-violet-50"
-            style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700 }}
+            style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}
           >
             Regenerar texto con estas opciones
           </button>
         </fieldset>
 
         <div>
-          <label htmlFor="ig-body" className="text-xs" style={{ color: "#7458C4", fontWeight: 700 }}>Texto</label>
+          <label htmlFor="ig-body" className="text-xs" style={{ color: "#6B7280", fontWeight: 700 }}>Texto</label>
           <textarea
             id="ig-body"
             value={body}
             onChange={(e) => onBody(e.target.value)}
             rows={10}
             className="mt-1 w-full rounded-xl border p-3 text-sm"
-            style={{ borderColor: overChars ? "#E11D48" : "#EDE9FE", color: "#1F0A3C", lineHeight: 1.5 }}
+            style={{ borderColor: overChars ? "#E11D48" : "#E9E5DE", color: "#1A1A1A", lineHeight: 1.5 }}
           />
           <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1">
             {counter("Caracteres", full.length, IG_LIMITS.captionMax, overChars)}
             {counter("Hashtags", tagCount, IG_LIMITS.hashtagsMax, overTags)}
           </div>
-          <div className="mt-2 rounded-lg border p-2.5 text-xs" style={{ borderColor: "#EDE9FE", background: "#FDFCFF", color: "#1F0A3C" }}>
-            <p style={{ color: "#7458C4", fontWeight: 700 }}>
+          <div className="mt-2 rounded-lg border p-2.5 text-xs" style={{ borderColor: "#E9E5DE", background: "#FAF8F5", color: "#1A1A1A" }}>
+            <p style={{ color: "#6B7280", fontWeight: 700 }}>
               Lo que se ve antes del «más…» (~{IG_LIMITS.captionVisibleChars} caracteres, aproximado)
             </p>
             <p className="mt-1" style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
-              <mark style={{ background: "#EDE9FE", color: "#1F0A3C" }}>{visible || "—"}</mark>
+              <mark style={{ background: "#E9E5DE", color: "#1A1A1A" }}>{visible || "—"}</mark>
               {truncated && <span style={{ color: "#6B7280" }}>{rest}</span>}
             </p>
           </div>
         </div>
 
         <div>
-          <p className="text-xs" style={{ color: "#7458C4", fontWeight: 700 }}>Hashtags sugeridos</p>
-          <p className="text-xs mt-0.5" style={{ color: "#6B5A8A" }}>
+          <p className="text-xs" style={{ color: "#6B7280", fontWeight: 700 }}>Hashtags sugeridos</p>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
             Instagram permite hasta {IG_LIMITS.hashtagsMax}, pero conviene pocos y relevantes. Tocá un chip para agregarlo o quitarlo.
           </p>
           <div className="mt-2 flex flex-wrap gap-2" role="group" aria-label="Hashtags sugeridos">
@@ -155,7 +155,7 @@ export function CaptionPanel({ body, onBody, hashtags, suggested, onHashtags, op
                   aria-pressed={on}
                   onClick={() => toggleTag(t)}
                   className="px-3 min-h-11 md:min-h-8 rounded-full border text-xs"
-                  style={{ borderColor: on ? "#7C3AED" : "#EDE9FE", background: on ? "#7C3AED" : "white", color: on ? "white" : "#7458C4", fontWeight: 600 }}
+                  style={{ borderColor: on ? "#9B21FF" : "#E9E5DE", background: on ? "#9B21FF" : "white", color: on ? "white" : "#6B7280", fontWeight: 600 }}
                 >
                   {t}
                 </button>

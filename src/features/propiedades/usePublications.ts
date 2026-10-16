@@ -41,7 +41,7 @@ export const EXTERNAL_CHANNELS: ChannelInfo[] = [
   { channel: "facebook", name: "Facebook", short: "f", color: "#1877F2" },
   { channel: "instagram", name: "Instagram", short: "IG", color: "#E1306C" },
 ];
-export const WEB_CHANNEL: ChannelInfo = { channel: "web", name: "Mi web", short: "W", color: "#7C3AED" };
+export const WEB_CHANNEL: ChannelInfo = { channel: "web", name: "Mi web", short: "W", color: "#9B21FF" };
 
 export interface ChannelState {
   info: ChannelInfo;

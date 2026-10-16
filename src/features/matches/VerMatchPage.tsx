@@ -57,7 +57,7 @@ export default function VerMatchPage() {
         <AppHeader title="Detalle del match" breadcrumb={["Matches", "Detalle"]} compact />
         <div className="flex-1 overflow-y-auto px-4 md:px-8">
           <EmptyState
-            icon={<MatchesIcon size={24} color="#7C3AED" />}
+            icon={<MatchesIcon size={24} color="#9B21FF" />}
             title="Este match ya no existe"
             description="Puede que la propiedad haya cambiado de estado o que el contacto ya no tenga esa búsqueda activa."
             action={{ label: "Volver a Matches", onClick: () => navigate("/matches") }}
@@ -83,9 +83,9 @@ export default function VerMatchPage() {
         <button
           onClick={() => navigate("/matches")}
           className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm border transition-all hover:border-violet-300"
-          style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+          style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "white" }}
         >
-          <ChevronLeftIcon size={14} color="#7C3AED" />
+          <ChevronLeftIcon size={14} color="#9B21FF" />
           Volver
         </button>
       </AppHeader>
@@ -98,7 +98,7 @@ export default function VerMatchPage() {
         {/* Hero */}
         <div
           className="mt-8 rounded-2xl border overflow-hidden relative"
-          style={{ borderColor: "#EDE9FE", boxShadow: "var(--shadow-card-lg)" }}
+          style={{ borderColor: "#E9E5DE", boxShadow: "var(--shadow-card-lg)" }}
         >
           <div className="px-6 py-6 relative overflow-hidden" style={{ background: "var(--gradient-soft)" }}>
             <div
@@ -112,10 +112,10 @@ export default function VerMatchPage() {
                 <Badge bg={state.bg} text={state.text} border={state.border}>
                   {state.label}
                 </Badge>
-                <p className="text-2xl tracking-tight mt-2" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+                <p className="text-2xl tracking-tight mt-2" style={{ color: "#1A1A1A", fontWeight: 800 }}>
                   {matchQuality(match.score)} <SampleBadge record={match} size="sm" className="bg-white" />
                 </p>
-                <p className="text-sm mt-1" style={{ color: "#7C6A99" }}>
+                <p className="text-sm mt-1" style={{ color: "#6B7280" }}>
                   {contact.full_name} y {property.title} coinciden en {match.reasons.length}{" "}
                   {match.reasons.length === 1 ? "criterio clave" : "criterios clave"}.
                 </p>
@@ -124,9 +124,9 @@ export default function VerMatchPage() {
                     <span
                       key={r}
                       className="flex items-center gap-1 text-xs px-2.5 py-1 rounded-full"
-                      style={{ background: "white", color: "#7C3AED", fontWeight: 600, border: "1px solid #EDE9FE" }}
+                      style={{ background: "white", color: "#9B21FF", fontWeight: 600, border: "1px solid #E9E5DE" }}
                     >
-                      <CheckIcon size={9} color="#7C3AED" />
+                      <CheckIcon size={9} color="#9B21FF" />
                       {r}
                     </span>
                   ))}
@@ -160,7 +160,7 @@ export default function VerMatchPage() {
                   <a
                     href={`tel:${contact.phone}`}
                     className="px-5 py-2.5 rounded-xl text-sm border transition-all hover:border-violet-300 flex items-center justify-center gap-2 whitespace-nowrap"
-                    style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+                    style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "white" }}
                   >
                     <PhoneIcon size={13} />
                     Contactar
@@ -186,11 +186,11 @@ export default function VerMatchPage() {
                   className="grid items-center gap-3 py-2.5 px-3 rounded-xl"
                   style={{
                     gridTemplateColumns: "120px minmax(0,1fr) 24px minmax(0,1fr)",
-                    background: c.match ? "#FDFCFF" : "#FFFBEB",
-                    border: `1px solid ${c.match ? "#F3F0FF" : "#FDE68A"}`,
+                    background: c.match ? "#FAF8F5" : "#FFFBEB",
+                    border: `1px solid ${c.match ? "#F0EDE6" : "#FDE68A"}`,
                   }}
                 >
-                  <span className="text-xs" style={{ color: "#7458C4", fontWeight: 600 }}>
+                  <span className="text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
                     {c.label}
                   </span>
                   <span className="text-xs truncate" style={{ color: "#374151" }}>
@@ -215,7 +215,7 @@ export default function VerMatchPage() {
                   </span>
                   <span
                     className="text-xs truncate text-right"
-                    style={{ color: "#1F0A3C", fontWeight: 600 }}
+                    style={{ color: "#1A1A1A", fontWeight: 600 }}
                   >
                     {c.propertyValue}
                   </span>
@@ -233,14 +233,14 @@ export default function VerMatchPage() {
             </div>
             <div
               className="mx-5 mb-5 p-4 rounded-xl flex items-center gap-4"
-              style={{ background: "var(--gradient-soft)", border: "1px solid #EDE9FE" }}
+              style={{ background: "var(--gradient-soft)", border: "1px solid #E9E5DE" }}
             >
               <ScoreRing score={match.score} size={80} />
               <div>
-                <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                   Compatibilidad total
                 </p>
-                <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
+                <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
                   Pesos: presupuesto 30% · ubicación 25% · tipo 20% · ambientes 15% · extras 10%
                 </p>
               </div>
@@ -261,10 +261,10 @@ export default function VerMatchPage() {
                   {initials(contact.full_name)}
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                  <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                     {contact.full_name}
                   </p>
-                  <p className="text-xs" style={{ color: "#7458C4" }}>
+                  <p className="text-xs" style={{ color: "#6B7280" }}>
                     {requirement.label ?? "Búsqueda activa"}
                   </p>
                 </div>
@@ -274,9 +274,9 @@ export default function VerMatchPage() {
                   <a
                     href={`tel:${contact.phone}`}
                     className="flex items-center gap-2.5 p-2.5 rounded-xl transition-all hover:bg-violet-50"
-                    style={{ border: "1px solid #F3F0FF" }}
+                    style={{ border: "1px solid #F0EDE6" }}
                   >
-                    <PhoneIcon size={13} color="#7C3AED" />
+                    <PhoneIcon size={13} color="#9B21FF" />
                     <span className="text-xs" style={{ color: "#374151" }}>
                       {contact.phone}
                     </span>
@@ -286,9 +286,9 @@ export default function VerMatchPage() {
                   <a
                     href={`mailto:${contact.email}`}
                     className="flex items-center gap-2.5 p-2.5 rounded-xl transition-all hover:bg-violet-50"
-                    style={{ border: "1px solid #F3F0FF" }}
+                    style={{ border: "1px solid #F0EDE6" }}
                   >
-                    <MailIcon size={13} color="#EC4899" />
+                    <MailIcon size={13} color="#FF5ECA" />
                     <span className="text-xs truncate" style={{ color: "#374151" }}>
                       {contact.email}
                     </span>
@@ -302,20 +302,20 @@ export default function VerMatchPage() {
             <SectionHeader inCard title="La propiedad" subtitle="Ficha resumida" />
             <div className="p-5">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0" style={{ background: "#F5F3FF" }}>
+                <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0" style={{ background: "#F7F0FF" }}>
                   {photo && <img src={photo} alt="" loading="lazy" className="w-full h-full object-cover" />}
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                  <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                     {property.title}
                   </p>
                   <div className="flex items-center gap-1 mt-0.5">
                     <MapPinIcon size={10} />
-                    <span className="text-xs" style={{ color: "#7458C4" }}>
+                    <span className="text-xs" style={{ color: "#6B7280" }}>
                       {property.zone}
                     </span>
                   </div>
-                  <p className="text-sm mt-1" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+                  <p className="text-sm mt-1" style={{ color: "#1A1A1A", fontWeight: 800 }}>
                     {money(property.price, property.currency)}
                   </p>
                 </div>
@@ -329,12 +329,12 @@ export default function VerMatchPage() {
                   <div
                     key={spec.label}
                     className="rounded-xl p-2.5 text-center"
-                    style={{ background: "#FDFCFF", border: "1px solid #F3F0FF" }}
+                    style={{ background: "#FAF8F5", border: "1px solid #F0EDE6" }}
                   >
-                    <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                    <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                       {spec.value ?? "—"}
                     </p>
-                    <p className="text-xs mt-0.5" style={{ color: "#7458C4", fontSize: 10 }}>
+                    <p className="text-xs mt-0.5" style={{ color: "#6B7280", fontSize: 10 }}>
                       {spec.label}
                     </p>
                   </div>
@@ -354,12 +354,12 @@ export default function VerMatchPage() {
                   {idx < timeline.length - 1 && (
                     <div
                       className="absolute left-[18px] top-8 w-px"
-                      style={{ height: "calc(100% + 8px)", background: "#EDE9FE" }}
+                      style={{ height: "calc(100% + 8px)", background: "#E9E5DE" }}
                     />
                   )}
                   <div
                     className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 z-10"
-                    style={{ background: "#F5F3FF", color: "#7C3AED" }}
+                    style={{ background: "#F7F0FF", color: "#9B21FF" }}
                   >
                     <ActivityIcon type={activityIconType(a.type)} />
                   </div>
@@ -368,11 +368,11 @@ export default function VerMatchPage() {
                       {a.title}
                     </p>
                     {a.detail && (
-                      <p className="text-xs truncate mt-0.5" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                      <p className="text-xs truncate mt-0.5" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                         {a.detail}
                       </p>
                     )}
-                    <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
+                    <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
                       {relativeTime(a.created_at)}
                     </p>
                   </div>
@@ -385,20 +385,20 @@ export default function VerMatchPage() {
         {/* Cierre */}
         <div
           className="mt-6 rounded-2xl px-6 py-5 flex items-center justify-between gap-4 flex-wrap"
-          style={{ background: "var(--gradient-soft)", border: "1px solid #EDE9FE" }}
+          style={{ background: "var(--gradient-soft)", border: "1px solid #E9E5DE" }}
         >
           <div className="flex items-center gap-3">
             <div
               className="w-11 h-11 rounded-2xl flex items-center justify-center flex-shrink-0"
-              style={{ background: "var(--gradient-brand)", boxShadow: "0 4px 16px rgba(124,58,237,0.35)" }}
+              style={{ background: "var(--gradient-brand)", boxShadow: "0 4px 16px rgba(168, 85, 255,0.35)" }}
             >
               <MatchesSolidIcon size={20} />
             </div>
             <div>
-              <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+              <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                 {hasOpportunity ? "Ya hay una oportunidad abierta" : "¿Lo convertimos en oportunidad?"}
               </p>
-              <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+              <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                 {hasOpportunity
                   ? "Seguí el avance desde el pipeline."
                   : "Entra al pipeline en la etapa Nuevos y podés moverla desde ahí."}

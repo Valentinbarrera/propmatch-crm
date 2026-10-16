@@ -1,38 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 @import 'tailwindcss';
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   Design tokens — valores extraídos 1:1 del prototipo de Figma Make.
-   Ningún color cambia: lo único que cambia es que ahora viven en un solo lugar
-   en vez de estar repetidos inline en cada archivo.
+   Design tokens — sistema de diseño de PropMatch (el mismo de la app mobile y
+   la web): app/src/theme/tokens.ts → lightTheme, y web/src/app/globals.css.
+   El CRM usa el tema CLARO: fondo cálido #FAF8F5, superficies blancas, texto
+   #1a1a1a / #6b7280, y los 4 colores de marca (azul, violeta, rosa, coral).
+
+   Los nombres viejos (brand-purple, lavender, lilac, ink…) se mantienen como
+   alias para no tocar los componentes que ya los usan; los valores son los de
+   PropMatch. La paleta inline del prototipo de Figma Make se migró con el mismo
+   mapeo (2026-10-16).
+
+   Contraste: el violeta de marca #A855FF da 3,9:1 sobre blanco (alcanza para
+   íconos, bordes y fondos, no para texto chico). Para TEXTO violeta se usa
+   --color-violet-ink #9B21FF (5,2:1) y para rosa --color-pink-ink #CB1093.
    ──────────────────────────────────────────────────────────────────────────── */
 @theme {
-  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', ui-sans-serif, sans-serif;
+  --font-body: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', ui-sans-serif, sans-serif;
 
-  /* Marca */
-  --color-brand-purple: #7C3AED;
-  --color-brand-pink: #EC4899;
-  --color-brand-violet: #A855F7;
-  --color-brand-indigo: #8B5CF6;
+  /* Marca PropMatch (mismos valores que palette en tokens.ts) */
+  --color-electric: #4C7CFF;        /* confianza — links, info, ubicación */
+  --color-violet: #A855FF;          /* inteligencia — matching, filtros, chips activos */
+  --color-neon: #FF5ECA;            /* emoción — match, favoritos */
+  --color-coral: #FF8A3D;           /* acción — CTA, progreso */
+  --color-violet-ink: #9B21FF;      /* violeta para TEXTO: 5,2:1 s/blanco, 4,6:1 s/#F7F0FF */
+  --color-violet-strong: #7C0BD8;   /* hover / texto destacado */
+  --color-violet-deep: #56148F;
+  --color-pink-ink: #CB1093;        /* rosa para TEXTO: 5,2:1 s/blanco */
 
-  /* Superficies */
-  --color-surface: #FFFFFF;
-  --color-surface-muted: #FDFCFF;   /* fondo de headers y sidebar */
-  --color-lavender: #F5F3FF;        /* fondo de chips / search / iconos */
-  --color-lilac: #EDE9FE;           /* borde estándar de cards */
-  --color-light-pink: #FDE7F5;
+  /* Alias de marca del CRM → PropMatch */
+  --color-brand-purple: #9B21FF;
+  --color-brand-pink: #FF5ECA;
+  --color-brand-violet: #A855FF;
+  --color-brand-indigo: #A855FF;
+
+  /* Superficies (lightTheme) */
+  --color-background: #FAF8F5;      /* bg */
+  --color-surface: #FFFFFF;         /* surf */
+  --color-surface-muted: #FAF8F5;   /* fondo de headers y sidebar */
+  --color-surface-deep: #F0EDE6;    /* bgDeep — rellenos neutros */
+  --color-lavender: #F7F0FF;        /* tinte violeta: chips / search / iconos */
+  --color-lilac: #E9E5DE;           /* borde estándar de cards */
+  --color-light-pink: #FFF1FA;      /* tinte rosa */
 
   /* Divisores */
-  --color-divider: #F3F0FF;
-  --color-divider-soft: #F9F7FF;
+  --color-divider: #F0EDE6;
+  --color-divider-soft: #F5F2EC;
 
-  /* Texto */
-  --color-ink: #1F0A3C;             /* títulos */
-  --color-ink-soft: #7C6A99;        /* subtítulos */
-  --color-lilac-text: #7458C4;   /* 5,3:1 s/blanco, 4,9:1 s/#F5F3FF */      /* labels de tabla, metadatos */
-  --color-lilac-faint: #C4B5FD;     /* SOLO decoración/bordes: 1,85:1, no usar para texto */
+  /* Texto (lightTheme: text / text2 / text3) */
+  --color-ink: #1A1A1A;             /* títulos */
+  --color-ink-soft: #6B7280;        /* subtítulos */
+  --color-lilac-text: #6B7280;      /* labels de tabla, metadatos: 4,8:1 s/blanco */
+  --color-ink-faint: #9CA3AF;       /* placeholders, deshabilitado */
+  --color-lilac-faint: #D4AAFF;     /* SOLO decoración/bordes, no usar para texto */
 
   /* Estados */
   --color-state-green-bg: #F0FDF4;
@@ -51,25 +72,92 @@
 
 @layer theme {
   :root {
-    /* Gradientes de marca — usados en botones, avatares y scores */
-    --gradient-brand: linear-gradient(135deg, #7C3AED, #EC4899);
-    --gradient-brand-h: linear-gradient(90deg, #7C3AED, #EC4899);
-    --gradient-brand-wide: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #EC4899 100%);
-    --gradient-nav-active: linear-gradient(135deg, #EDE9FE 0%, #FDE7F5 100%);
-    --gradient-soft: linear-gradient(135deg, #F5F3FF, #FDE7F5);
+    /* PropMatch Glow — el gradiente de 4 stops de la app y la web (botones,
+       avatares, scores, texto destacado). */
+    --gradient-brand: linear-gradient(95deg, #4C7CFF 0%, #A855FF 32%, #FF5ECA 64%, #FF8A3D 100%);
+    --gradient-brand-h: linear-gradient(90deg, #4C7CFF 0%, #A855FF 32%, #FF5ECA 64%, #FF8A3D 100%);
+    --gradient-brand-wide: linear-gradient(135deg, #4C7CFF 0%, #A855FF 35%, #FF5ECA 70%, #FF8A3D 100%);
+    --gradient-cta: linear-gradient(90deg, #FF5ECA, #FF8A3D);
+    /* Igual que --gradient-brand-soft de la web: los 4 colores al ~14% */
+    --gradient-nav-active: linear-gradient(
+      135deg,
+      color-mix(in oklab, #4C7CFF 12%, white),
+      color-mix(in oklab, #A855FF 14%, white),
+      color-mix(in oklab, #FF5ECA 12%, white)
+    );
+    --gradient-soft: linear-gradient(135deg, #F7F0FF, #FFF1FA);
 
-    /* Sombras */
-    --shadow-card: 0 1px 8px rgba(124, 58, 237, 0.06);
-    --shadow-card-lg: 0 2px 12px rgba(124, 58, 237, 0.07);
-    --shadow-cta: 0 4px 14px rgba(124, 58, 237, 0.3);
-    --shadow-pop: 0 8px 24px rgba(124, 58, 237, 0.12);
+    /* Sombras (tema claro de la web: tinte violeta muy bajo) */
+    --shadow-card: 0 1px 8px rgba(60, 40, 100, 0.06);
+    --shadow-card-lg: 0 2px 12px rgba(60, 40, 100, 0.08);
+    --shadow-cta: 0 8px 20px rgba(168, 85, 255, 0.35);
+    --shadow-pop: 0 8px 24px rgba(60, 40, 100, 0.12);
   }
 }
 
-/* Foco visible global (WCAG 2.4.7 / 2.4.11): 2px violeta de marca (5,7:1 sobre
+/*
+ * SF Pro Display — los mismos .woff2 que la app nativa y la web
+ * (app/assets/fonts → web/public/fonts → public/fonts acá).
+ */
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SFProDisplay-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SFProDisplay-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SFProDisplay-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SFProDisplay-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SFProDisplay-800.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('/fonts/SFProDisplay-900.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Foco visible global (WCAG 2.4.7 / 2.4.11): 2px violeta de texto (5,2:1 sobre
    blanco). En @layer base: los controles con `outline-none` traen su propio
    ring/borde de foco violeta y no se duplican. */
 @layer base {
+  /* Tailwind v4 dejó de poner gris como color de borde por defecto: un `border`
+     o `divide-y` sin color usa currentColor, y por eso las filas del checklist
+     del Inicio se separaban con líneas casi negras. Se vuelve al borde del
+     sistema (el snippet de compatibilidad que recomienda Tailwind v4). */
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-lilac, currentColor);
+  }
+
   :focus-visible {
     outline: 2px solid var(--color-brand-purple);
     outline-offset: 2px;
@@ -80,8 +168,13 @@ html,
 body,
 #root {
   height: 100%;
-  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans);
   color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--color-background);
 }
 
 /* El prototipo ocultaba TODAS las barras de scroll (`scrollbar-width: none`).
@@ -89,7 +182,7 @@ body,
    contenido, así que las dejamos visibles pero finas y en tono de marca. */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #DDD6FE transparent;
+  scrollbar-color: #D1CFC9 transparent;
 }
 *::-webkit-scrollbar {
   width: 8px;
@@ -99,11 +192,11 @@ body,
   background: transparent;
 }
 *::-webkit-scrollbar-thumb {
-  background: #DDD6FE;
+  background: #D1CFC9;
   border-radius: 999px;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background: #C4B5FD;
+  background: #B8B5AE;
 }
 
 /* Utilidades del texto con gradiente (se repetía inline en ~40 lugares) */

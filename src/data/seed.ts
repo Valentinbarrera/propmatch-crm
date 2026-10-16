@@ -293,10 +293,10 @@ function samplePhoto(label: string, from: string, to: string): string {
 }
 
 const ROOM_PHOTOS = [
-  samplePhoto("Living", "#7C3AED", "#EC4899"),
-  samplePhoto("Cocina", "#8B5CF6", "#F472B6"),
-  samplePhoto("Dormitorio", "#6D28D9", "#A855F7"),
-  samplePhoto("Exterior", "#A855F7", "#EC4899"),
+  samplePhoto("Living", "#9B21FF", "#FF5ECA"),
+  samplePhoto("Cocina", "#A855FF", "#FF7ED5"),
+  samplePhoto("Dormitorio", "#7C0BD8", "#A855FF"),
+  samplePhoto("Exterior", "#A855FF", "#FF5ECA"),
 ];
 
 /**
@@ -318,8 +318,8 @@ const COVERS: Record<string, string> = {
   "p-10": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=640&h=400&fit=crop&auto=format",
   "p-11": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=640&h=400&fit=crop&auto=format",
   "p-12": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=640&h=400&fit=crop&auto=format",
-  "p-13": samplePhoto("Departamento", "#7C3AED", "#A855F7"),
-  "p-14": samplePhoto("Casa con pileta", "#6D28D9", "#EC4899"),
+  "p-13": samplePhoto("Departamento", "#9B21FF", "#A855FF"),
+  "p-14": samplePhoto("Casa con pileta", "#7C0BD8", "#FF5ECA"),
 };
 
 /** El lote (p-7) solo tiene la portada y p-9 se queda corto a propósito: el diagnóstico lo marca. */

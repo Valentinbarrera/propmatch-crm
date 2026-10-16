@@ -55,18 +55,18 @@ export function AppHeader({
     // antes, si hay muchos botones, bajan a una segunda fila en vez de aplastar el título.
     <header
       className="flex flex-wrap 2xl:flex-nowrap items-center justify-between gap-x-4 gap-y-3 px-4 md:px-8 py-3 md:py-5 border-b flex-shrink-0"
-      style={{ borderColor: "#EDE9FE", backgroundColor: "#FDFCFF" }}
+      style={{ borderColor: "#E9E5DE", backgroundColor: "#FAF8F5" }}
     >
       <div className="min-w-0 md:min-w-[14rem] flex-1 2xl:flex-initial order-1">
         {breadcrumb && breadcrumb.length > 0 && (
-          <p className="hidden md:block text-xs mb-1" style={{ color: "#7458C4", fontWeight: 500 }}>
+          <p className="hidden md:block text-xs mb-1" style={{ color: "#6B7280", fontWeight: 500 }}>
             {breadcrumb.map((crumb, i) => (
               <span key={crumb}>
-                {i > 0 && <span style={{ color: "#DDD6FE" }}> / </span>}
+                {i > 0 && <span style={{ color: "#DDD8CF" }}> / </span>}
                 <span
                   style={
                     i === breadcrumb.length - 1
-                      ? { color: "#7C3AED", fontWeight: 600 }
+                      ? { color: "#9B21FF", fontWeight: 600 }
                       : undefined
                   }
                 >
@@ -76,12 +76,12 @@ export function AppHeader({
             ))}
           </p>
         )}
-        <h1 className="text-xl md:text-2xl tracking-tight truncate" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+        <h1 className="text-xl md:text-2xl tracking-tight truncate" style={{ color: "#1A1A1A", fontWeight: 800 }}>
           {title}
           {titleAccent}
         </h1>
         {subtitle && (
-          <p className="text-xs md:text-sm mt-0.5 truncate md:whitespace-normal" style={{ color: "#7C6A99" }}>
+          <p className="text-xs md:text-sm mt-0.5 truncate md:whitespace-normal" style={{ color: "#6B7280" }}>
             {subtitle}
           </p>
         )}
@@ -161,19 +161,19 @@ function AccountMenu() {
       {open && (
         <div
           className="pm-modal absolute right-0 mt-2 w-60 rounded-2xl border overflow-hidden z-50"
-          style={{ background: "white", borderColor: "#EDE9FE", boxShadow: "0 12px 40px rgba(76, 29, 149, 0.15)" }}
+          style={{ background: "white", borderColor: "#E9E5DE", boxShadow: "0 12px 40px rgba(86, 20, 143, 0.15)" }}
         >
-          <div className="px-4 py-3 border-b" style={{ borderColor: "#F5F3FF" }}>
-            <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <div className="px-4 py-3 border-b" style={{ borderColor: "#F7F0FF" }}>
+            <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
               {profile.full_name}
             </p>
-            <p className="text-xs truncate" style={{ color: "#7C6A99" }}>
+            <p className="text-xs truncate" style={{ color: "#6B7280" }}>
               {profile.email ?? agency.name}
             </p>
           </div>
           <button
             className={itemClass}
-            style={{ color: "#1F0A3C", fontWeight: 500 }}
+            style={{ color: "#1A1A1A", fontWeight: 500 }}
             onClick={() => {
               setOpen(false);
               navigate("/configuracion");
@@ -183,7 +183,7 @@ function AccountMenu() {
           </button>
           <button
             className={itemClass + " border-t"}
-            style={{ color: "#E11D48", fontWeight: 600, borderColor: "#F5F3FF" }}
+            style={{ color: "#E11D48", fontWeight: 600, borderColor: "#F7F0FF" }}
             onClick={signOut}
           >
             Cerrar sesión
@@ -217,15 +217,15 @@ function HeaderSearch({
 
   return (
     <div
-      className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm focus-within:ring-2 focus-within:ring-[#7C3AED] transition-all flex-1 md:flex-none w-full md:w-[220px] !flex-shrink"
-      style={{ background: "#F5F3FF" }}
+      className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm focus-within:ring-2 focus-within:ring-[#9B21FF] transition-all flex-1 md:flex-none w-full md:w-[220px] !flex-shrink"
+      style={{ background: "#F7F0FF" }}
     >
       <SearchIcon />
       <input
         value={local}
         onChange={(e) => setLocal(e.target.value)}
         placeholder={placeholder}
-        className="bg-transparent outline-none w-full text-[#1F0A3C] placeholder:text-[#6F5E94]"
+        className="bg-transparent outline-none w-full text-[#1A1A1A] placeholder:text-[#6B7280]"
         style={{ fontSize: 14 }}
       />
       {local && (
@@ -236,7 +236,7 @@ function HeaderSearch({
           }}
           aria-label="Limpiar búsqueda"
           className="flex-shrink-0"
-          style={{ color: "#7C6A99", lineHeight: 1 }}
+          style={{ color: "#6B7280", lineHeight: 1 }}
         >
           ×
         </button>

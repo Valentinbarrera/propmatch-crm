@@ -61,7 +61,7 @@ export function TemplateEditor({
               title={v.help}
               onClick={() => insert(v.name)}
               className="min-h-[44px] md:min-h-[32px] px-2.5 rounded-full text-xs border hover:border-violet-300"
-              style={{ ...btnGhostStyle, background: "#F9F7FF", borderColor: "#DDD6FE" }}
+              style={{ ...btnGhostStyle, background: "#FAF8F5", borderColor: "#DDD8CF" }}
             >
               {`{{${v.name}}}`}
             </button>
@@ -74,7 +74,7 @@ export function TemplateEditor({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           aria-describedby={`${id}-count ${id}-issues`}
-          className="w-full px-3.5 py-2.5 rounded-xl text-sm border outline-none resize-y bg-white text-[#1F0A3C] border-[#EDE9FE] focus:border-[#7C3AED] focus-visible:ring-2 focus-visible:ring-[#7C3AED]/30 min-h-[110px]"
+          className="w-full px-3.5 py-2.5 rounded-xl text-sm border outline-none resize-y bg-white text-[#1A1A1A] border-[#E9E5DE] focus:border-[#9B21FF] focus-visible:ring-2 focus-visible:ring-[#9B21FF]/30 min-h-[110px]"
         />
         <div className="flex items-start justify-between gap-3">
           <ul id={`${id}-issues`} className="text-xs space-y-0.5" aria-live="polite">
@@ -90,18 +90,18 @@ export function TemplateEditor({
         </div>
       </div>
 
-      <div className="rounded-xl border p-3 space-y-2" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+      <div className="rounded-xl border p-3 space-y-2" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
         <div className="flex flex-wrap items-center gap-2 justify-between">
           <p className="text-xs" style={{ color: INK, fontWeight: 700 }}>
             Vista previa
           </p>
-          <label className="flex items-center gap-2 text-xs" style={{ color: "#6B5A8E" }}>
+          <label className="flex items-center gap-2 text-xs" style={{ color: "#6B7280" }}>
             Previsualizar con…
             <select
               value={previewId}
               onChange={(e) => setPreviewId(e.target.value)}
               className="min-h-[44px] md:min-h-[32px] px-2 rounded-lg border bg-white text-xs max-w-[180px]"
-              style={{ borderColor: "#EDE9FE", color: INK }}
+              style={{ borderColor: "#E9E5DE", color: INK }}
             >
               <option value="">Datos de ejemplo</option>
               {env.conversations.slice(0, 40).map((c) => (
@@ -117,7 +117,7 @@ export function TemplateEditor({
           {conv ? `Conversación real: ${conv.name}` : "Ejemplo"} · así lo verá quien lo reciba
         </p>
         <div className="flex justify-end" aria-live="polite">
-          <div className="max-w-[90%] rounded-2xl px-3.5 py-2" style={{ background: "#7C3AED", color: "white", borderBottomRightRadius: 6 }}>
+          <div className="max-w-[90%] rounded-2xl px-3.5 py-2" style={{ background: "#9B21FF", color: "white", borderBottomRightRadius: 6 }}>
             {preview ? (
               <p className="text-sm whitespace-pre-wrap break-words">{preview}</p>
             ) : (

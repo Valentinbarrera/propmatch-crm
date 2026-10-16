@@ -181,7 +181,7 @@ export default function CampaignEditorPage() {
                   </Field>
                 </div>
                 {(m.segments.length === 0 || templates.length === 0) && (
-                  <p className="text-xs mt-3" style={{ color: "#7C6A99" }}>
+                  <p className="text-xs mt-3" style={{ color: "#6B7280" }}>
                     Primero armá {m.segments.length === 0 ? "una audiencia" : ""}
                     {m.segments.length === 0 && templates.length === 0 ? " y " : ""}
                     {templates.length === 0 ? `una plantilla de ${c.channel === "email" ? "email" : "WhatsApp"}` : ""} desde las pestañas de Marketing.
@@ -190,7 +190,7 @@ export default function CampaignEditorPage() {
               </Card>
 
               <Card padded>
-                <p className="text-sm mb-3" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                <p className="text-sm mb-3" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                   Límites de envío
                 </p>
                 <div className="grid gap-3 grid-cols-3">
@@ -205,7 +205,7 @@ export default function CampaignEditorPage() {
                   </Field>
                 </div>
                 {c.channel === "whatsapp" && (
-                  <p className="text-xs mt-2" style={{ color: "#7C6A99" }}>
+                  <p className="text-xs mt-2" style={{ color: "#6B7280" }}>
                     Meta además limita cuántas personas distintas podés contactar por día según tu nivel (250, 2.000, 10.000…) y baja la calidad del número si
                     muchos bloquean o reportan. Empezá con pocos.
                   </p>
@@ -214,7 +214,7 @@ export default function CampaignEditorPage() {
 
               <Card padded>
                 <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <p className="text-sm flex-1" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                  <p className="text-sm flex-1" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                     Vista previa por contacto
                   </p>
                   <select className={`${INPUT} sm:w-64`} value={previewContact?.id ?? ""} onChange={(e) => setPreviewId(e.target.value)}>
@@ -361,7 +361,7 @@ function EmailPreview({ t, contactId }: { t: EmailTemplate; contactId: string })
         <b>Asunto:</b> {r.subject}
       </p>
       {r.missing.length > 0 && <Notice tone="warn">Sin dato para: {r.missing.map((x) => `{{${x}}}`).join(", ")}.</Notice>}
-      <iframe title="Vista previa" sandbox="" className="w-full rounded-xl border" style={{ height: 520, borderColor: "#EDE9FE" }} srcDoc={fillUnsubscribe(r.html, "#vista-previa-baja")} />
+      <iframe title="Vista previa" sandbox="" className="w-full rounded-xl border" style={{ height: 520, borderColor: "#E9E5DE" }} srcDoc={fillUnsubscribe(r.html, "#vista-previa-baja")} />
     </div>
   );
 }
@@ -393,7 +393,7 @@ function WaManualLinks({
   audience: NonNullable<ReturnType<typeof evaluateSegment>>;
   template: WhatsAppTemplate;
 }) {
-  const { store, renderData } = useMarketingCtx();
+  const { renderData } = useMarketingCtx();
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState<Set<string>>(() => new Set());
 
@@ -419,10 +419,10 @@ function WaManualLinks({
         className="w-full flex items-center justify-between gap-3 text-left"
       >
         <div>
-          <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             Enviar manualmente por WhatsApp
           </p>
-          <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
             Abrí el chat de cada contacto con el mensaje listo — sin servidor ni Meta.
             {done > 0 && (
               <span style={{ color: "#059669", fontWeight: 600 }}> {done}/{total} enviados</span>
@@ -436,28 +436,28 @@ function WaManualLinks({
           fill="none"
           style={{ flexShrink: 0, transform: open ? "rotate(180deg)" : undefined, transition: "transform .15s" }}
         >
-          <path d="M3 6l5 5 5-5" stroke="#7C6A99" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M3 6l5 5 5-5" stroke="#6B7280" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
 
       {open && (
         <div className="mt-4 space-y-2">
-          {links.map(({ contact, preview, url, missing }) => {
+          {links.map(({ contact, url, missing }) => {
             const isSent = sent.has(contact.id);
             return (
               <div
                 key={contact.id}
                 className="flex items-center gap-3 rounded-xl px-3 py-2.5 border"
                 style={{
-                  borderColor: isSent ? "#A7F3D0" : "#EDE9FE",
+                  borderColor: isSent ? "#A7F3D0" : "#E9E5DE",
                   background: isSent ? "#F0FDF4" : "white",
                 }}
               >
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                  <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                     {contact.full_name}
                   </p>
-                  <p className="text-xs truncate" style={{ color: "#7C6A99" }}>
+                  <p className="text-xs truncate" style={{ color: "#6B7280" }}>
                     {contact.phone ?? "Sin teléfono"}
                     {missing.length > 0 && (
                       <span style={{ color: "#B45309" }}> · faltan: {missing.join(", ")}</span>
@@ -505,15 +505,15 @@ function RecipientsLog({ recipients, channel }: { recipients: ServerRecipient[] 
   if (!recipients) return null;
   return (
     <Card>
-      <div className="px-5 py-3 border-b" style={{ borderColor: "#F3F0FF" }}>
-        <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+      <div className="px-5 py-3 border-b" style={{ borderColor: "#F0EDE6" }}>
+        <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
           Registro por destinatario ({recipients.length})
         </p>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-xs">
           <thead>
-            <tr style={{ color: "#7C6A99" }}>
+            <tr style={{ color: "#6B7280" }}>
               <th className="text-left px-4 py-2">Contacto</th>
               <th className="text-left px-2 py-2">Estado</th>
               <th className="text-left px-2 py-2">Enviado</th>
@@ -522,10 +522,10 @@ function RecipientsLog({ recipients, channel }: { recipients: ServerRecipient[] 
           </thead>
           <tbody>
             {recipients.map((r) => (
-              <tr key={r.id} className="border-t" style={{ borderColor: "#F3F0FF" }}>
+              <tr key={r.id} className="border-t" style={{ borderColor: "#F0EDE6" }}>
                 <td className="px-4 py-2">
                   {r.contact_name ?? "—"} <span style={{ color: "#9CA3AF" }}>{channel === "email" ? maskEmail(r.email_norm) : maskPhoneDigits(r.phone_norm)}</span>
-                  {r.is_test && <span style={{ color: "#7C3AED" }}> · prueba</span>}
+                  {r.is_test && <span style={{ color: "#9B21FF" }}> · prueba</span>}
                 </td>
                 <td className="px-2 py-2">{RECIPIENT_STATUS_LABEL[r.status as RecipientStatus] ?? r.status}</td>
                 <td className="px-2 py-2">{fmtDate(r.sent_at)}</td>

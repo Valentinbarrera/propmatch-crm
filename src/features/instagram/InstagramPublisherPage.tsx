@@ -236,7 +236,7 @@ function Editor({ property }: { property: Property }) {
         <button
           onClick={() => navigate(`/publicador/${property.id}`)}
           className="px-3 min-h-11 md:min-h-9 rounded-xl text-xs border flex items-center gap-1 hover:bg-violet-50"
-          style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700, background: "white" }}
+          style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700, background: "white" }}
         >
           <ChevronLeftIcon size={12} /> Volver
         </button>
@@ -250,7 +250,7 @@ function Editor({ property }: { property: Property }) {
       </AppHeader>
 
       <div className="flex-1 overflow-y-auto px-4 md:px-8 pb-10">
-        <div className="lg:hidden mt-4 inline-flex p-1 rounded-xl" role="tablist" aria-label="Pantalla" style={{ background: "#F5F3FF" }}>
+        <div className="lg:hidden mt-4 inline-flex p-1 rounded-xl" role="tablist" aria-label="Pantalla" style={{ background: "#F7F0FF" }}>
           {(["edit", "preview"] as const).map((v) => (
             <button
               key={v}
@@ -258,7 +258,7 @@ function Editor({ property }: { property: Property }) {
               aria-selected={mobileView === v}
               onClick={() => setMobileView(v)}
               className="px-5 min-h-11 rounded-lg text-sm"
-              style={{ background: mobileView === v ? "white" : "transparent", color: "#7458C4", fontWeight: mobileView === v ? 700 : 600 }}
+              style={{ background: mobileView === v ? "white" : "transparent", color: "#6B7280", fontWeight: mobileView === v ? 700 : 600 }}
             >
               {v === "edit" ? "Editar" : "Vista previa"}
             </button>
@@ -267,7 +267,7 @@ function Editor({ property }: { property: Property }) {
 
         <div className="mt-4 lg:mt-6 grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_360px] gap-6 items-start">
           <div className={`${mobileView === "preview" ? "hidden" : "flex"} lg:flex flex-col gap-6 min-w-0`}>
-            <div className="flex flex-wrap items-center gap-3 text-xs" style={{ color: "#6B5A8A" }}>
+            <div className="flex flex-wrap items-center gap-3 text-xs" style={{ color: "#6B7280" }}>
               <span role="status" aria-live="polite">{savedLine}</span>
               <button type="button" onClick={reset} className="px-3 min-h-11 md:min-h-8 rounded-lg border hover:bg-rose-50" style={{ borderColor: "#FECDD3", color: "#BE123C", fontWeight: 700 }}>
                 Restablecer
@@ -275,8 +275,8 @@ function Editor({ property }: { property: Property }) {
             </div>
 
             <Card>
-              <div className="px-5 py-4 border-b" style={{ borderColor: "#F3F0FF" }}>
-                <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>Formato</h3>
+              <div className="px-5 py-4 border-b" style={{ borderColor: "#F0EDE6" }}>
+                <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>Formato</h3>
               </div>
               <fieldset className="p-4 grid grid-cols-2 sm:grid-cols-4 gap-2">
                 <legend className="sr-only">Formato de la publicación</legend>
@@ -286,15 +286,15 @@ function Editor({ property }: { property: Property }) {
                     <label
                       key={f.id}
                       className="rounded-xl border p-3 cursor-pointer min-h-11 flex flex-col gap-1 has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2"
-                      style={{ borderColor: on ? "#7C3AED" : "#EDE9FE", background: on ? "#F5F3FF" : "white" }}
+                      style={{ borderColor: on ? "#9B21FF" : "#E9E5DE", background: on ? "#F7F0FF" : "white" }}
                     >
                       <input type="radio" name="ig-format" className="sr-only" checked={on} onChange={() => setFormat(f.id)} />
                       <span className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>{f.label}</span>
+                        <span className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>{f.label}</span>
                         {f.recommended && <Badge bg="#DCFCE7" text="#15803D" size="xs">Recomendado</Badge>}
                       </span>
-                      <span className="text-[11px]" style={{ color: "#6B5A8A" }}>{f.width}×{f.height} px</span>
-                      <span className="text-[11px]" style={{ color: "#6B5A8A" }}>{f.hint}</span>
+                      <span className="text-[11px]" style={{ color: "#6B7280" }}>{f.width}×{f.height} px</span>
+                      <span className="text-[11px]" style={{ color: "#6B7280" }}>{f.hint}</span>
                     </label>
                   );
                 })}
@@ -326,12 +326,12 @@ function Editor({ property }: { property: Property }) {
             />
 
             <Card>
-              <div className="px-5 py-4 border-b" style={{ borderColor: "#F3F0FF" }}>
+              <div className="px-5 py-4 border-b" style={{ borderColor: "#F0EDE6" }}>
                 <div className="flex items-center gap-2 flex-wrap">
-                  <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>Publicar manualmente</h3>
+                  <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>Publicar manualmente</h3>
                   <Badge bg="#DCFCE7" text="#15803D" size="xs">Disponible ahora</Badge>
                 </div>
-                <p className="text-xs mt-0.5" style={{ color: "#6B5A8A" }}>
+                <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                   Descargá las fotos ya recortadas ({format.width}×{format.height}, JPEG), copiá el texto y subilo desde la app de Instagram.
                 </p>
               </div>
@@ -347,7 +347,7 @@ function Editor({ property }: { property: Property }) {
                     <DownloadIcon size={14} color="white" /> {exporting ? "Preparando…" : "Descargar fotos para Instagram"}
                   </button>
                 </div>
-                <p role="status" aria-live="polite" className={exportSummary ? "text-sm" : "sr-only"} style={{ color: "#1F0A3C" }}>{exportSummary}</p>
+                <p role="status" aria-live="polite" className={exportSummary ? "text-sm" : "sr-only"} style={{ color: "#1A1A1A" }}>{exportSummary}</p>
                 {Object.keys(exportState).length > 0 && (
                   <ul className="flex flex-col gap-1.5">
                     {included.map((p, i) => {
@@ -364,15 +364,15 @@ function Editor({ property }: { property: Property }) {
                     })}
                   </ul>
                 )}
-                <p className="text-xs" style={{ color: "#6B5A8A" }}>
+                <p className="text-xs" style={{ color: "#6B7280" }}>
                   Se descargan una por una, en orden y con nombre <code>01-{slugify(property.title)}.jpg</code>. Usá «Copiar texto» más arriba para el texto.
                 </p>
               </div>
             </Card>
 
             <Card>
-              <div className="px-5 py-4 border-b flex items-center gap-2 flex-wrap" style={{ borderColor: "#F3F0FF" }}>
-                <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>Publicar en Instagram</h3>
+              <div className="px-5 py-4 border-b flex items-center gap-2 flex-wrap" style={{ borderColor: "#F0EDE6" }}>
+                <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>Publicar en Instagram</h3>
                 <Badge bg="#FEF3C7" text="#92400E" size="xs">Requiere conexión</Badge>
               </div>
               <div className="p-5 flex flex-col gap-4">
@@ -383,7 +383,7 @@ function Editor({ property }: { property: Property }) {
                         {c.ok ? <CheckIcon size={11} color="#16A34A" /> : <AlertTriangleIcon size={11} color="#D97706" />}
                       </span>
                       <div>
-                        <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                        <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                           <span className="sr-only">{c.ok ? "Cumplido: " : "Falta: "}</span>
                           {c.label}
                         </p>
@@ -396,19 +396,19 @@ function Editor({ property }: { property: Property }) {
                   <button type="button" disabled aria-describedby="ig-publish-why" className="px-5 min-h-11 rounded-xl text-sm text-white opacity-40 cursor-not-allowed" style={{ background: "var(--gradient-brand)", fontWeight: 700 }}>
                     Publicar en Instagram
                   </button>
-                  <span id="ig-publish-why" className="text-xs" style={{ color: "#6B5A8A" }}>Disponible al conectar Instagram</span>
+                  <span id="ig-publish-why" className="text-xs" style={{ color: "#6B7280" }}>Disponible al conectar Instagram</span>
                 </div>
-                <div className="border-t pt-4" style={{ borderColor: "#F3F0FF" }}>
+                <div className="border-t pt-4" style={{ borderColor: "#F0EDE6" }}>
                   <button
                     type="button"
                     disabled={alreadyQueued}
                     onClick={() => { void queue(property, ["instagram"]); setQueued(true); }}
                     className="px-4 min-h-11 rounded-xl text-sm border hover:bg-violet-50 disabled:opacity-50 disabled:cursor-not-allowed"
-                    style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700 }}
+                    style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}
                   >
                     {alreadyQueued ? "En cola" : "Dejar en cola"}
                   </button>
-                  <p className="text-xs mt-2" role="status" aria-live="polite" style={{ color: "#6B5A8A" }}>
+                  <p className="text-xs mt-2" role="status" aria-live="polite" style={{ color: "#6B7280" }}>
                     {alreadyQueued
                       ? "Quedó registrado: se publicará al conectar Instagram. Por ahora la cola solo anota el canal; el diseño de esta pantalla no se envía."
                       : "Registra la intención de publicar: se publicará al conectar Instagram. No publica nada ahora."}
@@ -431,7 +431,7 @@ function Editor({ property }: { property: Property }) {
               index={index}
               onIndex={setIndex}
             />
-            <p className="text-[11px] text-center mt-3" style={{ color: "#6B5A8A" }}>
+            <p className="text-[11px] text-center mt-3" style={{ color: "#6B7280" }}>
               Maqueta aproximada con diseño propio: el aspecto final depende de la versión de la app de Instagram.
             </p>
           </div>
@@ -454,7 +454,7 @@ export default function InstagramPublisherPage() {
         <div className="flex-1 overflow-y-auto px-4 md:px-8 pb-10">
           <Card className="mt-8">
             <EmptyState
-              icon={<HomeIcon size={24} color="#7C3AED" />}
+              icon={<HomeIcon size={24} color="#9B21FF" />}
               title="No encontramos esta propiedad"
               description="Puede que se haya eliminado o que el enlace no sea correcto."
               action={{ label: "Volver al multipublicador", onClick: () => navigate("/publicador") }}

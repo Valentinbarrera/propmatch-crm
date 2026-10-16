@@ -20,7 +20,7 @@ export const DEAL_STATUS_LABEL: Record<DealStatus, string> = {
 };
 
 export const DEAL_STATUS_STYLE: Record<DealStatus, { bg: string; text: string }> = {
-  en_curso: { bg: "#F5F3FF", text: "#7C3AED" },
+  en_curso: { bg: "#F7F0FF", text: "#9B21FF" },
   cerrada: { bg: "#F0FDF4", text: "#15803D" },
   caida: { bg: "#FFF1F2", text: "#BE123C" },
 };
@@ -106,10 +106,10 @@ export default function OperacionesPage() {
         {filter !== "cerrada" && filter !== "caida" && startable.length > 0 && (
           <Card className="mb-4">
             <div className="px-5 pt-4 pb-2">
-              <h3 className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+              <h3 className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                 Iniciar desde una oportunidad
               </h3>
-              <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+              <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                 Interesados que vienen avanzando y todavía no tienen operación. Se completa sola con el cliente y la propiedad.
               </p>
             </div>
@@ -118,17 +118,17 @@ export default function OperacionesPage() {
                 const contact = contactById(o.contact_id);
                 const property = propertyById(o.property_id);
                 return (
-                  <div key={o.id} className="flex items-center gap-3 rounded-xl border px-3 py-2.5" style={{ borderColor: "#EDE9FE" }}>
+                  <div key={o.id} className="flex items-center gap-3 rounded-xl border px-3 py-2.5" style={{ borderColor: "#E9E5DE" }}>
                     <button
                       type="button"
                       onClick={() => navigate(`/contactos/${o.contact_id}`)}
                       className="min-w-0 flex-1 text-left"
                       title="Ver ficha del cliente"
                     >
-                      <p className="text-sm truncate hover:underline" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                      <p className="text-sm truncate hover:underline" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                         {contact?.full_name ?? "Sin contacto"}
                       </p>
-                      <p className="text-xs truncate" style={{ color: "#7458C4" }}>
+                      <p className="text-xs truncate" style={{ color: "#6B7280" }}>
                         {STAGE_LABEL[o.stage]} · {property?.title ?? "Propiedad"}
                       </p>
                     </button>
@@ -150,7 +150,7 @@ export default function OperacionesPage() {
         {visible.length === 0 ? (
           <Card>
             <EmptyState
-              icon={<OpportunitiesIcon size={24} color="#7C3AED" />}
+              icon={<OpportunitiesIcon size={24} color="#9B21FF" />}
               title={deals.length === 0 ? "Todavía no hay operaciones" : "No hay operaciones con este filtro"}
               description="Iniciá una operación para llevar los pasos, la documentación y armar la reserva y el contrato desde acá."
               action={{ label: "Nueva operación", onClick: () => setCreating(true) }}
@@ -206,14 +206,14 @@ function DealCard({ deal, onOpen }: { deal: Deal; onOpen: () => void }) {
     <div
       onClick={onOpen}
       className="rounded-2xl border p-5 cursor-pointer transition-all hover:shadow-md"
-      style={{ background: "white", borderColor: "#EDE9FE", boxShadow: "var(--shadow-card)" }}
+      style={{ background: "white", borderColor: "#E9E5DE", boxShadow: "var(--shadow-card)" }}
     >
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-xs uppercase" style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.08em" }}>
+          <p className="text-xs uppercase" style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.08em" }}>
             {dealNumberLabel(deal.number)} · {deal.kind === "venta" ? "Venta" : "Alquiler"} <SampleBadge record={deal} />
           </p>
-          <p className="text-sm mt-0.5 truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <p className="text-sm mt-0.5 truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             {property?.title ?? "Sin propiedad"}
           </p>
           <p className="text-xs truncate" style={{ color: "#6B7280" }}>
@@ -228,10 +228,10 @@ function DealCard({ deal, onOpen }: { deal: Deal; onOpen: () => void }) {
         </span>
       </div>
 
-      <p className="text-base mt-3" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+      <p className="text-base mt-3" style={{ color: "#1A1A1A", fontWeight: 800 }}>
         {money(deal.price, deal.currency)}
         {deal.kind === "alquiler" && (
-          <span className="text-xs" style={{ color: "#7458C4", fontWeight: 500 }}>
+          <span className="text-xs" style={{ color: "#6B7280", fontWeight: 500 }}>
             {" "}
             / mes
           </span>
@@ -247,13 +247,13 @@ function DealCard({ deal, onOpen }: { deal: Deal; onOpen: () => void }) {
             Documentos {docs.done}/{docs.total}
           </span>
         </div>
-        <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "#EDE9FE" }}>
+        <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "#E9E5DE" }}>
           <div className="h-full rounded-full" style={{ width: `${pct}%`, background: "var(--gradient-brand-h)" }} />
         </div>
       </div>
 
       {deal.status === "en_curso" && next && (
-        <p className="text-xs mt-3" style={{ color: "#7C3AED", fontWeight: 600 }}>
+        <p className="text-xs mt-3" style={{ color: "#9B21FF", fontWeight: 600 }}>
           Sigue: {next.label}
         </p>
       )}

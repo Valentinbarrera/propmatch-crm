@@ -60,11 +60,11 @@ export function ZoneRangeChart({ stats }: { stats: ZoneStat[] }) {
 
       <ul className="flex flex-wrap gap-x-5 gap-y-1 text-xs mb-3" style={{ color: "#374151" }} aria-hidden="true">
         <li className="flex items-center gap-1.5">
-          <span className="inline-block w-5 h-3 rounded" style={{ background: "#C4B5FD" }} />
+          <span className="inline-block w-5 h-3 rounded" style={{ background: "#D4AAFF" }} />
           Rango P25–P75
         </li>
         <li className="flex items-center gap-1.5">
-          <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: "#6D28D9", boxShadow: "0 0 0 2px white" }} />
+          <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: "#7C0BD8", boxShadow: "0 0 0 2px white" }} />
           Mediana
         </li>
       </ul>
@@ -83,16 +83,16 @@ export function ZoneRangeChart({ stats }: { stats: ZoneStat[] }) {
                 onPointerLeave={() => setActive((k) => (k === r.key ? null : k))}
                 onFocus={() => setActive(r.key)}
                 onBlur={() => setActive((k) => (k === r.key ? null : k))}
-                className="grid grid-cols-1 sm:grid-cols-[minmax(0,210px)_minmax(0,1fr)] gap-x-3 gap-y-0.5 items-center rounded-lg px-2 py-1.5 outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]"
-                style={{ background: isActive ? "#F5F3FF" : undefined }}
+                className="grid grid-cols-1 sm:grid-cols-[minmax(0,210px)_minmax(0,1fr)] gap-x-3 gap-y-0.5 items-center rounded-lg px-2 py-1.5 outline-none focus-visible:ring-2 focus-visible:ring-[#9B21FF]"
+                style={{ background: isActive ? "#F7F0FF" : undefined }}
               >
-                <span className="text-xs truncate" style={{ color: "#1F0A3C", fontWeight: 600 }} title={label}>
+                <span className="text-xs truncate" style={{ color: "#1A1A1A", fontWeight: 600 }} title={label}>
                   {label}
                 </span>
                 <span className="relative h-6 block">
                   {/* Grilla */}
                   {ticks.map((t) => (
-                    <span key={t} aria-hidden="true" className="absolute top-0 bottom-0 w-px" style={{ left: pos(t), background: "#F3F0FF" }} />
+                    <span key={t} aria-hidden="true" className="absolute top-0 bottom-0 w-px" style={{ left: pos(t), background: "#F0EDE6" }} />
                   ))}
                   <span
                     aria-hidden="true"
@@ -100,19 +100,19 @@ export function ZoneRangeChart({ stats }: { stats: ZoneStat[] }) {
                     style={{
                       left: pos(r.p25!),
                       width: `max(4px, calc(${pos(r.p75!)} - ${pos(r.p25!)}))`,
-                      background: isActive ? "#A78BFA" : "#C4B5FD",
+                      background: isActive ? "#BF7FFF" : "#D4AAFF",
                     }}
                   />
                   <span
                     aria-hidden="true"
                     className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full"
-                    style={{ left: pos(r.median), background: "#6D28D9", boxShadow: "0 0 0 2px white" }}
+                    style={{ left: pos(r.median), background: "#7C0BD8", boxShadow: "0 0 0 2px white" }}
                   />
                   {isActive && (
                     <span
                       role="presentation"
                       className="absolute z-10 bottom-full mb-1 -translate-x-1/2 whitespace-nowrap rounded-lg px-2.5 py-1.5 text-xs pointer-events-none"
-                      style={{ left: `clamp(170px, ${pos(r.median)}, calc(100% - 170px))`, background: "#1F0A3C", color: "white", boxShadow: "var(--shadow-pop)" }}
+                      style={{ left: `clamp(170px, ${pos(r.median)}, calc(100% - 170px))`, background: "#1A1A1A", color: "white", boxShadow: "var(--shadow-pop)" }}
                     >
                       <strong>{money(r.median)}</strong> mediana · {money(r.p25)} – {money(r.p75)} · {r.count} publ.
                     </span>
@@ -134,7 +134,7 @@ export function ZoneRangeChart({ stats }: { stats: ZoneStat[] }) {
                 style={{
                   left: pos(t),
                   transform: i === 0 ? "none" : i === ticks.length - 1 ? "translateX(-100%)" : "translateX(-50%)",
-                  color: "#7C6A99",
+                  color: "#6B7280",
                 }}
               >
                 {moneyCompact(t)}

@@ -195,12 +195,12 @@ export function MeliLocationPicker({
   }, [cityId]);
 
   const select = "w-full min-h-[44px] px-3 rounded-xl border text-sm bg-white";
-  const border = { borderColor: "#DDD6FE", color: "#1F0A3C" };
+  const border = { borderColor: "#DDD8CF", color: "#1A1A1A" };
   const nameOf = (list: Node[], id: string) => list.find((n) => n.id === id)?.name ?? "";
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-      <label className="text-xs" style={{ color: "#6B5A8E", fontWeight: 600 }}>
+      <label className="text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
         Provincia / zona
         <select
           id={idPrefix ? `${idPrefix}-provincia` : undefined}
@@ -215,7 +215,7 @@ export function MeliLocationPicker({
           ))}
         </select>
       </label>
-      <label className="text-xs" style={{ color: "#6B5A8E", fontWeight: 600 }}>
+      <label className="text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
         Ciudad / partido
         <select
           id={idPrefix ? `${idPrefix}-ciudad` : undefined}
@@ -231,7 +231,7 @@ export function MeliLocationPicker({
           ))}
         </select>
       </label>
-      <label className="text-xs" style={{ color: "#6B5A8E", fontWeight: 600 }}>
+      <label className="text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
         Barrio{" "}
         {cityId && loadingHoods ? (
           "(cargando…)"

@@ -172,7 +172,7 @@ export function PhoneMockup(p: Props) {
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <div role="tablist" aria-label="Tipo de vista previa" className="inline-flex p-1 rounded-xl" style={{ background: "#F5F3FF" }}>
+      <div role="tablist" aria-label="Tipo de vista previa" className="inline-flex p-1 rounded-xl" style={{ background: "#F7F0FF" }}>
         {tabs.map((t) => (
           <button
             key={t.id}
@@ -181,7 +181,7 @@ export function PhoneMockup(p: Props) {
             aria-selected={p.tab === t.id}
             onClick={() => p.onTab(t.id)}
             className="px-4 min-h-11 md:min-h-9 rounded-lg text-sm"
-            style={{ background: p.tab === t.id ? "white" : "transparent", color: "#7458C4", fontWeight: p.tab === t.id ? 700 : 600, boxShadow: p.tab === t.id ? "var(--shadow-card)" : undefined }}
+            style={{ background: p.tab === t.id ? "white" : "transparent", color: "#6B7280", fontWeight: p.tab === t.id ? 700 : 600, boxShadow: p.tab === t.id ? "var(--shadow-card)" : undefined }}
           >
             {t.label}
           </button>
@@ -394,7 +394,7 @@ export function PhoneMockup(p: Props) {
 
       {p.tab === "story" && (
         <label className="flex items-center gap-2 text-xs min-h-11" style={{ color: "#4B5563" }}>
-          <input type="checkbox" checked={safe} onChange={(e) => setSafe(e.target.checked)} className="w-5 h-5" style={{ accentColor: "#7C3AED" }} />
+          <input type="checkbox" checked={safe} onChange={(e) => setSafe(e.target.checked)} className="w-5 h-5" style={{ accentColor: "#9B21FF" }} />
           Mostrar zonas seguras (a verificar: {STORY_SAFE.topPx} px arriba y {STORY_SAFE.bottomPx} px abajo)
         </label>
       )}

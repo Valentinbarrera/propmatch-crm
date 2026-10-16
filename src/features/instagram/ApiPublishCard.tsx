@@ -101,8 +101,8 @@ export function ApiPublishCard({ post, urls, stampName, safeMargin, blocking, on
 
   return (
     <Card>
-      <div className="px-5 py-4 border-b flex items-center gap-2 flex-wrap" style={{ borderColor: "#F3F0FF" }}>
-        <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>Publicar en Instagram</h3>
+      <div className="px-5 py-4 border-b flex items-center gap-2 flex-wrap" style={{ borderColor: "#F0EDE6" }}>
+        <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>Publicar en Instagram</h3>
         {ig.approvalPending ? (
           <Badge bg="#FEF3C7" text="#92400E" size="xs">Requiere aprobación de Meta</Badge>
         ) : ig.hasInstagram ? (
@@ -123,16 +123,16 @@ export function ApiPublishCard({ post, urls, stampName, safeMargin, blocking, on
           >
             {busy ? step || "Publicando…" : "Publicar ahora"}
           </button>
-          <span id="ig-api-why" className="text-xs" style={{ color: "#6B5A8A" }}>
+          <span id="ig-api-why" className="text-xs" style={{ color: "#6B7280" }}>
             {reason ?? `Se publica ya en tu Instagram como ${kind.label.toLowerCase()}.`}
           </span>
         </div>
         {!ig.approvalPending && !ig.connected && (
-          <Link to="/publicador#plataformas" className="text-xs underline" style={{ color: "#5B21B6" }}>
+          <Link to="/publicador#plataformas" className="text-xs underline" style={{ color: "#7C0BD8" }}>
             Ir a conectar
           </Link>
         )}
-        <p className="text-xs" style={{ color: "#6B5A8A" }}>
+        <p className="text-xs" style={{ color: "#6B7280" }}>
           Programar una fecha crea un recordatorio: PropMatch todavía no publica solo a una hora. Instagram no permite borrar por API.
         </p>
         <div aria-live="polite">

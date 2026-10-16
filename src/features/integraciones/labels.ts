@@ -7,7 +7,7 @@ export const LABEL: Record<string, Label> = {
   not_connected: { text: "No conectado", bg: "#F3F4F6", fg: "#4B5563" },
   error: { text: "Error", bg: "#FFE4E6", fg: "#BE123C" },
   needs_reauth: { text: "Requiere reconectar", bg: "#FEF3C7", fg: "#92400E" },
-  coming_soon: { text: "Próximamente", bg: "#EDE9FE", fg: "#5B21B6" },
+  coming_soon: { text: "Próximamente", bg: "#E9E5DE", fg: "#7C0BD8" },
   needs_approval: { text: "Requiere aprobación", bg: "#FEF3C7", fg: "#92400E" },
   not_configured: { text: "No disponible", bg: "#F3F4F6", fg: "#4B5563" },
 };

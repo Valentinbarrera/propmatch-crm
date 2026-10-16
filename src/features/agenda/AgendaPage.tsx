@@ -220,7 +220,7 @@ export default function AgendaPage() {
               setAdvisor(e.target.value);
               setSelectedKey(null);
             }}
-            className="h-10 min-h-11 md:min-h-10 px-3 rounded-xl text-sm border outline-none bg-white text-[#1F0A3C] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE]"
+            className="h-10 min-h-11 md:min-h-10 px-3 rounded-xl text-sm border outline-none bg-white text-[#1A1A1A] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE]"
           >
             <option value="">Todos los asesores</option>
             {profiles.map((p) => (
@@ -235,17 +235,17 @@ export default function AgendaPage() {
           type="button"
           onClick={() => setRouteOpen(true)}
           className="h-10 min-h-11 md:min-h-10 px-4 rounded-xl text-sm border flex items-center gap-1.5 hover:bg-violet-50"
-          style={{ borderColor: "#DDD6FE", color: "#6D28D9", fontWeight: 600, background: "white" }}
+          style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 600, background: "white" }}
         >
-          <MapPinIcon size={13} color="#6D28D9" />
+          <MapPinIcon size={13} color="#7C0BD8" />
           Hoja de ruta
         </button>
       </AppHeader>
 
-      <div className="flex-1 overflow-y-auto" style={{ background: "#FDFCFF" }}>
+      <div className="flex-1 overflow-y-auto" style={{ background: "#FAF8F5" }}>
         {/* Barra del calendario */}
-        <div className="flex items-center gap-3 flex-wrap px-4 md:px-6 py-3 border-b bg-white" style={{ borderColor: "#F3F0FF" }}>
-          <div className="flex rounded-xl p-1" style={{ background: "#F5F3FF" }} role="group" aria-label="Vista del calendario">
+        <div className="flex items-center gap-3 flex-wrap px-4 md:px-6 py-3 border-b bg-white" style={{ borderColor: "#F0EDE6" }}>
+          <div className="flex rounded-xl p-1" style={{ background: "#F7F0FF" }} role="group" aria-label="Vista del calendario">
             {VIEWS.map((v) => (
               <button
                 key={v.value}
@@ -255,8 +255,8 @@ export default function AgendaPage() {
                 className="min-h-11 md:min-h-9 px-3 rounded-lg text-sm transition-all"
                 style={
                   view === v.value
-                    ? { background: "white", color: "#6D28D9", fontWeight: 700, boxShadow: "0 1px 4px rgba(124,58,237,0.15)" }
-                    : { color: "#7458C4", fontWeight: 600 }
+                    ? { background: "white", color: "#7C0BD8", fontWeight: 700, boxShadow: "0 1px 4px rgba(168, 85, 255,0.15)" }
+                    : { color: "#6B7280", fontWeight: 600 }
                 }
               >
                 {v.label}
@@ -271,13 +271,13 @@ export default function AgendaPage() {
               aria-label={PREV_LABEL[view]}
               className="w-11 h-11 md:w-9 md:h-9 flex items-center justify-center rounded-lg hover:bg-violet-50"
             >
-              <ChevronLeftIcon color="#6D28D9" />
+              <ChevronLeftIcon color="#7C0BD8" />
             </button>
-            <h2 className="text-sm md:text-base px-1" style={{ color: "#1F0A3C", fontWeight: 800 }} aria-live="polite">
+            <h2 className="text-sm md:text-base px-1" style={{ color: "#1A1A1A", fontWeight: 800 }} aria-live="polite">
               {rangeLabel(view, range)}
             </h2>
             {view !== "mes" && (
-              <span className="px-2 py-0.5 rounded-full text-xs whitespace-nowrap" style={{ background: "#EDE9FE", color: "#6D28D9", fontWeight: 700 }}>
+              <span className="px-2 py-0.5 rounded-full text-xs whitespace-nowrap" style={{ background: "#E9E5DE", color: "#7C0BD8", fontWeight: 700 }}>
                 Semana {isoWeek(range.start)}
               </span>
             )}
@@ -287,7 +287,7 @@ export default function AgendaPage() {
               aria-label={NEXT_LABEL[view]}
               className="w-11 h-11 md:w-9 md:h-9 flex items-center justify-center rounded-lg hover:bg-violet-50"
             >
-              <ChevronRightIcon color="#6D28D9" />
+              <ChevronRightIcon color="#7C0BD8" />
             </button>
           </div>
 
@@ -302,13 +302,13 @@ export default function AgendaPage() {
 
           <ul className="flex items-center gap-x-3 gap-y-1 flex-wrap xl:ml-auto" aria-label="Estados de las visitas">
             {STATUS_ORDER.map((s) => (
-              <li key={s} className="flex items-center gap-1.5 text-xs" style={{ color: "#7C6A99" }}>
+              <li key={s} className="flex items-center gap-1.5 text-xs" style={{ color: "#6B7280" }}>
                 <span className="w-2.5 h-2.5 rounded-full border" style={{ background: STATUS_META[s].text, borderColor: STATUS_META[s].border }} aria-hidden />
                 {STATUS_META[s].label}
               </li>
             ))}
             {busy.length > 0 && (
-              <li className="flex items-center gap-1.5 text-xs" style={{ color: "#7C6A99" }}>
+              <li className="flex items-center gap-1.5 text-xs" style={{ color: "#6B7280" }}>
                 <span className="w-2.5 h-2.5 rounded-full border" style={{ background: BUSY_COLORS.stripes, borderColor: BUSY_COLORS.border }} aria-hidden />
                 Ocupado en Google
               </li>
@@ -326,7 +326,7 @@ export default function AgendaPage() {
               </p>
             )}
             {notice && (
-              <p role="status" className="text-xs px-3 py-2 rounded-xl border flex items-start gap-2" style={{ background: "#F5F3FF", color: "#6D28D9", borderColor: "#DDD6FE", fontWeight: 600 }}>
+              <p role="status" className="text-xs px-3 py-2 rounded-xl border flex items-start gap-2" style={{ background: "#F7F0FF", color: "#7C0BD8", borderColor: "#DDD8CF", fontWeight: 600 }}>
                 <span className="flex-1">{notice}</span>
                 <button type="button" onClick={() => setNotice(null)} aria-label="Cerrar aviso" className="w-6 h-6 rounded hover:bg-white" style={{ lineHeight: 1 }}>
                   ×
@@ -342,7 +342,7 @@ export default function AgendaPage() {
           {/* Calendario */}
           <section
             className="lg:col-span-8 rounded-2xl border bg-white overflow-hidden flex flex-col min-w-0"
-            style={{ borderColor: "#EDE9FE", boxShadow: "var(--shadow-card)" }}
+            style={{ borderColor: "#E9E5DE", boxShadow: "var(--shadow-card)" }}
             aria-label="Calendario"
           >
             {/* Celular: siempre lista, del período elegido. */}
@@ -403,8 +403,8 @@ export default function AgendaPage() {
               )}
             </div>
 
-            <div className="flex items-center gap-3 flex-wrap px-4 py-3 border-t mt-auto" style={{ borderColor: "#F3F0FF", background: "#FDFCFF" }}>
-              <p className="text-xs flex-1 min-w-0" style={{ color: "#7C6A99" }}>
+            <div className="flex items-center gap-3 flex-wrap px-4 py-3 border-t mt-auto" style={{ borderColor: "#F0EDE6", background: "#FAF8F5" }}>
+              <p className="text-xs flex-1 min-w-0" style={{ color: "#6B7280" }}>
                 {freeSlot ? (
                   <>
                     Primer hueco libre de 1 h:{" "}
@@ -412,7 +412,7 @@ export default function AgendaPage() {
                       type="button"
                       onClick={() => setForm({ defaults: { type: "visita", start: freeSlot.start, ownerId: advisor && advisor !== UNASSIGNED ? advisor : undefined } })}
                       className="underline underline-offset-2 min-h-11 md:min-h-0"
-                      style={{ color: "#6D28D9", fontWeight: 700 }}
+                      style={{ color: "#7C0BD8", fontWeight: 700 }}
                       title="Agendar una visita en este horario"
                     >
                       {freeSlot.start.toLocaleDateString("es-AR", { weekday: "short", day: "numeric" })}, {fmtHour(freeSlot.start)} a {fmtHour(freeSlot.end)}
@@ -432,7 +432,7 @@ export default function AgendaPage() {
                 type="button"
                 onClick={exportIcs}
                 className="min-h-11 md:min-h-9 px-3 rounded-lg text-xs border flex items-center gap-1.5 hover:bg-violet-50"
-                style={{ borderColor: "#DDD6FE", color: "#6D28D9", fontWeight: 700, background: "white" }}
+                style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700, background: "white" }}
               >
                 <DownloadIcon size={13} />
                 Exportar agenda (.ics)
@@ -441,7 +441,7 @@ export default function AgendaPage() {
                 type="button"
                 onClick={() => setGcalOpen(true)}
                 className="min-h-11 md:min-h-9 px-3 rounded-lg text-xs border flex items-center gap-1.5 hover:bg-violet-50"
-                style={{ borderColor: "#DDD6FE", color: "#6D28D9", fontWeight: 700, background: "white" }}
+                style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700, background: "white" }}
               >
                 <CalendarIcon size={13} />
                 Google Calendar
@@ -454,7 +454,7 @@ export default function AgendaPage() {
             <section
               id="agenda-panel"
               className="rounded-2xl border bg-white overflow-hidden scroll-mt-4"
-              style={{ borderColor: "#EDE9FE", boxShadow: "var(--shadow-card)" }}
+              style={{ borderColor: "#E9E5DE", boxShadow: "var(--shadow-card)" }}
               aria-label="Detalle de la visita"
             >
               <VisitPanel
@@ -553,7 +553,7 @@ function GcalStrip({
             )}
           </span>
           <GcalPrefsToggles sync={sync} />
-          <button type="button" onClick={onOpen} className="underline underline-offset-2 self-center" style={{ color: "#6D28D9", fontWeight: 700 }}>
+          <button type="button" onClick={onOpen} className="underline underline-offset-2 self-center" style={{ color: "#7C0BD8", fontWeight: 700 }}>
             Opciones
           </button>
         </div>

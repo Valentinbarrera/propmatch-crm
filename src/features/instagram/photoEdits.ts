@@ -70,7 +70,7 @@ export const TEXT_COLORS = [
   { value: "#FFFFFF", label: "Blanco" },
   { value: "#111111", label: "Negro" },
   { value: "#FACC15", label: "Amarillo" },
-  { value: "#7458C4", label: "Lila" },
+  { value: "#6B7280", label: "Lila" },
 ] as const;
 
 export const DEFAULT_TEXT: TextOverlay = { text: "", size: 7, color: "#FFFFFF", pos: "bottom", plate: "auto" };
@@ -244,7 +244,7 @@ export function drawEdited(
   if (t && t.text.trim()) {
     ctx.save();
     const fs = Math.round((outW * t.size) / 100);
-    ctx.font = `800 ${fs}px "Plus Jakarta Sans", Inter, system-ui, sans-serif`;
+    ctx.font = `800 ${fs}px "SF Pro Display", -apple-system, system-ui, sans-serif`;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     const lines = wrapLines(ctx, t.text.trim(), outW * 0.78);
@@ -269,7 +269,7 @@ export function drawEdited(
   if (e.stamp && opts.stampText?.trim()) {
     ctx.save();
     const fs = Math.round(outW * 0.028);
-    ctx.font = `700 ${fs}px "Plus Jakarta Sans", Inter, system-ui, sans-serif`;
+    ctx.font = `700 ${fs}px "SF Pro Display", -apple-system, system-ui, sans-serif`;
     ctx.textBaseline = "middle";
     ctx.textAlign = "left";
     const w = ctx.measureText(opts.stampText).width;

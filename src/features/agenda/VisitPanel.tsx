@@ -92,10 +92,10 @@ export function VisitPanel({
   if (!item) {
     return (
       <div className="p-6 text-center">
-        <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
           No hay visitas próximas
         </p>
-        <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
+        <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
           Elegí una card del calendario para ver el detalle acá.
         </p>
         <button
@@ -205,10 +205,10 @@ export function VisitPanel({
             <EventTypeIcon type={item.type} color={TYPE_COLOR[item.type]} size={14} />
           </span>
           <div className="flex-1 min-w-0">
-            <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+            <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
               {item.title} <SampleBadge record={item.event} />
             </p>
-            <p className="text-xs flex items-center gap-1.5 flex-wrap mt-0.5" style={{ color: "#7C6A99" }}>
+            <p className="text-xs flex items-center gap-1.5 flex-wrap mt-0.5" style={{ color: "#6B7280" }}>
               {TYPE_LABEL[item.type]}
               <SourceBadge item={item} />
             </p>
@@ -231,7 +231,7 @@ export function VisitPanel({
           <div>
             <SectionTitle>Estado</SectionTitle>
             {isApp ? (
-              <div className="rounded-xl p-3 text-xs" style={{ background: "#F5F3FF", color: "#7458C4" }}>
+              <div className="rounded-xl p-3 text-xs" style={{ background: "#F7F0FF", color: "#6B7280" }}>
                 <StatusChip item={item} />
                 <p className="mt-2" style={{ lineHeight: 1.5 }}>
                   Visita pedida desde la app. El estado se gestiona en la app: desde el CRM se ve pero no se cambia.
@@ -253,7 +253,7 @@ export function VisitPanel({
                       style={
                         active
                           ? { background: m.bg, color: m.text, borderColor: m.text, fontWeight: 700 }
-                          : { background: "white", color: "#7C6A99", borderColor: "#EDE9FE", fontWeight: 600 }
+                          : { background: "white", color: "#6B7280", borderColor: "#E9E5DE", fontWeight: 600 }
                       }
                     >
                       {m.label}
@@ -267,31 +267,31 @@ export function VisitPanel({
 
         {/* Propiedad */}
         {property ? (
-          <div className="rounded-2xl border overflow-hidden" style={{ borderColor: "#EDE9FE" }}>
+          <div className="rounded-2xl border overflow-hidden" style={{ borderColor: "#E9E5DE" }}>
             <div className="flex gap-3 p-3">
-              <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0" style={{ background: "#F5F3FF" }}>
+              <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0" style={{ background: "#F7F0FF" }}>
                 {photo ? (
                   <img src={photo} alt="" loading="lazy" className="w-full h-full object-cover" />
                 ) : (
                   <div className="w-full h-full flex items-center justify-center">
-                    <EventTypeIcon type="visita" color="#C4B5FD" size={22} />
+                    <EventTypeIcon type="visita" color="#D4AAFF" size={22} />
                   </div>
                 )}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-[11px] uppercase" style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.06em" }}>
+                <p className="text-[11px] uppercase" style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.06em" }}>
                   {PROPERTY_TYPE_LABEL[property.type]} · {money(property.price, property.currency)}
                 </p>
-                <p className="text-sm leading-snug mt-0.5" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                <p className="text-sm leading-snug mt-0.5" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                   {property.title}
                 </p>
                 {propertyAddress(property) && (
-                  <p className="text-xs mt-0.5 flex items-start gap-1" style={{ color: "#7C6A99" }}>
-                    <MapPinIcon size={11} color="#7458C4" className="mt-0.5 flex-shrink-0" />
+                  <p className="text-xs mt-0.5 flex items-start gap-1" style={{ color: "#6B7280" }}>
+                    <MapPinIcon size={11} color="#6B7280" className="mt-0.5 flex-shrink-0" />
                     <span>{propertyAddress(property)}</span>
                   </p>
                 )}
-                <p className="text-xs mt-1" style={{ color: "#7458C4", fontWeight: 600 }}>
+                <p className="text-xs mt-1" style={{ color: "#6B7280", fontWeight: 600 }}>
                   {[
                     property.rooms ? `${property.rooms} amb.` : null,
                     property.surface_total ? `${property.surface_total} m²` : null,
@@ -301,7 +301,7 @@ export function VisitPanel({
                 </p>
               </div>
             </div>
-            <div className="flex items-center justify-between gap-2 px-3 py-2 border-t" style={{ borderColor: "#F3F0FF", background: "#FDFCFF" }}>
+            <div className="flex items-center justify-between gap-2 px-3 py-2 border-t" style={{ borderColor: "#F0EDE6", background: "#FAF8F5" }}>
               {property.keys_custody ? (
                 <span
                   className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs border"
@@ -310,16 +310,16 @@ export function VisitPanel({
                   <CheckIcon size={10} /> Llaves en custodia
                 </span>
               ) : (
-                <span className="text-xs" style={{ color: "#7C6A99" }}>
+                <span className="text-xs" style={{ color: "#6B7280" }}>
                   Llaves: no las tenemos
                 </span>
               )}
-              <label className="flex items-center gap-2 text-xs min-h-11 cursor-pointer" style={{ color: "#7458C4", fontWeight: 600 }}>
+              <label className="flex items-center gap-2 text-xs min-h-11 cursor-pointer" style={{ color: "#6B7280", fontWeight: 600 }}>
                 <input
                   type="checkbox"
                   checked={!!property.keys_custody}
                   onChange={(e) => updateProperty(property.id, { keys_custody: e.target.checked })}
-                  className="w-4 h-4 accent-[#7C3AED]"
+                  className="w-4 h-4 accent-[#9B21FF]"
                 />
                 Tenemos las llaves
               </label>
@@ -328,7 +328,7 @@ export function VisitPanel({
         ) : (
           item.propertyId === null &&
           visit && (
-            <p className="text-xs" style={{ color: "#7C6A99" }}>
+            <p className="text-xs" style={{ color: "#6B7280" }}>
               {isApp ? "La propiedad todavía no llegó al CRM: se completa con la próxima sincronización." : "Sin propiedad asociada."}
             </p>
           )
@@ -347,13 +347,13 @@ export function VisitPanel({
                 {initials(who)}
               </div>
               <div className="flex-1 min-w-0">
-                <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                   {who}
                 </p>
-                <p className="text-xs flex items-center gap-2 flex-wrap" style={{ color: "#7C6A99" }}>
+                <p className="text-xs flex items-center gap-2 flex-wrap" style={{ color: "#6B7280" }}>
                   {contact ? `Origen: ${SOURCE_LABEL[contact.source]}` : "Todavía no está en el CRM"}
                   {score !== null && (
-                    <span className="px-1.5 py-px rounded-md" style={{ background: "#EDE9FE", color: "#6D28D9", fontWeight: 700 }}>
+                    <span className="px-1.5 py-px rounded-md" style={{ background: "#E9E5DE", color: "#7C0BD8", fontWeight: 700 }}>
                       Match {Math.round(score)}%
                     </span>
                   )}
@@ -366,7 +366,7 @@ export function VisitPanel({
                   <a
                     href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`}
                     className="min-h-11 flex items-center justify-center gap-1.5 rounded-xl text-xs border hover:bg-violet-50"
-                    style={{ borderColor: "#EDE9FE", color: "#6D28D9", fontWeight: 700 }}
+                    style={{ borderColor: "#E9E5DE", color: "#7C0BD8", fontWeight: 700 }}
                   >
                     <PhoneIcon size={13} /> Llamar
                   </a>
@@ -375,7 +375,7 @@ export function VisitPanel({
                     type="button"
                     onClick={() => navigate("/inbox")}
                     className="min-h-11 flex items-center justify-center gap-1.5 rounded-xl text-xs border hover:bg-violet-50"
-                    style={{ borderColor: "#EDE9FE", color: "#6D28D9", fontWeight: 700 }}
+                    style={{ borderColor: "#E9E5DE", color: "#7C0BD8", fontWeight: 700 }}
                     title="Los usuarios de la app no comparten su teléfono: escribile por el chat"
                   >
                     Ir al chat
@@ -385,7 +385,7 @@ export function VisitPanel({
                     type="button"
                     disabled
                     className="min-h-11 flex items-center justify-center gap-1.5 rounded-xl text-xs border opacity-50 cursor-not-allowed"
-                    style={{ borderColor: "#EDE9FE", color: "#7C6A99", fontWeight: 700 }}
+                    style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}
                     title="Este contacto no tiene teléfono cargado"
                   >
                     <PhoneIcon size={13} /> Sin teléfono
@@ -403,7 +403,7 @@ export function VisitPanel({
                   type="button"
                   onClick={() => navigate(`/contactos/${contact.id}`)}
                   className="min-h-11 flex items-center justify-center rounded-xl text-xs border hover:bg-violet-50"
-                  style={{ borderColor: "#EDE9FE", color: "#6D28D9", fontWeight: 700 }}
+                  style={{ borderColor: "#E9E5DE", color: "#7C0BD8", fontWeight: 700 }}
                 >
                   Ver contacto
                 </button>
@@ -478,7 +478,7 @@ const sentAt = (iso: string) => {
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xs uppercase mb-2" style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.1em" }}>
+    <p className="text-xs uppercase mb-2" style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.1em" }}>
       {children}
     </p>
   );
@@ -500,20 +500,20 @@ function ChecklistRow({
   onClick: () => void;
 }) {
   return (
-    <li className="flex items-center gap-2.5 p-2 rounded-xl border" style={{ borderColor: "#F3F0FF" }}>
+    <li className="flex items-center gap-2.5 p-2 rounded-xl border" style={{ borderColor: "#F0EDE6" }}>
       <span
         className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-        style={done ? { background: "var(--gradient-brand)" } : { border: "2px solid #DDD6FE", background: "white" }}
+        style={done ? { background: "var(--gradient-brand)" } : { border: "2px solid #DDD8CF", background: "white" }}
         aria-hidden
       >
         {done && <CheckIcon size={10} color="white" />}
       </span>
       <span className="flex-1 min-w-0">
-        <span className="block text-xs" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <span className="block text-xs" style={{ color: "#1A1A1A", fontWeight: 700 }}>
           {label}
           <span className="sr-only">{done ? " (hecho)" : " (pendiente)"}</span>
         </span>
-        <span className="block text-[11px]" style={{ color: "#7C6A99" }}>
+        <span className="block text-[11px]" style={{ color: "#6B7280" }}>
           {disabledReason ?? detail}
         </span>
       </span>
@@ -523,7 +523,7 @@ function ChecklistRow({
           onClick={onClick}
           disabled={!!disabledReason}
           className="min-h-11 sm:min-h-9 px-3 rounded-lg text-xs border hover:bg-violet-50 disabled:opacity-50 disabled:cursor-not-allowed"
-          style={{ borderColor: "#EDE9FE", color: "#6D28D9", fontWeight: 700 }}
+          style={{ borderColor: "#E9E5DE", color: "#7C0BD8", fontWeight: 700 }}
           aria-label={`${action}: ${label}`}
         >
           {action}
@@ -621,7 +621,7 @@ function FeedbackSection({
   }
 
   return (
-    <div id={`feedback-${item.key}`} className="rounded-2xl border p-3" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+    <div id={`feedback-${item.key}`} className="rounded-2xl border p-3" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
       <div className="flex items-center justify-between gap-2 mb-2">
         <SectionTitle>¿Cómo salió la visita?</SectionTitle>
         {!editing && existing && (
@@ -629,7 +629,7 @@ function FeedbackSection({
             type="button"
             onClick={() => setEditing(true)}
             className="min-h-11 sm:min-h-9 px-3 rounded-lg text-xs hover:bg-violet-50"
-            style={{ color: "#6D28D9", fontWeight: 700 }}
+            style={{ color: "#7C0BD8", fontWeight: 700 }}
           >
             Editar
           </button>
@@ -644,23 +644,23 @@ function FeedbackSection({
 
       {!editing && existing ? (
         <dl className="text-xs grid grid-cols-[auto_1fr] gap-x-3 gap-y-1" style={{ color: "#374151" }}>
-          <dt style={{ color: "#7C6A99" }}>Se hizo</dt>
+          <dt style={{ color: "#6B7280" }}>Se hizo</dt>
           <dd style={{ fontWeight: 600 }}>{HAPPENED_LABEL[existing.happened]}</dd>
           {existing.interest && (
             <>
-              <dt style={{ color: "#7C6A99" }}>Interés</dt>
+              <dt style={{ color: "#6B7280" }}>Interés</dt>
               <dd style={{ fontWeight: 600 }}>{INTEREST_LABEL[existing.interest]}</dd>
             </>
           )}
           {existing.next_action && (
             <>
-              <dt style={{ color: "#7C6A99" }}>Próximo paso</dt>
+              <dt style={{ color: "#6B7280" }}>Próximo paso</dt>
               <dd style={{ fontWeight: 600 }}>{NEXT_ACTION_LABEL[existing.next_action]}</dd>
             </>
           )}
           {existing.notes && (
             <>
-              <dt style={{ color: "#7C6A99" }}>Notas</dt>
+              <dt style={{ color: "#6B7280" }}>Notas</dt>
               <dd className="whitespace-pre-line">{existing.notes}</dd>
             </>
           )}
@@ -682,13 +682,13 @@ function FeedbackSection({
             />
           )}
           <label className="block">
-            <span className="block text-xs mb-1" style={{ color: "#7C6A99", fontWeight: 600 }}>
+            <span className="block text-xs mb-1" style={{ color: "#6B7280", fontWeight: 600 }}>
               Próxima acción
             </span>
             <select
               value={nextAction}
               onChange={(e) => setNextAction(e.target.value as VisitNextAction | "")}
-              className="w-full min-h-11 px-3 rounded-xl text-sm border outline-none bg-white text-[#1F0A3C] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE]"
+              className="w-full min-h-11 px-3 rounded-xl text-sm border outline-none bg-white text-[#1A1A1A] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE]"
             >
               <option value="">Ninguna por ahora</option>
               {(Object.keys(NEXT_ACTION_LABEL) as VisitNextAction[]).map((k) => (
@@ -704,13 +704,13 @@ function FeedbackSection({
                 type="checkbox"
                 checked={createFollowUp}
                 onChange={(e) => setCreateFollowUp(e.target.checked)}
-                className="w-4 h-4 accent-[#7C3AED]"
+                className="w-4 h-4 accent-[#9B21FF]"
               />
               {nextAction === "segunda_visita" ? "Agendar la segunda visita al guardar" : "Crear una tarea para el próximo paso"}
             </label>
           )}
           <label className="block">
-            <span className="block text-xs mb-1" style={{ color: "#7C6A99", fontWeight: 600 }}>
+            <span className="block text-xs mb-1" style={{ color: "#6B7280", fontWeight: 600 }}>
               Notas
             </span>
             <textarea
@@ -718,7 +718,7 @@ function FeedbackSection({
               onChange={(e) => setNotes(e.target.value)}
               rows={3}
               placeholder="Qué le gustó, qué no, objeciones…"
-              className="w-full px-3 py-2 rounded-xl text-sm border outline-none resize-none bg-white text-[#1F0A3C] placeholder:text-[#7C6A99] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE]"
+              className="w-full px-3 py-2 rounded-xl text-sm border outline-none resize-none bg-white text-[#1A1A1A] placeholder:text-[#6B7280] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE]"
             />
           </label>
           <div className="flex flex-col gap-2">
@@ -735,13 +735,13 @@ function FeedbackSection({
               onClick={() => save(true)}
               disabled={!owner}
               className="min-h-11 rounded-xl text-sm border hover:bg-violet-50 disabled:opacity-50 disabled:cursor-not-allowed"
-              style={{ borderColor: "#DDD6FE", color: "#6D28D9", fontWeight: 600, background: "white" }}
+              style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 600, background: "white" }}
               title={owner ? `Abre WhatsApp con el informe para ${owner.full_name}` : "La propiedad no tiene propietario cargado"}
             >
               Guardar y avisar al propietario
             </button>
             {!owner && (
-              <p className="text-[11px]" style={{ color: "#7C6A99" }}>
+              <p className="text-[11px]" style={{ color: "#6B7280" }}>
                 Para avisar al propietario, cargalo en la ficha de la propiedad.
               </p>
             )}
@@ -766,7 +766,7 @@ function ChipGroup({
   const id = useId();
   return (
     <div>
-      <span className="block text-xs mb-1" style={{ color: "#7C6A99", fontWeight: 600 }} id={id}>
+      <span className="block text-xs mb-1" style={{ color: "#6B7280", fontWeight: 600 }} id={id}>
         {label}
       </span>
       <div className="flex flex-wrap gap-1.5" role="radiogroup" aria-labelledby={id}>
@@ -782,8 +782,8 @@ function ChipGroup({
               className="min-h-11 sm:min-h-9 px-3 rounded-lg text-xs border"
               style={
                 active
-                  ? { background: "#1F0A3C", color: "white", borderColor: "transparent", fontWeight: 700 }
-                  : { background: "white", color: "#7C6A99", borderColor: "#EDE9FE", fontWeight: 600 }
+                  ? { background: "#1A1A1A", color: "white", borderColor: "transparent", fontWeight: 700 }
+                  : { background: "white", color: "#6B7280", borderColor: "#E9E5DE", fontWeight: 600 }
               }
             >
               {o.label}

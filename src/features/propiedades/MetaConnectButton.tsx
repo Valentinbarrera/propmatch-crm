@@ -74,8 +74,8 @@ export function MetaConnectButton({ meta }: { meta: MetaConnection }) {
         </p>
       )}
       {meta.pages && (
-        <div role="group" aria-label="Elegí la Página" className="mt-1 rounded-xl border p-3" style={{ borderColor: "#DDD6FE" }}>
-          <p className="text-xs mb-2" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <div role="group" aria-label="Elegí la Página" className="mt-1 rounded-xl border p-3" style={{ borderColor: "#DDD8CF" }}>
+          <p className="text-xs mb-2" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             Administrás varias Páginas: elegí cuál conectar (se abre Facebook de nuevo para confirmar).
           </p>
           <ul className="space-y-1.5">
@@ -86,17 +86,17 @@ export function MetaConnectButton({ meta }: { meta: MetaConnection }) {
                   disabled={meta.busy}
                   onClick={() => void meta.connect(p.id)}
                   className="w-full text-left min-h-[44px] px-3 rounded-lg border text-sm hover:bg-violet-50 disabled:opacity-60"
-                  style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }}
+                  style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }}
                 >
                   <span style={{ fontWeight: 700 }}>{p.name}</span>
-                  <span className="block text-xs" style={{ color: "#6B5A8E" }}>
+                  <span className="block text-xs" style={{ color: "#6B7280" }}>
                     {p.instagram ? `Instagram @${p.instagram}` : "Sin Instagram vinculado"}
                   </span>
                 </button>
               </li>
             ))}
           </ul>
-          <button type="button" onClick={meta.cancelPagePick} className="mt-2 text-xs underline" style={{ color: "#5B21B6" }}>
+          <button type="button" onClick={meta.cancelPagePick} className="mt-2 text-xs underline" style={{ color: "#7C0BD8" }}>
             Cancelar
           </button>
         </div>

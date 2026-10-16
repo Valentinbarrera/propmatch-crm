@@ -11,11 +11,11 @@ import { addressOf } from "./snippets";
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl p-3" style={{ background: "#F9F7FF", border: "1px solid #F3F0FF" }}>
-      <p className="text-[11px]" style={{ color: "#7458C4", fontWeight: 600 }}>
+    <div className="rounded-xl p-3" style={{ background: "#FAF8F5", border: "1px solid #F0EDE6" }}>
+      <p className="text-[11px]" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label}
       </p>
-      <p className="text-sm mt-0.5" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+      <p className="text-sm mt-0.5" style={{ color: "#1A1A1A", fontWeight: 700 }}>
         {value}
       </p>
     </div>
@@ -61,7 +61,7 @@ export function ProfilePanel({
       <button
         onClick={onBack}
         className="xl:hidden flex items-center gap-1 min-h-[44px] text-sm"
-        style={{ color: "#7C3AED", fontWeight: 600 }}
+        style={{ color: "#9B21FF", fontWeight: 600 }}
       >
         <ChevronLeftIcon size={16} /> Volver a la conversación
       </button>
@@ -76,13 +76,13 @@ export function ProfilePanel({
               </Badge>
             </div>
           )}
-          <h2 className="text-base mt-2" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+          <h2 className="text-base mt-2" style={{ color: "#1A1A1A", fontWeight: 800 }}>
             {conversation.name}
           </h2>
-          <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
+          <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
             Teléfono: {contact?.phone ?? "No disponible"}
           </p>
-          <p className="text-xs break-all" style={{ color: "#7C6A99" }}>
+          <p className="text-xs break-all" style={{ color: "#6B7280" }}>
             Email: {contact?.email ?? "No disponible"}
           </p>
         </div>
@@ -105,7 +105,7 @@ export function ProfilePanel({
             )}
           </div>
         ) : (
-          <p className="text-xs mt-4 text-center" style={{ color: "#7C6A99" }}>
+          <p className="text-xs mt-4 text-center" style={{ color: "#6B7280" }}>
             Este interesado todavía no está en tus contactos; aparece cuando se sincroniza.
           </p>
         )}
@@ -114,7 +114,7 @@ export function ProfilePanel({
           <button
             onClick={() => navigate("/oportunidades")}
             className={action}
-            style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "#F9F7FF" }}
+            style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "#FAF8F5" }}
           >
             Ver en pipeline
           </button>
@@ -122,7 +122,7 @@ export function ProfilePanel({
             <button
               onClick={() => navigate(`/contactos/${contact.id}`)}
               className={action}
-              style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600 }}
+              style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600 }}
             >
               Ver ficha del contacto
             </button>
@@ -136,34 +136,34 @@ export function ProfilePanel({
             {cover && <img src={cover} alt={`Portada de ${property.title}`} className="w-full h-full object-cover" />}
           </div>
           <div className="p-4">
-            <p className="text-[11px] uppercase" style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.1em" }}>
+            <p className="text-[11px] uppercase" style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.1em" }}>
               Inmueble de interés
             </p>
-            <p className="text-lg mt-1" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <p className="text-lg mt-1" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               {money(property.price, property.currency)}
             </p>
-            <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+            <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 600 }}>
               {property.title}
             </p>
             {address && (
-              <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+              <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                 {address}
               </p>
             )}
             {crmMatch && (
-              <p className="text-xs mt-2" style={{ color: "#6D28D9", fontWeight: 700 }}>
+              <p className="text-xs mt-2" style={{ color: "#7C0BD8", fontWeight: 700 }}>
                 Match {Math.round(crmMatch.score)}%
               </p>
             )}
             {publishedCount > 0 && (
-              <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
+              <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
                 Publicada en {publishedCount} {publishedCount === 1 ? "canal" : "canales"}
               </p>
             )}
             <button
               onClick={() => navigate(`/propiedades/${property.id}`)}
               className={`${action} mt-3`}
-              style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600 }}
+              style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600 }}
             >
               Ver propiedad
             </button>

@@ -19,8 +19,8 @@ import { findImportDuplicate, type DuplicateMatch } from "../../../shared/meliIm
 import { integrationsApi, type ImportCandidate, type ImportCursor } from "./api";
 import { draftToPropertyInput, importNote, linkedPublicationRow } from "./meliImportPlan";
 
-const INK = "#1F0A3C";
-const MUTED = "#6B5A8E";
+const INK = "#1A1A1A";
+const MUTED = "#6B7280";
 
 const MELI_STATUS_TEXT: Record<string, string> = {
   active: "Activo",
@@ -208,7 +208,7 @@ export function MeliImportDialog({ onClose }: { onClose: () => void }) {
   return (
     <div
       className="pm-backdrop fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6"
-      style={{ background: "rgba(31,10,60,0.35)" }}
+      style={{ background: "rgba(8, 11, 31,0.35)" }}
       onClick={() => !busy && onClose()}
       role="dialog"
       aria-modal="true"
@@ -219,7 +219,7 @@ export function MeliImportDialog({ onClose }: { onClose: () => void }) {
         style={{ background: "white", boxShadow: "var(--shadow-pop)" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="px-6 py-5 border-b flex items-center gap-3" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+        <div className="px-6 py-5 border-b flex items-center gap-3" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
           <span className="w-9 h-9 rounded-lg flex items-center justify-center text-xs flex-shrink-0" style={{ background: "#FFE600", color: "#1F2937", fontWeight: 800 }}>
             ML
           </span>
@@ -227,11 +227,11 @@ export function MeliImportDialog({ onClose }: { onClose: () => void }) {
             <p id="meli-import-h" className="text-lg tracking-tight" style={{ color: INK, fontWeight: 800 }}>
               Importar mis avisos de Mercado Libre
             </p>
-            <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+            <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
               Avisos de Inmuebles activos y pausados de la cuenta conectada. Elegí cuáles traer al CRM.
             </p>
           </div>
-          <button type="button" onClick={onClose} disabled={busy} aria-label="Cerrar" className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-violet-50 disabled:opacity-40" style={{ color: "#7458C4", fontSize: 22 }}>
+          <button type="button" onClick={onClose} disabled={busy} aria-label="Cerrar" className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-violet-50 disabled:opacity-40" style={{ color: "#6B7280", fontSize: 22 }}>
             ×
           </button>
         </div>
@@ -300,7 +300,7 @@ export function MeliImportDialog({ onClose }: { onClose: () => void }) {
                     const id = `ml-imp-${r.externalId}`;
                     const similar = r.dup?.kind === "similar" ? properties.find((p) => p.id === r.dup!.propertyId) : null;
                     return (
-                      <li key={r.externalId} className="rounded-xl border p-3 flex items-start gap-3" style={{ borderColor: selected.has(r.externalId) && canPick ? "#C4B5FD" : "#EDE9FE", opacity: r.ok ? 1 : 0.75 }}>
+                      <li key={r.externalId} className="rounded-xl border p-3 flex items-start gap-3" style={{ borderColor: selected.has(r.externalId) && canPick ? "#D4AAFF" : "#E9E5DE", opacity: r.ok ? 1 : 0.75 }}>
                         <input
                           id={id}
                           type="checkbox"
@@ -308,9 +308,9 @@ export function MeliImportDialog({ onClose }: { onClose: () => void }) {
                           checked={canPick && selected.has(r.externalId)}
                           onChange={() => toggle(r.externalId)}
                           className="w-5 h-5 mt-1 cursor-pointer disabled:cursor-not-allowed"
-                          style={{ accentColor: "#7C3AED" }}
+                          style={{ accentColor: "#9B21FF" }}
                         />
-                        <div className="w-16 h-12 rounded-lg overflow-hidden flex-shrink-0" style={{ background: "#F5F3FF" }}>
+                        <div className="w-16 h-12 rounded-lg overflow-hidden flex-shrink-0" style={{ background: "#F7F0FF" }}>
                           {r.thumbnail && <img src={r.thumbnail} alt="" className="w-full h-full object-cover" loading="lazy" />}
                         </div>
                         <div className="min-w-0 flex-1">
@@ -326,7 +326,7 @@ export function MeliImportDialog({ onClose }: { onClose: () => void }) {
                             {r.permalink && (
                               <>
                                 {" · "}
-                                <a href={r.permalink} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#7C3AED" }}>
+                                <a href={r.permalink} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#9B21FF" }}>
                                   Ver aviso
                                 </a>
                               </>
@@ -349,7 +349,7 @@ export function MeliImportDialog({ onClose }: { onClose: () => void }) {
           )}
         </div>
 
-        <div className="px-6 py-4 border-t flex flex-wrap gap-2 items-center" style={{ borderColor: "#EDE9FE" }}>
+        <div className="px-6 py-4 border-t flex flex-wrap gap-2 items-center" style={{ borderColor: "#E9E5DE" }}>
           {summary ? (
             <button type="button" onClick={onClose} className="min-h-[44px] px-5 rounded-xl text-sm text-white" style={{ background: "var(--gradient-brand)", fontWeight: 700 }}>
               Listo
@@ -373,7 +373,7 @@ export function MeliImportDialog({ onClose }: { onClose: () => void }) {
                     setSelected(chosen.length === selectable.length ? new Set() : new Set(selectable.map((r) => r.externalId)));
                   }}
                   className="min-h-[44px] px-4 rounded-xl text-sm border bg-white"
-                  style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+                  style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
                 >
                   {chosen.length === selectable.length ? "Desmarcar todos" : "Marcar todos"}
                 </button>

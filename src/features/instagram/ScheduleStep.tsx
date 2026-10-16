@@ -13,7 +13,7 @@ interface Props {
 }
 
 const field = "mt-1 rounded-lg border px-3 min-h-11 text-sm w-full";
-const fieldStyle = { borderColor: "#EDE9FE", color: "#1F0A3C", background: "white" } as const;
+const fieldStyle = { borderColor: "#E9E5DE", color: "#1A1A1A", background: "white" } as const;
 
 export function ScheduleStep({ post, onPatch }: Props) {
   const { schedule, unschedule } = useReminders();
@@ -71,16 +71,16 @@ export function ScheduleStep({ post, onPatch }: Props) {
 
   return (
     <Card>
-      <div className="px-5 py-4 border-b flex flex-wrap items-center gap-2" style={{ borderColor: "#F3F0FF" }}>
+      <div className="px-5 py-4 border-b flex flex-wrap items-center gap-2" style={{ borderColor: "#F0EDE6" }}>
         <div className="flex-1 min-w-0">
-          <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>Programar y recordar</h3>
-          <p className="text-xs mt-0.5" style={{ color: "#6B5A8A" }}>Hora de Argentina ({AR_TZ}).</p>
+          <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>Programar y recordar</h3>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>Hora de Argentina ({AR_TZ}).</p>
         </div>
         <Badge bg={meta.bg} text={meta.text}>{meta.label}</Badge>
       </div>
 
       <div className="p-5 flex flex-col gap-4">
-        <p className="text-sm px-4 py-3 rounded-xl" style={{ background: "#F5F3FF", color: "#4C2E91" }}>
+        <p className="text-sm px-4 py-3 rounded-xl" style={{ background: "#F7F0FF", color: "#56148F" }}>
           <strong>Cómo funciona:</strong> PropMatch todavía no puede publicar solo a la hora elegida. La fecha crea un <strong>recordatorio</strong>: un evento en tu Agenda, un aviso en la campana cuando llega la hora y, si querés, un archivo para tu calendario del celular. Después subís la publicación a mano y la marcás como publicada.
         </p>
 
@@ -90,22 +90,22 @@ export function ScheduleStep({ post, onPatch }: Props) {
           <>
             <div className="flex flex-wrap gap-2" role="group" aria-label="Atajos de fecha">
               {shortcuts().map((s) => (
-                <button key={s.id} type="button" onClick={() => { setDate(s.date); setTime(s.time); }} className="px-3 min-h-11 md:min-h-9 rounded-xl border text-xs hover:bg-violet-50" style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700 }}>
+                <button key={s.id} type="button" onClick={() => { setDate(s.date); setTime(s.time); }} className="px-3 min-h-11 md:min-h-9 rounded-xl border text-xs hover:bg-violet-50" style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}>
                   {s.label}
                 </button>
               ))}
             </div>
             <div className="grid grid-cols-2 gap-3 max-w-md">
               <div>
-                <label htmlFor="sch-date" className="text-xs" style={{ color: "#7458C4", fontWeight: 700 }}>Fecha</label>
+                <label htmlFor="sch-date" className="text-xs" style={{ color: "#6B7280", fontWeight: 700 }}>Fecha</label>
                 <input id="sch-date" type="date" value={date} onChange={(e) => setDate(e.target.value)} className={field} style={fieldStyle} />
               </div>
               <div>
-                <label htmlFor="sch-time" className="text-xs" style={{ color: "#7458C4", fontWeight: 700 }}>Hora</label>
+                <label htmlFor="sch-time" className="text-xs" style={{ color: "#6B7280", fontWeight: 700 }}>Hora</label>
                 <input id="sch-time" type="time" value={time} onChange={(e) => setTime(e.target.value)} className={field} style={fieldStyle} />
               </div>
             </div>
-            <p className="text-xs" style={{ color: "#6B5A8A" }}>
+            <p className="text-xs" style={{ color: "#6B7280" }}>
               Los horarios de los atajos son de ejemplo, no una recomendación: no ofrecemos «mejor horario» porque no tenemos una fuente confiable para eso.
             </p>
             <div className="flex flex-wrap gap-3">
@@ -126,26 +126,26 @@ export function ScheduleStep({ post, onPatch }: Props) {
         </p>
 
         {scheduled && (
-          <p className="text-sm" style={{ color: "#1F0A3C" }}>
+          <p className="text-sm" style={{ color: "#1A1A1A" }}>
             Programada para <strong>{formatAr(post.scheduledAt)}</strong>. {meta.hint}
           </p>
         )}
 
-        <div className="border-t pt-4 flex flex-col gap-3" style={{ borderColor: "#F3F0FF" }}>
+        <div className="border-t pt-4 flex flex-col gap-3" style={{ borderColor: "#F0EDE6" }}>
           <div>
-            <button type="button" onClick={downloadIcs} className="px-4 min-h-11 rounded-xl text-sm border hover:bg-violet-50 flex items-center gap-2" style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700 }}>
-              <CalendarIcon size={14} color="#7458C4" /> Agregar a mi calendario (.ics)
+            <button type="button" onClick={downloadIcs} className="px-4 min-h-11 rounded-xl text-sm border hover:bg-violet-50 flex items-center gap-2" style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}>
+              <CalendarIcon size={14} color="#6B7280" /> Agregar a mi calendario (.ics)
             </button>
-            <p className="text-xs mt-1.5" style={{ color: "#6B5A8A" }}>
+            <p className="text-xs mt-1.5" style={{ color: "#6B7280" }}>
               Archivo estándar con un aviso {REMINDER_MINUTES_BEFORE} minutos antes. Funciona en Google Calendar, Apple Calendar y Outlook, aunque tengas PropMatch cerrado. Si reprogramás, volvé a descargarlo y borrá el evento anterior de tu calendario: el archivo no se actualiza solo.
             </p>
           </div>
           {browserNotifySupported() && (
             <div>
-              <button type="button" onClick={toggleNotify} aria-pressed={notify} className="px-4 min-h-11 rounded-xl text-sm border hover:bg-violet-50" style={{ borderColor: notify ? "#7C3AED" : "#EDE9FE", background: notify ? "#F5F3FF" : "white", color: "#7458C4", fontWeight: 700 }}>
+              <button type="button" onClick={toggleNotify} aria-pressed={notify} className="px-4 min-h-11 rounded-xl text-sm border hover:bg-violet-50" style={{ borderColor: notify ? "#9B21FF" : "#E9E5DE", background: notify ? "#F7F0FF" : "white", color: "#6B7280", fontWeight: 700 }}>
                 {notify ? "Avisos del navegador: activados" : "Activar avisos del navegador"}
               </button>
-              <p className="text-xs mt-1.5" style={{ color: "#6B5A8A" }}>
+              <p className="text-xs mt-1.5" style={{ color: "#6B7280" }}>
                 Opcional. Solo funcionan con PropMatch abierto en una pestaña (no hay servidor que te avise con la app cerrada). Para eso usá el calendario.
               </p>
               <p role="status" aria-live="polite" className="text-xs mt-1" style={{ color: "#4B5563" }}>{notifyMsg}</p>

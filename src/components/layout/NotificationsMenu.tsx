@@ -47,14 +47,14 @@ interface Notification {
 }
 
 const KIND_STYLE: Record<Kind, { icon: string; bg: string; color: string }> = {
-  match: { icon: "✦", bg: "#F5F3FF", color: "#7C3AED" },
+  match: { icon: "✦", bg: "#F7F0FF", color: "#9B21FF" },
   evento: { icon: "◷", bg: "#EFF6FF", color: "#2563EB" },
   tarea: { icon: "!", bg: "#FFF1F2", color: "#E11D48" },
   oportunidad: { icon: "⏸", bg: "#FFFBEB", color: "#B45309" },
   autorizacion: { icon: "✎", bg: "#FFF1F2", color: "#BE123C" },
   avisar: { icon: "➚", bg: "#F0FDF4", color: "#15803D" },
   seguimiento: { icon: "☎", bg: "#FFF1F2", color: "#E11D48" },
-  publicacion: { icon: "▣", bg: "#FDF2F8", color: "#BE185D" },
+  publicacion: { icon: "▣", bg: "#FFF1FA", color: "#CB1093" },
 };
 
 function loadSeen(): Set<string> {
@@ -295,7 +295,7 @@ export function NotificationsMenu() {
       <button
         onClick={() => setOpen((o) => !o)}
         className="relative w-10 h-10 flex items-center justify-center rounded-xl transition-all hover:bg-violet-50"
-        style={{ background: open ? "#EDE9FE" : "#F5F3FF" }}
+        style={{ background: open ? "#E9E5DE" : "#F7F0FF" }}
         aria-label={unread ? `Notificaciones (${unread} sin leer)` : "Notificaciones"}
         aria-expanded={open}
       >
@@ -303,7 +303,7 @@ export function NotificationsMenu() {
         {unread > 0 && (
           <span
             className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full"
-            style={{ background: "#EC4899" }}
+            style={{ background: "#FF5ECA" }}
           />
         )}
       </button>
@@ -311,17 +311,17 @@ export function NotificationsMenu() {
       {open && (
         <div
           className="pm-modal fixed md:absolute left-3 right-3 top-16 md:left-auto md:top-auto md:right-0 md:mt-2 md:w-80 rounded-2xl border overflow-hidden z-50"
-          style={{ background: "white", borderColor: "#EDE9FE", boxShadow: "0 12px 40px rgba(76, 29, 149, 0.15)" }}
+          style={{ background: "white", borderColor: "#E9E5DE", boxShadow: "0 12px 40px rgba(86, 20, 143, 0.15)" }}
         >
-          <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: "#F5F3FF" }}>
-            <span className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <div className="flex items-center justify-between px-4 py-3 border-b" style={{ borderColor: "#F7F0FF" }}>
+            <span className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
               Notificaciones
             </span>
             {unread > 0 && (
               <button
                 onClick={() => markSeen(items.map((n) => n.id))}
                 className="text-xs hover:underline"
-                style={{ color: "#7C3AED", fontWeight: 600 }}
+                style={{ color: "#9B21FF", fontWeight: 600 }}
               >
                 Marcar todo como leído
               </button>
@@ -330,7 +330,7 @@ export function NotificationsMenu() {
 
           <div className="max-h-96 overflow-y-auto">
             {items.length === 0 ? (
-              <p className="px-4 py-8 text-center text-sm" style={{ color: "#7458C4" }}>
+              <p className="px-4 py-8 text-center text-sm" style={{ color: "#6B7280" }}>
                 Todo al día. No hay avisos pendientes.
               </p>
             ) : (
@@ -346,7 +346,7 @@ export function NotificationsMenu() {
                       navigate(n.to);
                     }}
                     className="w-full flex items-start gap-3 px-4 py-3 text-left transition-all hover:bg-violet-50"
-                    style={{ background: isUnread ? "#FDFCFF" : "white" }}
+                    style={{ background: isUnread ? "#FAF8F5" : "white" }}
                   >
                     <span
                       className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-sm"
@@ -357,19 +357,19 @@ export function NotificationsMenu() {
                     <span className="flex-1 min-w-0">
                       <span
                         className="block text-sm truncate"
-                        style={{ color: "#1F0A3C", fontWeight: isUnread ? 700 : 500 }}
+                        style={{ color: "#1A1A1A", fontWeight: isUnread ? 700 : 500 }}
                       >
                         {n.title}
                       </span>
-                      <span className="block text-xs truncate" style={{ color: "#7C6A99" }}>
+                      <span className="block text-xs truncate" style={{ color: "#6B7280" }}>
                         {n.detail}
                       </span>
-                      <span className="block text-[11px] mt-0.5" style={{ color: "#7C6A99" }}>
+                      <span className="block text-[11px] mt-0.5" style={{ color: "#6B7280" }}>
                         {n.when ?? relativeTime(n.at)}
                       </span>
                     </span>
                     {isUnread && (
-                      <span className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ background: "#EC4899" }} />
+                      <span className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0" style={{ background: "#FF5ECA" }} />
                     )}
                   </button>
                 );

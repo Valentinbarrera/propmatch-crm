@@ -24,9 +24,9 @@ export function TasksCard() {
   }
 
   return (
-    <section className="rounded-2xl border bg-white p-4" style={{ borderColor: "#EDE9FE", boxShadow: "var(--shadow-card)" }} aria-label="Tareas pendientes">
+    <section className="rounded-2xl border bg-white p-4" style={{ borderColor: "#E9E5DE", boxShadow: "var(--shadow-card)" }} aria-label="Tareas pendientes">
       <div className="flex items-center justify-between mb-3">
-        <h2 className="text-xs uppercase" style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.1em" }}>
+        <h2 className="text-xs uppercase" style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.1em" }}>
           Tareas pendientes
         </h2>
         <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: "var(--gradient-brand)", color: "white", fontWeight: 700, fontSize: "10px" }}>
@@ -44,7 +44,7 @@ export function TasksCard() {
             >
               <span
                 className="w-5 h-5 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5 transition-all"
-                style={task.is_done ? { background: "var(--gradient-brand)" } : { border: "2px solid #DDD6FE", background: "white" }}
+                style={task.is_done ? { background: "var(--gradient-brand)" } : { border: "2px solid #DDD8CF", background: "white" }}
                 aria-hidden
               >
                 {task.is_done && <CheckIcon size={10} color="white" />}
@@ -53,7 +53,7 @@ export function TasksCard() {
                 <span
                   className="block text-xs leading-relaxed"
                   style={{
-                    color: task.is_done ? "#7C6A99" : "#374151",
+                    color: task.is_done ? "#6B7280" : "#374151",
                     fontWeight: task.is_done ? 400 : 500,
                     textDecoration: task.is_done ? "line-through" : "none",
                   }}
@@ -61,12 +61,12 @@ export function TasksCard() {
                   {task.text}
                 </span>
                 {task.is_priority && !task.is_done && (
-                  <span className="text-xs" style={{ color: "#BE185D", fontWeight: 600, fontSize: "10px" }}>
+                  <span className="text-xs" style={{ color: "#CB1093", fontWeight: 600, fontSize: "10px" }}>
                     ● Prioritaria
                   </span>
                 )}
                 {task.due_date && !task.is_done && (
-                  <span className="block text-[10px]" style={{ color: "#7458C4" }}>
+                  <span className="block text-[10px]" style={{ color: "#6B7280" }}>
                     Para el {new Date(`${task.due_date.slice(0, 10)}T12:00:00`).toLocaleDateString("es-AR", { weekday: "short", day: "numeric", month: "short" })}
                   </span>
                 )}
@@ -77,7 +77,7 @@ export function TasksCard() {
               onClick={() => removeTask(task.id)}
               aria-label={"Eliminar tarea: " + task.text}
               className="w-8 h-8 mt-1.5 mr-1 rounded-lg flex-shrink-0 flex items-center justify-center opacity-0 group-hover:opacity-100 focus:opacity-100 transition-all hover:bg-white"
-              style={{ color: "#7C6A99", fontSize: 15, lineHeight: 1 }}
+              style={{ color: "#6B7280", fontSize: 15, lineHeight: 1 }}
             >
               ×
             </button>
@@ -90,7 +90,7 @@ export function TasksCard() {
           type="button"
           onClick={() => setTaskDraft("")}
           className="w-full mt-2 min-h-11 rounded-xl text-xs transition-all hover:bg-violet-50 flex items-center justify-center gap-1.5"
-          style={{ color: "#6D28D9", fontWeight: 600 }}
+          style={{ color: "#7C0BD8", fontWeight: 600 }}
         >
           <PlusIcon size={11} color="currentColor" />
           Agregar tarea
@@ -110,7 +110,7 @@ export function TasksCard() {
             aria-label="Nueva tarea"
             placeholder="Llamar a Martín por la contraoferta..."
             autoFocus
-            className="w-full min-h-11 px-3 rounded-xl text-xs border outline-none transition-all bg-white text-[#1F0A3C] placeholder:text-[#7C6A99] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE]"
+            className="w-full min-h-11 px-3 rounded-xl text-xs border outline-none transition-all bg-white text-[#1A1A1A] placeholder:text-[#6B7280] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE]"
           />
           <div className="flex items-center justify-between gap-2 mt-2">
             <button
@@ -120,8 +120,8 @@ export function TasksCard() {
               className="min-h-9 px-2.5 rounded-lg transition-all border"
               style={
                 taskPriority
-                  ? { background: "#FDF2F8", color: "#BE185D", borderColor: "#FBCFE8", fontWeight: 600, fontSize: "11px" }
-                  : { background: "white", color: "#7458C4", borderColor: "#EDE9FE", fontWeight: 600, fontSize: "11px" }
+                  ? { background: "#FFF1FA", color: "#CB1093", borderColor: "#FFDFF4", fontWeight: 600, fontSize: "11px" }
+                  : { background: "white", color: "#6B7280", borderColor: "#E9E5DE", fontWeight: 600, fontSize: "11px" }
               }
             >
               ● Prioritaria
@@ -134,7 +134,7 @@ export function TasksCard() {
                   setTaskPriority(false);
                 }}
                 className="min-h-9 px-2.5 rounded-lg transition-all hover:bg-violet-50"
-                style={{ color: "#7C6A99", fontWeight: 600, fontSize: "11px" }}
+                style={{ color: "#6B7280", fontWeight: 600, fontSize: "11px" }}
               >
                 Listo
               </button>

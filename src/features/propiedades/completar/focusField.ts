@@ -20,9 +20,9 @@ export function focusField(id: string): boolean {
   if (typeof box.animate === "function") {
     box.animate(
       [
-        { boxShadow: "0 0 0 4px rgba(124, 58, 237, 0.45)", background: "#F5F3FF", borderRadius: "12px" },
-        { boxShadow: "0 0 0 4px rgba(124, 58, 237, 0.45)", background: "#F5F3FF", borderRadius: "12px", offset: 0.7 },
-        { boxShadow: "0 0 0 0 rgba(124, 58, 237, 0)", background: "transparent", borderRadius: "12px" },
+        { boxShadow: "0 0 0 4px rgba(168, 85, 255, 0.45)", background: "#F7F0FF", borderRadius: "12px" },
+        { boxShadow: "0 0 0 4px rgba(168, 85, 255, 0.45)", background: "#F7F0FF", borderRadius: "12px", offset: 0.7 },
+        { boxShadow: "0 0 0 0 rgba(168, 85, 255, 0)", background: "transparent", borderRadius: "12px" },
       ],
       { duration: reduce ? 1200 : 1800, easing: "ease-out" },
     );

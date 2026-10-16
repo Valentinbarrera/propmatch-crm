@@ -79,28 +79,28 @@ export default function ConfiguracionPage() {
                     {p.initials}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                    <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                       {p.full_name} <SampleBadge record={p} />
                       {p.id === profile.id && (
-                        <span className="ml-1.5 text-xs" style={{ color: "#7458C4", fontWeight: 500 }}>
+                        <span className="ml-1.5 text-xs" style={{ color: "#6B7280", fontWeight: 500 }}>
                           (vos)
                         </span>
                       )}
                     </p>
-                    <p className="text-xs truncate" style={{ color: "#7C6A99" }}>
+                    <p className="text-xs truncate" style={{ color: "#6B7280" }}>
                       {p.email ?? "Sin email"}
                     </p>
                   </div>
                   <span
                     className="text-xs px-2.5 py-1 rounded-lg flex-shrink-0"
-                    style={{ background: "#F5F3FF", color: "#7C3AED", fontWeight: 600 }}
+                    style={{ background: "#F7F0FF", color: "#9B21FF", fontWeight: 600 }}
                   >
                     {ROLE_LABEL[p.role]}
                   </span>
                 </div>
               ))}
             </div>
-            <p className="px-5 pb-4 text-xs" style={{ color: "#7458C4" }}>
+            <p className="px-5 pb-4 text-xs" style={{ color: "#6B7280" }}>
               Invitar agentes y cambiar roles va a estar disponible cuando el CRM tenga backend.
             </p>
           </Card>
@@ -118,7 +118,7 @@ export default function ConfiguracionPage() {
       {toast && (
         <div
           className="pm-toast fixed bottom-6 right-6 z-50 rounded-2xl px-5 py-3.5 text-sm text-white"
-          style={{ background: "#1F0A3C", fontWeight: 600, boxShadow: "var(--shadow-pop)" }}
+          style={{ background: "#1A1A1A", fontWeight: 600, boxShadow: "var(--shadow-pop)" }}
           role="status"
         >
           ✓ {toast}
@@ -230,7 +230,7 @@ function ProfileCard({
         >
           {initials(form.full_name)}
         </div>
-        <p className="text-xs" style={{ color: "#7C6A99" }}>
+        <p className="text-xs" style={{ color: "#6B7280" }}>
           Tu nombre aparece en "a cargo de", en la agenda y en el ranking del equipo.
         </p>
       </div>
@@ -272,7 +272,7 @@ function ResetCard({ onReset }: { onReset: () => void }) {
     <Card>
       <SectionHeader inCard title="Restablecer este navegador" subtitle="Solo afecta a este navegador" />
       <div className="p-5">
-        <p className="text-sm" style={{ color: "#4C3A6B" }}>
+        <p className="text-sm" style={{ color: "#374151" }}>
           Mientras el CRM no tenga backend, todo lo que cargás se guarda en este navegador. Volver a los datos
           de ejemplo borra los contactos, propiedades, oportunidades y eventos que agregaste o editaste, y
           cierra la sesión.
@@ -293,7 +293,7 @@ function ResetCard({ onReset }: { onReset: () => void }) {
               <button
                 onClick={() => setConfirming(false)}
                 className="px-4 py-2 rounded-xl text-sm transition-all hover:bg-violet-50"
-                style={{ color: "#7C6A99", fontWeight: 600 }}
+                style={{ color: "#6B7280", fontWeight: 600 }}
               >
                 Cancelar
               </button>
@@ -319,7 +319,7 @@ function SaveBar({ dirty, error, onSave }: { dirty: boolean; error: string | nul
   return (
     <div
       className="px-5 py-3.5 border-t flex items-center justify-end gap-3"
-      style={{ borderColor: "#F3F0FF", background: "#FDFCFF" }}
+      style={{ borderColor: "#F0EDE6", background: "#FAF8F5" }}
     >
       {error && (
         <span className="mr-auto text-xs" style={{ color: "#E11D48", fontWeight: 600 }}>

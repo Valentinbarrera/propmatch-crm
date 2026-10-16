@@ -127,12 +127,12 @@ export function MediaStep({ kind, media, urls, missing, format, selectedId, onSe
 
   return (
     <Card>
-      <div className="px-5 py-4 border-b flex flex-wrap items-center gap-3" style={{ borderColor: "#F3F0FF" }}>
+      <div className="px-5 py-4 border-b flex flex-wrap items-center gap-3" style={{ borderColor: "#F0EDE6" }}>
         <div className="flex-1 min-w-0">
-          <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>Medios</h3>
-          <p className="text-xs mt-0.5" style={{ color: "#6B5A8A" }}>{kind.limits}</p>
+          <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>Medios</h3>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>{kind.limits}</p>
         </div>
-        <Badge bg="#F5F3FF" text="#7458C4" size="xs">{media.length}/{kind.max}</Badge>
+        <Badge bg="#F7F0FF" text="#6B7280" size="xs">{media.length}/{kind.max}</Badge>
       </div>
 
       <div className="p-5 flex flex-col gap-4">
@@ -152,11 +152,11 @@ export function MediaStep({ kind, media, urls, missing, format, selectedId, onSe
           onDragLeave={() => setOver(false)}
           onDrop={onDrop}
           className="rounded-2xl border-2 border-dashed p-6 text-center cursor-pointer min-h-[120px] flex flex-col items-center justify-center gap-1.5"
-          style={{ borderColor: over ? "#7C3AED" : "#C4B5FD", background: over ? "#F5F3FF" : "#FDFCFF" }}
+          style={{ borderColor: over ? "#9B21FF" : "#D4AAFF", background: over ? "#F7F0FF" : "#FAF8F5" }}
         >
-          <span className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "var(--gradient-soft)" }} aria-hidden="true"><PlusIcon size={18} color="#7C3AED" /></span>
-          <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>{busy ? "Procesando archivos…" : `Arrastrá ${what} o tocá para elegir`}</p>
-          <p className="text-xs" style={{ color: "#6B5A8A" }}>
+          <span className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: "var(--gradient-soft)" }} aria-hidden="true"><PlusIcon size={18} color="#9B21FF" /></span>
+          <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>{busy ? "Procesando archivos…" : `Arrastrá ${what} o tocá para elegir`}</p>
+          <p className="text-xs" style={{ color: "#6B7280" }}>
             {kind.accepts.includes("image") && "Fotos JPEG, PNG o WebP. "}
             {kind.accepts.includes("video") && "Videos MP4 o MOV. "}
             Quedan guardados en este navegador.
@@ -188,7 +188,7 @@ export function MediaStep({ kind, media, urls, missing, format, selectedId, onSe
         )}
 
         {kind.id === "reel" && (
-          <p className="text-xs px-3 py-2 rounded-lg" style={{ background: "#F5F3FF", color: "#5B3FA8" }}>
+          <p className="text-xs px-3 py-2 rounded-lg" style={{ background: "#F7F0FF", color: "#7C0BD8" }}>
             Subí el video ya editado, en 9:16. Acá no recortamos ni comprimimos video: se publica tal cual lo subís.
           </p>
         )}
@@ -208,20 +208,20 @@ export function MediaStep({ kind, media, urls, missing, format, selectedId, onSe
                   onDrop={(e) => dropOn(e, m.id)}
                   onDragEnd={() => setDragId(null)}
                   className="rounded-xl border p-2 flex flex-wrap items-center gap-2"
-                  style={{ borderColor: selectedId === m.id ? "#7C3AED" : "#EDE9FE", opacity: dragId === m.id ? 0.5 : 1 }}
+                  style={{ borderColor: selectedId === m.id ? "#9B21FF" : "#E9E5DE", opacity: dragId === m.id ? 0.5 : 1 }}
                 >
                   <button type="button" onClick={() => onSelect(m.id)} aria-pressed={selectedId === m.id} aria-label={`Elegir el archivo ${i + 1} para editar`} className="relative w-14 h-14 rounded-lg overflow-hidden flex-shrink-0" style={{ background: "#F3F4F6" }}>
                     {url && (m.kind === "image" ? <img src={url} alt="" draggable={false} className="w-full h-full object-cover" /> : <video src={url} muted preload="metadata" className="w-full h-full object-cover" />)}
-                    {kind.max > 1 && <span className="absolute left-0.5 top-0.5 px-1.5 rounded-full text-white text-[10px]" style={{ background: "rgba(31,10,60,.8)", fontWeight: 700 }}>{i + 1}</span>}
+                    {kind.max > 1 && <span className="absolute left-0.5 top-0.5 px-1.5 rounded-full text-white text-[10px]" style={{ background: "rgba(8, 11, 31,.8)", fontWeight: 700 }}>{i + 1}</span>}
                   </button>
                   <div className="min-w-0 flex-1" style={{ minWidth: 140 }}>
                     <p className="text-xs flex items-center gap-1.5 flex-wrap" style={{ color: st.text, fontWeight: 700 }}>
                       <span aria-hidden="true" className="inline-block w-2 h-2 rounded-full" style={{ background: st.dot }} />
                       {st.word}
-                      {i === 0 && kind.max > 1 && <Badge bg="#F5F3FF" text="#7458C4" size="xs">Portada</Badge>}
+                      {i === 0 && kind.max > 1 && <Badge bg="#F7F0FF" text="#6B7280" size="xs">Portada</Badge>}
                       <Badge bg="#F3F4F6" text="#4B5563" size="xs">{m.kind === "video" ? "Video" : "Foto"}</Badge>
                     </p>
-                    <p className="text-[11px] truncate" style={{ color: "#6B5A8A" }}>{m.name} · {m.width}×{m.height}{m.durationSec ? ` · ${Math.round(m.durationSec)} s` : ""}</p>
+                    <p className="text-[11px] truncate" style={{ color: "#6B7280" }}>{m.name} · {m.width}×{m.height}{m.durationSec ? ` · ${Math.round(m.durationSec)} s` : ""}</p>
                     {m.kind === "image" && (
                       <input
                         type="text"
@@ -231,15 +231,15 @@ export function MediaStep({ kind, media, urls, missing, format, selectedId, onSe
                         placeholder="Texto alternativo (para quien no ve la imagen)"
                         aria-label={`Texto alternativo de la foto ${i + 1}`}
                         className="mt-1 w-full text-xs rounded-lg border px-2 min-h-11 md:min-h-8"
-                        style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }}
+                        style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }}
                       />
                     )}
                   </div>
                   <div className="flex items-center gap-1 ml-auto">
                     {media.length > 1 && (
                       <>
-                        <button type="button" className={iconBtn} style={{ borderColor: "#EDE9FE", color: "#7458C4" }} disabled={i === 0} onClick={() => move(i, i - 1)} aria-label={`Subir el archivo ${i + 1}`}>↑</button>
-                        <button type="button" className={iconBtn} style={{ borderColor: "#EDE9FE", color: "#7458C4" }} disabled={i === media.length - 1} onClick={() => move(i, i + 1)} aria-label={`Bajar el archivo ${i + 1}`}>↓</button>
+                        <button type="button" className={iconBtn} style={{ borderColor: "#E9E5DE", color: "#6B7280" }} disabled={i === 0} onClick={() => move(i, i - 1)} aria-label={`Subir el archivo ${i + 1}`}>↑</button>
+                        <button type="button" className={iconBtn} style={{ borderColor: "#E9E5DE", color: "#6B7280" }} disabled={i === media.length - 1} onClick={() => move(i, i + 1)} aria-label={`Bajar el archivo ${i + 1}`}>↓</button>
                       </>
                     )}
                     <button type="button" onClick={() => remove(m)} className="px-3 min-h-11 md:min-h-9 rounded-lg border text-xs hover:bg-rose-50" style={{ borderColor: "#FECDD3", color: "#BE123C", fontWeight: 700 }} aria-label={`Quitar el archivo ${i + 1}`}>
@@ -266,8 +266,8 @@ export function MediaStep({ kind, media, urls, missing, format, selectedId, onSe
 export function VideoChecks({ media, kind }: { media: PostMedia; kind: "reel" | "story" }) {
   const checks = checkVideo({ width: media.width, height: media.height, durationSec: media.durationSec ?? 0, bytes: media.bytes }, kind, media.mime);
   return (
-    <div className="rounded-xl border p-3" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
-      <p className="text-xs mb-2" style={{ color: "#7458C4", fontWeight: 700 }}>Chequeo del video ({media.width}×{media.height} · {(media.bytes / 1024 / 1024).toFixed(1).replace(".", ",")} MB)</p>
+    <div className="rounded-xl border p-3" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
+      <p className="text-xs mb-2" style={{ color: "#6B7280", fontWeight: 700 }}>Chequeo del video ({media.width}×{media.height} · {(media.bytes / 1024 / 1024).toFixed(1).replace(".", ",")} MB)</p>
       <ul className="flex flex-col gap-1.5">
         {checks.map((c) => {
           const s = LEVEL_STYLE[c.level];
@@ -276,7 +276,7 @@ export function VideoChecks({ media, kind }: { media: PostMedia; kind: "reel" | 
               <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: s.bg }} aria-hidden="true">
                 {c.level === "ok" ? <CheckIcon size={11} color={s.dot} /> : <AlertTriangleIcon size={11} color={s.dot} />}
               </span>
-              <span style={{ color: "#1F0A3C" }}>
+              <span style={{ color: "#1A1A1A" }}>
                 <strong>{c.label}:</strong> <span className="sr-only">{s.word}. </span>
                 <span style={{ color: s.text }}>{c.detail}</span>
               </span>

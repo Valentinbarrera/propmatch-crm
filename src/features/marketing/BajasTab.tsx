@@ -50,7 +50,7 @@ export function BajasTab() {
       )}
 
       <Card padded>
-        <p className="text-sm mb-3" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <p className="text-sm mb-3" style={{ color: "#1A1A1A", fontWeight: 700 }}>
           Registrar para un contacto
         </p>
         <div className="flex flex-wrap gap-2">
@@ -73,11 +73,11 @@ export function BajasTab() {
       </Card>
 
       <Card>
-        <div className="px-5 py-3 border-b flex items-center gap-3" style={{ borderColor: "#F3F0FF" }}>
-          <p className="text-sm flex-1" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <div className="px-5 py-3 border-b flex items-center gap-3" style={{ borderColor: "#F0EDE6" }}>
+          <p className="text-sm flex-1" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             Bajas ({unsubs.filter((u) => !u.revoked_at).length} vigentes)
           </p>
-          <label className="text-xs flex items-center gap-1.5" style={{ color: "#7C6A99" }}>
+          <label className="text-xs flex items-center gap-1.5" style={{ color: "#6B7280" }}>
             <input type="checkbox" checked={showRevoked} onChange={(e) => setShowRevoked(e.target.checked)} />
             Ver revertidas
           </label>
@@ -85,7 +85,7 @@ export function BajasTab() {
         {unsubs.length === 0 ? (
           <EmptyState compact icon={<CheckCircleIcon size={20} />} title="Nadie se dio de baja" description="Las bajas por link, WhatsApp o cargadas a mano aparecen acá." />
         ) : (
-          <ul className="divide-y" style={{ borderColor: "#F3F0FF" }}>
+          <ul className="divide-y" style={{ borderColor: "#F0EDE6" }}>
             {unsubs.map((u) => {
               const c = contactFor(u);
               return (
@@ -102,7 +102,7 @@ export function BajasTab() {
                     {u.revoked_at && ` · revertida el ${fmtDate(u.revoked_at)} por consentimiento nuevo`}
                   </span>
                   {c && !u.revoked_at && (
-                    <button className="ml-auto text-xs underline" style={{ color: "#7C3AED" }} onClick={() => setModal({ contact: c, mode: "consent" })}>
+                    <button className="ml-auto text-xs underline" style={{ color: "#9B21FF" }} onClick={() => setModal({ contact: c, mode: "consent" })}>
                       Volvió a dar consentimiento
                     </button>
                   )}
@@ -114,15 +114,15 @@ export function BajasTab() {
       </Card>
 
       <Card>
-        <div className="px-5 py-3 border-b" style={{ borderColor: "#F3F0FF" }}>
-          <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <div className="px-5 py-3 border-b" style={{ borderColor: "#F0EDE6" }}>
+          <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             Consentimientos ({consents.length})
           </p>
         </div>
         {consents.length === 0 ? (
           <EmptyState compact title="Sin consentimientos registrados" description="Sin consentimiento no se le envía marketing a nadie." />
         ) : (
-          <ul className="divide-y max-h-[480px] overflow-y-auto" style={{ borderColor: "#F3F0FF" }}>
+          <ul className="divide-y max-h-[480px] overflow-y-auto" style={{ borderColor: "#F0EDE6" }}>
             {consents.slice(0, 300).map((x) => {
               const c = contactFor({ contact_id: x.contact_id, email: x.email ?? null, phone: x.phone ?? null });
               return (

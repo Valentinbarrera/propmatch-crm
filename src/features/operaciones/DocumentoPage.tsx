@@ -55,7 +55,7 @@ export default function DocumentoPage() {
   if (!deal || !docKind || !blocks) {
     return (
       <div className="p-8 text-sm">
-        No se encontró el documento. <Link to="/operaciones" style={{ color: "#7C3AED" }}>Volver a Operaciones</Link>
+        No se encontró el documento. <Link to="/operaciones" style={{ color: "#9B21FF" }}>Volver a Operaciones</Link>
       </div>
     );
   }
@@ -86,7 +86,7 @@ export default function DocumentoPage() {
   };
 
   return (
-    <div className="doc-root" style={{ background: "#F3F0FF", height: "100vh", overflowY: "auto" }}>
+    <div className="doc-root" style={{ background: "#F0EDE6", height: "100vh", overflowY: "auto" }}>
       <style>{`
         @media print {
           .doc-toolbar, .doc-hint { display: none !important; }
@@ -101,11 +101,11 @@ export default function DocumentoPage() {
         }
       `}</style>
 
-      <div className="doc-toolbar sticky top-0 z-10 flex flex-wrap items-center gap-2 sm:gap-3 px-4 py-3 border-b" style={{ background: "white", borderColor: "#EDE9FE" }}>
-        <Link to={`/operaciones/${deal.id}`} className="text-sm mr-auto" style={{ color: "#7C3AED", fontWeight: 600 }}>
+      <div className="doc-toolbar sticky top-0 z-10 flex flex-wrap items-center gap-2 sm:gap-3 px-4 py-3 border-b" style={{ background: "white", borderColor: "#E9E5DE" }}>
+        <Link to={`/operaciones/${deal.id}`} className="text-sm mr-auto" style={{ color: "#9B21FF", fontWeight: 600 }}>
           ← Volver a la operación
         </Link>
-        <label className="flex items-center gap-2 text-xs" style={{ color: "#4C3A6B", fontWeight: 600 }}>
+        <label className="flex items-center gap-2 text-xs" style={{ color: "#374151", fontWeight: 600 }}>
           Modelo
           <select
             value={selectedId}
@@ -114,7 +114,7 @@ export default function DocumentoPage() {
               setVersion((v) => v + 1);
             }}
             className="px-2 py-1.5 rounded-lg border text-xs bg-white"
-            style={{ borderColor: "#DDD6FE", color: "#1F0A3C" }}
+            style={{ borderColor: "#DDD8CF", color: "#1A1A1A" }}
           >
             <option value={PROPMATCH}>Modelo de PropMatch</option>
             {options.map((t) => (
@@ -125,7 +125,7 @@ export default function DocumentoPage() {
             ))}
           </select>
         </label>
-        <label className="flex items-center gap-1.5 text-xs" style={{ color: "#4C3A6B", fontWeight: 600 }}>
+        <label className="flex items-center gap-1.5 text-xs" style={{ color: "#374151", fontWeight: 600 }}>
           <input type="checkbox" checked={letterhead} onChange={(e) => setLetterhead(e.target.checked)} />
           Membrete
         </label>
@@ -133,7 +133,7 @@ export default function DocumentoPage() {
           <button
             onClick={() => setSaving(true)}
             className="px-3 py-2 rounded-xl text-sm border bg-white"
-            style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 600 }}
+            style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 600 }}
           >
             Guardar como plantilla
           </button>
@@ -142,7 +142,7 @@ export default function DocumentoPage() {
           Imprimir / Guardar PDF
         </button>
       </div>
-      <p className="doc-hint text-xs text-center mt-3 px-4" style={{ color: "#7458C4" }}>
+      <p className="doc-hint text-xs text-center mt-3 px-4" style={{ color: "#6B7280" }}>
         Podés editar el texto antes de imprimir. Lo que cambies a mano no se guarda en la operación, salvo que lo guardes como plantilla.
       </p>
 
@@ -161,7 +161,7 @@ export default function DocumentoPage() {
         />
       )}
       {toast && (
-        <div role="status" className="doc-toolbar fixed bottom-6 right-6 z-50 rounded-2xl px-5 py-3.5 text-sm text-white max-w-sm" style={{ background: "#1F0A3C", fontWeight: 600 }}>
+        <div role="status" className="doc-toolbar fixed bottom-6 right-6 z-50 rounded-2xl px-5 py-3.5 text-sm text-white max-w-sm" style={{ background: "#1A1A1A", fontWeight: 600 }}>
           ✓ {toast}
         </div>
       )}
@@ -190,42 +190,42 @@ function SaveTemplateModal({
   const [replace, setReplace] = useState(!!current);
   const input = "w-full px-3 py-2 rounded-xl text-sm border bg-white";
   return (
-    <div className="doc-toolbar fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(31,10,60,0.4)" }} role="dialog" aria-modal="true" aria-labelledby="save-tpl-title">
+    <div className="doc-toolbar fixed inset-0 z-50 flex items-center justify-center p-4" style={{ background: "rgba(8, 11, 31,0.4)" }} role="dialog" aria-modal="true" aria-labelledby="save-tpl-title">
       <div className="bg-white rounded-2xl w-full max-w-md p-5" style={{ boxShadow: "var(--shadow-pop)" }}>
-        <h2 id="save-tpl-title" className="text-base" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+        <h2 id="save-tpl-title" className="text-base" style={{ color: "#1A1A1A", fontWeight: 800 }}>
           Guardar como plantilla de la inmobiliaria
         </h2>
-        <p className="text-xs mt-1" style={{ color: "#6B5A8E" }}>
+        <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
           Se guarda el texto con variables (nombres, montos, fechas): en la próxima operación se completan solas. Lo que escribiste a mano queda fijo.
         </p>
         <div className="grid gap-3 mt-4">
           {current && (
-            <label className="flex items-center gap-2 text-sm" style={{ color: "#1F0A3C" }}>
+            <label className="flex items-center gap-2 text-sm" style={{ color: "#1A1A1A" }}>
               <input type="checkbox" checked={replace} onChange={(e) => setReplace(e.target.checked)} />
               Reemplazar «{current.name}» (si no, se guarda como una nueva)
             </label>
           )}
-          <label className="block text-xs" style={{ color: "#7C6A99", fontWeight: 600 }}>
+          <label className="block text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
             Nombre
-            <input value={name} onChange={(e) => setName(e.target.value)} className={`${input} mt-1`} style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }} />
+            <input value={name} onChange={(e) => setName(e.target.value)} className={`${input} mt-1`} style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }} />
           </label>
           {kind === "reserva" && (
-            <label className="block text-xs" style={{ color: "#7C6A99", fontWeight: 600 }}>
+            <label className="block text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
               Sirve para
-              <select value={scope} onChange={(e) => setScope(e.target.value as DealKind | "ambas")} className={`${input} mt-1`} style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }}>
+              <select value={scope} onChange={(e) => setScope(e.target.value as DealKind | "ambas")} className={`${input} mt-1`} style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }}>
                 <option value="venta">Ventas</option>
                 <option value="alquiler">Alquileres</option>
                 <option value="ambas">Ventas y alquileres</option>
               </select>
             </label>
           )}
-          <label className="flex items-center gap-2 text-sm" style={{ color: "#1F0A3C" }}>
+          <label className="flex items-center gap-2 text-sm" style={{ color: "#1A1A1A" }}>
             <input type="checkbox" checked={isDefault} onChange={(e) => setIsDefault(e.target.checked)} />
             Usarla por defecto para {DOCUMENT_LABEL[kind].toLowerCase()}
           </label>
         </div>
         <div className="flex justify-end gap-2 mt-5">
-          <button onClick={onCancel} className="px-4 py-2 rounded-xl text-sm" style={{ color: "#6B5A8E", fontWeight: 600 }}>
+          <button onClick={onCancel} className="px-4 py-2 rounded-xl text-sm" style={{ color: "#6B7280", fontWeight: 600 }}>
             Cancelar
           </button>
           <button

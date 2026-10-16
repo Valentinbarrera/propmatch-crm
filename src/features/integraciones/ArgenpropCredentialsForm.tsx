@@ -8,8 +8,8 @@
 import { useId, useState } from "react";
 import { integrationsApi } from "./api";
 
-const INK = "#1F0A3C";
-const MUTED = "#6B5A8E";
+const INK = "#1A1A1A";
+const MUTED = "#6B7280";
 
 export function ArgenpropCredentialsForm({ onCancel, onSaved }: { onCancel: () => void; onSaved: () => void | Promise<void> }) {
   const id = useId();
@@ -42,14 +42,14 @@ export function ArgenpropCredentialsForm({ onCancel, onSaved }: { onCancel: () =
         onChange={set(k)}
         aria-invalid={error?.field === k}
         className={input}
-        style={{ borderColor: error?.field === k ? "#FDA4AF" : "#DDD6FE", color: INK }}
+        style={{ borderColor: error?.field === k ? "#FDA4AF" : "#DDD8CF", color: INK }}
       />
       <span className="block mt-1" style={{ fontWeight: 400 }}>{help}</span>
     </label>
   );
 
   return (
-    <form onSubmit={submit} className="mt-4 rounded-xl border p-4 flex flex-col gap-3" style={{ borderColor: "#DDD6FE", background: "#FDFCFF" }}>
+    <form onSubmit={submit} className="mt-4 rounded-xl border p-4 flex flex-col gap-3" style={{ borderColor: "#DDD8CF", background: "#FAF8F5" }}>
       <p className="text-sm" style={{ color: INK, fontWeight: 700 }}>Conectar Argenprop</p>
       <ol className="text-xs list-decimal pl-5 space-y-1" style={{ color: "#374151" }}>
         <li>Buscá el mail de Argenprop con los datos de la integración con PropMatch.</li>
@@ -62,10 +62,10 @@ export function ArgenpropCredentialsForm({ onCancel, onSaved }: { onCancel: () =
       {field("originId", "IdOrigen (opcional)", "Si Argenprop no te lo dio, dejalo vacío.", "text", false)}
       {error && <p role="alert" className="text-xs" style={{ color: "#BE123C" }}>{error.text}</p>}
       <div className="flex gap-2">
-        <button type="submit" disabled={busy} className="flex-1 min-h-[44px] px-4 rounded-xl text-sm text-white disabled:opacity-60" style={{ background: "#7C3AED", fontWeight: 700 }}>
+        <button type="submit" disabled={busy} className="flex-1 min-h-[44px] px-4 rounded-xl text-sm text-white disabled:opacity-60" style={{ background: "#9B21FF", fontWeight: 700 }}>
           {busy ? "Guardando…" : "Guardar"}
         </button>
-        <button type="button" onClick={onCancel} className="min-h-[44px] px-4 rounded-xl text-sm border bg-white" style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}>
+        <button type="button" onClick={onCancel} className="min-h-[44px] px-4 rounded-xl text-sm border bg-white" style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}>
           Cancelar
         </button>
       </div>

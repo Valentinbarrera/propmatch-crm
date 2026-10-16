@@ -40,7 +40,7 @@ const STAGES: {
   tagBg: string;
   tagText: string;
 }[] = [
-  { id: "nuevos", accent: "#7C3AED", lightBg: "#F5F3FF", tagBg: "#EDE9FE", tagText: "#7C3AED" },
+  { id: "nuevos", accent: "#9B21FF", lightBg: "#F7F0FF", tagBg: "#E9E5DE", tagText: "#9B21FF" },
   { id: "contactados", accent: "#3B82F6", lightBg: "#EFF6FF", tagBg: "#DBEAFE", tagText: "#1D4ED8" },
   { id: "visita", accent: "#06B6D4", lightBg: "#ECFEFF", tagBg: "#CFFAFE", tagText: "#0E7490" },
   { id: "negociacion", accent: "#F59E0B", lightBg: "#FFFBEB", tagBg: "#FEF3C7", tagText: "#B45309" },
@@ -139,11 +139,11 @@ export default function OportunidadesPage() {
               value={moneyCompact(totals.pipeline)}
               label="Valor total del pipeline"
               sub="Operaciones abiertas"
-              icon={<StarOutlineIcon size={22} color="#7C3AED" />}
-              iconBg="#F5F3FF"
+              icon={<StarOutlineIcon size={22} color="#9B21FF" />}
+              iconBg="#F7F0FF"
               badge={`${totals.count} activas`}
-              badgeBg="#F5F3FF"
-              badgeText="#7C3AED"
+              badgeBg="#F7F0FF"
+              badgeText="#9B21FF"
               bar="var(--gradient-brand-h)"
               barWidth={88}
             />
@@ -151,12 +151,12 @@ export default function OportunidadesPage() {
               value={String(totals.count)}
               label="Oportunidades activas"
               sub="En todas las etapas"
-              icon={<OpportunitiesIcon size={22} color="#EC4899" />}
-              iconBg="#FDF2F8"
+              icon={<OpportunitiesIcon size={22} color="#FF5ECA" />}
+              iconBg="#FFF1FA"
               badge={`${STAGES.length} etapas`}
-              badgeBg="#FDF2F8"
-              badgeText="#EC4899"
-              bar="linear-gradient(90deg, #EC4899, #F472B6)"
+              badgeBg="#FFF1FA"
+              badgeText="#FF5ECA"
+              bar="linear-gradient(90deg, #FF5ECA, #FF7ED5)"
               barWidth={72}
             />
             <StatCard
@@ -189,7 +189,7 @@ export default function OportunidadesPage() {
         {opportunities.length === 0 ? (
           <div className="px-4 md:px-8">
             <EmptyState
-              icon={<OpportunitiesIcon size={24} color="#7C3AED" />}
+              icon={<OpportunitiesIcon size={24} color="#9B21FF" />}
               title="El pipeline está vacío"
               description="Las oportunidades nacen de un match: elegí uno y convertilo en operación."
               action={{ label: "Ver matches", onClick: () => navigate("/matches") }}
@@ -261,12 +261,12 @@ export default function OportunidadesPage() {
                         {idx < recentActivity.length - 1 && (
                           <div
                             className="absolute left-[18px] top-8 w-px"
-                            style={{ height: "calc(100% + 8px)", background: "#EDE9FE" }}
+                            style={{ height: "calc(100% + 8px)", background: "#E9E5DE" }}
                           />
                         )}
                         <div
                           className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 z-10"
-                          style={{ background: "#F5F3FF", color: "#7C3AED" }}
+                          style={{ background: "#F7F0FF", color: "#9B21FF" }}
                         >
                           <ActivityIcon type={iconFor(a.type)} />
                         </div>
@@ -277,12 +277,12 @@ export default function OportunidadesPage() {
                           {a.detail && (
                             <p
                               className="text-xs truncate mt-0.5"
-                              style={{ color: "#1F0A3C", fontWeight: 600 }}
+                              style={{ color: "#1A1A1A", fontWeight: 600 }}
                             >
                               {a.detail}
                             </p>
                           )}
-                          <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
+                          <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
                             {relativeTime(a.created_at)}
                           </p>
                         </div>
@@ -329,10 +329,10 @@ function LostSection({
           <AlertCircleIcon color="#E11D48" />
         </div>
         <div className="flex-1 min-w-0 text-left">
-          <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             Operaciones perdidas
           </p>
-          <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
             {cards.length} {cards.length === 1 ? "operación" : "operaciones"} · {money(total)} que
             no entran en el pipeline
           </p>
@@ -354,23 +354,23 @@ function LostSection({
               style={{ background: "#FFF8F8", border: "1px solid #FECDD3" }}
             >
               <div className="flex-1 min-w-0">
-                <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                   {contactName} <SampleBadge record={opp} />
                 </p>
-                <p className="text-xs truncate mt-0.5" style={{ color: "#7C6A99" }}>
+                <p className="text-xs truncate mt-0.5" style={{ color: "#6B7280" }}>
                   {propertyTitle}
                 </p>
                 <p className="text-xs mt-1.5" style={{ color: "#9F1239" }}>
                   {opp.priority_note ?? "Sin motivo registrado"}
                 </p>
-                <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
+                <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
                   {relativeTime(opp.closed_at ?? opp.updated_at)}
                 </p>
               </div>
               <button
                 onClick={() => onReopen(opp.id)}
                 className="text-xs px-2.5 py-1 rounded-lg flex-shrink-0 transition-all hover:opacity-80"
-                style={{ background: "#EDE9FE", color: "#7C3AED", fontWeight: 600 }}
+                style={{ background: "#E9E5DE", color: "#9B21FF", fontWeight: 600 }}
                 title="Vuelve al pipeline en Nuevos"
               >
                 Reactivar
@@ -449,7 +449,7 @@ function KanbanColumn({
       >
         <div className="flex items-center gap-2 min-w-0">
           <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: stage.accent }} />
-          <span className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <span className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             {STAGE_LABEL[stage.id]}
           </span>
           <span
@@ -563,8 +563,8 @@ function OpportunityCard({
       onClick={() => setExpanded((v) => !v)}
       className={`rounded-2xl bg-white border overflow-hidden cursor-grab active:cursor-grabbing transition-all hover:shadow-lg ${isDragging ? "pm-dragging" : ""}`}
       style={{
-        borderColor: "#EDE9FE",
-        boxShadow: "0 1px 6px rgba(124,58,237,0.07)",
+        borderColor: "#E9E5DE",
+        boxShadow: "0 1px 6px rgba(168, 85, 255,0.07)",
         borderLeft: `3px solid ${stageAccent}`,
       }}
     >
@@ -572,7 +572,7 @@ function OpportunityCard({
         {opp.is_priority && opp.priority_note && (
           <div
             className="flex items-center gap-1.5 mb-2.5 px-2.5 py-1.5 rounded-lg"
-            style={{ background: "linear-gradient(135deg, #FFF7ED, #FDE8F5)" }}
+            style={{ background: "linear-gradient(135deg, #FFF7ED, #FFF1FA)" }}
           >
             <AlertTriangleIcon />
             <span
@@ -604,7 +604,7 @@ function OpportunityCard({
               type="button"
               title="Ver ficha del cliente"
               className="block max-w-full text-left text-sm truncate cursor-pointer hover:underline decoration-violet-400 underline-offset-2"
-              style={{ color: "#1F0A3C", fontWeight: 700 }}
+              style={{ color: "#1A1A1A", fontWeight: 700 }}
               onClick={(e) => {
                 e.stopPropagation();
                 onOpenContact();
@@ -612,7 +612,7 @@ function OpportunityCard({
             >
               {contactName} <SampleBadge record={opp} />
             </button>
-            <p className="text-xs truncate mt-0.5" style={{ color: "#7458C4" }}>
+            <p className="text-xs truncate mt-0.5" style={{ color: "#6B7280" }}>
               {propertyTitle}
             </p>
           </div>
@@ -625,12 +625,12 @@ function OpportunityCard({
         </div>
 
         <div className="flex items-center justify-between mb-3 gap-2">
-          <span className="text-sm" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+          <span className="text-sm" style={{ color: "#1A1A1A", fontWeight: 800 }}>
             {money(opp.value, opp.currency)}
           </span>
           {matchScore !== null && (
             <div className="flex items-center gap-1 flex-shrink-0">
-              <div className="h-1.5 rounded-full overflow-hidden" style={{ width: 32, background: "#EDE9FE" }}>
+              <div className="h-1.5 rounded-full overflow-hidden" style={{ width: 32, background: "#E9E5DE" }}>
                 <div
                   className="h-full rounded-full"
                   style={{ width: `${matchScore}%`, background: "var(--gradient-brand-h)" }}
@@ -646,15 +646,15 @@ function OpportunityCard({
         {expanded && (
           <div
             className="mb-3 p-2.5 rounded-xl text-xs space-y-1.5"
-            style={{ background: "#FDFCFF", border: "1px solid #EDE9FE" }}
+            style={{ background: "#FAF8F5", border: "1px solid #E9E5DE" }}
           >
             <div className="flex items-center gap-2">
               <MapPinIcon size={11} />
-              <span style={{ color: "#7C6A99" }}>{propertyTitle}</span>
+              <span style={{ color: "#6B7280" }}>{propertyTitle}</span>
             </div>
             <div className="flex items-center gap-2">
-              <ClockIcon size={11} color="#A78BFA" />
-              <span style={{ color: "#7C6A99" }}>{daysInStage(opp.stage_since)}</span>
+              <ClockIcon size={11} color="#BF7FFF" />
+              <span style={{ color: "#6B7280" }}>{daysInStage(opp.stage_since)}</span>
             </div>
 
             {asking ? (
@@ -670,7 +670,7 @@ function OpportunityCard({
                     asking === "priority" ? "¿Por qué es urgente?" : "¿Por qué se cayó?"
                   }
                   autoFocus
-                  className="w-full px-2.5 py-1.5 rounded-lg text-xs border outline-none bg-white text-[#1F0A3C] placeholder:text-[#7C6A99] border-[#EDE9FE] focus:border-[#7C3AED] focus-visible:ring-2 focus-visible:ring-[#7C3AED]"
+                  className="w-full px-2.5 py-1.5 rounded-lg text-xs border outline-none bg-white text-[#1A1A1A] placeholder:text-[#6B7280] border-[#E9E5DE] focus:border-[#9B21FF] focus-visible:ring-2 focus-visible:ring-[#9B21FF]"
                 />
                 <div className="flex items-center gap-1.5 mt-1.5">
                   <button
@@ -687,7 +687,7 @@ function OpportunityCard({
                   <button
                     onClick={cancelAsk}
                     className="px-2.5 py-1 rounded-lg text-xs transition-all hover:bg-violet-50"
-                    style={{ color: "#7C6A99", fontWeight: 600, fontSize: "10px" }}
+                    style={{ color: "#6B7280", fontWeight: 600, fontSize: "10px" }}
                   >
                     Cancelar
                   </button>
@@ -706,13 +706,13 @@ function OpportunityCard({
                   }}
                   className="flex items-center gap-1 px-2 py-1 rounded-lg transition-all hover:opacity-80"
                   style={{
-                    background: opp.is_priority ? "#FEF3C7" : "#F5F3FF",
-                    color: opp.is_priority ? "#B45309" : "#7C3AED",
+                    background: opp.is_priority ? "#FEF3C7" : "#F7F0FF",
+                    color: opp.is_priority ? "#B45309" : "#9B21FF",
                     fontWeight: 600,
                     fontSize: "10px",
                   }}
                 >
-                  <AlertTriangleIcon color={opp.is_priority ? "#B45309" : "#7C3AED"} />
+                  <AlertTriangleIcon color={opp.is_priority ? "#B45309" : "#9B21FF"} />
                   {opp.is_priority ? "Quitar urgencia" : "Marcar urgente"}
                 </button>
                 <button
@@ -733,7 +733,7 @@ function OpportunityCard({
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-1 min-w-0">
             <ClockIcon />
-            <span className="text-xs truncate" style={{ color: "#7C6A99" }}>
+            <span className="text-xs truncate" style={{ color: "#6B7280" }}>
               {relativeTime(opp.updated_at)}
             </span>
           </div>
@@ -797,7 +797,7 @@ function PrioritySection({
       <div className="p-4 grid gap-3 sm:grid-cols-2">
         {cards.length === 0 ? (
           <div className="sm:col-span-2 py-6 text-center">
-            <p className="text-sm" style={{ color: "#7458C4" }}>
+            <p className="text-sm" style={{ color: "#6B7280" }}>
               Sin oportunidades urgentes 🎉
             </p>
           </div>
@@ -820,12 +820,12 @@ function PrioritySection({
                   {initials(contactName)}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                  <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                     {contactName}
                   </p>
                   {matchScore !== null && (
                     <div className="flex items-center gap-1 mt-0.5">
-                      <div className="h-1 w-8 rounded-full overflow-hidden" style={{ background: "#EDE9FE" }}>
+                      <div className="h-1 w-8 rounded-full overflow-hidden" style={{ background: "#E9E5DE" }}>
                         <div
                           className="h-full rounded-full"
                           style={{ width: `${matchScore}%`, background: "var(--gradient-brand-h)" }}
@@ -852,7 +852,7 @@ function PrioritySection({
               )}
 
               <div className="flex items-center justify-between mt-2.5 gap-2">
-                <span className="text-xs" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                <span className="text-xs" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                   {money(opp.value, opp.currency)}
                 </span>
                 <button
@@ -861,7 +861,7 @@ function PrioritySection({
                     onOpen(opp.contact_id);
                   }}
                   className="flex items-center gap-1 text-xs px-2.5 py-1 rounded-lg text-white transition-all hover:opacity-90"
-                  style={{ background: "linear-gradient(135deg, #F97316, #EC4899)", fontWeight: 600 }}
+                  style={{ background: "linear-gradient(135deg, #F97316, #FF5ECA)", fontWeight: 600 }}
                 >
                   <MatchesSolidIcon size={10} />
                   Atender

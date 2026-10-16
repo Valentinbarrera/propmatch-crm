@@ -225,7 +225,7 @@ export function ContactFormModal({
   return (
     <div
       className="pm-backdrop fixed inset-0 z-50 flex items-center justify-center p-6"
-      style={{ background: "rgba(31,10,60,0.35)" }}
+      style={{ background: "rgba(8, 11, 31,0.35)" }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -239,7 +239,7 @@ export function ContactFormModal({
         {/* Cabecera */}
         <div
           className="px-6 py-5 border-b flex items-center gap-3 flex-shrink-0"
-          style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}
+          style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}
         >
           <div
             className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -248,10 +248,10 @@ export function ContactFormModal({
             <ContactsIcon size={18} color="white" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-lg tracking-tight" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <p className="text-lg tracking-tight" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               {contact ? "Editar contacto" : "Nuevo contacto"}
             </p>
-            <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+            <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
               Cargá quién es y qué busca. Con eso el sistema le encuentra propiedades solo.
             </p>
           </div>
@@ -260,7 +260,7 @@ export function ContactFormModal({
             onClick={onClose}
             aria-label="Cerrar"
             className="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:bg-violet-50 flex-shrink-0"
-            style={{ color: "#7458C4", fontSize: 20, lineHeight: 1 }}
+            style={{ color: "#6B7280", fontSize: 20, lineHeight: 1 }}
           >
             ×
           </button>
@@ -350,19 +350,19 @@ export function ContactFormModal({
             </div>
           </div>
 
-          <div className="h-px" style={{ background: "#F3F0FF" }} />
+          <div className="h-px" style={{ background: "#F0EDE6" }} />
 
           {/* Búsqueda */}
           <div>
             <SectionLabel>
               Qué busca
-              <span className="ml-2 text-xs" style={{ color: "#7458C4", fontWeight: 500 }}>
+              <span className="ml-2 text-xs" style={{ color: "#6B7280", fontWeight: 500 }}>
                 — sin esto no se le calculan matches
               </span>
             </SectionLabel>
 
             <Field label="Operación">
-              <div className="flex items-center gap-1 p-1 rounded-xl w-fit" style={{ background: "#F5F3FF" }}>
+              <div className="flex items-center gap-1 p-1 rounded-xl w-fit" style={{ background: "#F7F0FF" }}>
                 {OPERATIONS.map((op) => (
                   <button
                     key={op.value}
@@ -375,9 +375,9 @@ export function ContactFormModal({
                             background: "var(--gradient-brand)",
                             color: "white",
                             fontWeight: 600,
-                            boxShadow: "0 2px 8px rgba(124,58,237,0.25)",
+                            boxShadow: "0 2px 8px rgba(168, 85, 255,0.25)",
                           }
-                        : { color: "#7C6A99", fontWeight: 500 }
+                        : { color: "#6B7280", fontWeight: 500 }
                     }
                   >
                     {op.label}
@@ -504,7 +504,7 @@ export function ContactFormModal({
             {/* Vista previa del matching, mientras se completa */}
             <div
               className="mt-5 rounded-xl p-4 flex items-center gap-3"
-              style={{ background: "var(--gradient-soft)", border: "1px solid #EDE9FE" }}
+              style={{ background: "var(--gradient-soft)", border: "1px solid #E9E5DE" }}
             >
               <div
                 className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
@@ -515,11 +515,11 @@ export function ContactFormModal({
               <div className="min-w-0">
                 <p
                   className="text-xs uppercase"
-                  style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.08em" }}
+                  style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.08em" }}
                 >
                   Propiedades compatibles
                 </p>
-                <p className="text-sm mt-0.5" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                <p className="text-sm mt-0.5" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                   {preview === null
                     ? "Cargá un presupuesto para calcular"
                     : preview.count === 0
@@ -530,7 +530,7 @@ export function ContactFormModal({
             </div>
           </div>
 
-          <div className="h-px" style={{ background: "#F3F0FF" }} />
+          <div className="h-px" style={{ background: "#F0EDE6" }} />
 
           <Field label="Notas">
             <textarea
@@ -546,7 +546,7 @@ export function ContactFormModal({
         {/* Pie */}
         <div
           className="px-6 py-4 border-t flex items-center justify-between gap-4 flex-shrink-0"
-          style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}
+          style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}
         >
           <span className="text-xs" style={{ color: hasRequirement ? "#15803D" : "#B45309" }}>
             {hasRequirement ? (
@@ -562,7 +562,7 @@ export function ContactFormModal({
             <button
               onClick={onClose}
               className="px-5 py-2.5 rounded-xl text-sm border transition-all hover:border-violet-300"
-              style={{ borderColor: "#EDE9FE", color: "#7C6A99", fontWeight: 600, background: "white" }}
+              style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 600, background: "white" }}
             >
               Cancelar
             </button>
@@ -589,18 +589,18 @@ const toNumber = (v: string): number | null => {
 
 const inputClass = (hasError: boolean) =>
   "w-full px-4 py-2.5 rounded-xl text-sm border outline-none transition-all bg-white " +
-  "text-[#1F0A3C] placeholder:text-[#7C6A99] focus:ring-4 focus:ring-[#EDE9FE] " +
-  (hasError ? "border-[#FECDD3] focus:border-[#FB7185]" : "border-[#EDE9FE] focus:border-[#7C3AED]");
+  "text-[#1A1A1A] placeholder:text-[#6B7280] focus:ring-4 focus:ring-[#E9E5DE] " +
+  (hasError ? "border-[#FECDD3] focus:border-[#FB7185]" : "border-[#E9E5DE] focus:border-[#9B21FF]");
 
 const selectClass =
   "w-full px-4 py-2.5 rounded-xl text-sm border outline-none transition-all bg-white " +
-  "text-[#1F0A3C] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE]";
+  "text-[#1A1A1A] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE]";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <p
       className="text-xs uppercase mb-3"
-      style={{ color: "#7C3AED", fontWeight: 700, letterSpacing: "0.1em" }}
+      style={{ color: "#9B21FF", fontWeight: 700, letterSpacing: "0.1em" }}
     >
       {children}
     </p>
@@ -618,7 +618,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+      <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label}
       </span>
       {children}
@@ -640,7 +640,7 @@ function Chip({ label, active, onClick }: { label: string; active: boolean; onCl
       style={
         active
           ? { background: "var(--gradient-brand)", color: "white", borderColor: "transparent", fontWeight: 600 }
-          : { background: "white", color: "#7C6A99", borderColor: "#EDE9FE", fontWeight: 500 }
+          : { background: "white", color: "#6B7280", borderColor: "#E9E5DE", fontWeight: 500 }
       }
     >
       {active && "✓ "}

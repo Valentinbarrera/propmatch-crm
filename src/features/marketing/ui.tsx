@@ -2,12 +2,12 @@
 import type { ReactNode } from "react";
 
 export const INPUT =
-  "w-full px-3.5 py-2.5 rounded-xl text-sm border outline-none bg-white text-[#1F0A3C] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE]";
+  "w-full px-3.5 py-2.5 rounded-xl text-sm border outline-none bg-white text-[#1A1A1A] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE]";
 
 export function Field({ label, hint, children }: { label: string; hint?: ReactNode; children: ReactNode }) {
   return (
     <label className="block">
-      <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+      <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label}
       </span>
       {children}
@@ -29,8 +29,8 @@ export function Chip({ active, onClick, children }: { active: boolean; onClick: 
       className="text-xs px-3 py-1.5 rounded-full border transition-all"
       style={
         active
-          ? { background: "#1F0A3C", color: "white", borderColor: "transparent", fontWeight: 600 }
-          : { background: "white", color: "#7C6A99", borderColor: "#EDE9FE", fontWeight: 500 }
+          ? { background: "#1A1A1A", color: "white", borderColor: "transparent", fontWeight: 600 }
+          : { background: "white", color: "#6B7280", borderColor: "#E9E5DE", fontWeight: 500 }
       }
     >
       {children}
@@ -59,8 +59,8 @@ export function Btn({
       : kind === "danger"
         ? { background: "#FFF1F2", color: "#BE123C", fontWeight: 600, borderColor: "#FECDD3" }
         : kind === "ghost"
-          ? { background: "transparent", color: "#7C3AED", fontWeight: 600, borderColor: "transparent" }
-          : { background: "white", color: "#7C3AED", fontWeight: 600, borderColor: "#EDE9FE" };
+          ? { background: "transparent", color: "#9B21FF", fontWeight: 600, borderColor: "transparent" }
+          : { background: "white", color: "#9B21FF", fontWeight: 600, borderColor: "#E9E5DE" };
   return (
     <button
       type={type}
@@ -77,7 +77,7 @@ export function Btn({
 
 export function Notice({ tone = "info", children }: { tone?: "info" | "warn" | "danger" | "ok"; children: ReactNode }) {
   const s = {
-    info: { bg: "#F5F3FF", fg: "#5B21B6", border: "#DDD6FE" },
+    info: { bg: "#F7F0FF", fg: "#7C0BD8", border: "#DDD8CF" },
     warn: { bg: "#FFFBEB", fg: "#92400E", border: "#FDE68A" },
     danger: { bg: "#FFF1F2", fg: "#9F1239", border: "#FECDD3" },
     ok: { bg: "#F0FDF4", fg: "#166534", border: "#BBF7D0" },
@@ -93,7 +93,7 @@ export function Modal({ title, onClose, children, footer, wide }: { title: strin
   return (
     <div
       className="pm-backdrop fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6"
-      style={{ background: "rgba(31,10,60,0.35)" }}
+      style={{ background: "rgba(8, 11, 31,0.35)" }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -104,17 +104,17 @@ export function Modal({ title, onClose, children, footer, wide }: { title: strin
         style={{ background: "white", boxShadow: "var(--shadow-pop)" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="px-5 py-4 border-b flex items-center gap-3" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
-          <p className="flex-1 text-base truncate" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+        <div className="px-5 py-4 border-b flex items-center gap-3" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
+          <p className="flex-1 text-base truncate" style={{ color: "#1A1A1A", fontWeight: 800 }}>
             {title}
           </p>
-          <button onClick={onClose} aria-label="Cerrar" className="w-8 h-8 rounded-lg hover:bg-violet-50" style={{ color: "#7458C4", fontSize: 20 }}>
+          <button onClick={onClose} aria-label="Cerrar" className="w-8 h-8 rounded-lg hover:bg-violet-50" style={{ color: "#6B7280", fontSize: 20 }}>
             ×
           </button>
         </div>
         <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4">{children}</div>
         {footer && (
-          <div className="px-5 py-3 border-t flex flex-wrap items-center justify-end gap-2" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+          <div className="px-5 py-3 border-t flex flex-wrap items-center justify-end gap-2" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
             {footer}
           </div>
         )}

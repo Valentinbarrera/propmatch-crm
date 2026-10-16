@@ -1,6 +1,7 @@
 import { routeByAction } from "./_lib/router.js";
 import { supabaseAdmin } from "./_lib/supabaseAdmin.js";
 import { allowMethod, json, fail } from "./_lib/http.js";
+import { LAUNCH_PROMO, promoGrant } from "../shared/promo.js";
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 /**
@@ -27,12 +28,23 @@ async function signup(req: VercelRequest, res: VercelResponse) {
 
   const sb = supabaseAdmin();
 
+  // Promo de lanzamiento (6 meses gratis de Premium): queda en la metadata del
+  // usuario para saber quién la activó y hasta cuándo vale. Ver shared/promo.ts.
+  const promo = LAUNCH_PROMO.active ? promoGrant() : null;
+
   // 1. Crear usuario
   const { data: userData, error: userErr } = await sb.auth.admin.createUser({
     email: email.trim().toLowerCase(),
     password,
     email_confirm: true,
-    user_metadata: { full_name: fullName.trim() },
+    // `name` lo lee el trigger handle_new_user de la app (public.users.name);
+    // `agency_name` lo usa el CRM si la cuenta queda sin inmobiliaria.
+    user_metadata: {
+      full_name: fullName.trim(),
+      name: fullName.trim(),
+      agency_name: agencyName.trim(),
+      ...(promo ? { promo } : {}),
+    },
   });
   if (userErr) {
     if (userErr.message?.toLowerCase().includes("already")) {
@@ -45,7 +57,10 @@ async function signup(req: VercelRequest, res: VercelResponse) {
   // 2. Crear agencia
   const { data: agencyData, error: agencyErr } = await sb
     .from("agencies")
-    .insert({ name: agencyName.trim() })
+    // owner_user_id es lo que el CRM usa para tratar la cuenta como vinculada
+    // (store.tsx, applySession). Sin él, cada alta nueva entraba en modo local,
+    // como una demo: sin Proppi, sin publicar en la app, sin inbox.
+    .insert({ name: agencyName.trim(), owner_user_id: userId })
     .select("id")
     .single();
   if (agencyErr || !agencyData) {
@@ -64,7 +79,7 @@ async function signup(req: VercelRequest, res: VercelResponse) {
     return fail(res, 500, "create_member_failed");
   }
 
-  return json(res, 200, { ok: true });
+  return json(res, 200, { ok: true, promo });
 }
 
 export default routeByAction("saas", { signup });

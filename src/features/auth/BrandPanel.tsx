@@ -1,3 +1,5 @@
+import { BrandLogo } from "@/components/brand/BrandLogo";
+
 /**
  * Panel de marca del login (solo desktop). La mini-vista del producto es
  * decorativa y abstracta a propósito: sin cifras ni nombres que parezcan datos
@@ -21,7 +23,7 @@ const BENEFITS = [
 function MatchRing() {
   return (
     <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
-      <circle cx="19" cy="19" r="15" fill="none" stroke="#EDE9FE" strokeWidth="4" />
+      <circle cx="19" cy="19" r="15" fill="none" stroke="#E9E5DE" strokeWidth="4" />
       <circle
         cx="19"
         cy="19"
@@ -34,11 +36,11 @@ function MatchRing() {
         strokeDashoffset="22"
         transform="rotate(-90 19 19)"
       />
-      <path d="M13.5 19.5l4 4 7-8" fill="none" stroke="#7C3AED" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M13.5 19.5l4 4 7-8" fill="none" stroke="#9B21FF" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
       <defs>
         <linearGradient id="pm-ring" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#7C3AED" />
-          <stop offset="1" stopColor="#EC4899" />
+          <stop offset="0" stopColor="#9B21FF" />
+          <stop offset="1" stopColor="#FF5ECA" />
         </linearGradient>
       </defs>
     </svg>
@@ -49,7 +51,7 @@ function PropertyCard({ tone, className = "", style }: { tone: string; className
   return (
     <div
       className={`rounded-2xl bg-white p-3 w-60 ${className}`}
-      style={{ boxShadow: "0 18px 40px -12px rgba(31,10,60,0.35)", ...style }}
+      style={{ boxShadow: "0 18px 40px -12px rgba(8, 11, 31,0.35)", ...style }}
     >
       <div className="h-24 rounded-xl relative overflow-hidden" style={{ background: tone }}>
         <svg viewBox="0 0 200 96" className="absolute inset-0 w-full h-full" aria-hidden="true">
@@ -59,8 +61,8 @@ function PropertyCard({ tone, className = "", style }: { tone: string; className
       </div>
       <div className="flex items-center gap-3 mt-3">
         <div className="flex-1 space-y-1.5">
-          <div className="h-2.5 rounded-full w-4/5" style={{ background: "#E9E2FB" }} />
-          <div className="h-2 rounded-full w-1/2" style={{ background: "#F3F0FF" }} />
+          <div className="h-2.5 rounded-full w-4/5" style={{ background: "#E9E5DE" }} />
+          <div className="h-2 rounded-full w-1/2" style={{ background: "#F0EDE6" }} />
         </div>
         <MatchRing />
       </div>
@@ -92,15 +94,7 @@ export default function BrandPanel() {
       />
 
       <div className="relative z-10 flex items-center gap-3">
-        <div
-          className="w-10 h-10 rounded-xl flex items-center justify-center"
-          style={{ background: "rgba(255,255,255,0.2)" }}
-        >
-          <LogoMark />
-        </div>
-        <span className="text-white text-lg tracking-tight" style={{ fontWeight: 800 }}>
-          PropMatch
-        </span>
+        <BrandLogo size={32} light />
       </div>
 
       <div className="relative z-10">
@@ -116,11 +110,11 @@ export default function BrandPanel() {
         {/* Mini-vista decorativa */}
         <div className="relative h-64 mt-10 select-none" aria-hidden="true">
           <PropertyCard
-            tone="linear-gradient(135deg,#C4B5FD,#F9A8D4)"
+            tone="linear-gradient(135deg,#D4AAFF,#FFC7EC)"
             className="absolute left-0 top-6 pm-float-a"
           />
           <PropertyCard
-            tone="linear-gradient(135deg,#A78BFA,#7C3AED)"
+            tone="linear-gradient(135deg,#BF7FFF,#9B21FF)"
             className="absolute left-36 top-0 pm-float-b"
           />
           <div
@@ -134,7 +128,7 @@ export default function BrandPanel() {
           >
             <span className="w-5 h-5 rounded-full bg-white flex items-center justify-center">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="none">
-                <path d="M5 12.5l4.5 4.5L19 7.5" stroke="#7C3AED" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M5 12.5l4.5 4.5L19 7.5" stroke="#9B21FF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
             Nuevo match encontrado

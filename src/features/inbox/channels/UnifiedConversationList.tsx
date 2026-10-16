@@ -42,7 +42,7 @@ export function UnifiedConversationList({
   ].sort((a, b) => b.at - a.at);
 
   return (
-    <ul className="divide-y" style={{ borderColor: "#F3F0FF" }} aria-label="Conversaciones">
+    <ul className="divide-y" style={{ borderColor: "#F0EDE6" }} aria-label="Conversaciones">
       {rows.map((r) => {
         const id = r.kind === "app" ? r.c.id : channelItemId(r.c.id);
         const selected = id === selectedId;
@@ -57,12 +57,12 @@ export function UnifiedConversationList({
             : `${r.c.last_message_direction === "out" ? "Vos: " : ""}${cleanIncoming(r.c.last_message_preview)}`;
         const win = r.kind === "ext" && r.c.channel !== "messenger" ? windowInfo(r.c.last_inbound_at) : null;
         return (
-          <li key={id} style={{ borderColor: "#F3F0FF" }}>
+          <li key={id} style={{ borderColor: "#F0EDE6" }}>
             <button
               onClick={() => onSelect(id)}
               aria-current={selected ? "true" : undefined}
               className="w-full text-left flex gap-3 px-4 py-3 min-h-[72px] transition-colors hover:bg-violet-50"
-              style={{ background: selected ? "#F5F3FF" : undefined }}
+              style={{ background: selected ? "#F7F0FF" : undefined }}
             >
               <div className="relative flex-shrink-0">
                 <Avatar name={name} />
@@ -75,22 +75,22 @@ export function UnifiedConversationList({
               </div>
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline justify-between gap-2">
-                  <span className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: unread ? 800 : 600 }}>
+                  <span className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: unread ? 800 : 600 }}>
                     {name}
                   </span>
-                  <span className="text-xs flex-shrink-0" style={{ color: "#7458C4" }}>
+                  <span className="text-xs flex-shrink-0" style={{ color: "#6B7280" }}>
                     {shortTime(new Date(r.at).toISOString())}
                   </span>
                 </div>
                 {r.kind === "app" && r.c.property && (
                   <span
                     className="inline-block max-w-full truncate align-top text-[11px] px-2 py-0.5 rounded-full mt-0.5"
-                    style={{ background: "#F5F3FF", color: "#6D28D9", fontWeight: 600 }}
+                    style={{ background: "#F7F0FF", color: "#7C0BD8", fontWeight: 600 }}
                   >
                     {r.c.property.title}
                   </span>
                 )}
-                <p className="text-xs mt-1 line-clamp-2" style={{ color: unread ? "#1F0A3C" : "#7C6A99", fontWeight: unread ? 600 : 400 }}>
+                <p className="text-xs mt-1 line-clamp-2" style={{ color: unread ? "#1A1A1A" : "#6B7280", fontWeight: unread ? 600 : 400 }}>
                   {preview}
                 </p>
                 <div className="flex items-center gap-2 mt-1.5">
@@ -110,7 +110,7 @@ export function UnifiedConversationList({
                   {r.kind === "ext" && r.c.unread_count > 0 ? (
                     <span
                       className="ml-auto text-[11px] min-w-[20px] h-5 px-1.5 rounded-full flex items-center justify-center text-white"
-                      style={{ background: "#7C3AED", fontWeight: 700 }}
+                      style={{ background: "#9B21FF", fontWeight: 700 }}
                     >
                       {r.c.unread_count}
                       <span className="sr-only"> sin leer</span>
@@ -118,7 +118,7 @@ export function UnifiedConversationList({
                   ) : (
                     unread && (
                       <span className="ml-auto flex items-center">
-                        <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#7C3AED" }} aria-hidden="true" />
+                        <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#9B21FF" }} aria-hidden="true" />
                         <span className="sr-only">No leída</span>
                       </span>
                     )

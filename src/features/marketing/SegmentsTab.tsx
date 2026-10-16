@@ -38,7 +38,7 @@ export function SegmentsTab() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <p className="text-sm" style={{ color: "#7C6A99" }}>
+        <p className="text-sm" style={{ color: "#6B7280" }}>
           Audiencias armadas con tus datos: búsquedas, matches, visitas, ofertas y oportunidades.
         </p>
         <Btn kind="primary" onClick={() => setEditing("new")}>
@@ -63,10 +63,10 @@ export function SegmentsTab() {
               <Card key={s.id} padded hover>
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                    <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                       {s.name}
                     </p>
-                    <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
+                    <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
                       {ruleSummary(s.rules, (id) => store.propertyById(id)?.title).join(" · ")}
                     </p>
                   </div>
@@ -75,7 +75,7 @@ export function SegmentsTab() {
                   </Btn>
                 </div>
                 <div className="mt-3 flex flex-wrap gap-2 text-xs" style={{ color: "#4B5563" }}>
-                  <span className="px-2 py-1 rounded-lg" style={{ background: "#F5F3FF" }}>
+                  <span className="px-2 py-1 rounded-lg" style={{ background: "#F7F0FF" }}>
                     {email.matched.length} coinciden
                   </span>
                   <span className="px-2 py-1 rounded-lg" style={{ background: "#F0FDF4" }}>
@@ -329,8 +329,8 @@ export function SegmentEditor({
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="space-y-3 rounded-2xl border p-4" style={{ borderColor: "#EDE9FE" }}>
-      <p className="text-xs uppercase" style={{ color: "#7458C4", letterSpacing: "0.08em", fontWeight: 700 }}>
+    <div className="space-y-3 rounded-2xl border p-4" style={{ borderColor: "#E9E5DE" }}>
+      <p className="text-xs uppercase" style={{ color: "#6B7280", letterSpacing: "0.08em", fontWeight: 700 }}>
         {title}
       </p>
       {children}
@@ -344,12 +344,12 @@ export function AudiencePreview({ audience, limit = 40 }: { audience: Audience; 
   const [showExcluded, setShowExcluded] = useState(false);
   const reasons = (Object.keys(audience.byReason) as ExclusionReason[]).filter((k) => audience.byReason[k] > 0);
   return (
-    <div className="rounded-2xl border p-4 space-y-3" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+    <div className="rounded-2xl border p-4 space-y-3" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
       <div>
-        <p className="text-3xl" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+        <p className="text-3xl" style={{ color: "#1A1A1A", fontWeight: 800 }}>
           {audience.eligible.length}
         </p>
-        <p className="text-xs" style={{ color: "#7C6A99" }}>
+        <p className="text-xs" style={{ color: "#6B7280" }}>
           pueden recibir · {audience.matched.length} coinciden con los filtros
         </p>
       </div>
@@ -379,7 +379,7 @@ export function AudiencePreview({ audience, limit = 40 }: { audience: Audience; 
         )}
       </ul>
       {audience.excluded.length > 0 && (
-        <button className="text-xs underline" style={{ color: "#7C3AED" }} onClick={() => setShowExcluded((v) => !v)}>
+        <button className="text-xs underline" style={{ color: "#9B21FF" }} onClick={() => setShowExcluded((v) => !v)}>
           {showExcluded ? "Ocultar excluidos" : "Ver excluidos"}
         </button>
       )}

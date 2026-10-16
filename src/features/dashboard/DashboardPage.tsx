@@ -34,7 +34,7 @@ import type { FollowUp } from "@/lib/followups";
 import type { OpportunityStage } from "@/types/db";
 
 const STAGE_BADGE: Record<OpportunityStage, { bg: string; text: string; border: string }> = {
-  nuevos: { bg: "#F5F3FF", text: "#7C3AED", border: "#DDD6FE" },
+  nuevos: { bg: "#F7F0FF", text: "#9B21FF", border: "#DDD8CF" },
   contactados: { bg: "#EFF6FF", text: "#1D4ED8", border: "#BFDBFE" },
   visita: { bg: "#ECFEFF", text: "#0E7490", border: "#CFFAFE" },
   negociacion: { bg: "#FFFBEB", text: "#B45309", border: "#FDE68A" },
@@ -50,11 +50,11 @@ const ROADMAP_FEATURES = [
   { emoji: "🏡", bg: "#F0F9FF", title: "Argenprop", desc: "Integración en análisis técnico con el portal.", note: "En negociación" },
   { emoji: "🏛️", bg: "#EFF6FF", title: "CABAPROP", desc: "Portal oficial del Colegio de Martilleros de CABA.", note: "Próximamente" },
   { emoji: "📘", bg: "#EFF6FF", title: "Facebook", desc: "Publicá propiedades en tu página de Facebook.", note: "App Review pendiente" },
-  { emoji: "📸", bg: "#FDF4FF", title: "Instagram", desc: "Publicá propiedades en tu cuenta de Instagram.", note: "App Review pendiente" },
+  { emoji: "📸", bg: "#F7F0FF", title: "Instagram", desc: "Publicá propiedades en tu cuenta de Instagram.", note: "App Review pendiente" },
   { emoji: "💬", bg: "#F0FDF4", title: "WhatsApp Business API", desc: "Enviá campañas automáticas desde tu número oficial.", note: "Próximamente" },
-  { emoji: "📅", bg: "#F5F3FF", title: "Google Calendar", desc: "Sincronizá tu agenda de visitas con Google.", note: "Próximamente" },
+  { emoji: "📅", bg: "#F7F0FF", title: "Google Calendar", desc: "Sincronizá tu agenda de visitas con Google.", note: "Próximamente" },
   { emoji: "✍️", bg: "#FFF7ED", title: "Firma digital", desc: "Boletos y reservas firmados online desde el CRM.", note: "Próximamente" },
-  { emoji: "📊", bg: "#FDF4FF", title: "Reportes avanzados", desc: "Analytics de rendimiento, conversión y cartera.", note: "Próximamente" },
+  { emoji: "📊", bg: "#F7F0FF", title: "Reportes avanzados", desc: "Analytics de rendimiento, conversión y cartera.", note: "Próximamente" },
   { emoji: "👥", bg: "#F0F9FF", title: "Equipo y roles", desc: "Múltiples asesores con permisos diferenciados.", note: "Próximamente" },
 ];
 
@@ -204,14 +204,14 @@ export default function DashboardPage() {
   }
 
   const QUICK_ACTIONS = [
-    { label: "Nueva propiedad", icon: <HomeIcon size={18} color="#7C3AED" />, path: "/propiedades/nueva", bg: "#F5F3FF" },
-    { label: "Subir y publicar", icon: <PropertiesIcon size={18} color="#EC4899" />, path: "/publicador", bg: "#FDF2F8" },
+    { label: "Nueva propiedad", icon: <HomeIcon size={18} color="#9B21FF" />, path: "/propiedades/nueva", bg: "#F7F0FF" },
+    { label: "Subir y publicar", icon: <PropertiesIcon size={18} color="#FF5ECA" />, path: "/publicador", bg: "#FFF1FA" },
     { label: "Nuevo contacto", icon: <ContactsIcon size={18} color="#0E7490" />, path: "/contactos/nuevo", bg: "#ECFEFF" },
     { label: "Registrar visita", icon: <AgendaIcon size={18} color="#B45309" />, path: "/agenda", bg: "#FFFBEB" },
     { label: "Nueva operación", icon: <OpportunitiesIcon size={18} color="#047857" />, path: "/operaciones/nueva", bg: "#F0FDF4" },
     { label: "Abrir Inbox", icon: <InboxIcon size={18} color="#1D4ED8" />, path: "/inbox", bg: "#EFF6FF" },
-    { label: "Agenda de hoy", icon: <AgendaIcon size={18} color="#7C3AED" />, path: "/agenda", bg: "#F5F3FF" },
-    { label: "Multipublicador", icon: <MatchesSolidIcon size={18} color="#EC4899" />, path: "/publicador", bg: "#FDF2F8" },
+    { label: "Agenda de hoy", icon: <AgendaIcon size={18} color="#9B21FF" />, path: "/agenda", bg: "#F7F0FF" },
+    { label: "Multipublicador", icon: <MatchesSolidIcon size={18} color="#FF5ECA" />, path: "/publicador", bg: "#FFF1FA" },
   ];
 
   const COLLAPSED_TODAY = 6;
@@ -246,7 +246,7 @@ export default function DashboardPage() {
                     key={a.label}
                     onClick={() => navigate(a.path)}
                     className="flex-shrink-0 flex flex-col items-center gap-1.5 px-3 py-2.5 rounded-xl border transition-all hover:shadow-sm hover:border-violet-200"
-                    style={{ borderColor: "#EDE9FE", background: "white", minWidth: 80, height: 64 }}
+                    style={{ borderColor: "#E9E5DE", background: "white", minWidth: 80, height: 64 }}
                   >
                     <div
                       className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
@@ -275,17 +275,17 @@ export default function DashboardPage() {
                 {/* KPIs compactos */}
                 <div
                   className="mt-4 rounded-2xl border flex flex-wrap gap-0 overflow-hidden"
-                  style={{ borderColor: "#EDE9FE", background: "white" }}
+                  style={{ borderColor: "#E9E5DE", background: "white" }}
                 >
                   <MiniStat
                     value={String(kpis.activeProps.length)}
                     label="Propiedades activas"
-                    icon={<HomeIcon size={14} color="#7C3AED" />}
+                    icon={<HomeIcon size={14} color="#9B21FF" />}
                   />
                   <MiniStat
                     value={String(kpis.openOpps.length)}
                     label="Oportunidades abiertas"
-                    icon={<OpportunitiesIcon size={14} color="#EC4899" />}
+                    icon={<OpportunitiesIcon size={14} color="#FF5ECA" />}
                   />
                   <MiniStat
                     value={`+${kpis.newContactsWeek.length}`}
@@ -324,13 +324,13 @@ export default function DashboardPage() {
                     <Card>
                       <div
                         className="px-5 py-4 border-b flex items-center justify-between gap-3"
-                        style={{ borderColor: "#F3F0FF" }}
+                        style={{ borderColor: "#F0EDE6" }}
                       >
                         <div>
-                          <h2 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                          <h2 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                             Hoy
                           </h2>
-                          <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+                          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                             {todayItems.length === 0
                               ? "Sin pendientes — estás al día"
                               : `${todayItems.length} ${todayItems.length === 1 ? "acción pendiente" : "acciones pendientes"}`}
@@ -348,13 +348,13 @@ export default function DashboardPage() {
 
                       {todayItems.length === 0 ? (
                         <div className="px-5 py-10 text-center">
-                          <p className="text-sm" style={{ color: "#7C6A99" }}>
+                          <p className="text-sm" style={{ color: "#6B7280" }}>
                             No hay seguimientos, visitas ni autorizaciones por vencer hoy.
                           </p>
                           <button
                             onClick={() => navigate("/propiedades/nueva")}
                             className="mt-4 text-xs px-4 py-2 rounded-xl border transition-all hover:bg-violet-50"
-                            style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600 }}
+                            style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600 }}
                           >
                             Cargar una propiedad
                           </button>
@@ -375,7 +375,7 @@ export default function DashboardPage() {
                             <button
                               onClick={() => setTodayExpanded((v) => !v)}
                               className="w-full mt-1 py-2 rounded-xl text-xs transition-all hover:bg-violet-50"
-                              style={{ color: "#7C3AED", fontWeight: 600 }}
+                              style={{ color: "#9B21FF", fontWeight: 600 }}
                             >
                               {todayExpanded
                                 ? "Ver menos"
@@ -399,7 +399,7 @@ export default function DashboardPage() {
                       />
                       <div className="px-5 pb-4">
                         {pipelineByStage.every((s) => s.count === 0) ? (
-                          <p className="text-xs py-4 text-center" style={{ color: "#7C6A99" }}>
+                          <p className="text-xs py-4 text-center" style={{ color: "#6B7280" }}>
                             Sin oportunidades activas todavía
                           </p>
                         ) : (
@@ -477,19 +477,19 @@ export default function DashboardPage() {
                             >
                               <div
                                 className="w-9 h-9 rounded-lg flex-shrink-0 flex items-center justify-center"
-                                style={{ background: "#F5F3FF" }}
+                                style={{ background: "#F7F0FF" }}
                               >
-                                <HomeIcon size={16} color="#A78BFA" />
+                                <HomeIcon size={16} color="#BF7FFF" />
                               </div>
                               <div className="flex-1 min-w-0">
-                                <p className="text-xs truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                                <p className="text-xs truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                                   {p.title}
                                 </p>
                                 <p className="text-[11px]" style={{ color: coverPhoto(p.id) === null ? "#B45309" : "#2563EB" }}>
                                   {coverPhoto(p.id) === null ? "Sin fotos" : "En revisión"}
                                 </p>
                               </div>
-                              <span className="text-[11px]" style={{ color: "#7C3AED", fontWeight: 600 }}>
+                              <span className="text-[11px]" style={{ color: "#9B21FF", fontWeight: 600 }}>
                                 Ver →
                               </span>
                             </button>
@@ -514,7 +514,7 @@ export default function DashboardPage() {
                           <div key={a.id} className="flex items-start gap-3 py-1">
                             <div
                               className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
-                              style={{ background: "#F5F3FF", color: "#7C3AED" }}
+                              style={{ background: "#F7F0FF", color: "#9B21FF" }}
                             >
                               <ActivityIcon type={iconFor(a.type)} size={13} />
                             </div>
@@ -523,7 +523,7 @@ export default function DashboardPage() {
                                 {a.title}
                               </p>
                               {a.detail && (
-                                <p className="text-[11px] truncate mt-0.5" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                                <p className="text-[11px] truncate mt-0.5" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                                   {a.detail}
                                 </p>
                               )}
@@ -545,8 +545,8 @@ export default function DashboardPage() {
         {/* Lo que viene */}
         <section className="mt-10 pb-2">
           <div className="flex items-center gap-3 mb-4">
-            <h2 className="text-xl tracking-tight" style={{ color: "#1F0A3C", fontWeight: 800 }}>Lo que viene</h2>
-            <span className="px-2.5 py-0.5 rounded-full text-xs" style={{ background: "#F5F3FF", color: "#7C3AED", fontWeight: 700 }}>
+            <h2 className="text-xl tracking-tight" style={{ color: "#1A1A1A", fontWeight: 800 }}>Lo que viene</h2>
+            <span className="px-2.5 py-0.5 rounded-full text-xs" style={{ background: "#F7F0FF", color: "#9B21FF", fontWeight: 700 }}>
               En desarrollo
             </span>
           </div>
@@ -555,7 +555,7 @@ export default function DashboardPage() {
               <div
                 key={f.title}
                 className="flex items-start gap-3 p-4 rounded-2xl border"
-                style={{ borderColor: "#EDE9FE", background: "white" }}
+                style={{ borderColor: "#E9E5DE", background: "white" }}
               >
                 <div
                   className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-base"
@@ -564,10 +564,10 @@ export default function DashboardPage() {
                   {f.emoji}
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>{f.title}</p>
-                  <p className="text-xs mt-0.5 leading-relaxed" style={{ color: "#7C6A99" }}>{f.desc}</p>
+                  <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>{f.title}</p>
+                  <p className="text-xs mt-0.5 leading-relaxed" style={{ color: "#6B7280" }}>{f.desc}</p>
                   {f.note && (
-                    <span className="inline-block mt-1.5 text-[11px] px-2 py-0.5 rounded-full" style={{ background: "#F5F3FF", color: "#7C3AED", fontWeight: 600 }}>
+                    <span className="inline-block mt-1.5 text-[11px] px-2 py-0.5 rounded-full" style={{ background: "#F7F0FF", color: "#9B21FF", fontWeight: 600 }}>
                       {f.note}
                     </span>
                   )}
@@ -614,14 +614,14 @@ function TodayRow({
   onMarkDone: (f: FollowUp) => void;
   onSnooze: (id: string) => void;
 }) {
-  const PRIORITY_DOT: Record<number, string> = { 0: "#E11D48", 1: "#E11D48", 2: "#F59E0B", 3: "#A78BFA" };
-  const dot = PRIORITY_DOT[item.priority] ?? "#A78BFA";
+  const PRIORITY_DOT: Record<number, string> = { 0: "#E11D48", 1: "#E11D48", 2: "#F59E0B", 3: "#BF7FFF" };
+  const dot = PRIORITY_DOT[item.priority] ?? "#BF7FFF";
 
   const icon =
     item.kind === "offer" ? <span style={{ fontSize: 14 }}>💰</span>
     : item.kind === "visit" ? <span style={{ fontSize: 14 }}>🏠</span>
     : item.kind === "auth" ? <AlertTriangleIcon size={14} color="#B45309" />
-    : <WhatsAppIcon size={14} color="#7C3AED" />;
+    : <WhatsAppIcon size={14} color="#9B21FF" />;
 
   return (
     <div
@@ -632,7 +632,7 @@ function TodayRow({
       <div className="relative flex-shrink-0">
         <div
           className="w-8 h-8 rounded-lg flex items-center justify-center"
-          style={{ background: "#F5F3FF" }}
+          style={{ background: "#F7F0FF" }}
         >
           {icon}
         </div>
@@ -646,10 +646,10 @@ function TodayRow({
 
       {/* Texto */}
       <div className="flex-1 min-w-0">
-        <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+        <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
           {item.label}
         </p>
-        <p className="text-xs truncate" style={{ color: item.priority <= 1 ? "#BE123C" : "#7C6A99", fontWeight: item.priority <= 1 ? 600 : 400 }}>
+        <p className="text-xs truncate" style={{ color: item.priority <= 1 ? "#BE123C" : "#6B7280", fontWeight: item.priority <= 1 ? 600 : 400 }}>
           {item.detail}
         </p>
       </div>
@@ -660,7 +660,7 @@ function TodayRow({
           <button
             onClick={() => onNavigate("/ofertas")}
             className="h-9 px-3 rounded-xl text-xs border transition-all hover:bg-violet-50"
-            style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "#FDFCFF" }}
+            style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "#FAF8F5" }}
           >
             Revisar
           </button>
@@ -671,14 +671,14 @@ function TodayRow({
             <button
               onClick={() => onMarkDone(item.followUp)}
               className="h-9 px-2.5 rounded-xl text-xs border transition-all hover:bg-white"
-              style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "#FDFCFF" }}
+              style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "#FAF8F5" }}
             >
               ✓ Hecho
             </button>
             <button
               onClick={() => onSnooze(item.followUp.contact.id)}
               className="h-9 px-2.5 rounded-xl text-xs transition-all hover:bg-white"
-              style={{ color: "#7458C4", fontWeight: 600 }}
+              style={{ color: "#6B7280", fontWeight: 600 }}
             >
               Posponer
             </button>
@@ -688,7 +688,7 @@ function TodayRow({
           <button
             onClick={() => onNavigate("/agenda")}
             className="h-9 px-3 rounded-xl text-xs border transition-all hover:bg-violet-50"
-            style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "#FDFCFF" }}
+            style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "#FAF8F5" }}
           >
             Agenda
           </button>
@@ -728,21 +728,21 @@ function MiniStat({
       disabled={!onClick}
       className={`flex items-center gap-2.5 px-4 py-3 border-r last:border-r-0 flex-1 min-w-0 transition-all ${onClick ? "hover:bg-violet-50 cursor-pointer" : "cursor-default"}`}
       style={{
-        borderColor: "#F3F0FF",
+        borderColor: "#F0EDE6",
         background: highlight ? "#FFFBEB" : "transparent",
       }}
     >
       <div
         className="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0"
-        style={{ background: highlight ? "#FDE68A" : "#F5F3FF" }}
+        style={{ background: highlight ? "#FDE68A" : "#F7F0FF" }}
       >
         {icon}
       </div>
       <div className="min-w-0">
-        <p className="text-sm leading-none" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <p className="text-sm leading-none" style={{ color: "#1A1A1A", fontWeight: 700 }}>
           {value}
         </p>
-        <p className="text-[10px] mt-0.5 truncate" style={{ color: "#7C6A99" }}>
+        <p className="text-[10px] mt-0.5 truncate" style={{ color: "#6B7280" }}>
           {label}
         </p>
       </div>
@@ -795,14 +795,14 @@ function SearchResults({
                       onClick={() => onProperty(p.id)}
                       className="w-full flex items-center gap-3 p-2.5 rounded-xl transition-all hover:bg-violet-50 text-left"
                     >
-                      <div className="w-11 h-11 rounded-lg overflow-hidden flex-shrink-0" style={{ background: "#F5F3FF" }}>
+                      <div className="w-11 h-11 rounded-lg overflow-hidden flex-shrink-0" style={{ background: "#F7F0FF" }}>
                         {photo && <img src={photo} alt="" className="w-full h-full object-cover" />}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>{p.title}</p>
-                        <p className="text-xs" style={{ color: "#7458C4" }}>{p.zone}</p>
+                        <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>{p.title}</p>
+                        <p className="text-xs" style={{ color: "#6B7280" }}>{p.zone}</p>
                       </div>
-                      <span className="text-sm whitespace-nowrap" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                      <span className="text-sm whitespace-nowrap" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                         {money(p.price)}
                       </span>
                     </button>
@@ -828,8 +828,8 @@ function SearchResults({
                       {initials(c.full_name)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>{c.full_name}</p>
-                      <p className="text-xs truncate" style={{ color: "#7458C4" }}>{c.email}</p>
+                      <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>{c.full_name}</p>
+                      <p className="text-xs truncate" style={{ color: "#6B7280" }}>{c.email}</p>
                     </div>
                   </button>
                 ))}

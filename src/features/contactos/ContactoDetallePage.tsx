@@ -136,7 +136,7 @@ export default function ContactoDetallePage() {
         <AppHeader title="Contacto" breadcrumb={["Contactos"]} compact />
         <div className="flex-1 overflow-y-auto px-4 md:px-8">
           <EmptyState
-            icon={<ContactsIcon size={24} color="#7C3AED" />}
+            icon={<ContactsIcon size={24} color="#9B21FF" />}
             title="Este contacto no existe"
             description="Puede que lo hayas eliminado o que el link esté desactualizado."
             action={{ label: "Volver a Contactos", onClick: () => navigate("/contactos") }}
@@ -179,9 +179,9 @@ export default function ContactoDetallePage() {
         <button
           onClick={() => navigate("/contactos")}
           className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm border transition-all hover:border-violet-300"
-          style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+          style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "white" }}
         >
-          <ChevronLeftIcon size={14} color="#7C3AED" />
+          <ChevronLeftIcon size={14} color="#9B21FF" />
           Volver
         </button>
         <button
@@ -198,7 +198,7 @@ export default function ContactoDetallePage() {
         {/* Encabezado */}
         <div
           className="mt-8 rounded-2xl border overflow-hidden"
-          style={{ borderColor: "#EDE9FE", boxShadow: "var(--shadow-card-lg)" }}
+          style={{ borderColor: "#E9E5DE", boxShadow: "var(--shadow-card-lg)" }}
         >
           <div className="px-6 py-6 flex items-center gap-6 flex-wrap" style={{ background: "var(--gradient-soft)" }}>
             <div
@@ -210,7 +210,7 @@ export default function ContactoDetallePage() {
 
             <div className="flex-1 min-w-[220px]">
               <div className="flex items-center gap-2 flex-wrap">
-                <h2 className="text-2xl tracking-tight" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+                <h2 className="text-2xl tracking-tight" style={{ color: "#1A1A1A", fontWeight: 800 }}>
                   {contact.full_name}
                 </h2>
                 <SampleBadge record={contact} size="sm" />
@@ -224,8 +224,8 @@ export default function ContactoDetallePage() {
                 const touch = lastTouch(contact.id, { activities, events }, Date.now());
                 return (
                   <p className="text-xs mt-1.5 flex flex-wrap items-center gap-2">
-                    <span style={{ color: "#7C6A99" }}>
-                      Último contacto: <strong style={{ color: "#1F0A3C" }}>{touchLabel(touch)}</strong>
+                    <span style={{ color: "#6B7280" }}>
+                      Último contacto: <strong style={{ color: "#1A1A1A" }}>{touchLabel(touch)}</strong>
                     </span>
                     {pending && (
                       <span
@@ -242,7 +242,7 @@ export default function ContactoDetallePage() {
                   </p>
                 );
               })()}
-              <p className="text-sm mt-1" style={{ color: "#7C6A99" }}>
+              <p className="text-sm mt-1" style={{ color: "#6B7280" }}>
                 {KIND_LABEL[contact.kind]}
                 {owner && ` · a cargo de ${owner.full_name}`}
                 {` · alta ${relativeTime(contact.created_at).toLowerCase()}`}
@@ -255,7 +255,7 @@ export default function ContactoDetallePage() {
                   <a
                     href={`tel:${contact.phone}`}
                     className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm border transition-all hover:border-violet-300"
-                    style={{ borderColor: "#EDE9FE", background: "white", color: "#7C3AED", fontWeight: 600 }}
+                    style={{ borderColor: "#E9E5DE", background: "white", color: "#9B21FF", fontWeight: 600 }}
                   >
                     <PhoneIcon size={13} />
                     {contact.phone}
@@ -265,7 +265,7 @@ export default function ContactoDetallePage() {
                   <a
                     href={`mailto:${contact.email}`}
                     className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm border transition-all hover:border-pink-200"
-                    style={{ borderColor: "#FCE7F3", background: "white", color: "#EC4899", fontWeight: 600 }}
+                    style={{ borderColor: "#FFF1FA", background: "white", color: "#FF5ECA", fontWeight: 600 }}
                   >
                     <MailIcon size={13} />
                     {contact.email}
@@ -278,10 +278,10 @@ export default function ContactoDetallePage() {
               <div className="flex items-center gap-4 flex-shrink-0">
                 <ScoreRing score={bestScore} size={92} />
                 <div>
-                  <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                  <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                     Mejor coincidencia
                   </p>
-                  <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+                  <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                     {contactMatches.length}{" "}
                     {contactMatches.length === 1 ? "propiedad compatible" : "propiedades compatibles"}
                   </p>
@@ -304,7 +304,7 @@ export default function ContactoDetallePage() {
               {!requirement ? (
                 <EmptyState
                   compact
-                  icon={<MatchesIcon size={22} color="#7C3AED" />}
+                  icon={<MatchesIcon size={22} color="#9B21FF" />}
                   title="Sin búsqueda cargada"
                   description="Sin esto el sistema no puede buscarle propiedades compatibles."
                   action={{ label: "Cargar qué busca", onClick: () => setEditing(true) }}
@@ -381,26 +381,26 @@ export default function ContactoDetallePage() {
                       <div
                         key={match.id}
                         className="flex flex-wrap sm:flex-nowrap items-center gap-3 p-3 rounded-xl transition-all hover:bg-violet-50 cursor-pointer"
-                        style={{ border: "1px solid #F3F0FF" }}
+                        style={{ border: "1px solid #F0EDE6" }}
                         onClick={() => navigate(`/matches/${match.id}`)}
                       >
                         <div
                           className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0"
-                          style={{ background: "#F5F3FF" }}
+                          style={{ background: "#F7F0FF" }}
                         >
                           {photo && <img src={photo} alt="" loading="lazy" className="w-full h-full object-cover" />}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                          <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                             {property.title}
                           </p>
                           <div className="flex items-center gap-1 mt-0.5">
                             <MapPinIcon size={10} />
-                            <span className="text-xs" style={{ color: "#7458C4" }}>
+                            <span className="text-xs" style={{ color: "#6B7280" }}>
                               {property.zone}
                             </span>
                           </div>
-                          <p className="text-sm mt-0.5" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                          <p className="text-sm mt-0.5" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                             {money(property.price, property.currency)}
                           </p>
                         </div>
@@ -409,8 +409,8 @@ export default function ContactoDetallePage() {
                             className="text-xs px-2.5 py-1 rounded-full"
                             style={{
                               background: "var(--gradient-soft)",
-                              border: "1px solid #EDE9FE",
-                              color: "#7C3AED",
+                              border: "1px solid #E9E5DE",
+                              color: "#9B21FF",
                               fontWeight: 700,
                             }}
                           >
@@ -455,20 +455,20 @@ export default function ContactoDetallePage() {
                       <div
                         key={opp.id}
                         className="flex items-center gap-3 p-3 rounded-xl"
-                        style={{ border: "1px solid #F3F0FF" }}
+                        style={{ border: "1px solid #F0EDE6" }}
                       >
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                          <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                             {property?.title ?? "Sin propiedad"}
                           </p>
-                          <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+                          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                             Actualizada {relativeTime(opp.updated_at).toLowerCase()}
                           </p>
                         </div>
-                        <span className="text-sm whitespace-nowrap" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                        <span className="text-sm whitespace-nowrap" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                           {money(opp.value, opp.currency)}
                         </span>
-                        <Badge bg="#F5F3FF" text="#7C3AED" border="#DDD6FE">
+                        <Badge bg="#F7F0FF" text="#9B21FF" border="#DDD8CF">
                           {STAGE_LABEL[opp.stage]}
                         </Badge>
                       </div>
@@ -501,10 +501,10 @@ export default function ContactoDetallePage() {
                         onClick={() => navigate(`/propiedades/${p.id}`)}
                         className="w-full text-left p-2.5 rounded-xl transition-all hover:bg-violet-50"
                       >
-                        <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                        <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                           {p.title}
                         </p>
-                        <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+                        <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                           {PROPERTY_STATUS_LABEL[p.status]} · {money(p.price, p.currency)}
                         </p>
                         <span
@@ -524,7 +524,7 @@ export default function ContactoDetallePage() {
               <Card padded>
                 <p
                   className="text-xs uppercase mb-2"
-                  style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.1em" }}
+                  style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.1em" }}
                 >
                   Notas
                 </p>
@@ -552,19 +552,19 @@ export default function ContactoDetallePage() {
                     <div
                       key={ev.id}
                       className="flex items-center gap-3 p-2.5 rounded-xl"
-                      style={{ border: "1px solid #F3F0FF" }}
+                      style={{ border: "1px solid #F0EDE6" }}
                     >
                       <div
                         className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0"
-                        style={{ background: "#F5F3FF", color: "#7C3AED" }}
+                        style={{ background: "#F7F0FF", color: "#9B21FF" }}
                       >
                         <PropertyTypeIcon type="casa" size={14} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-xs truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                        <p className="text-xs truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                           {ev.title}
                         </p>
-                        <p className="text-xs mt-0.5" style={{ color: "#7458C4", fontSize: 10 }}>
+                        <p className="text-xs mt-0.5" style={{ color: "#6B7280", fontSize: 10 }}>
                           {new Date(ev.starts_at).toLocaleDateString("es-AR", {
                             weekday: "short",
                             day: "numeric",
@@ -590,12 +590,12 @@ export default function ContactoDetallePage() {
                       {idx < timeline.length - 1 && (
                         <div
                           className="absolute left-[18px] top-8 w-px"
-                          style={{ height: "calc(100% + 8px)", background: "#EDE9FE" }}
+                          style={{ height: "calc(100% + 8px)", background: "#E9E5DE" }}
                         />
                       )}
                       <div
                         className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 z-10"
-                        style={{ background: "#F5F3FF", color: "#7C3AED" }}
+                        style={{ background: "#F7F0FF", color: "#9B21FF" }}
                       >
                         <ActivityIcon type={iconFor(a.type)} />
                       </div>
@@ -604,11 +604,11 @@ export default function ContactoDetallePage() {
                           {a.title}
                         </p>
                         {a.detail && (
-                          <p className="text-xs truncate mt-0.5" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                          <p className="text-xs truncate mt-0.5" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                             {a.detail}
                           </p>
                         )}
-                        <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
+                        <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
                           {relativeTime(a.created_at)}
                         </p>
                         {a.app_swipe_id && (
@@ -635,7 +635,7 @@ export default function ContactoDetallePage() {
                                   disabled={respondingId === a.id}
                                   onClick={() => handleRespondSwipe(a.id, "rejected")}
                                   className="text-xs px-3 py-1.5 rounded-lg border disabled:opacity-50"
-                                  style={{ borderColor: "#EDE9FE", color: "#7C6A99", fontWeight: 600 }}
+                                  style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 600 }}
                                 >
                                   Descartar
                                 </button>
@@ -673,7 +673,7 @@ export default function ContactoDetallePage() {
                                   disabled={respondingId === a.id}
                                   onClick={() => handleRespondOffer(a.id, a.app_offer_id!, "reject")}
                                   className="text-xs px-3 py-1.5 rounded-lg border disabled:opacity-50"
-                                  style={{ borderColor: "#EDE9FE", color: "#7C6A99", fontWeight: 600 }}
+                                  style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 600 }}
                                 >
                                   Rechazar
                                 </button>
@@ -696,7 +696,7 @@ export default function ContactoDetallePage() {
             {contactMatches.length > 0 && (
               <div
                 className="rounded-2xl p-4 flex items-start gap-3"
-                style={{ background: "var(--gradient-soft)", border: "1px solid #EDE9FE" }}
+                style={{ background: "var(--gradient-soft)", border: "1px solid #E9E5DE" }}
               >
                 <div
                   className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -705,10 +705,10 @@ export default function ContactoDetallePage() {
                   <MatchesSolidIcon size={16} />
                 </div>
                 <div>
-                  <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                  <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                     {contactMatches.length} coincidencias activas
                   </p>
-                  <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+                  <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                     Se recalculan solas cuando cambia la cartera o sus criterios.
                   </p>
                 </div>
@@ -771,10 +771,10 @@ function iconFor(type: string): string {
 function Detail({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <p className="text-xs mb-1" style={{ color: "#7458C4", fontWeight: 600 }}>
+      <p className="text-xs mb-1" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label}
       </p>
-      <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+      <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 600 }}>
         {value}
       </p>
     </div>

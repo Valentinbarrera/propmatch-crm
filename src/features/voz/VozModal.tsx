@@ -110,7 +110,7 @@ export function VozModal({
   return createPortal(
     <div
       className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center sm:p-6"
-      style={{ background: "rgba(31,10,60,0.35)" }}
+      style={{ background: "rgba(8, 11, 31,0.35)" }}
       onClick={(e) => {
         e.stopPropagation();
         close();
@@ -124,15 +124,15 @@ export function VozModal({
         style={{ boxShadow: "var(--shadow-pop)" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <header className="px-5 py-4 border-b flex items-center gap-3 flex-shrink-0" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+        <header className="px-5 py-4 border-b flex items-center gap-3 flex-shrink-0" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
           <span className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "var(--gradient-brand)" }}>
             <MicIcon size={18} color="white" />
           </span>
           <div className="flex-1 min-w-0">
-            <h2 id="voz-title" className="text-base tracking-tight" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <h2 id="voz-title" className="text-base tracking-tight" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               {step === "revisar" ? "Revisá lo que entendí" : copy.title}
             </h2>
-            <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+            <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
               {step === "revisar"
                 ? "Todavía no se guardó nada. Después lo podés corregir en el formulario."
                 : proppi.active
@@ -145,7 +145,7 @@ export function VozModal({
             onClick={close}
             aria-label="Cerrar"
             className="w-9 h-9 rounded-lg flex items-center justify-center hover:bg-violet-50 flex-shrink-0"
-            style={{ color: "#7458C4", fontSize: 20, lineHeight: 1 }}
+            style={{ color: "#6B7280", fontSize: 20, lineHeight: 1 }}
           >
             ×
           </button>
@@ -190,17 +190,17 @@ export function VozModal({
                     ) : dictation.status === "paused" ? (
                       <span style={{ color: "#92400E" }}>Pausado</span>
                     ) : (
-                      <span style={{ color: "#7C6A99", fontWeight: 500 }}>Micrófono apagado</span>
+                      <span style={{ color: "#6B7280", fontWeight: 500 }}>Micrófono apagado</span>
                     )}
                   </span>
                   <span
                     className="ml-auto inline-flex items-center gap-1 text-xs cursor-help"
-                    style={{ color: "#7458C4" }}
+                    style={{ color: "#6B7280" }}
                     title={GOOGLE_TIP}
                     tabIndex={0}
                     aria-label={GOOGLE_TIP}
                   >
-                    <InfoIcon size={14} color="#7458C4" />
+                    <InfoIcon size={14} color="#6B7280" />
                     ¿Adónde va el audio?
                   </span>
                 </div>
@@ -228,7 +228,7 @@ export function VozModal({
               )}
 
               {dictation.status === "idle" && dictation.supported && !text && (
-                <p className="text-xs" style={{ color: "#7C6A99" }}>
+                <p className="text-xs" style={{ color: "#6B7280" }}>
                   La primera vez el navegador te pide permiso para usar el micrófono: tocá «Permitir». Se usa solo mientras dictás.
                 </p>
               )}
@@ -239,7 +239,7 @@ export function VozModal({
               )}
 
               <label className="block">
-                <span className="text-xs" style={{ color: "#4C3A6B", fontWeight: 700 }}>
+                <span className="text-xs" style={{ color: "#374151", fontWeight: 700 }}>
                   Texto {dictation.supported ? "(podés corregirlo antes de procesar)" : ""}
                 </span>
                 <textarea
@@ -249,15 +249,15 @@ export function VozModal({
                   rows={6}
                   autoFocus={!dictation.supported}
                   placeholder={copy.placeholder}
-                  className="mt-1 w-full px-3.5 py-2.5 rounded-xl text-sm border outline-none resize-y bg-white text-[#1F0A3C] placeholder:text-[#7C6A99] border-[#EDE9FE] focus:border-[#7C3AED]"
+                  className="mt-1 w-full px-3.5 py-2.5 rounded-xl text-sm border outline-none resize-y bg-white text-[#1A1A1A] placeholder:text-[#6B7280] border-[#E9E5DE] focus:border-[#9B21FF]"
                 />
               </label>
               {dictation.interim && (
-                <p className="text-sm italic -mt-1" style={{ color: "#7458C4" }} aria-live="off">
+                <p className="text-sm italic -mt-1" style={{ color: "#6B7280" }} aria-live="off">
                   …{dictation.interim}
                 </p>
               )}
-              <p className="text-xs" style={{ color: "#7C6A99" }}>
+              <p className="text-xs" style={{ color: "#6B7280" }}>
                 <span style={{ fontWeight: 700 }}>Ejemplo:</span> {copy.example}
               </p>
             </div>
@@ -267,10 +267,10 @@ export function VozModal({
             <div className="py-10 text-center" role="status" aria-live="polite">
               <span
                 className="inline-block w-8 h-8 rounded-full border-4 animate-spin"
-                style={{ borderColor: "#EDE9FE", borderTopColor: "#7C3AED" }}
+                style={{ borderColor: "#E9E5DE", borderTopColor: "#9B21FF" }}
                 aria-hidden="true"
               />
-              <p className="mt-3 text-sm" style={{ color: "#4C3A6B", fontWeight: 600 }}>
+              <p className="mt-3 text-sm" style={{ color: "#374151", fontWeight: 600 }}>
                 {proppi.active ? "Proppi está armando los campos…" : "Armando los campos…"}
               </p>
             </div>
@@ -283,13 +283,13 @@ export function VozModal({
                   className="text-xs px-2.5 py-1 rounded-full"
                   style={
                     extraction.source === "proppi"
-                      ? { background: "#EDE9FE", color: "#6D28D9", fontWeight: 700 }
+                      ? { background: "#E9E5DE", color: "#7C0BD8", fontWeight: 700 }
                       : { background: "#F3F4F6", color: "#4B5563", fontWeight: 700 }
                   }
                 >
                   {extraction.source === "proppi" ? "Armado por Proppi" : "Armado básico (sin IA)"}
                 </span>
-                <span className="text-xs" style={{ color: "#7C6A99" }}>
+                <span className="text-xs" style={{ color: "#6B7280" }}>
                   {summary.detected.length} {summary.detected.length === 1 ? "dato detectado" : "datos detectados"}
                 </span>
               </div>
@@ -302,12 +302,12 @@ export function VozModal({
               {summary.detected.length > 0 ? (
                 <dl className="grid gap-2 sm:grid-cols-2">
                   {summary.detected.map((f) => (
-                    <div key={f.label} className="rounded-xl px-3 py-2 border" style={{ background: "#F5F3FF", borderColor: "#DDD6FE" }}>
-                      <dt className="flex items-center gap-1.5 text-[11px] uppercase tracking-wide" style={{ color: "#7458C4", fontWeight: 700 }}>
+                    <div key={f.label} className="rounded-xl px-3 py-2 border" style={{ background: "#F7F0FF", borderColor: "#DDD8CF" }}>
+                      <dt className="flex items-center gap-1.5 text-[11px] uppercase tracking-wide" style={{ color: "#6B7280", fontWeight: 700 }}>
                         <CheckIcon size={10} color="#16A34A" />
                         {f.label}
                       </dt>
-                      <dd className="text-sm mt-0.5" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                      <dd className="text-sm mt-0.5" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                         {f.value}
                       </dd>
                     </div>
@@ -320,18 +320,18 @@ export function VozModal({
               )}
 
               {(summary.title || summary.description) && (
-                <div className="rounded-xl px-3 py-2 border" style={{ background: "#F5F3FF", borderColor: "#DDD6FE" }}>
+                <div className="rounded-xl px-3 py-2 border" style={{ background: "#F7F0FF", borderColor: "#DDD8CF" }}>
                   {summary.title && (
-                    <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                    <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                       {summary.title}
                     </p>
                   )}
                   {summary.description && (
-                    <p className="text-sm mt-1 whitespace-pre-line" style={{ color: "#4C3A6B" }}>
+                    <p className="text-sm mt-1 whitespace-pre-line" style={{ color: "#374151" }}>
                       {summary.description}
                     </p>
                   )}
-                  <p className="text-[11px] mt-1.5" style={{ color: "#7458C4" }}>
+                  <p className="text-[11px] mt-1.5" style={{ color: "#6B7280" }}>
                     Título y descripción sugeridos{extraction.source === "local" ? " (básicos: conviene mejorarlos)" : ""}.
                   </p>
                 </div>
@@ -339,7 +339,7 @@ export function VozModal({
 
               {summary.missing.length > 0 && (
                 <div>
-                  <p className="text-xs" style={{ color: "#4C3A6B", fontWeight: 700 }}>
+                  <p className="text-xs" style={{ color: "#374151", fontWeight: 700 }}>
                     No detectado (queda como está en el formulario)
                   </p>
                   <ul className="mt-1.5 flex flex-wrap gap-1.5">
@@ -368,11 +368,11 @@ export function VozModal({
           )}
         </div>
 
-        <footer className="px-5 py-3 border-t flex-shrink-0" style={{ borderColor: "#EDE9FE" }}>
+        <footer className="px-5 py-3 border-t flex-shrink-0" style={{ borderColor: "#E9E5DE" }}>
           <div className="flex flex-wrap items-center justify-end gap-2">
             {step === "dictar" && (
               <>
-                <button type="button" onClick={close} className="px-4 min-h-11 rounded-xl text-sm hover:bg-violet-50" style={{ color: "#7C6A99", fontWeight: 600 }}>
+                <button type="button" onClick={close} className="px-4 min-h-11 rounded-xl text-sm hover:bg-violet-50" style={{ color: "#6B7280", fontWeight: 600 }}>
                   Cancelar
                 </button>
                 <button
@@ -394,7 +394,7 @@ export function VozModal({
                   setStep("dictar");
                 }}
                 className="px-4 min-h-11 rounded-xl text-sm border"
-                style={{ borderColor: "#DDD6FE", color: "#6D28D9", fontWeight: 600 }}
+                style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 600 }}
               >
                 Cancelar
               </button>
@@ -408,7 +408,7 @@ export function VozModal({
                     setTimeout(() => textRef.current?.focus(), 0);
                   }}
                   className="px-4 min-h-11 rounded-xl text-sm hover:bg-violet-50"
-                  style={{ color: "#6D28D9", fontWeight: 600 }}
+                  style={{ color: "#7C0BD8", fontWeight: 600 }}
                 >
                   ← Corregir el texto
                 </button>
@@ -428,7 +428,7 @@ export function VozModal({
               </>
             )}
           </div>
-          <p className="mt-2 text-[11px]" style={{ color: "#7C6A99" }}>
+          <p className="mt-2 text-[11px]" style={{ color: "#6B7280" }}>
             {proppi.active
               ? "El texto (no el audio) se envía a Anthropic para armar los campos, igual que lo que lee Proppi."
               : "El texto se procesa en este navegador: no se envía a ningún servicio de IA."}{" "}

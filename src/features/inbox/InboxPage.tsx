@@ -22,11 +22,11 @@ type View = "list" | "chat" | "profile";
 
 function Kpi({ label, value }: { label: string; value: number | string }) {
   return (
-    <div className="rounded-xl px-3 py-1.5 text-center min-w-[84px]" style={{ background: "#F5F3FF" }}>
-      <p className="text-base leading-tight" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+    <div className="rounded-xl px-3 py-1.5 text-center min-w-[84px]" style={{ background: "#F7F0FF" }}>
+      <p className="text-base leading-tight" style={{ color: "#1A1A1A", fontWeight: 800 }}>
         {value}
       </p>
-      <p className="text-[11px]" style={{ color: "#7458C4", fontWeight: 600 }}>
+      <p className="text-[11px]" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label}
       </p>
     </div>
@@ -136,8 +136,8 @@ export default function InboxPage() {
         </div>
       </AppHeader>
 
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 px-4 md:px-8 py-3 border-b flex-shrink-0" style={{ borderColor: "#EDE9FE" }}>
-        <div className="flex items-center gap-1 p-1 rounded-xl" style={{ background: "#F5F3FF" }} role="group" aria-label="Filtrar conversaciones">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 px-4 md:px-8 py-3 border-b flex-shrink-0" style={{ borderColor: "#E9E5DE" }}>
+        <div className="flex items-center gap-1 p-1 rounded-xl" style={{ background: "#F7F0FF" }} role="group" aria-label="Filtrar conversaciones">
           {tabs.map((t) => (
             <button
               key={t.value}
@@ -147,7 +147,7 @@ export default function InboxPage() {
               style={
                 tab === t.value
                   ? { background: "var(--gradient-brand)", color: "white", fontWeight: 600 }
-                  : { color: "#6B5A8E", fontWeight: 500 }
+                  : { color: "#6B7280", fontWeight: 500 }
               }
             >
               {t.label}
@@ -167,7 +167,7 @@ export default function InboxPage() {
           <button
             onClick={() => setAutoOpen(true)}
             className="min-h-[44px] md:min-h-[40px] px-4 rounded-xl text-sm border whitespace-nowrap flex items-center gap-2 hover:border-violet-300"
-            style={{ borderColor: "#DDD6FE", color: "#6D28D9", background: "#F9F7FF", fontWeight: 600 }}
+            style={{ borderColor: "#DDD8CF", color: "#7C0BD8", background: "#FAF8F5", fontWeight: 600 }}
           >
             Automatizaciones
             {autoConfig.paused ? (
@@ -188,7 +188,7 @@ export default function InboxPage() {
               onChange={(e) => setAgentId(e.target.value)}
               aria-label="Filtrar por agente"
               className="min-h-[44px] md:min-h-[40px] px-3 rounded-xl text-sm border bg-white"
-              style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }}
+              style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }}
             >
               <option value="">Todos los agentes</option>
               {profiles.map((p) => (
@@ -199,8 +199,8 @@ export default function InboxPage() {
             </select>
           )}
           <label
-            className="flex items-center gap-2 px-4 min-h-[44px] md:min-h-[40px] rounded-xl text-sm focus-within:ring-2 focus-within:ring-[#7C3AED] flex-1 md:w-[260px] md:flex-none"
-            style={{ background: "#F5F3FF" }}
+            className="flex items-center gap-2 px-4 min-h-[44px] md:min-h-[40px] rounded-xl text-sm focus-within:ring-2 focus-within:ring-[#9B21FF] flex-1 md:w-[260px] md:flex-none"
+            style={{ background: "#F7F0FF" }}
           >
             <SearchIcon />
             <input
@@ -209,14 +209,14 @@ export default function InboxPage() {
               onChange={(e) => setQuery(e.target.value)}
               aria-label="Buscar por nombre, propiedad o mensaje"
               placeholder="Buscar conversaciones…"
-              className="bg-transparent outline-none w-full text-[#1F0A3C] placeholder:text-[#6F5E94]"
+              className="bg-transparent outline-none w-full text-[#1A1A1A] placeholder:text-[#6B7280]"
             />
           </label>
         </div>
       </div>
 
       <div className="flex-1 min-h-0 grid grid-rows-[minmax(0,1fr)] grid-cols-1 md:grid-cols-[340px_minmax(0,1fr)] xl:grid-cols-[340px_minmax(0,1fr)_340px]">
-        <div className={`${view === "list" ? "block" : "hidden"} md:block ${pane} overflow-y-auto`} style={{ borderColor: "#EDE9FE" }}>
+        <div className={`${view === "list" ? "block" : "hidden"} md:block ${pane} overflow-y-auto`} style={{ borderColor: "#E9E5DE" }}>
           <UnifiedConversationList
             appItems={ch.appItems}
             channelItems={ch.channelItems}
@@ -233,7 +233,7 @@ export default function InboxPage() {
 
         <div
           className={`${view === "chat" ? "block" : "hidden"} ${view === "profile" ? "md:hidden xl:block" : "md:block"} ${pane}`}
-          style={{ borderColor: "#EDE9FE" }}
+          style={{ borderColor: "#E9E5DE" }}
         >
           {selected ? (
             <ChatView
@@ -256,7 +256,7 @@ export default function InboxPage() {
             />
           ) : (
             <div className="h-full flex items-center justify-center p-8 text-center">
-              <p className="text-sm" style={{ color: "#7C6A99" }}>
+              <p className="text-sm" style={{ color: "#6B7280" }}>
                 Elegí una conversación de la bandeja para verla acá.
               </p>
             </div>
@@ -271,7 +271,7 @@ export default function InboxPage() {
           ) : (
             <div className="p-4">
               <Card padded>
-                <p className="text-xs text-center" style={{ color: "#7C6A99" }}>
+                <p className="text-xs text-center" style={{ color: "#6B7280" }}>
                   Acá vas a ver el perfil del comprador.
                 </p>
               </Card>

@@ -38,13 +38,13 @@ interface Props {
 const PREVIEW_W = 560;
 
 const btn = "px-3 min-h-11 md:min-h-9 rounded-lg border text-xs hover:bg-violet-50 disabled:opacity-40 disabled:cursor-not-allowed";
-const btnStyle = { borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700, background: "white" } as const;
+const btnStyle = { borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700, background: "white" } as const;
 
 function Slider({ id, label, value, min, max, step = 1, onChange, unit = "" }: { id: string; label: string; value: number; min: number; max: number; step?: number; onChange: (v: number) => void; unit?: string }) {
   return (
     <div className="flex flex-col">
       <div className="flex items-center justify-between text-xs">
-        <label htmlFor={id} style={{ color: "#1F0A3C", fontWeight: 600 }}>{label}</label>
+        <label htmlFor={id} style={{ color: "#1A1A1A", fontWeight: 600 }}>{label}</label>
         <output htmlFor={id} style={{ color: "#4B5563" }}>{Number.isInteger(step) ? value : value.toFixed(1).replace(".", ",")}{unit}</output>
       </div>
       <input
@@ -56,7 +56,7 @@ function Slider({ id, label, value, min, max, step = 1, onChange, unit = "" }: {
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
         className="w-full min-h-11 md:min-h-8 cursor-pointer"
-        style={{ accentColor: "#7C3AED" }}
+        style={{ accentColor: "#9B21FF" }}
       />
     </div>
   );
@@ -149,10 +149,10 @@ export function PhotoEditorPanel({ media, src, format, stampName, safeMargin, on
   return (
     <Card>
       <div onKeyDown={onPanelKey}>
-        <div className="px-5 py-4 border-b flex flex-wrap items-center gap-2" style={{ borderColor: "#F3F0FF" }}>
+        <div className="px-5 py-4 border-b flex flex-wrap items-center gap-2" style={{ borderColor: "#F0EDE6" }}>
           <div className="flex-1 min-w-0">
-            <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>Editar foto</h3>
-            <p className="text-xs mt-0.5" style={{ color: "#6B5A8A" }}>El original no se toca: las ediciones se aplican al descargar.</p>
+            <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>Editar foto</h3>
+            <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>El original no se toca: las ediciones se aplican al descargar.</p>
           </div>
           <button type="button" className={btn} style={btnStyle} onClick={undo} disabled={!canUndo} aria-keyshortcuts="Control+Z">Deshacer</button>
           <button type="button" className={btn} style={btnStyle} onClick={redo} disabled={!canRedo} aria-keyshortcuts="Control+Y">Rehacer</button>
@@ -171,12 +171,12 @@ export function PhotoEditorPanel({ media, src, format, stampName, safeMargin, on
               onPointerCancel={() => (drag.current = null)}
               onKeyDown={onKey}
               className="rounded-xl overflow-hidden border touch-none cursor-grab active:cursor-grabbing mx-auto"
-              style={{ borderColor: "#DDD6FE", background: "#F3F4F6", maxWidth: 260 }}
+              style={{ borderColor: "#DDD8CF", background: "#F3F4F6", maxWidth: 260 }}
             >
               <canvas ref={canvas} width={PREVIEW_W} height={h} style={{ width: "100%", height: "auto", display: "block" }} aria-label="Foto con las ediciones aplicadas" />
             </div>
             {error && <p role="alert" className="text-xs mt-2" style={{ color: "#BE123C" }}>{error}</p>}
-            <p className="text-[11px] mt-2 text-center" style={{ color: "#6B5A8A" }}>Formato {format.ratioLabel} · {format.width}×{format.height} px al exportar</p>
+            <p className="text-[11px] mt-2 text-center" style={{ color: "#6B7280" }}>Formato {format.ratioLabel} · {format.width}×{format.height} px al exportar</p>
             {!filterOk && (
               <p role="status" className="text-xs mt-2 px-3 py-2 rounded-lg" style={{ background: "#FEF3C7", color: "#92400E" }}>
                 Este navegador no aplica filtros ni ajustes de color en el lienzo (por ejemplo, Safari antiguo): se ven y se descargan sin ellos. Probá con Chrome, Edge o Firefox.
@@ -186,7 +186,7 @@ export function PhotoEditorPanel({ media, src, format, stampName, safeMargin, on
 
           <div className="flex flex-col gap-5 min-w-0">
             <fieldset>
-              <legend className="text-xs mb-1" style={{ color: "#7458C4", fontWeight: 700 }}>Encuadre</legend>
+              <legend className="text-xs mb-1" style={{ color: "#6B7280", fontWeight: 700 }}>Encuadre</legend>
               <Slider id="ed-zoom" label="Zoom" value={e.zoom} min={1} max={3} step={0.1} unit="×" onChange={(v) => set({ zoom: v }, "zoom")} />
               <div className="flex flex-wrap gap-2 mt-1">
                 <button type="button" className={btn} style={btnStyle} onClick={() => set({ rotate: ((e.rotate + 270) % 360) as PhotoEdits["rotate"] })}>Girar a la izquierda</button>
@@ -194,11 +194,11 @@ export function PhotoEditorPanel({ media, src, format, stampName, safeMargin, on
                 <button type="button" className={btn} style={btnStyle} aria-pressed={e.flipH} onClick={() => set({ flipH: !e.flipH })}>Espejar</button>
                 <button type="button" className={btn} style={btnStyle} onClick={() => set({ focal: { x: 0.5, y: 0.5 } })}>Centrar</button>
               </div>
-              <p className="text-[11px] mt-1" style={{ color: "#6B5A8A" }}>Arrastrá la foto (o usá las flechas) para elegir qué parte queda.</p>
+              <p className="text-[11px] mt-1" style={{ color: "#6B7280" }}>Arrastrá la foto (o usá las flechas) para elegir qué parte queda.</p>
             </fieldset>
 
             <fieldset>
-              <legend className="text-xs mb-1" style={{ color: "#7458C4", fontWeight: 700 }}>Filtros</legend>
+              <legend className="text-xs mb-1" style={{ color: "#6B7280", fontWeight: 700 }}>Filtros</legend>
               <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Filtro">
                 {FILTERS.map((f) => (
                   <button
@@ -209,7 +209,7 @@ export function PhotoEditorPanel({ media, src, format, stampName, safeMargin, on
                     title={f.hint}
                     onClick={() => set({ filter: f.id })}
                     className="px-3 min-h-11 md:min-h-9 rounded-xl border text-xs"
-                    style={{ borderColor: e.filter === f.id ? "#7C3AED" : "#EDE9FE", background: e.filter === f.id ? "#F5F3FF" : "white", color: "#1F0A3C", fontWeight: 600 }}
+                    style={{ borderColor: e.filter === f.id ? "#9B21FF" : "#E9E5DE", background: e.filter === f.id ? "#F7F0FF" : "white", color: "#1A1A1A", fontWeight: 600 }}
                   >
                     {f.label}
                   </button>
@@ -218,7 +218,7 @@ export function PhotoEditorPanel({ media, src, format, stampName, safeMargin, on
             </fieldset>
 
             <fieldset>
-              <legend className="text-xs mb-1" style={{ color: "#7458C4", fontWeight: 700 }}>Ajustes</legend>
+              <legend className="text-xs mb-1" style={{ color: "#6B7280", fontWeight: 700 }}>Ajustes</legend>
               <Slider id="ed-bri" label="Brillo" value={e.brightness} min={-100} max={100} onChange={(v) => set({ brightness: v }, "brightness")} />
               <Slider id="ed-con" label="Contraste" value={e.contrast} min={-100} max={100} onChange={(v) => set({ contrast: v }, "contrast")} />
               <Slider id="ed-sat" label="Saturación" value={e.saturation} min={-100} max={100} onChange={(v) => set({ saturation: v }, "saturation")} />
@@ -227,8 +227,8 @@ export function PhotoEditorPanel({ media, src, format, stampName, safeMargin, on
             </fieldset>
 
             <fieldset>
-              <legend className="text-xs mb-1" style={{ color: "#7458C4", fontWeight: 700 }}>Texto sobre la foto</legend>
-              <label htmlFor="ed-text" className="text-xs" style={{ color: "#1F0A3C", fontWeight: 600 }}>Texto (título, precio o etiqueta)</label>
+              <legend className="text-xs mb-1" style={{ color: "#6B7280", fontWeight: 700 }}>Texto sobre la foto</legend>
+              <label htmlFor="ed-text" className="text-xs" style={{ color: "#1A1A1A", fontWeight: 600 }}>Texto (título, precio o etiqueta)</label>
               <input
                 id="ed-text"
                 type="text"
@@ -237,7 +237,7 @@ export function PhotoEditorPanel({ media, src, format, stampName, safeMargin, on
                 onChange={(ev) => setText({ text: ev.target.value })}
                 placeholder="Ej.: ¡Nuevo! USD 185.000"
                 className="mt-1 w-full rounded-lg border px-3 min-h-11 text-sm"
-                style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }}
+                style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }}
               />
               <div className="flex flex-wrap gap-2 mt-2" role="group" aria-label="Etiquetas rápidas">
                 {TEXT_PRESETS.map((p) => (
@@ -256,7 +256,7 @@ export function PhotoEditorPanel({ media, src, format, stampName, safeMargin, on
                         aria-checked={t.color === c.value}
                         onClick={() => setText({ color: c.value }, "")}
                         className="px-3 min-h-11 md:min-h-9 rounded-xl border text-xs flex items-center gap-2"
-                        style={{ borderColor: t.color === c.value ? "#7C3AED" : "#EDE9FE", background: "white", color: "#1F0A3C", fontWeight: 600 }}
+                        style={{ borderColor: t.color === c.value ? "#9B21FF" : "#E9E5DE", background: "white", color: "#1A1A1A", fontWeight: 600 }}
                       >
                         <span aria-hidden="true" className="w-4 h-4 rounded-full border" style={{ background: c.value, borderColor: "#9CA3AF" }} />
                         {c.label}
@@ -272,14 +272,14 @@ export function PhotoEditorPanel({ media, src, format, stampName, safeMargin, on
                         aria-checked={t.pos === p}
                         onClick={() => setText({ pos: p }, "")}
                         className="px-3 min-h-11 md:min-h-9 rounded-xl border text-xs"
-                        style={{ borderColor: t.pos === p ? "#7C3AED" : "#EDE9FE", background: t.pos === p ? "#F5F3FF" : "white", color: "#1F0A3C", fontWeight: 600 }}
+                        style={{ borderColor: t.pos === p ? "#9B21FF" : "#E9E5DE", background: t.pos === p ? "#F7F0FF" : "white", color: "#1A1A1A", fontWeight: 600 }}
                       >
                         {p === "top" ? "Arriba" : p === "center" ? "Centro" : "Abajo"}
                       </button>
                     ))}
                   </div>
-                  <label className="flex items-center gap-2 text-sm min-h-11 cursor-pointer" style={{ color: "#1F0A3C" }}>
-                    <input type="checkbox" className="w-5 h-5" style={{ accentColor: "#7C3AED" }} checked={t.plate === "auto"} onChange={(ev) => setText({ plate: ev.target.checked ? "auto" : "none" }, "")} />
+                  <label className="flex items-center gap-2 text-sm min-h-11 cursor-pointer" style={{ color: "#1A1A1A" }}>
+                    <input type="checkbox" className="w-5 h-5" style={{ accentColor: "#9B21FF" }} checked={t.plate === "auto"} onChange={(ev) => setText({ plate: ev.target.checked ? "auto" : "none" }, "")} />
                     Fondo automático para que se lea
                   </label>
                   <p className="text-xs" style={{ color: t.plate === "auto" ? "#15803D" : "#92400E" }} role="status">
@@ -291,16 +291,16 @@ export function PhotoEditorPanel({ media, src, format, stampName, safeMargin, on
               )}
             </fieldset>
 
-            <label className="flex items-start gap-2 text-sm min-h-11 cursor-pointer" style={{ color: "#1F0A3C" }}>
-              <input type="checkbox" className="w-5 h-5 mt-0.5" style={{ accentColor: "#7C3AED" }} checked={e.stamp} disabled={!stampName.trim()} onChange={(ev) => set({ stamp: ev.target.checked })} />
+            <label className="flex items-start gap-2 text-sm min-h-11 cursor-pointer" style={{ color: "#1A1A1A" }}>
+              <input type="checkbox" className="w-5 h-5 mt-0.5" style={{ accentColor: "#9B21FF" }} checked={e.stamp} disabled={!stampName.trim()} onChange={(ev) => set({ stamp: ev.target.checked })} />
               <span>
                 Sello con el nombre de la inmobiliaria{stampName.trim() ? ` («${stampName}»)` : ""}
-                {!stampName.trim() && <span className="block text-xs" style={{ color: "#6B5A8A" }}>Cargá el nombre de la agencia en Configuración para usarlo.</span>}
+                {!stampName.trim() && <span className="block text-xs" style={{ color: "#6B7280" }}>Cargá el nombre de la agencia en Configuración para usarlo.</span>}
               </span>
             </label>
 
             {canCopy && (
-              <div className="flex flex-wrap gap-2 border-t pt-4" style={{ borderColor: "#F3F0FF" }}>
+              <div className="flex flex-wrap gap-2 border-t pt-4" style={{ borderColor: "#F0EDE6" }}>
                 <button type="button" className={btn} style={btnStyle} onClick={() => onCopyAll("adjust")}>Copiar filtro y ajustes a todas</button>
                 <button type="button" className={btn} style={btnStyle} onClick={() => onCopyAll("all")}>Copiar también el texto</button>
               </div>

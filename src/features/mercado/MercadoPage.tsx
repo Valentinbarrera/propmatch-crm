@@ -29,7 +29,7 @@ export default function MercadoPage() {
           onClick={retry}
           disabled={loading}
           className="min-h-11 px-4 rounded-xl text-sm border bg-white hover:bg-violet-50 disabled:opacity-60"
-          style={{ borderColor: "#DDD6FE", color: "#6D28D9", fontWeight: 700 }}
+          style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
         >
           {loading ? "Actualizando…" : "Actualizar"}
         </button>
@@ -62,9 +62,9 @@ export default function MercadoPage() {
           {loading ? (
             <LoadingState />
           ) : empty ? (
-            <div className="rounded-2xl border" style={{ borderColor: "#EDE9FE" }}>
+            <div className="rounded-2xl border" style={{ borderColor: "#E9E5DE" }}>
               <EmptyState
-                icon={<MercadoIcon size={24} color="#7C3AED" />}
+                icon={<MercadoIcon size={24} color="#9B21FF" />}
                 title="Todavía no hay datos de mercado"
                 description="Las estadísticas y el tasador se arman con tus propiedades disponibles en USD (y, con sesión, con las activas de la app PropMatch). Cargá propiedades con zona y precio para empezar."
                 action={{ label: "Cargar propiedad", onClick: () => navigate("/propiedades/nueva") }}

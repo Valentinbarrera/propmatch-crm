@@ -84,7 +84,7 @@ export function AutomationsDrawer({
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end" onKeyDown={onKeyDown}>
-      <div className="absolute inset-0 bg-[#1F0A3C]/40" onClick={onClose} aria-hidden="true" />
+      <div className="absolute inset-0 bg-[#1A1A1A]/40" onClick={onClose} aria-hidden="true" />
       <div
         ref={panel}
         role="dialog"
@@ -101,13 +101,13 @@ export function AutomationsDrawer({
             onClick={onClose}
             aria-label="Cerrar"
             className="w-11 h-11 rounded-xl flex items-center justify-center text-lg border hover:border-violet-300"
-            style={{ borderColor: LINE, color: "#6D28D9" }}
+            style={{ borderColor: LINE, color: "#7C0BD8" }}
           >
             <span aria-hidden="true">✕</span>
           </button>
         </header>
 
-        <div className="px-4 py-3 border-b space-y-2 flex-shrink-0" style={{ borderColor: LINE, background: "#FDFCFF" }}>
+        <div className="px-4 py-3 border-b space-y-2 flex-shrink-0" style={{ borderColor: LINE, background: "#FAF8F5" }}>
           <div className="flex items-center gap-2">
             <Switch checked={config.paused} onChange={(v) => update((c) => ({ ...c, paused: v }))} label="Pausar todas las automatizaciones" />
             <div className="min-w-0">
@@ -119,11 +119,11 @@ export function AutomationsDrawer({
               </p>
             </div>
           </div>
-          <p className="text-xs" style={{ color: "#4B3B73" }}>
+          <p className="text-xs" style={{ color: "#374151" }}>
             Las automatizaciones se envían mientras alguien de tu equipo tenga PropMatch abierto. El envío 24/7 requiere
             activar el servidor (próximamente).
           </p>
-          <p className="text-xs" style={{ color: "#6B5A8E" }}>
+          <p className="text-xs" style={{ color: "#6B7280" }}>
             {persisted
               ? "Por ahora las reglas se guardan en este navegador."
               : "Este navegador no permite guardar: los cambios se pierden al recargar."}
@@ -140,7 +140,7 @@ export function AutomationsDrawer({
               aria-controls={`auto-panel-${t.id}`}
               onClick={() => setTab(t.id)}
               className="min-h-[44px] px-3.5 text-sm whitespace-nowrap border-b-2 -mb-px"
-              style={{ borderColor: tab === t.id ? "#7C3AED" : "transparent", color: tab === t.id ? "#6D28D9" : "#6B5A8E", fontWeight: 700 }}
+              style={{ borderColor: tab === t.id ? "#9B21FF" : "transparent", color: tab === t.id ? "#7C0BD8" : "#6B7280", fontWeight: 700 }}
             >
               {t.label}
             </button>

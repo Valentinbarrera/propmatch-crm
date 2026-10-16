@@ -108,33 +108,33 @@ ${t}` : t));
 
   return (
     <section className="flex flex-col min-h-0 h-full bg-white" aria-label={`Conversación con ${conversation.name}`}>
-      <header className="flex items-center gap-3 px-3 md:px-4 py-3 border-b flex-shrink-0" style={{ borderColor: "#EDE9FE" }}>
+      <header className="flex items-center gap-3 px-3 md:px-4 py-3 border-b flex-shrink-0" style={{ borderColor: "#E9E5DE" }}>
         <button
           onClick={onBack}
           aria-label="Volver a la bandeja"
           className="md:hidden w-11 h-11 -ml-1 flex items-center justify-center rounded-xl"
-          style={{ color: "#7C3AED" }}
+          style={{ color: "#9B21FF" }}
         >
           <ChevronLeftIcon size={20} />
         </button>
         <Avatar name={conversation.name} size={40} />
         <div className="min-w-0 flex-1">
-          <h2 className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <h2 className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             {conversation.name}
           </h2>
-          <p className="text-xs truncate" style={{ color: "#7C6A99" }}>
+          <p className="text-xs truncate" style={{ color: "#6B7280" }}>
             {CHANNEL_META[conversation.channel].label}
             {responsible ? ` · Resp. por ${responsible.full_name}` : ""}
           </p>
         </div>
-        <button onClick={onProfile} className={`${btn} xl:hidden`} style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600 }}>
+        <button onClick={onProfile} className={`${btn} xl:hidden`} style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600 }}>
           Perfil
         </button>
         {conversation.contact && (
           <button
             onClick={() => navigate(`/contactos/${conversation.contact!.id}`)}
             className={`${btn} hidden sm:flex`}
-            style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "#F9F7FF" }}
+            style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "#FAF8F5" }}
           >
             Ver ficha
           </button>
@@ -144,7 +144,7 @@ ${t}` : t));
       {property && (
         <div
           className="flex items-center gap-2 px-4 py-2 text-xs border-b flex-shrink-0 flex-wrap"
-          style={{ background: "#F9F7FF", borderColor: "#F3F0FF", color: "#4C1D95" }}
+          style={{ background: "#FAF8F5", borderColor: "#F0EDE6", color: "#56148F" }}
         >
           <span>
             Consulta sobre: <strong style={{ fontWeight: 700 }}>{property.title}</strong>
@@ -153,7 +153,7 @@ ${t}` : t));
             <button
               onClick={() => navigate(`/matches/${crmMatch.id}`)}
               className="underline underline-offset-2 min-h-[28px]"
-              style={{ color: "#6D28D9", fontWeight: 700 }}
+              style={{ color: "#7C0BD8", fontWeight: 700 }}
             >
               Ver match ({Math.round(crmMatch.score)}%)
             </button>
@@ -167,14 +167,14 @@ ${t}` : t));
         aria-live="polite"
         aria-label="Mensajes"
         className="flex-1 min-h-0 overflow-y-auto px-4 py-4 space-y-2"
-        style={{ background: "#FDFCFF" }}
+        style={{ background: "#FAF8F5" }}
       >
         {loading ? (
-          <p className="text-xs text-center" style={{ color: "#7458C4" }}>
+          <p className="text-xs text-center" style={{ color: "#6B7280" }}>
             Cargando mensajes…
           </p>
         ) : items.length === 0 ? (
-          <p className="text-xs text-center py-8" style={{ color: "#7C6A99" }}>
+          <p className="text-xs text-center py-8" style={{ color: "#6B7280" }}>
             Todavía no hay mensajes. Escribí el primero o usá una respuesta rápida.
           </p>
         ) : (
@@ -182,7 +182,7 @@ ${t}` : t));
             if (it.kind === "day") {
               return (
                 <div key={it.key} className="flex justify-center py-2">
-                  <span className="text-[11px] px-3 py-1 rounded-full" style={{ background: "#F5F3FF", color: "#7458C4", fontWeight: 600 }}>
+                  <span className="text-[11px] px-3 py-1 rounded-full" style={{ background: "#F7F0FF", color: "#6B7280", fontWeight: 600 }}>
                     {it.label}
                   </span>
                 </div>
@@ -195,8 +195,8 @@ ${t}` : t));
                 <div
                   className="max-w-[85%] md:max-w-[75%] rounded-2xl px-3.5 py-2"
                   style={{
-                    background: fromClient ? "#F3F0FF" : "#7C3AED",
-                    color: fromClient ? "#1F0A3C" : "white",
+                    background: fromClient ? "#F0EDE6" : "#9B21FF",
+                    color: fromClient ? "#1A1A1A" : "white",
                     borderBottomLeftRadius: fromClient ? 6 : undefined,
                     borderBottomRightRadius: fromClient ? undefined : 6,
                   }}
@@ -207,7 +207,7 @@ ${t}` : t));
                     </p>
                   )}
                   <p className="text-sm whitespace-pre-wrap break-words">{it.m.content}</p>
-                  <p className="text-[11px] mt-0.5 text-right" style={{ color: fromClient ? "#7458C4" : "rgba(255,255,255,0.8)" }}>
+                  <p className="text-[11px] mt-0.5 text-right" style={{ color: fromClient ? "#6B7280" : "rgba(255,255,255,0.8)" }}>
                     {new Date(it.m.created_at).toLocaleTimeString("es-AR", { hour: "2-digit", minute: "2-digit" })}
                   </p>
                 </div>
@@ -217,7 +217,7 @@ ${t}` : t));
         )}
       </div>
 
-      <div className="border-t px-3 md:px-4 pt-2 pb-3 flex-shrink-0" style={{ borderColor: "#EDE9FE" }}>
+      <div className="border-t px-3 md:px-4 pt-2 pb-3 flex-shrink-0" style={{ borderColor: "#E9E5DE" }}>
         <InboxAssist
           conversation={conversation}
           messages={messages}
@@ -236,7 +236,7 @@ ${t}` : t));
                 title={unavailable ? "Falta un dato de la propiedad (dirección, título o precio)" : undefined}
                 onClick={() => insertSnippet(s.text)}
                 className="min-h-[44px] md:min-h-[32px] px-3 rounded-full text-xs whitespace-nowrap border disabled:opacity-50 hover:border-violet-300"
-                style={{ borderColor: "#DDD6FE", color: "#6D28D9", background: "#F9F7FF", fontWeight: 600 }}
+                style={{ borderColor: "#DDD8CF", color: "#7C0BD8", background: "#FAF8F5", fontWeight: 600 }}
               >
                 {s.title}
               </button>
@@ -263,7 +263,7 @@ ${t}` : t));
             }}
             aria-label="Escribir un mensaje"
             placeholder="Escribí un mensaje… (Shift+Enter para salto de línea)"
-            className="flex-1 px-3.5 py-2.5 rounded-xl text-sm border outline-none resize-none bg-white text-[#1F0A3C] placeholder:text-[#7C6A99] border-[#EDE9FE] focus:border-[#7C3AED] min-h-[44px]"
+            className="flex-1 px-3.5 py-2.5 rounded-xl text-sm border outline-none resize-none bg-white text-[#1A1A1A] placeholder:text-[#6B7280] border-[#E9E5DE] focus:border-[#9B21FF] min-h-[44px]"
           />
           <button
             onClick={submit}

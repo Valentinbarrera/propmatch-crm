@@ -2,7 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 
 /**
  * Card estándar de PropMatch.
- * Mismo borde (#EDE9FE), mismo radio (2xl) y misma sombra que el prototipo,
+ * Mismo borde (#E9E5DE), mismo radio (2xl) y misma sombra que el prototipo,
  * que los repetía inline en cada uno de los ~60 contenedores.
  */
 export function Card({
@@ -30,7 +30,7 @@ export function Card({
         .join(" ")}
       style={{
         background: "white",
-        borderColor: "#EDE9FE",
+        borderColor: "#E9E5DE",
         boxShadow: "var(--shadow-card)",
         ...style,
       }}
@@ -62,14 +62,14 @@ export function SectionHeader({
         inCard ? "px-5 py-4 border-b" : "mb-4",
         className,
       ].join(" ")}
-      style={inCard ? { borderColor: "#F3F0FF", background: "white" } : undefined}
+      style={inCard ? { borderColor: "#F0EDE6", background: "white" } : undefined}
     >
       <div className="min-w-0">
-        <h2 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <h2 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>
           {title}
         </h2>
         {subtitle && (
-          <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
             {subtitle}
           </p>
         )}
@@ -78,7 +78,7 @@ export function SectionHeader({
         <button
           onClick={action.onClick}
           className="text-xs px-3 py-1.5 rounded-lg transition-all hover:bg-violet-100 flex-shrink-0"
-          style={{ color: "#7C3AED", background: "#F5F3FF", fontWeight: 600 }}
+          style={{ color: "#9B21FF", background: "#F7F0FF", fontWeight: 600 }}
         >
           {action.label}
         </button>

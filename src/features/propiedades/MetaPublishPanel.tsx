@@ -11,7 +11,7 @@ import { checkIgCaption, igKindFor, META_PUBLISH_LIMITS, metaPublishErrorText, t
 import type { ChannelState } from "./usePublications";
 import type { MetaConnection } from "./useMetaConnection";
 
-const INK = "#1F0A3C";
+const INK = "#1A1A1A";
 
 type Busy = null | "ig" | "fb" | "fb-delete";
 
@@ -100,7 +100,7 @@ export function MetaPublishPanel({ property, photos, facebook, instagram, meta, 
 
   return (
     <Card>
-      <div className="px-5 py-4 border-b flex flex-wrap items-center gap-2" style={{ borderColor: "#F3F0FF" }}>
+      <div className="px-5 py-4 border-b flex flex-wrap items-center gap-2" style={{ borderColor: "#F0EDE6" }}>
         <h3 className="text-base" style={{ color: INK, fontWeight: 700 }}>Facebook e Instagram</h3>
         {meta.approvalPending ? (
           <Badge bg="#FEF3C7" text="#92400E" size="xs">Requiere aprobación de Meta</Badge>
@@ -116,7 +116,7 @@ export function MetaPublishPanel({ property, photos, facebook, instagram, meta, 
           <p className="text-sm" style={{ color: "#4B5563" }}>
             Publicar en tu Página de Facebook y en tu Instagram profesional desde PropMatch requiere aprobación de Meta. Mientras tanto podés armar la
             publicación en el{" "}
-            <Link to={`/instagram/nueva?propiedad=${property.id}`} className="underline" style={{ color: "#5B21B6" }}>
+            <Link to={`/instagram/nueva?propiedad=${property.id}`} className="underline" style={{ color: "#7C0BD8" }}>
               Estudio de Instagram
             </Link>{" "}
             y subirla a mano.
@@ -125,7 +125,7 @@ export function MetaPublishPanel({ property, photos, facebook, instagram, meta, 
           <p className="text-sm" style={{ color: "#4B5563" }}>
             {meta.needsReauth ? "La conexión con Facebook venció. " : ""}
             Conectá tu Página de Facebook desde las{" "}
-            <Link to="/publicador#plataformas" className="underline" style={{ color: "#5B21B6" }}>
+            <Link to="/publicador#plataformas" className="underline" style={{ color: "#7C0BD8" }}>
               plataformas del multipublicador
             </Link>
             .
@@ -144,7 +144,7 @@ export function MetaPublishPanel({ property, photos, facebook, instagram, meta, 
             Fotos ({selected.length} de {available.length} elegidas, máx. {META_PUBLISH_LIMITS.carouselMax})
           </h4>
           {available.length === 0 ? (
-            <p className="text-xs mt-1" style={{ color: "#6B5A8E" }}>
+            <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
               Esta propiedad no tiene fotos con link público todavía.
             </p>
           ) : (
@@ -160,11 +160,11 @@ export function MetaPublishPanel({ property, photos, facebook, instagram, meta, 
                       aria-label={`Foto ${i + 1}${on ? `, elegida en el lugar ${pos + 1}` : ""}`}
                       onClick={() => toggle(u)}
                       className="relative block w-full aspect-square rounded-lg overflow-hidden border-2"
-                      style={{ borderColor: on ? "#7C3AED" : "transparent", opacity: on ? 1 : 0.55 }}
+                      style={{ borderColor: on ? "#9B21FF" : "transparent", opacity: on ? 1 : 0.55 }}
                     >
                       <img src={u} alt="" loading="lazy" className="w-full h-full object-cover" />
                       {on && (
-                        <span className="absolute top-1 left-1 w-5 h-5 rounded-full text-[11px] flex items-center justify-center text-white" style={{ background: "#7C3AED", fontWeight: 800 }}>
+                        <span className="absolute top-1 left-1 w-5 h-5 rounded-full text-[11px] flex items-center justify-center text-white" style={{ background: "#9B21FF", fontWeight: 800 }}>
                           {pos + 1}
                         </span>
                       )}
@@ -174,9 +174,9 @@ export function MetaPublishPanel({ property, photos, facebook, instagram, meta, 
               })}
             </ul>
           )}
-          <p className="text-xs mt-2" style={{ color: "#6B5A8E" }}>
+          <p className="text-xs mt-2" style={{ color: "#6B7280" }}>
             Instagram pide JPEG con relación de 4:5 a 1,91:1. Si alguna foto no cumple, recortala en el{" "}
-            <Link to={`/instagram/nueva?propiedad=${property.id}`} className="underline" style={{ color: "#5B21B6" }}>
+            <Link to={`/instagram/nueva?propiedad=${property.id}`} className="underline" style={{ color: "#7C0BD8" }}>
               Estudio de Instagram
             </Link>
             .
@@ -184,12 +184,12 @@ export function MetaPublishPanel({ property, photos, facebook, instagram, meta, 
         </section>
 
         {/* Instagram */}
-        <section aria-labelledby="meta-ig-h" className="border-t pt-4" style={{ borderColor: "#F3F0FF" }}>
+        <section aria-labelledby="meta-ig-h" className="border-t pt-4" style={{ borderColor: "#F0EDE6" }}>
           <div className="flex flex-wrap items-center gap-2">
             <h4 id="meta-ig-h" className="text-sm" style={{ color: INK, fontWeight: 700 }}>Instagram</h4>
             <ChannelStatusLine ch={instagram} />
           </div>
-          <label htmlFor="meta-ig-caption" className="block text-xs mt-2" style={{ color: "#7458C4", fontWeight: 700 }}>
+          <label htmlFor="meta-ig-caption" className="block text-xs mt-2" style={{ color: "#6B7280", fontWeight: 700 }}>
             Texto ({igCaption.length.toLocaleString("es-AR")} / {META_PUBLISH_LIMITS.captionMax.toLocaleString("es-AR")})
           </label>
           <textarea
@@ -198,7 +198,7 @@ export function MetaPublishPanel({ property, photos, facebook, instagram, meta, 
             onChange={(e) => setIgCaption(e.target.value)}
             rows={6}
             className="mt-1 w-full rounded-lg border p-3 text-sm"
-            style={{ borderColor: "#EDE9FE", color: INK }}
+            style={{ borderColor: "#E9E5DE", color: INK }}
           />
           {igCaptionIssue && <p className="text-xs" style={{ color: "#BE123C" }}>{igCaptionIssue}</p>}
           <div className="flex flex-wrap items-center gap-3 mt-2">
@@ -215,18 +215,18 @@ export function MetaPublishPanel({ property, photos, facebook, instagram, meta, 
               <span className="text-xs" style={{ color: "#BE123C" }}>Tu Página no tiene un Instagram profesional vinculado.</span>
             )}
           </div>
-          <p className="text-xs mt-2" style={{ color: "#6B5A8E" }}>
+          <p className="text-xs mt-2" style={{ color: "#6B7280" }}>
             Instagram no permite borrar publicaciones por API: si necesitás sacarla, borrala desde la app de Instagram.
           </p>
         </section>
 
         {/* Facebook */}
-        <section aria-labelledby="meta-fb-h" className="border-t pt-4" style={{ borderColor: "#F3F0FF" }}>
+        <section aria-labelledby="meta-fb-h" className="border-t pt-4" style={{ borderColor: "#F0EDE6" }}>
           <div className="flex flex-wrap items-center gap-2">
             <h4 id="meta-fb-h" className="text-sm" style={{ color: INK, fontWeight: 700 }}>Página de Facebook</h4>
             <ChannelStatusLine ch={facebook} />
           </div>
-          <label htmlFor="meta-fb-msg" className="block text-xs mt-2" style={{ color: "#7458C4", fontWeight: 700 }}>
+          <label htmlFor="meta-fb-msg" className="block text-xs mt-2" style={{ color: "#6B7280", fontWeight: 700 }}>
             Texto del posteo
           </label>
           <textarea
@@ -236,10 +236,10 @@ export function MetaPublishPanel({ property, photos, facebook, instagram, meta, 
             rows={5}
             maxLength={META_PUBLISH_LIMITS.fbMessageMax}
             className="mt-1 w-full rounded-lg border p-3 text-sm"
-            style={{ borderColor: "#EDE9FE", color: INK }}
+            style={{ borderColor: "#E9E5DE", color: INK }}
           />
           <label className="mt-2 flex items-center gap-2 text-sm min-h-11" style={{ color: INK }}>
-            <input type="checkbox" checked={withLink} onChange={(e) => setWithLink(e.target.checked)} className="w-5 h-5" style={{ accentColor: "#7C3AED" }} />
+            <input type="checkbox" checked={withLink} onChange={(e) => setWithLink(e.target.checked)} className="w-5 h-5" style={{ accentColor: "#9B21FF" }} />
             Agregar el link a la ficha en mi web
           </label>
           <div className="flex flex-wrap gap-3 mt-1">
@@ -293,7 +293,7 @@ function ChannelStatusLine({ ch }: { ch: ChannelState }) {
       <span className="text-xs inline-flex items-center gap-1" style={{ color: "#15803D", fontWeight: 600 }}>
         <CheckCircleIcon size={13} color="#16A34A" /> Publicada
         {ch.externalUrl && (
-          <a href={ch.externalUrl} target="_blank" rel="noopener noreferrer" className="underline ml-1" style={{ color: "#5B21B6" }}>
+          <a href={ch.externalUrl} target="_blank" rel="noopener noreferrer" className="underline ml-1" style={{ color: "#7C0BD8" }}>
             Ver publicación<span className="sr-only"> (se abre en otra pestaña)</span>
           </a>
         )}

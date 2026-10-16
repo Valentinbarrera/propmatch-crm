@@ -35,11 +35,11 @@ export function ZoneStats({ pool, appAvailable }: { pool: MarketPoint[]; appAvai
   return (
     <section aria-labelledby="zonas-title">
       <Card>
-        <div className="px-5 py-4 border-b" style={{ borderColor: "#F3F0FF" }}>
-          <h2 id="zonas-title" className="text-base" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+        <div className="px-5 py-4 border-b" style={{ borderColor: "#F0EDE6" }}>
+          <h2 id="zonas-title" className="text-base" style={{ color: "#1A1A1A", fontWeight: 800 }}>
             Estadísticas por zona
           </h2>
-          <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
             Publicaciones activas hoy, agrupadas por zona y tipo. Solo precios en USD{unit}.
           </p>
         </div>
@@ -55,8 +55,8 @@ export function ZoneStats({ pool, appAvailable }: { pool: MarketPoint[]; appAvai
             id={`${ids}-type`}
             value={type}
             onChange={(e) => setType(e.target.value as PropertyType | "todos")}
-            className="min-h-11 px-3 rounded-xl text-sm border bg-white outline-none focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE]"
-            style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }}
+            className="min-h-11 px-3 rounded-xl text-sm border bg-white outline-none focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE]"
+            style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }}
           >
             <option value="todos">Todos los tipos</option>
             {TYPES.map((t) => (
@@ -65,7 +65,7 @@ export function ZoneStats({ pool, appAvailable }: { pool: MarketPoint[]; appAvai
               </option>
             ))}
           </select>
-          <span className="text-xs" style={{ color: "#7C6A99" }}>
+          <span className="text-xs" style={{ color: "#6B7280" }}>
             {filtered.length} publicaciones: {crm} de tu inventario · {app} de la app PropMatch
             {!appAvailable && " (app no disponible)"}
           </span>
@@ -79,7 +79,7 @@ export function ZoneStats({ pool, appAvailable }: { pool: MarketPoint[]; appAvai
           ) : (
             <>
               <div>
-                <h3 className="text-xs uppercase mb-3" style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.1em" }}>
+                <h3 className="text-xs uppercase mb-3" style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.1em" }}>
                   Rango de precios por zona (USD{unit})
                 </h3>
                 <ZoneRangeChart stats={stats} />
@@ -88,7 +88,7 @@ export function ZoneStats({ pool, appAvailable }: { pool: MarketPoint[]; appAvai
             </>
           )}
 
-          <ul className="text-xs space-y-1 list-disc pl-5" style={{ color: "#7C6A99" }}>
+          <ul className="text-xs space-y-1 list-disc pl-5" style={{ color: "#6B7280" }}>
             <li>
               Rango P25–P75 solo con {MIN_MARKET_SAMPLE} o más publicaciones; con menos se muestra la mediana y la cantidad, sin rango.
             </li>
@@ -104,11 +104,11 @@ export function ZoneStats({ pool, appAvailable }: { pool: MarketPoint[]; appAvai
 
 function StatsTable({ stats, unit }: { stats: ReturnType<typeof computeZoneStats>; unit: string }) {
   return (
-    <div className="overflow-x-auto rounded-xl border" style={{ borderColor: "#F3F0FF" }}>
+    <div className="overflow-x-auto rounded-xl border" style={{ borderColor: "#F0EDE6" }}>
       <table className="w-full text-sm min-w-[640px]">
         <caption className="sr-only">Estadísticas de precios en USD{unit} por zona y tipo, con la fuente de cada fila</caption>
         <thead>
-          <tr className="text-xs text-left" style={{ color: "#7458C4", background: "#FDFCFF" }}>
+          <tr className="text-xs text-left" style={{ color: "#6B7280", background: "#FAF8F5" }}>
             <th scope="col" className="px-3 py-2.5 font-bold">Zona</th>
             <th scope="col" className="px-3 py-2.5 font-bold">Tipo</th>
             <th scope="col" className="px-3 py-2.5 font-bold text-right">Activas</th>
@@ -119,32 +119,32 @@ function StatsTable({ stats, unit }: { stats: ReturnType<typeof computeZoneStats
         </thead>
         <tbody>
           {stats.map((s) => (
-            <tr key={s.key} className="border-t" style={{ borderColor: "#F3F0FF" }}>
-              <th scope="row" className="px-3 py-2.5 text-left font-semibold" style={{ color: "#1F0A3C" }}>
+            <tr key={s.key} className="border-t" style={{ borderColor: "#F0EDE6" }}>
+              <th scope="row" className="px-3 py-2.5 text-left font-semibold" style={{ color: "#1A1A1A" }}>
                 {s.zone}
               </th>
               <td className="px-3 py-2.5" style={{ color: "#374151" }}>{PROPERTY_TYPE_LABEL[s.type]}</td>
               <td className="px-3 py-2.5 text-right" style={{ color: "#374151" }}>
-                <span style={{ color: "#1F0A3C", fontWeight: 700 }}>{s.count}</span>
-                <span className="block text-xs" style={{ color: "#7C6A99" }}>
+                <span style={{ color: "#1A1A1A", fontWeight: 700 }}>{s.count}</span>
+                <span className="block text-xs" style={{ color: "#6B7280" }}>
                   {[s.crmCount ? `${s.crmCount} inventario` : null, s.appCount ? `${s.appCount} app` : null].filter(Boolean).join(" · ")}
                 </span>
               </td>
-              <td className="px-3 py-2.5 text-right whitespace-nowrap" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+              <td className="px-3 py-2.5 text-right whitespace-nowrap" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                 {money(s.median)}
               </td>
               <td className="px-3 py-2.5 text-right whitespace-nowrap" style={{ color: "#374151" }}>
                 {s.p25 != null ? (
                   `${money(s.p25)} – ${money(s.p75)}`
                 ) : (
-                  <span className="text-xs" style={{ color: "#7C6A99" }}>Pocos datos</span>
+                  <span className="text-xs" style={{ color: "#6B7280" }}>Pocos datos</span>
                 )}
               </td>
               <td className="px-3 py-2.5 text-right whitespace-nowrap" style={{ color: "#374151" }}>
                 {s.pricePerM2 != null ? (
                   money(s.pricePerM2)
                 ) : (
-                  <span className="text-xs" style={{ color: "#7C6A99" }}>
+                  <span className="text-xs" style={{ color: "#6B7280" }}>
                     {s.withSurface === 0 ? "Sin m²" : `Solo ${s.withSurface} con m²`}
                   </span>
                 )}

@@ -140,8 +140,8 @@ export function PublishStep({ post, urls, stampName, safeMargin, onPatch }: Prop
   return (
     <div className="flex flex-col gap-6">
       <Card>
-        <div className="px-5 py-4 border-b flex items-center gap-2 flex-wrap" style={{ borderColor: "#F3F0FF" }}>
-          <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>Antes de publicar</h3>
+        <div className="px-5 py-4 border-b flex items-center gap-2 flex-wrap" style={{ borderColor: "#F0EDE6" }}>
+          <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>Antes de publicar</h3>
           <Badge bg={blocking ? "#FFE4E6" : "#DCFCE7"} text={blocking ? "#BE123C" : "#15803D"} size="xs">{blocking ? "Hay algo para corregir" : "Todo en orden"}</Badge>
         </div>
         <ul className="p-5 flex flex-col gap-2">
@@ -153,7 +153,7 @@ export function PublishStep({ post, urls, stampName, safeMargin, onPatch }: Prop
                   {c.ok ? <CheckIcon size={11} color={fg} /> : <AlertTriangleIcon size={11} color={fg} />}
                 </span>
                 <div>
-                  <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                  <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                     <span className="sr-only">{c.ok ? "Cumplido: " : "Falta: "}</span>
                     {c.label}
                   </p>
@@ -166,20 +166,20 @@ export function PublishStep({ post, urls, stampName, safeMargin, onPatch }: Prop
       </Card>
 
       <Card>
-        <div className="px-5 py-4 border-b flex items-center gap-2 flex-wrap" style={{ borderColor: "#F3F0FF" }}>
-          <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>Publicar a mano</h3>
+        <div className="px-5 py-4 border-b flex items-center gap-2 flex-wrap" style={{ borderColor: "#F0EDE6" }}>
+          <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>Publicar a mano</h3>
           <Badge bg="#DCFCE7" text="#15803D" size="xs">Disponible ahora</Badge>
         </div>
         <ol className="p-5 flex flex-col gap-5">
           <li>
-            <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>1. Descargá {kind.accepts.includes("video") && post.media.some((m) => m.kind === "video") ? "el video y la portada" : "las fotos listas"}</p>
-            <p className="text-xs mt-0.5" style={{ color: "#6B5A8A" }}>
+            <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>1. Descargá {kind.accepts.includes("video") && post.media.some((m) => m.kind === "video") ? "el video y la portada" : "las fotos listas"}</p>
+            <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
               {post.media.some((m) => m.kind === "image") ? `Con tus ediciones aplicadas, ${format.width} px de ancho, JPEG calidad ${IG_LIMITS.exportJpegQuality}.` : "El video se descarga tal cual lo subiste."}
             </p>
             <button type="button" onClick={download} disabled={!post.media.length || dl.busy} className="mt-2 px-5 min-h-11 rounded-xl text-sm text-white flex items-center gap-2 hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed" style={{ background: "var(--gradient-brand)", fontWeight: 700 }}>
               <DownloadIcon size={14} color="white" /> {dl.busy ? "Preparando…" : "Descargar archivos"}
             </button>
-            <p role="status" aria-live="polite" className={dl.summary ? "text-sm mt-2" : "sr-only"} style={{ color: "#1F0A3C" }}>{dl.summary}</p>
+            <p role="status" aria-live="polite" className={dl.summary ? "text-sm mt-2" : "sr-only"} style={{ color: "#1A1A1A" }}>{dl.summary}</p>
             {dl.lines.length > 0 && (
               <ul className="mt-1 flex flex-col gap-1">
                 {dl.lines.map((l) => (
@@ -192,31 +192,31 @@ export function PublishStep({ post, urls, stampName, safeMargin, onPatch }: Prop
             )}
           </li>
           <li>
-            <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>2. Copiá el texto</p>
+            <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>2. Copiá el texto</p>
             {kind.hasCaption ? (
               <>
-                <button type="button" onClick={copy} className="mt-2 px-5 min-h-11 rounded-xl text-sm border hover:bg-violet-50" style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700 }}>Copiar texto</button>
+                <button type="button" onClick={copy} className="mt-2 px-5 min-h-11 rounded-xl text-sm border hover:bg-violet-50" style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}>Copiar texto</button>
                 <span role="status" aria-live="polite" className="ml-3 text-xs" style={{ color: "#15803D", fontWeight: 600 }}>{copied}</span>
               </>
             ) : (
-              <p className="text-xs mt-0.5" style={{ color: "#6B5A8A" }}>Las Stories no llevan texto de publicación: si querés texto, ponelo sobre la foto en el paso Editar.</p>
+              <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>Las Stories no llevan texto de publicación: si querés texto, ponelo sobre la foto en el paso Editar.</p>
             )}
           </li>
           <li>
-            <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>3. Abrí Instagram y subila</p>
-            <p className="text-xs mt-0.5" style={{ color: "#6B5A8A" }}>Desde la app del celular: «+», elegí {kind.label === "Reel" ? "Reel" : kind.label === "Story" ? "Story" : "Publicación"}, seleccioná los archivos descargados y pegá el texto.</p>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center px-5 min-h-11 rounded-xl text-sm border hover:bg-violet-50" style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700 }}>
+            <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>3. Abrí Instagram y subila</p>
+            <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>Desde la app del celular: «+», elegí {kind.label === "Reel" ? "Reel" : kind.label === "Story" ? "Story" : "Publicación"}, seleccioná los archivos descargados y pegá el texto.</p>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center px-5 min-h-11 rounded-xl text-sm border hover:bg-violet-50" style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}>
               Abrir Instagram (se abre en otra pestaña)
             </a>
           </li>
-          <li className="border-t pt-4" style={{ borderColor: "#F3F0FF" }}>
-            <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>4. Marcá como publicada</p>
+          <li className="border-t pt-4" style={{ borderColor: "#F0EDE6" }}>
+            <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>4. Marcá como publicada</p>
             {published ? (
               <div className="mt-1">
                 <p className="text-sm" style={{ color: "#15803D" }}>Publicada el {formatAr(post.publishedAt)}.</p>
-                {post.publishedUrl && <a href={post.publishedUrl} target="_blank" rel="noopener noreferrer" className="text-sm underline" style={{ color: "#7458C4" }}>Ver la publicación</a>}
+                {post.publishedUrl && <a href={post.publishedUrl} target="_blank" rel="noopener noreferrer" className="text-sm underline" style={{ color: "#6B7280" }}>Ver la publicación</a>}
                 <div className="mt-2">
-                  <button type="button" onClick={() => onPatch({ status: "draft", publishedAt: null, publishedUrl: null })} className="px-4 min-h-11 rounded-xl text-xs border hover:bg-violet-50" style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700 }}>
+                  <button type="button" onClick={() => onPatch({ status: "draft", publishedAt: null, publishedUrl: null })} className="px-4 min-h-11 rounded-xl text-xs border hover:bg-violet-50" style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}>
                     Desmarcar (volver a borrador)
                   </button>
                 </div>
@@ -225,23 +225,23 @@ export function PublishStep({ post, urls, stampName, safeMargin, onPatch }: Prop
               <div className="mt-2 flex flex-col gap-3 max-w-md">
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label htmlFor="pub-date" className="text-xs" style={{ color: "#7458C4", fontWeight: 700 }}>Fecha real</label>
-                    <input id="pub-date" type="date" value={pubDate} onChange={(e) => setPubDate(e.target.value)} className="mt-1 w-full rounded-lg border px-3 min-h-11 text-sm" style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }} />
+                    <label htmlFor="pub-date" className="text-xs" style={{ color: "#6B7280", fontWeight: 700 }}>Fecha real</label>
+                    <input id="pub-date" type="date" value={pubDate} onChange={(e) => setPubDate(e.target.value)} className="mt-1 w-full rounded-lg border px-3 min-h-11 text-sm" style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }} />
                   </div>
                   <div>
-                    <label htmlFor="pub-time" className="text-xs" style={{ color: "#7458C4", fontWeight: 700 }}>Hora real</label>
-                    <input id="pub-time" type="time" value={pubTime} onChange={(e) => setPubTime(e.target.value)} className="mt-1 w-full rounded-lg border px-3 min-h-11 text-sm" style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }} />
+                    <label htmlFor="pub-time" className="text-xs" style={{ color: "#6B7280", fontWeight: 700 }}>Hora real</label>
+                    <input id="pub-time" type="time" value={pubTime} onChange={(e) => setPubTime(e.target.value)} className="mt-1 w-full rounded-lg border px-3 min-h-11 text-sm" style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }} />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="pub-link" className="text-xs" style={{ color: "#7458C4", fontWeight: 700 }}>Enlace de la publicación (opcional)</label>
-                  <input id="pub-link" type="url" inputMode="url" value={link} onChange={(e) => setLink(e.target.value)} placeholder="https://www.instagram.com/p/…" className="mt-1 w-full rounded-lg border px-3 min-h-11 text-sm" style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }} />
+                  <label htmlFor="pub-link" className="text-xs" style={{ color: "#6B7280", fontWeight: 700 }}>Enlace de la publicación (opcional)</label>
+                  <input id="pub-link" type="url" inputMode="url" value={link} onChange={(e) => setLink(e.target.value)} placeholder="https://www.instagram.com/p/…" className="mt-1 w-full rounded-lg border px-3 min-h-11 text-sm" style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }} />
                 </div>
                 <div>
                   <button type="button" onClick={markPublished} className="px-5 min-h-11 rounded-xl text-sm text-white hover:opacity-90" style={{ background: "var(--gradient-brand)", fontWeight: 700 }}>
                     Marcar como publicada
                   </button>
-                  <p className="text-xs mt-1.5" style={{ color: "#6B5A8A" }}>Solo anota que ya la subiste; PropMatch no verifica nada en Instagram. Se quita el recordatorio de la Agenda.</p>
+                  <p className="text-xs mt-1.5" style={{ color: "#6B7280" }}>Solo anota que ya la subiste; PropMatch no verifica nada en Instagram. Se quita el recordatorio de la Agenda.</p>
                 </div>
                 <p role="alert" className={err ? "text-sm" : "sr-only"} style={{ color: "#BE123C" }}>{err}</p>
               </div>

@@ -204,7 +204,7 @@ export function WhatsAppModal({
   return (
     <div
       className="pm-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
-      style={{ background: "rgba(31,10,60,0.35)" }}
+      style={{ background: "rgba(8, 11, 31,0.35)" }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -215,15 +215,15 @@ export function WhatsAppModal({
         style={{ background: "white", boxShadow: "var(--shadow-pop)" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="px-6 py-5 border-b flex items-center gap-3" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+        <div className="px-6 py-5 border-b flex items-center gap-3" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
           <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: WA_GREEN }}>
             <WhatsAppIcon size={20} color="white" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-lg tracking-tight truncate" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <p className="text-lg tracking-tight truncate" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               WhatsApp a {contact.full_name} <SampleBadge record={contact} show={sampleContact} />
             </p>
-            <p className="text-xs mt-0.5" style={{ color: number || sampleContact ? "#7C6A99" : "#E11D48" }}>
+            <p className="text-xs mt-0.5" style={{ color: number || sampleContact ? "#6B7280" : "#E11D48" }}>
               {sampleContact
                 ? "Teléfono de ejemplo: no se usa"
                 : number
@@ -235,7 +235,7 @@ export function WhatsAppModal({
             onClick={onClose}
             aria-label="Cerrar"
             className="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:bg-violet-50"
-            style={{ color: "#7458C4", fontSize: 20, lineHeight: 1 }}
+            style={{ color: "#6B7280", fontSize: 20, lineHeight: 1 }}
           >
             ×
           </button>
@@ -272,8 +272,8 @@ export function WhatsAppModal({
                 className="text-xs px-3.5 py-2 rounded-xl border transition-all"
                 style={
                   t === template
-                    ? { background: "#1F0A3C", color: "white", borderColor: "transparent", fontWeight: 600 }
-                    : { background: "white", color: "#7C6A99", borderColor: "#EDE9FE", fontWeight: 500 }
+                    ? { background: "#1A1A1A", color: "white", borderColor: "transparent", fontWeight: 600 }
+                    : { background: "white", color: "#6B7280", borderColor: "#E9E5DE", fontWeight: 500 }
                 }
               >
                 {TEMPLATE_LABEL[t]}
@@ -283,7 +283,7 @@ export function WhatsAppModal({
 
           {template === "informe" && owned.length > 1 && (
             <label className="block">
-              <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+              <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
                 Propiedad
               </span>
               <select
@@ -292,7 +292,7 @@ export function WhatsAppModal({
                   setPropertyId(e.target.value);
                   setEdited(false);
                 }}
-                className="w-full px-4 py-2.5 rounded-xl text-sm border outline-none bg-white text-[#1F0A3C] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE]"
+                className="w-full px-4 py-2.5 rounded-xl text-sm border outline-none bg-white text-[#1A1A1A] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE]"
               >
                 {owned.map((p) => (
                   <option key={p.id} value={p.id}>
@@ -305,7 +305,7 @@ export function WhatsAppModal({
 
           {template === "propiedad" && (
             <label className="block">
-              <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+              <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
                 Propiedad
               </span>
               <select
@@ -314,7 +314,7 @@ export function WhatsAppModal({
                   setPropertyId(e.target.value);
                   setEdited(false);
                 }}
-                className="w-full px-4 py-2.5 rounded-xl text-sm border outline-none bg-white text-[#1F0A3C] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE]"
+                className="w-full px-4 py-2.5 rounded-xl text-sm border outline-none bg-white text-[#1A1A1A] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE]"
               >
                 {options.map(({ property: p, score }) => (
                   <option key={p.id} value={p.id}>
@@ -333,7 +333,7 @@ export function WhatsAppModal({
           )}
 
           <label className="block">
-            <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+            <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
               Mensaje
             </span>
             <textarea
@@ -343,17 +343,17 @@ export function WhatsAppModal({
                 setText(e.target.value);
               }}
               rows={9}
-              className="w-full px-4 py-3 rounded-xl text-sm border outline-none resize-none bg-[#F0FDF4] text-[#1F0A3C] border-[#BBF7D0] focus:border-[#25D366] focus:ring-4 focus:ring-[#DCFCE7]"
+              className="w-full px-4 py-3 rounded-xl text-sm border outline-none resize-none bg-[#F0FDF4] text-[#1A1A1A] border-[#BBF7D0] focus:border-[#25D366] focus:ring-4 focus:ring-[#DCFCE7]"
               style={{ lineHeight: 1.5 }}
             />
           </label>
         </div>
 
-        <div className="px-6 py-4 border-t flex items-center justify-end gap-3" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+        <div className="px-6 py-4 border-t flex items-center justify-end gap-3" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
           <button
             onClick={onClose}
             className="px-5 py-2.5 rounded-xl text-sm border transition-all hover:bg-violet-50"
-            style={{ borderColor: "#EDE9FE", color: "#7C6A99", fontWeight: 600, background: "white" }}
+            style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 600, background: "white" }}
           >
             Cancelar
           </button>

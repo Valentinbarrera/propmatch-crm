@@ -96,15 +96,15 @@ export function NewDealModal({
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
-      style={{ background: "rgba(31,10,60,0.45)" }}
+      style={{ background: "rgba(8, 11, 31,0.45)" }}
       onMouseDown={(e) => e.target === e.currentTarget && onClose()}
     >
       <div className="w-full max-w-lg rounded-2xl bg-white shadow-xl overflow-hidden">
-        <div className="px-6 py-5 border-b flex items-center justify-between" style={{ borderColor: "#F3F0FF" }}>
-          <p className="text-lg" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+        <div className="px-6 py-5 border-b flex items-center justify-between" style={{ borderColor: "#F0EDE6" }}>
+          <p className="text-lg" style={{ color: "#1A1A1A", fontWeight: 800 }}>
             Nueva operación
           </p>
-          <button onClick={onClose} aria-label="Cerrar" style={{ color: "#7458C4", fontSize: 22, lineHeight: 1 }}>
+          <button onClick={onClose} aria-label="Cerrar" style={{ color: "#6B7280", fontSize: 22, lineHeight: 1 }}>
             ×
           </button>
         </div>
@@ -122,7 +122,7 @@ export function NewDealModal({
           </Field>
 
           <div>
-            <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+            <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
               Tipo de operación
             </span>
             <div className="flex gap-2">
@@ -135,7 +135,7 @@ export function NewDealModal({
                   style={
                     kind === k
                       ? { background: "var(--gradient-brand)", color: "white", borderColor: "transparent", fontWeight: 600 }
-                      : { background: "white", color: "#7C6A99", borderColor: "#EDE9FE", fontWeight: 500 }
+                      : { background: "white", color: "#6B7280", borderColor: "#E9E5DE", fontWeight: 500 }
                   }
                 >
                   {k === "venta" ? "Venta" : "Alquiler"}
@@ -162,11 +162,11 @@ export function NewDealModal({
           )}
         </div>
 
-        <div className="px-6 py-4 border-t flex justify-end gap-2" style={{ borderColor: "#F3F0FF" }}>
+        <div className="px-6 py-4 border-t flex justify-end gap-2" style={{ borderColor: "#F0EDE6" }}>
           <button
             onClick={onClose}
             className="px-4 py-2.5 rounded-xl text-sm border"
-            style={{ borderColor: "#EDE9FE", color: "#7C6A99", fontWeight: 600 }}
+            style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 600 }}
           >
             Cancelar
           </button>

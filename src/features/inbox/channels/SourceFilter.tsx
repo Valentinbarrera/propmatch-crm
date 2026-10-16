@@ -42,7 +42,7 @@ export function SourceFilter({
                 to="/configuracion#canales"
                 title="Conectá el canal desde Configuración"
                 className="text-xs px-3 py-1.5 rounded-full border border-dashed inline-flex items-center gap-1.5 min-h-[32px]"
-                style={{ borderColor: "#DDD6FE", color: "#6B5A8E", background: "#FDFCFF" }}
+                style={{ borderColor: "#DDD8CF", color: "#6B7280", background: "#FAF8F5" }}
               >
                 <SourceIcon source={it.value as "whatsapp"} size={12} />
                 {it.label} · <span style={{ fontWeight: 700 }}>Conectar</span>
@@ -58,8 +58,8 @@ export function SourceFilter({
               className="text-xs px-3 py-1.5 rounded-full border inline-flex items-center gap-1.5 min-h-[32px]"
               style={
                 active
-                  ? { borderColor: "#7C3AED", background: "#F5F3FF", color: "#5B21B6", fontWeight: 700 }
-                  : { borderColor: "#EDE9FE", background: "white", color: "#6B5A8E", fontWeight: 500 }
+                  ? { borderColor: "#9B21FF", background: "#F7F0FF", color: "#7C0BD8", fontWeight: 700 }
+                  : { borderColor: "#E9E5DE", background: "white", color: "#6B7280", fontWeight: 500 }
               }
             >
               {it.value !== "all" && <SourceIcon source={it.value} size={12} />}

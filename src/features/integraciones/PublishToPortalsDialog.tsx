@@ -40,8 +40,8 @@ import { usePortalConnections } from "./usePortalConnections";
 import { PortalLogo } from "./PortalLogo";
 import { stateLabel } from "./labels";
 
-const INK = "#1F0A3C";
-const MUTED = "#6B5A8E";
+const INK = "#1A1A1A";
+const MUTED = "#6B7280";
 
 /** Lo mínimo que hace falta saber de cada canal de la propiedad. */
 export interface ChannelSummary {
@@ -155,7 +155,7 @@ export function PublishToPortalsDialog({
   return (
     <div
       className="pm-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
-      style={{ background: "rgba(31,10,60,0.35)" }}
+      style={{ background: "rgba(8, 11, 31,0.35)" }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -166,14 +166,14 @@ export function PublishToPortalsDialog({
         style={{ background: "white", boxShadow: "var(--shadow-pop)" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="px-6 py-5 border-b flex items-center gap-3" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+        <div className="px-6 py-5 border-b flex items-center gap-3" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
           <div className="flex-1 min-w-0">
             <p id="publicar-portales-h" className="text-lg tracking-tight" style={{ color: INK, fontWeight: 800 }}>
               Publicar en portales
             </p>
-            <p className="text-xs mt-0.5 truncate" style={{ color: "#7C6A99" }}>{property.title}</p>
+            <p className="text-xs mt-0.5 truncate" style={{ color: "#6B7280" }}>{property.title}</p>
           </div>
-          <button type="button" onClick={onClose} aria-label="Cerrar" className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-violet-50" style={{ color: "#7458C4", fontSize: 22 }}>
+          <button type="button" onClick={onClose} aria-label="Cerrar" className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-violet-50" style={{ color: "#6B7280", fontSize: 22 }}>
             ×
           </button>
         </div>
@@ -184,7 +184,7 @@ export function PublishToPortalsDialog({
             <p className="text-sm px-4 py-3 rounded-xl" style={{ background: "#FFF1F2", color: "#BE123C" }}>{blockReason}</p>
           )}
           {!blockReason && kind === "crm" && (
-            <p className="text-sm px-4 py-3 rounded-xl" style={{ background: "#F5F3FF", color: "#5B21B6" }}>
+            <p className="text-sm px-4 py-3 rounded-xl" style={{ background: "#F7F0FF", color: "#7C0BD8" }}>
               {property.currency === "ARS" ? "Precio en pesos: " : ""}la propiedad no está en la app de PropMatch. Mercado Libre la publica
               igual (las fotos se suben a la carpeta de tu inmobiliaria); los portales que todavía necesitan la app te lo van a avisar.
             </p>
@@ -216,7 +216,7 @@ export function PublishToPortalsDialog({
           {error && <p role="alert" className="text-sm px-4 py-3 rounded-xl" style={{ background: "#FFF1F2", color: "#BE123C" }}>{error}</p>}
         </div>
 
-        <div className="px-6 py-4 border-t flex flex-wrap gap-2 items-center" style={{ borderColor: "#EDE9FE" }}>
+        <div className="px-6 py-4 border-t flex flex-wrap gap-2 items-center" style={{ borderColor: "#E9E5DE" }}>
           <button
             type="button"
             onClick={() => void run("publish")}
@@ -231,7 +231,7 @@ export function PublishToPortalsDialog({
             onClick={() => void run("check")}
             disabled={!synced || chosen.length === 0 || !!busy}
             className="min-h-[44px] px-4 rounded-xl text-sm border bg-white disabled:opacity-40"
-            style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+            style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
           >
             {busy === "check" ? "Verificando…" : "Verificar con los portales"}
           </button>
@@ -271,10 +271,10 @@ function PortalRow({
   const inputId = `portal-${p.id}`;
 
   return (
-    <li className="rounded-xl border p-4" style={{ borderColor: checked && canPick ? "#C4B5FD" : "#EDE9FE" }}>
+    <li className="rounded-xl border p-4" style={{ borderColor: checked && canPick ? "#D4AAFF" : "#E9E5DE" }}>
       <div className="flex items-start gap-3">
         {canPick ? (
-          <input id={inputId} type="checkbox" checked={checked} onChange={onToggle} className="w-5 h-5 mt-3 cursor-pointer" style={{ accentColor: "#7C3AED" }} />
+          <input id={inputId} type="checkbox" checked={checked} onChange={onToggle} className="w-5 h-5 mt-3 cursor-pointer" style={{ accentColor: "#9B21FF" }} />
         ) : (
           <input type="checkbox" disabled aria-hidden="true" tabIndex={-1} className="w-5 h-5 mt-3 opacity-40" />
         )}
@@ -291,7 +291,7 @@ function PortalRow({
           {!loading && isMeta && (
             <p className="text-xs mt-1" style={{ color: MUTED }}>
               Se publica desde su panel, donde elegís el texto y las fotos.{" "}
-              <Link to={`/publicador/${propertyId}#meta`} onClick={onNavigate} className="underline" style={{ color: "#7C3AED", fontWeight: 700 }}>
+              <Link to={`/publicador/${propertyId}#meta`} onClick={onNavigate} className="underline" style={{ color: "#9B21FF", fontWeight: 700 }}>
                 Ir al panel de Facebook e Instagram
               </Link>
             </p>
@@ -304,7 +304,7 @@ function PortalRow({
                 to="/configuracion/integraciones"
                 onClick={onNavigate}
                 className="inline-flex items-center min-h-[36px] px-3 rounded-lg text-xs text-white"
-                style={{ background: "#7C3AED", fontWeight: 700 }}
+                style={{ background: "#9B21FF", fontWeight: 700 }}
               >
                 {s?.state === "needs_reauth" ? "Reconectar" : "Conectar"}
               </Link>

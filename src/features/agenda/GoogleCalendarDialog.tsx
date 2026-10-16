@@ -7,8 +7,8 @@ import { useEffect, useState } from "react";
 import { useGoogleCalendar, type FeedController } from "@/lib/gcal/GoogleCalendarProvider";
 import type { SyncController } from "@/lib/gcal/useGcalSync";
 
-const INK = "#1F0A3C";
-const MUTED = "#7C6A99";
+const INK = "#1A1A1A";
+const MUTED = "#6B7280";
 
 const fmtWhen = (iso: string | null) =>
   iso ? new Date(iso).toLocaleString("es-AR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : null;
@@ -25,7 +25,7 @@ export function GoogleCalendarDialog({ onClose }: { onClose: () => void }) {
   return (
     <div
       className="pm-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
-      style={{ background: "rgba(31,10,60,0.35)" }}
+      style={{ background: "rgba(8, 11, 31,0.35)" }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -36,7 +36,7 @@ export function GoogleCalendarDialog({ onClose }: { onClose: () => void }) {
         style={{ background: "white", boxShadow: "var(--shadow-pop)" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="px-6 py-5 border-b flex items-center gap-3" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+        <div className="px-6 py-5 border-b flex items-center gap-3" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
           <div className="flex-1 min-w-0">
             <h2 id="gcal-dialog-title" className="text-lg tracking-tight" style={{ color: INK, fontWeight: 800 }}>
               Google Calendar
@@ -49,14 +49,14 @@ export function GoogleCalendarDialog({ onClose }: { onClose: () => void }) {
             onClick={onClose}
             aria-label="Cerrar"
             className="w-11 h-11 rounded-lg flex items-center justify-center transition-all hover:bg-violet-50"
-            style={{ color: "#7458C4", fontSize: 22, lineHeight: 1 }}
+            style={{ color: "#6B7280", fontSize: 22, lineHeight: 1 }}
           >
             ×
           </button>
         </div>
         <div className="px-6 py-5 overflow-y-auto space-y-6">
           <ConnectSection sync={sync} ret="agenda" />
-          <hr style={{ borderColor: "#EDE9FE" }} />
+          <hr style={{ borderColor: "#E9E5DE" }} />
           <FeedSection feed={feed} />
         </div>
       </div>
@@ -115,7 +115,7 @@ export function ConnectSection({ sync, ret }: { sync: SyncController; ret: "agen
   const primary = "min-h-11 px-4 rounded-xl text-sm text-white disabled:opacity-60";
   const outline = "min-h-11 px-4 rounded-xl text-sm border bg-white disabled:opacity-60 hover:bg-violet-50";
   const info = (text: string, warn = false) => (
-    <p role="status" className="text-xs mt-3 px-3 py-2 rounded-lg" style={warn ? { background: "#FFFBEB", color: "#92400E" } : { background: "#F5F3FF", color: "#5B21B6" }}>
+    <p role="status" className="text-xs mt-3 px-3 py-2 rounded-lg" style={warn ? { background: "#FFFBEB", color: "#92400E" } : { background: "#F7F0FF", color: "#7C0BD8" }}>
       {text}
     </p>
   );
@@ -141,7 +141,7 @@ export function ConnectSection({ sync, ret }: { sync: SyncController; ret: "agen
         info("Todavía no está disponible: falta dar de alta la app de Google (ver docs/google-calendar.md). Mientras, podés usar el link de suscripción.")}
 
       {sync.state === "not_connected" && (
-        <button type="button" disabled={sync.syncing} onClick={() => void sync.connect(ret)} className={`${primary} mt-3`} style={{ background: "#7C3AED", fontWeight: 700 }}>
+        <button type="button" disabled={sync.syncing} onClick={() => void sync.connect(ret)} className={`${primary} mt-3`} style={{ background: "#9B21FF", fontWeight: 700 }}>
           {sync.syncing ? "Abriendo Google…" : "Conectar Google Calendar"}
         </button>
       )}
@@ -152,7 +152,7 @@ export function ConnectSection({ sync, ret }: { sync: SyncController; ret: "agen
             {sync.error ?? "Google desconectó PropMatch de tu cuenta. Volvé a conectar."}
           </p>
           <div className="flex flex-wrap gap-2">
-            <button type="button" disabled={sync.syncing} onClick={() => void sync.connect(ret)} className={primary} style={{ background: "#7C3AED", fontWeight: 700 }}>
+            <button type="button" disabled={sync.syncing} onClick={() => void sync.connect(ret)} className={primary} style={{ background: "#9B21FF", fontWeight: 700 }}>
               Volver a conectar
             </button>
             <button type="button" disabled={sync.syncing} onClick={disconnect} className={outline} style={{ borderColor: "#FECDD3", color: "#BE123C", fontWeight: 700 }}>
@@ -181,7 +181,7 @@ export function ConnectSection({ sync, ret }: { sync: SyncController; ret: "agen
           )}
           <GcalPrefsToggles sync={sync} />
           <div className="flex flex-wrap gap-2">
-            <button type="button" disabled={sync.syncing} onClick={sync.syncNow} className={outline} style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}>
+            <button type="button" disabled={sync.syncing} onClick={sync.syncNow} className={outline} style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}>
               Sincronizar ahora
             </button>
             <button type="button" disabled={sync.syncing} onClick={disconnect} className={outline} style={{ borderColor: "#FECDD3", color: "#BE123C", fontWeight: 700 }}>
@@ -202,12 +202,12 @@ export function GcalPrefsToggles({ sync }: { sync: SyncController }) {
   return (
     <div className="flex flex-col gap-1.5 text-xs" style={{ color: "#374151" }}>
       <label className="flex items-center gap-2 min-h-8">
-        <input type="checkbox" checked={sync.prefs.showBusy} onChange={(e) => sync.setPrefs({ showBusy: e.target.checked })} className="w-4 h-4 accent-[#7C3AED]" />
+        <input type="checkbox" checked={sync.prefs.showBusy} onChange={(e) => sync.setPrefs({ showBusy: e.target.checked })} className="w-4 h-4 accent-[#9B21FF]" />
         Mostrar mis otros eventos de Google
       </label>
       {sync.prefs.showBusy && (
         <label className="flex items-center gap-2 min-h-8 pl-6">
-          <input type="checkbox" checked={sync.prefs.showTitles} onChange={(e) => sync.setPrefs({ showTitles: e.target.checked })} className="w-4 h-4 accent-[#7C3AED]" />
+          <input type="checkbox" checked={sync.prefs.showTitles} onChange={(e) => sync.setPrefs({ showTitles: e.target.checked })} className="w-4 h-4 accent-[#9B21FF]" />
           Mostrar sus títulos (si no, solo «Ocupado»)
         </label>
       )}
@@ -245,12 +245,12 @@ export function FeedSection({ feed }: { feed: FeedController }) {
 
       {feed.state === "loading" && <p className="text-xs mt-3" style={{ color: MUTED }}>Verificando…</p>}
       {feed.state === "demo" && (
-        <p className="text-xs mt-3 px-3 py-2 rounded-lg" style={{ background: "#F5F3FF", color: "#5B21B6" }}>
+        <p className="text-xs mt-3 px-3 py-2 rounded-lg" style={{ background: "#F7F0FF", color: "#7C0BD8" }}>
           En la demo no se generan links. Creá tu cuenta para usarlo con tu agenda real.
         </p>
       )}
       {feed.state === "hidden" && (
-        <p className="text-xs mt-3 px-3 py-2 rounded-lg" style={{ background: "#F5F3FF", color: "#5B21B6" }}>
+        <p className="text-xs mt-3 px-3 py-2 rounded-lg" style={{ background: "#F7F0FF", color: "#7C0BD8" }}>
           No está disponible en este entorno (o tu usuario todavía no está vinculado a una inmobiliaria).
         </p>
       )}
@@ -261,7 +261,7 @@ export function FeedSection({ feed }: { feed: FeedController }) {
       )}
 
       {feed.state === "inactive" && (
-        <button type="button" disabled={feed.busy} onClick={() => void feed.create()} className={`${primary} mt-3`} style={{ background: "#7C3AED", fontWeight: 700 }}>
+        <button type="button" disabled={feed.busy} onClick={() => void feed.create()} className={`${primary} mt-3`} style={{ background: "#9B21FF", fontWeight: 700 }}>
           {feed.busy ? "Generando…" : "Generar mi link"}
         </button>
       )}
@@ -275,14 +275,14 @@ export function FeedSection({ feed }: { feed: FeedController }) {
                 value={feed.url}
                 onFocus={(e) => e.currentTarget.select()}
                 aria-label="Link de suscripción"
-                className="flex-1 min-w-0 min-h-11 px-3 rounded-xl text-xs border outline-none bg-white text-[#1F0A3C] border-[#EDE9FE] focus:border-[#7C3AED]"
+                className="flex-1 min-w-0 min-h-11 px-3 rounded-xl text-xs border outline-none bg-white text-[#1A1A1A] border-[#E9E5DE] focus:border-[#9B21FF]"
               />
-              <button type="button" onClick={() => void copy()} className={outline} style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}>
+              <button type="button" onClick={() => void copy()} className={outline} style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}>
                 {copied ? "¡Copiado!" : "Copiar"}
               </button>
             </div>
           ) : (
-            <p className="text-xs px-3 py-2 rounded-lg" style={{ background: "#F5F3FF", color: "#5B21B6" }}>
+            <p className="text-xs px-3 py-2 rounded-lg" style={{ background: "#F7F0FF", color: "#7C0BD8" }}>
               Tenés un link activo, pero lo generaste en otro navegador (lo mostramos una sola vez). Si no lo tenés a mano, generá uno
               nuevo.
             </p>
@@ -306,7 +306,7 @@ export function FeedSection({ feed }: { feed: FeedController }) {
                 if (window.confirm("¿Generar un link nuevo? El anterior deja de andar y vas a tener que volver a suscribirte en Google Calendar.")) void feed.rotate();
               }}
               className={outline}
-              style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+              style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
             >
               Generar link nuevo
             </button>

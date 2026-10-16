@@ -5,7 +5,7 @@ import { embedCode, previewUrl, siteUrl } from "@/features/sitio/siteUrl";
 import { WEB_CHANNEL } from "./usePublications";
 import { SendMyWebButton } from "@/features/branding/SendMyWeb";
 
-const INK = "#1F0A3C";
+const INK = "#1A1A1A";
 
 async function copy(text: string): Promise<boolean> {
   try {
@@ -48,7 +48,7 @@ export function WebPlatformCard({
         </span>
         <div className="min-w-0 flex-1">
           <h3 className="text-sm" style={{ color: INK, fontWeight: 700 }}>Mi web</h3>
-          <p className="text-xs mt-0.5" style={{ color: "#6B5A8E" }}>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
             Tu catálogo en una página propia, sin portales: se actualiza solo con tus propiedades disponibles.
           </p>
         </div>
@@ -81,7 +81,7 @@ export function WebPlatformCard({
           type="button"
           onClick={onViewAds}
           className="flex-1 min-h-[44px] px-4 rounded-xl text-sm border bg-white"
-          style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+          style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
         >
           Ver mis avisos
         </button>
@@ -97,7 +97,7 @@ export function WebPlatformCard({
               type="button"
               onClick={async () => flash((await copy(url)) ? "Link copiado." : "No pudimos copiar: seleccioná el link y copialo a mano.")}
               className="flex-1 min-h-[44px] px-4 rounded-xl text-sm border bg-white"
-              style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+              style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
             >
               Copiar link
             </button>
@@ -107,12 +107,12 @@ export function WebPlatformCard({
               aria-controls={embedId}
               onClick={() => setShowEmbed((v) => !v)}
               className="flex-1 min-h-[44px] px-4 rounded-xl text-sm border bg-white"
-              style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+              style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
             >
               Insertar en mi sitio
             </button>
           </div>
-          <p className="text-xs mt-2 break-all" style={{ color: "#6B5A8E" }}>{url}</p>
+          <p className="text-xs mt-2 break-all" style={{ color: "#6B7280" }}>{url}</p>
           <div id={embedId} hidden={!showEmbed} className="mt-3">
             <label htmlFor={`${embedId}-code`} className="text-xs" style={{ color: INK, fontWeight: 700 }}>
               Pegá este código en tu sitio (WordPress: bloque «HTML personalizado»; Wix: «Insertar código»):
@@ -124,19 +124,19 @@ export function WebPlatformCard({
               rows={4}
               onFocus={(e) => e.currentTarget.select()}
               className="mt-1 w-full rounded-lg border p-2 text-xs font-mono"
-              style={{ borderColor: "#DDD6FE", color: INK }}
+              style={{ borderColor: "#DDD8CF", color: INK }}
             />
             <button
               type="button"
               onClick={async () => flash((await copy(code)) ? "Código copiado." : "No pudimos copiar: seleccioná el código y copialo a mano.")}
               className="mt-1 min-h-[44px] px-4 rounded-xl text-sm border bg-white"
-              style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+              style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
             >
               Copiar código
             </button>
-            <p className="text-xs mt-2" style={{ color: "#6B5A8E" }}>
+            <p className="text-xs mt-2" style={{ color: "#6B7280" }}>
               ¿Tenés un desarrollador? También hay un{" "}
-              <a href={feed} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#5B21B6" }}>
+              <a href={feed} target="_blank" rel="noopener noreferrer" className="underline" style={{ color: "#7C0BD8" }}>
                 feed JSON con tus propiedades
               </a>
               .

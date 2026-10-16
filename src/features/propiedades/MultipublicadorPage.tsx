@@ -95,8 +95,8 @@ const FILTERS: { id: StatusFilter; label: string }[] = [
     { id: "published", label: "Publicadas" },
 ];
 
-const LILA = "#7458C4";
-const INK = "#1F0A3C";
+const LILA = "#6B7280";
+const INK = "#1A1A1A";
 
 const CONNECTABLE_CHANNELS = new Set<string>([]);
 
@@ -242,7 +242,7 @@ export default function MultipublicadorPage() {
                     </Link>
 
                     <ActionTile
-                        icon={<SearchIcon size={20} color="#7C3AED" />}
+                        icon={<SearchIcon size={20} color="#9B21FF" />}
                         title="Publicar una existente"
                         help="Buscala en tu cartera y elegí canales."
                         onClick={() => goToList()}
@@ -258,7 +258,7 @@ export default function MultipublicadorPage() {
                             />
                         )}
                         <ActionTile
-                            icon={<PropertiesIcon size={20} color="#7C3AED" />}
+                            icon={<PropertiesIcon size={20} color="#9B21FF" />}
                             title="Conectar plataformas"
                             help="Mirá qué necesita cada portal."
                             onClick={() => scrollToId("plataformas")}
@@ -280,12 +280,12 @@ export default function MultipublicadorPage() {
                         <Link
                             to="/configuracion/integraciones"
                             className="inline-flex items-center min-h-[44px] px-4 rounded-xl text-sm border bg-white"
-                            style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+                            style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
                         >
                             Administrar conexiones
                         </Link>
                     </div>
-                    <p className="text-sm mt-1 mb-4" style={{ color: "#6B5A8E" }}>
+                    <p className="text-sm mt-1 mb-4" style={{ color: "#6B7280" }}>
                         Publicá tus propiedades en múltiples portales desde un solo lugar. Las integraciones están en proceso de certificación y aprobación.
                     </p>
                     <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-start">
@@ -316,7 +316,7 @@ export default function MultipublicadorPage() {
 
                     {/* Portales próximamente */}
                     <div className="mt-6">
-                        <p className="text-sm mb-3" style={{ color: "#6B5A8E", fontWeight: 600 }}>Próximamente</p>
+                        <p className="text-sm mb-3" style={{ color: "#6B7280", fontWeight: 600 }}>Próximamente</p>
                         <div className="grid gap-4 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 items-start">
                             {EXTERNAL_CHANNELS.filter(info => !CONNECTABLE_CHANNELS.has(info.channel)).map(info => (
                                 <ComingSoonPortalCard key={info.channel} info={info} />
@@ -328,7 +328,7 @@ export default function MultipublicadorPage() {
                 {/* Listado */}
                 <section id="listado-propiedades" aria-labelledby="listado-h" className="mt-8 scroll-mt-4">
                     <Card>
-                        <div className="px-4 md:px-6 py-5 border-b" style={{ borderColor: "#F3F0FF" }}>
+                        <div className="px-4 md:px-6 py-5 border-b" style={{ borderColor: "#F0EDE6" }}>
                             <h2 id="listado-h" className="text-xl tracking-tight" style={{ color: INK, fontWeight: 800 }}>Tus propiedades</h2>
                             {channelFilter && (
                                 <p className="mt-2 text-sm flex flex-wrap items-center gap-2" style={{ color: "#4B5563" }}>
@@ -337,7 +337,7 @@ export default function MultipublicadorPage() {
                                         type="button"
                                         onClick={() => setChannelFilter(null)}
                                         className="min-h-[36px] px-3 rounded-full text-xs border"
-                                        style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+                                        style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
                                     >
                                         Ver todas ✕
                                     </button>
@@ -354,7 +354,7 @@ export default function MultipublicadorPage() {
                                         onChange={e => setQuery(e.target.value)}
                                         placeholder="Buscar por título, zona o ID"
                                         className="w-full min-h-[44px] pl-9 pr-3 rounded-xl border text-sm bg-white"
-                                        style={{ borderColor: "#DDD6FE", color: INK }}
+                                        style={{ borderColor: "#DDD8CF", color: INK }}
                                     />
                                 </label>
                                 <div role="group" aria-label="Filtrar por estado" className="flex flex-wrap gap-2">
@@ -367,8 +367,8 @@ export default function MultipublicadorPage() {
                                             className="min-h-[44px] px-4 rounded-xl text-sm border transition-colors"
                                             style={
                                                 filter === f.id
-                                                    ? { background: "#7C3AED", borderColor: "#7C3AED", color: "white", fontWeight: 700 }
-                                                    : { background: "white", borderColor: "#DDD6FE", color: "#4C3A7A", fontWeight: 600 }
+                                                    ? { background: "#9B21FF", borderColor: "#9B21FF", color: "white", fontWeight: 700 }
+                                                    : { background: "white", borderColor: "#DDD8CF", color: "#374151", fontWeight: 600 }
                                             }
                                         >
                                             {f.label}
@@ -381,11 +381,11 @@ export default function MultipublicadorPage() {
                         {loading ? (
                             <ul aria-busy="true" aria-label="Cargando propiedades">
                                 {[0, 1, 2].map(i => (
-                                    <li key={i} className="px-4 md:px-6 py-4 flex items-center gap-4 border-b last:border-b-0" style={{ borderColor: "#F9F7FF" }}>
-                                        <div className="w-16 h-16 rounded-xl animate-pulse motion-reduce:animate-none" style={{ background: "#F5F3FF" }} />
+                                    <li key={i} className="px-4 md:px-6 py-4 flex items-center gap-4 border-b last:border-b-0" style={{ borderColor: "#FAF8F5" }}>
+                                        <div className="w-16 h-16 rounded-xl animate-pulse motion-reduce:animate-none" style={{ background: "#F7F0FF" }} />
                                         <div className="flex-1 space-y-2">
-                                            <div className="h-4 w-2/3 rounded animate-pulse motion-reduce:animate-none" style={{ background: "#F5F3FF" }} />
-                                            <div className="h-3 w-1/3 rounded animate-pulse motion-reduce:animate-none" style={{ background: "#F5F3FF" }} />
+                                            <div className="h-4 w-2/3 rounded animate-pulse motion-reduce:animate-none" style={{ background: "#F7F0FF" }} />
+                                            <div className="h-3 w-1/3 rounded animate-pulse motion-reduce:animate-none" style={{ background: "#F7F0FF" }} />
                                         </div>
                                     </li>
                                 ))}
@@ -405,7 +405,7 @@ export default function MultipublicadorPage() {
                                         type="button"
                                         onClick={() => { setQuery(""); setFilter("all"); }}
                                         className="min-h-[44px] px-5 rounded-xl text-sm border"
-                                        style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+                                        style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
                                     >
                                         Limpiar filtros
                                     </button>
@@ -447,11 +447,11 @@ function NewPropertyLink() {
 function ListEmpty({ title, description, cta }: { title: string; description: string; cta: ReactNode }) {
     return (
         <div className="flex flex-col items-center text-center px-6 py-12 gap-3">
-            <span className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: "#F5F3FF" }} aria-hidden="true">
-                <HomeIcon size={24} color="#7C3AED" />
+            <span className="w-12 h-12 rounded-2xl flex items-center justify-center" style={{ background: "#F7F0FF" }} aria-hidden="true">
+                <HomeIcon size={24} color="#9B21FF" />
             </span>
             <p style={{ color: INK, fontWeight: 700 }}>{title}</p>
-            <p className="text-sm max-w-sm" style={{ color: "#6B5A8E" }}>{description}</p>
+            <p className="text-sm max-w-sm" style={{ color: "#6B7280" }}>{description}</p>
             {cta}
         </div>
     );
@@ -466,14 +466,14 @@ function ActionTile({
             type="button"
             onClick={onClick}
             className="w-full text-left rounded-2xl p-4 border flex items-center gap-3 min-h-[72px] bg-white transition-all hover:shadow-md active:scale-[0.99]"
-            style={{ borderColor: danger ? "#FECDD3" : "#EDE9FE", boxShadow: "var(--shadow-card)" }}
+            style={{ borderColor: danger ? "#FECDD3" : "#E9E5DE", boxShadow: "var(--shadow-card)" }}
         >
-            <span className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: danger ? "#FFF1F2" : "#F5F3FF" }} aria-hidden="true">
+            <span className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: danger ? "#FFF1F2" : "#F7F0FF" }} aria-hidden="true">
                 {icon}
             </span>
             <span className="min-w-0">
                 <span className="block text-sm" style={{ color: danger ? "#BE123C" : INK, fontWeight: 700 }}>{title}</span>
-                <span className="block text-xs mt-0.5" style={{ color: "#6B5A8E" }}>{help}</span>
+                <span className="block text-xs mt-0.5" style={{ color: "#6B7280" }}>{help}</span>
             </span>
         </button>
     );
@@ -483,14 +483,14 @@ function Metric({ value, label, sub, loading, danger }: { value: number; label: 
     // Un cero no se muestra como logro: se atenúa y el texto aclara el motivo.
     const empty = value === 0;
     return (
-        <div className="rounded-2xl border p-4 bg-white" style={{ borderColor: "#EDE9FE", boxShadow: "var(--shadow-card)" }}>
+        <div className="rounded-2xl border p-4 bg-white" style={{ borderColor: "#E9E5DE", boxShadow: "var(--shadow-card)" }}>
             {loading ? (
-                <div className="h-8 w-16 rounded-lg animate-pulse motion-reduce:animate-none" style={{ background: "#F5F3FF" }} />
+                <div className="h-8 w-16 rounded-lg animate-pulse motion-reduce:animate-none" style={{ background: "#F7F0FF" }} />
             ) : (
                 <p style={{ fontWeight: 800, fontSize: "1.5rem", color: danger ? "#BE123C" : empty ? "#6B7280" : INK }}>{value}</p>
             )}
             <p className="text-sm" style={{ color: "#4B5563", fontWeight: 600 }}>{label}</p>
-            {!loading && <p className="text-xs mt-0.5" style={{ color: "#6B5A8E" }}>{sub}</p>}
+            {!loading && <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>{sub}</p>}
         </div>
     );
 }
@@ -521,13 +521,13 @@ function ComingSoonPortalCard({ info }: { info: ChannelInfo }) {
                 </span>
                 <div className="min-w-0 flex-1">
                     <h3 className="text-sm" style={{ color: INK, fontWeight: 700 }}>{info.name}</h3>
-                    <p className="text-xs mt-0.5" style={{ color: "#6B5A8E" }}>{guide.tagline}</p>
+                    <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>{guide.tagline}</p>
                 </div>
             </div>
             <div className="mt-3">
                 <span
                     className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs"
-                    style={{ background: "#F5F3FF", color: "#7C3AED", fontWeight: 700 }}
+                    style={{ background: "#F7F0FF", color: "#9B21FF", fontWeight: 700 }}
                 >
                     <span style={{ fontSize: 10 }}>⏳</span> Próximamente
                 </span>
@@ -576,7 +576,7 @@ function PlatformCard({
                 </span>
                 <div className="min-w-0 flex-1">
                     <h3 className="text-sm" style={{ color: INK, fontWeight: 700 }}>{info.name}</h3>
-                    <p className="text-xs mt-0.5" style={{ color: "#6B5A8E" }}>{guide.tagline}</p>
+                    <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>{guide.tagline}</p>
                 </div>
             </div>
 
@@ -613,7 +613,7 @@ function PlatformCard({
                             type="button"
                             onClick={onViewAds}
                             className="flex-1 min-h-[44px] px-4 rounded-xl text-sm border bg-white"
-                            style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+                            style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
                         >
                             Ver mis avisos
                         </button>
@@ -628,11 +628,11 @@ function PlatformCard({
                     aria-controls={panelId}
                     onClick={() => setOpen(o => !o)}
                     className="flex-1 min-h-[44px] px-4 rounded-xl text-sm border flex items-center justify-center gap-2"
-                    style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700, background: "white" }}
+                    style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700, background: "white" }}
                 >
                     Cómo conectar
                     <span style={{ transform: open ? "rotate(180deg)" : undefined, display: "inline-flex" }} aria-hidden="true">
-                        <ChevronDownIcon size={16} color="#5B21B6" />
+                        <ChevronDownIcon size={16} color="#7C0BD8" />
                     </span>
                 </button>
                 {isMetaChannel(info.channel) ? <MetaConnectButton meta={meta} /> : <ConnectButton info={info} meli={meli} />}
@@ -713,7 +713,7 @@ function ConnectButton({ info, meli }: { info: ChannelInfo; meli: MeliConnection
                     disabled={busy}
                     onClick={() => void run(meli.connect)}
                     className="min-h-[44px] px-4 rounded-xl text-sm text-white disabled:opacity-60"
-                    style={{ background: "#7C3AED", fontWeight: 700 }}
+                    style={{ background: "#9B21FF", fontWeight: 700 }}
                 >
                     {meli.needsReauth ? "Reconectar Mercado Libre" : "Conectar Mercado Libre"}
                 </button>
@@ -751,19 +751,19 @@ function PropertyRow({
     return (
         <li
             className="px-4 md:px-6 py-4 border-b last:border-b-0 flex flex-col md:flex-row md:items-center gap-3 md:gap-5"
-            style={{ borderColor: "#F9F7FF" }}
+            style={{ borderColor: "#FAF8F5" }}
         >
             <div className="flex items-center gap-4 min-w-0 md:w-[38%]">
-                <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0" style={{ background: "#F5F3FF" }}>
+                <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0" style={{ background: "#F7F0FF" }}>
                     {photo ? (
                         <img src={photo} alt="" className="w-full h-full object-cover" />
                     ) : (
-                        <div className="w-full h-full flex items-center justify-center"><HomeIcon size={20} color="#A78BFA" /></div>
+                        <div className="w-full h-full flex items-center justify-center"><HomeIcon size={20} color="#BF7FFF" /></div>
                     )}
                 </div>
                 <div className="min-w-0">
                     <p className="text-sm truncate" style={{ color: INK, fontWeight: 700 }}>{p.title}</p>
-                    <p className="text-xs mt-0.5 flex items-center gap-1 min-w-0" style={{ color: "#6B5A8E" }}>
+                    <p className="text-xs mt-0.5 flex items-center gap-1 min-w-0" style={{ color: "#6B7280" }}>
                         <MapPinIcon size={12} color={LILA} />
                         <span className="truncate">{[p.zone, p.province].filter(Boolean).join(", ") || "Sin ubicación"}</span>
                     </p>
@@ -773,7 +773,7 @@ function PropertyRow({
 
             <div className="flex flex-wrap gap-1.5 flex-1 min-w-0">
                 {chips.length === 0 ? (
-                    <span className="text-xs" style={{ color: "#6B5A8E" }}>Sin publicar en portales</span>
+                    <span className="text-xs" style={{ color: "#6B7280" }}>Sin publicar en portales</span>
                 ) : (
                     chips.map(c => <ChannelChip key={c.info.channel} c={c} />)
                 )}
@@ -786,8 +786,8 @@ function PropertyRow({
                 className="min-h-[44px] px-5 rounded-xl text-sm border md:ml-auto transition-colors hover:bg-violet-50"
                 style={
                     manage
-                        ? { borderColor: "#DDD6FE", color: "#5B21B6", background: "white", fontWeight: 700 }
-                        : { borderColor: "#7C3AED", color: "white", background: "#7C3AED", fontWeight: 700 }
+                        ? { borderColor: "#DDD8CF", color: "#7C0BD8", background: "white", fontWeight: 700 }
+                        : { borderColor: "#9B21FF", color: "white", background: "#9B21FF", fontWeight: 700 }
                 }
             >
                 {manage ? "Gestionar" : "Publicar"}

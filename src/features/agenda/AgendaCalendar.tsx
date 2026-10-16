@@ -43,10 +43,10 @@ export function useNow(intervalMs = 30_000): Date {
 function itemColors(i: AgendaItem) {
   if (i.status) {
     const m = STATUS_META[i.status];
-    return { bg: m.bg, border: m.border, accent: m.text, text: "#1F0A3C", sub: m.text };
+    return { bg: m.bg, border: m.border, accent: m.text, text: "#1A1A1A", sub: m.text };
   }
   const c = TYPE_COLOR[i.type];
-  return { bg: `${c}12`, border: `${c}55`, accent: c, text: "#1F0A3C", sub: "#7458C4" };
+  return { bg: `${c}12`, border: `${c}55`, accent: c, text: "#1A1A1A", sub: "#6B7280" };
 }
 
 export function StatusChip({ item, size = "sm" }: { item: AgendaItem; size?: "xs" | "sm" }) {
@@ -70,7 +70,7 @@ export function SourceBadge({ item }: { item: AgendaItem }) {
   return (
     <span
       className="inline-flex items-center px-1.5 py-px rounded-md text-[10px] whitespace-nowrap"
-      style={{ background: "#1F0A3C", color: "white", fontWeight: 700, letterSpacing: "0.03em" }}
+      style={{ background: "#1A1A1A", color: "white", fontWeight: 700, letterSpacing: "0.03em" }}
       title="Visita pedida desde la app PropMatch"
     >
       APP
@@ -141,7 +141,7 @@ export function TimeGrid({
 
   return (
     <div className="flex flex-col" style={{ background: "white", minWidth: days.length > 1 ? 760 : undefined }}>
-      <div className="flex border-b sticky top-0 z-20" style={{ borderColor: "#F3F0FF", background: "white" }}>
+      <div className="flex border-b sticky top-0 z-20" style={{ borderColor: "#F0EDE6", background: "white" }}>
         <div className="flex-shrink-0" style={{ width: GUTTER }} />
         {days.map((day) => {
           const isToday = sameDay(day, now);
@@ -149,11 +149,11 @@ export function TimeGrid({
             <div
               key={day.toISOString()}
               className="flex-1 py-2.5 flex flex-col items-center border-l"
-              style={{ borderColor: "#F3F0FF", background: isToday ? "#F5F3FF" : undefined }}
+              style={{ borderColor: "#F0EDE6", background: isToday ? "#F7F0FF" : undefined }}
             >
               <span
                 className="text-xs uppercase"
-                style={{ color: isToday ? "#6D28D9" : "#7458C4", fontWeight: 700, letterSpacing: "0.08em" }}
+                style={{ color: isToday ? "#7C0BD8" : "#6B7280", fontWeight: 700, letterSpacing: "0.08em" }}
               >
                 {day.toLocaleDateString("es-AR", { weekday: "short" }).replace(".", "")}
               </span>
@@ -162,7 +162,7 @@ export function TimeGrid({
                 style={
                   isToday
                     ? { background: "var(--gradient-brand)", color: "white", fontWeight: 800 }
-                    : { color: "#1F0A3C", fontWeight: 600 }
+                    : { color: "#1A1A1A", fontWeight: 600 }
                 }
                 aria-label={isToday ? "Hoy" : undefined}
               >
@@ -177,7 +177,7 @@ export function TimeGrid({
         <div className="flex-shrink-0 relative" style={{ width: GUTTER }}>
           {HOURS.map((h) => (
             <div key={h} className="flex items-start justify-end pr-2.5 select-none" style={{ height: HOUR_HEIGHT, paddingTop: 2 }}>
-              <span className="text-xs" style={{ color: "#7C6A99", fontWeight: 500 }}>
+              <span className="text-xs" style={{ color: "#6B7280", fontWeight: 500 }}>
                 {String(h).padStart(2, "0")}:00
               </span>
             </div>
@@ -185,7 +185,7 @@ export function TimeGrid({
           {showNow && (
             <span
               className="absolute right-1 z-30 px-1.5 py-px rounded-md text-[10px] text-white"
-              style={{ top: nowTop - 8, background: "#6D28D9", fontWeight: 700 }}
+              style={{ top: nowTop - 8, background: "#7C0BD8", fontWeight: 700 }}
             >
               {fmtHour(now)}
             </span>
@@ -199,23 +199,23 @@ export function TimeGrid({
             <div
               key={day.toISOString()}
               className="flex-1 relative border-l"
-              style={{ borderColor: "#F3F0FF", background: isToday ? "rgba(124,58,237,0.035)" : "transparent" }}
+              style={{ borderColor: "#F0EDE6", background: isToday ? "rgba(168, 85, 255,0.035)" : "transparent" }}
             >
               {HOURS.map((h) => (
-                <div key={h} className="absolute w-full border-t" style={{ top: (h - START_HOUR) * HOUR_HEIGHT, borderColor: "#F3F0FF" }} />
+                <div key={h} className="absolute w-full border-t" style={{ top: (h - START_HOUR) * HOUR_HEIGHT, borderColor: "#F0EDE6" }} />
               ))}
               {HOURS.map((h) => (
                 <div
                   key={`${h}-half`}
                   className="absolute w-full border-t"
-                  style={{ top: (h - START_HOUR + 0.5) * HOUR_HEIGHT, borderColor: "#F9F7FF", borderStyle: "dashed" }}
+                  style={{ top: (h - START_HOUR + 0.5) * HOUR_HEIGHT, borderColor: "#FAF8F5", borderStyle: "dashed" }}
                 />
               ))}
 
               {isToday && showNow && (
                 <div className="absolute z-10 flex items-center pointer-events-none" style={{ top: nowTop - 1, left: 0, right: 0 }} aria-hidden>
-                  <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: "#6D28D9", marginLeft: -5 }} />
-                  <div className="flex-1 h-0.5" style={{ background: "#6D28D9" }} />
+                  <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: "#7C0BD8", marginLeft: -5 }} />
+                  <div className="flex-1 h-0.5" style={{ background: "#7C0BD8" }} />
                 </div>
               )}
 
@@ -304,7 +304,7 @@ function GridBlock({
         background: c.bg,
         border: `1px solid ${c.border}`,
         borderLeft: `3px solid ${c.accent}`,
-        boxShadow: selected ? "0 0 0 2px #7C3AED, 0 6px 16px rgba(124,58,237,0.18)" : "0 1px 3px rgba(31,10,60,0.05)",
+        boxShadow: selected ? "0 0 0 2px #9B21FF, 0 6px 16px rgba(168, 85, 255,0.18)" : "0 1px 3px rgba(8, 11, 31,0.05)",
         zIndex: selected ? 20 : 10,
         opacity: cancelled ? 0.65 : 1,
       }}
@@ -362,15 +362,15 @@ export function MonthGrid({
 
   return (
     <div className="flex flex-col" style={{ background: "white", minWidth: 720 }}>
-      <div className="grid grid-cols-7 border-b" style={{ borderColor: "#F3F0FF" }}>
+      <div className="grid grid-cols-7 border-b" style={{ borderColor: "#F0EDE6" }}>
         {labels.map((l) => (
-          <div key={l} className="py-2 text-center text-xs uppercase" style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.08em" }}>
+          <div key={l} className="py-2 text-center text-xs uppercase" style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.08em" }}>
             {l}
           </div>
         ))}
       </div>
       {weeks.map((week) => (
-        <div key={week[0].toISOString()} className="grid grid-cols-7 border-b" style={{ borderColor: "#F3F0FF" }}>
+        <div key={week[0].toISOString()} className="grid grid-cols-7 border-b" style={{ borderColor: "#F0EDE6" }}>
           {week.map((day) => {
             const inMonth = day.getMonth() === monthStart.getMonth();
             const isToday = sameDay(day, now);
@@ -382,7 +382,7 @@ export function MonthGrid({
               <div
                 key={day.toISOString()}
                 className="min-h-[112px] p-1.5 border-l first:border-l-0 flex flex-col gap-1"
-                style={{ borderColor: "#F3F0FF", background: isToday ? "#F5F3FF" : inMonth ? "white" : "#FDFCFF" }}
+                style={{ borderColor: "#F0EDE6", background: isToday ? "#F7F0FF" : inMonth ? "white" : "#FAF8F5" }}
               >
                 <button
                   type="button"
@@ -391,7 +391,7 @@ export function MonthGrid({
                   style={
                     isToday
                       ? { background: "var(--gradient-brand)", color: "white", fontWeight: 800 }
-                      : { color: inMonth ? "#1F0A3C" : "#7C6A99", fontWeight: 600 }
+                      : { color: inMonth ? "#1A1A1A" : "#6B7280", fontWeight: 600 }
                   }
                   aria-label={`Ver el ${day.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" })}`}
                 >
@@ -409,12 +409,12 @@ export function MonthGrid({
                       style={{
                         background: c.bg,
                         borderLeft: `3px solid ${c.accent}`,
-                        boxShadow: selectedKey === i.key ? "0 0 0 2px #7C3AED" : undefined,
+                        boxShadow: selectedKey === i.key ? "0 0 0 2px #9B21FF" : undefined,
                         opacity: i.status === "cancelada" ? 0.65 : 1,
                       }}
                     >
                       <span style={{ color: c.sub, fontWeight: 700 }}>{fmtHour(i.start)}</span>
-                      <span className="truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                      <span className="truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                         {i.title}
                       </span>
                       <SampleBadge record={i.event} />
@@ -442,7 +442,7 @@ export function MonthGrid({
                     type="button"
                     onClick={() => onPickDay(day)}
                     className="self-start text-[11px] px-1.5 py-0.5 rounded hover:bg-violet-50"
-                    style={{ color: "#6D28D9", fontWeight: 700 }}
+                    style={{ color: "#7C0BD8", fontWeight: 700 }}
                   >
                     +{dayItems.length - shown.length} más
                   </button>
@@ -488,7 +488,7 @@ export function ListView({
 
   if (groups.length === 0) {
     return (
-      <p className="px-4 py-10 text-sm text-center" style={{ color: "#7C6A99" }}>
+      <p className="px-4 py-10 text-sm text-center" style={{ color: "#6B7280" }}>
         No hay nada agendado en este período.
       </p>
     );
@@ -502,7 +502,7 @@ export function ListView({
           <section key={day.toISOString()} aria-label={day.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" })}>
             <h3
               className="text-xs uppercase mb-2 flex items-center gap-2"
-              style={{ color: isToday ? "#6D28D9" : "#7458C4", fontWeight: 700, letterSpacing: "0.08em" }}
+              style={{ color: isToday ? "#7C0BD8" : "#6B7280", fontWeight: 700, letterSpacing: "0.08em" }}
             >
               {day.toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "short" })}
               {isToday && (
@@ -512,7 +512,7 @@ export function ListView({
               )}
             </h3>
             {dayItems.length === 0 ? (
-              <p className="text-xs pl-1" style={{ color: "#7C6A99" }}>
+              <p className="text-xs pl-1" style={{ color: "#6B7280" }}>
                 Sin eventos
               </p>
             ) : null}
@@ -551,13 +551,13 @@ export function ListView({
                         aria-pressed={selected}
                         className="w-full min-h-11 flex items-center gap-3 p-3 rounded-xl text-left border"
                         style={{
-                          background: selected ? "#F5F3FF" : "white",
-                          borderColor: selected ? "#7C3AED" : "#EDE9FE",
+                          background: selected ? "#F7F0FF" : "white",
+                          borderColor: selected ? "#9B21FF" : "#E9E5DE",
                           borderLeft: `4px solid ${c.accent}`,
                           opacity: i.status === "cancelada" ? 0.7 : 1,
                         }}
                       >
-                        <span className="w-12 flex-shrink-0 text-sm" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+                        <span className="w-12 flex-shrink-0 text-sm" style={{ color: "#1A1A1A", fontWeight: 800 }}>
                           {fmtHour(i.start)}
                         </span>
                         <span
@@ -571,14 +571,14 @@ export function ListView({
                           <span className="flex items-center gap-1.5 min-w-0">
                             <span
                               className="block text-sm truncate"
-                              style={{ color: "#1F0A3C", fontWeight: 700, textDecoration: i.status === "cancelada" ? "line-through" : undefined }}
+                              style={{ color: "#1A1A1A", fontWeight: 700, textDecoration: i.status === "cancelada" ? "line-through" : undefined }}
                             >
                               {i.title}
                             </span>
                             <SourceBadge item={i} />
                             <SampleBadge record={i.event} />
                           </span>
-                          <span className="block text-xs truncate" style={{ color: "#7C6A99" }}>
+                          <span className="block text-xs truncate" style={{ color: "#6B7280" }}>
                             {[TYPE_LABEL[i.type], prop, who && !i.title.includes(who) ? who : null].filter(Boolean).join(" · ")}
                           </span>
                         </span>

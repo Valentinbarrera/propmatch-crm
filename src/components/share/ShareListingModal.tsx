@@ -74,7 +74,7 @@ export function ShareListingModal({ property, onClose }: { property: Property; o
   return (
     <div
       className="pm-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
-      style={{ background: "rgba(31,10,60,0.35)" }}
+      style={{ background: "rgba(8, 11, 31,0.35)" }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -85,12 +85,12 @@ export function ShareListingModal({ property, onClose }: { property: Property; o
         style={{ background: "white", boxShadow: "var(--shadow-pop)" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="px-6 py-5 border-b flex items-center gap-3" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+        <div className="px-6 py-5 border-b flex items-center gap-3" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
           <div className="flex-1 min-w-0">
-            <p className="text-lg tracking-tight" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <p className="text-lg tracking-tight" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               Compartir ficha
             </p>
-            <p className="text-xs mt-0.5 truncate" style={{ color: "#7C6A99" }}>
+            <p className="text-xs mt-0.5 truncate" style={{ color: "#6B7280" }}>
               {property.title}
             </p>
           </div>
@@ -98,7 +98,7 @@ export function ShareListingModal({ property, onClose }: { property: Property; o
             onClick={onClose}
             aria-label="Cerrar"
             className="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:bg-violet-50"
-            style={{ color: "#7458C4", fontSize: 20, lineHeight: 1 }}
+            style={{ color: "#6B7280", fontSize: 20, lineHeight: 1 }}
           >
             ×
           </button>
@@ -114,7 +114,7 @@ export function ShareListingModal({ property, onClose }: { property: Property; o
                 readOnly
                 value={url ?? "Armando link…"}
                 onFocus={(e) => e.target.select()}
-                className="flex-1 min-w-0 px-3 py-2.5 rounded-xl text-xs border outline-none text-[#7C6A99] border-[#EDE9FE] bg-[#FAFAFF] focus-visible:ring-2 focus-visible:ring-[#7C3AED]"
+                className="flex-1 min-w-0 px-3 py-2.5 rounded-xl text-xs border outline-none text-[#6B7280] border-[#E9E5DE] bg-[#FAF8F5] focus-visible:ring-2 focus-visible:ring-[#9B21FF]"
                 aria-label="Link de la ficha"
               />
               <button
@@ -127,13 +127,13 @@ export function ShareListingModal({ property, onClose }: { property: Property; o
               </button>
             </div>
             <div className="flex items-center justify-between mt-2 gap-3">
-              <p className="text-xs" style={{ color: skipped ? "#B45309" : "#7458C4" }}>
+              <p className="text-xs" style={{ color: skipped ? "#B45309" : "#6B7280" }}>
                 {skipped
                   ? `${skipped} ${skipped === 1 ? "foto subida desde la compu no entra" : "fotos subidas desde la compu no entran"} hasta tener servidor de fotos.`
                   : "Sin comisión, propietario ni altura de la calle."}
               </p>
               {url && (
-                <a href={url} target="_blank" rel="noopener noreferrer" className="text-xs whitespace-nowrap hover:underline" style={{ color: "#7C3AED", fontWeight: 600 }}>
+                <a href={url} target="_blank" rel="noopener noreferrer" className="text-xs whitespace-nowrap hover:underline" style={{ color: "#9B21FF", fontWeight: 600 }}>
                   Ver ficha ↗
                 </a>
               )}
@@ -141,11 +141,11 @@ export function ShareListingModal({ property, onClose }: { property: Property; o
           </div>
 
           <div>
-            <p className="text-xs uppercase mb-2.5" style={{ color: "#7C3AED", fontWeight: 700, letterSpacing: "0.1em" }}>
+            <p className="text-xs uppercase mb-2.5" style={{ color: "#9B21FF", fontWeight: 700, letterSpacing: "0.1em" }}>
               Mandar a quienes matchean
             </p>
             {interested.length === 0 ? (
-              <p className="text-sm" style={{ color: "#7458C4" }}>
+              <p className="text-sm" style={{ color: "#6B7280" }}>
                 Todavía no hay contactos que busquen algo así.
               </p>
             ) : (
@@ -159,10 +159,10 @@ export function ShareListingModal({ property, onClose }: { property: Property; o
                       {initials(contact.full_name)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                      <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                         {contact.full_name}
                       </p>
-                      <p className="text-xs" style={{ color: "#7C6A99" }}>
+                      <p className="text-xs" style={{ color: "#6B7280" }}>
                         {Math.round(match.score)}% de match{contact.phone ? "" : " · sin teléfono"}
                         {(() => {
                           const sent = lastSentAbout(activities, contact.id, property.id);

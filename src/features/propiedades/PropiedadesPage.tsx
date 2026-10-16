@@ -118,20 +118,20 @@ export default function PropiedadesPage() {
         <button
           onClick={() => navigate("/importar?tipo=propiedades")}
           className="px-4 py-2.5 rounded-xl text-sm border transition-all hover:bg-violet-50 whitespace-nowrap"
-          style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+          style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "white" }}
         >
           Importar Excel
         </button>
         {isLinkedAgencyId(agency.id) && (
           <MeliImportButton
             className="px-4 py-2.5 rounded-xl text-sm border transition-all hover:bg-violet-50 whitespace-nowrap"
-            style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+            style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "white" }}
           />
         )}
         {!isDemo && (
           <PublishAllToAppButton
             className="px-4 py-2.5 rounded-xl text-sm border transition-all hover:bg-violet-50 whitespace-nowrap"
-            style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+            style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "white" }}
           />
         )}
       </AppHeader>
@@ -143,44 +143,44 @@ export default function PropiedadesPage() {
             value={String(stats.active.length)}
             label="Propiedades activas"
             sub={`${properties.length} en total`}
-            icon={<HomeIcon size={22} color="#7C3AED" />}
-            iconBg="#F5F3FF"
+            icon={<HomeIcon size={22} color="#9B21FF" />}
+            iconBg="#F7F0FF"
             badge={`${Math.round((stats.active.length / total) * 100)}%`}
-            bar="linear-gradient(90deg, #7C3AED, #A855F7)"
+            bar="var(--gradient-brand-h)"
             barWidth={(stats.active.length / total) * 100}
           />
           <StatCard
             value={String(stats.newThisMonth.length)}
             label="Nuevas este mes"
             sub="Últimos 30 días"
-            icon={<HomeIcon size={22} color="#EC4899" />}
-            iconBg="#FDF2F8"
+            icon={<HomeIcon size={22} color="#FF5ECA" />}
+            iconBg="#FFF1FA"
             badge={`+${stats.newThisMonth.length}`}
-            bar="linear-gradient(90deg, #EC4899, #F472B6)"
+            bar="linear-gradient(90deg, #FF5ECA, #FF7ED5)"
             barWidth={(stats.newThisMonth.length / total) * 100}
           />
           <StatCard
             value={String(stats.withInterest.length)}
             label="Con interesados"
             sub={`${stats.totalMatches} matches en total`}
-            icon={<ContactsIcon size={22} color="#A855F7" />}
-            iconBg="#FAF5FF"
+            icon={<ContactsIcon size={22} color="#A855FF" />}
+            iconBg="#F7F0FF"
             badge={String(stats.totalMatches)}
-            badgeBg="#F5F3FF"
-            badgeText="#7C3AED"
-            bar="linear-gradient(90deg, #A855F7, #C084FC)"
+            badgeBg="#F7F0FF"
+            badgeText="#9B21FF"
+            bar="linear-gradient(90deg, #A855FF, #BF7FFF)"
             barWidth={(stats.withInterest.length / total) * 100}
           />
           <StatCard
             value={money(stats.active.reduce((sum, p) => sum + (p.price ?? 0), 0))}
             label="Valor de la cartera"
             sub="Propiedades disponibles"
-            icon={<AgendaIcon size={22} color="#8B5CF6" />}
-            iconBg="#EEF2FF"
+            icon={<AgendaIcon size={22} color="#A855FF" />}
+            iconBg="#F7F0FF"
             badge="Activo"
             badgeBg="#EFF6FF"
             badgeText="#2563EB"
-            bar="linear-gradient(90deg, #8B5CF6, #EC4899)"
+            bar="linear-gradient(90deg, #A855FF, #FF5ECA)"
             barWidth={80}
           />
         </div>
@@ -197,7 +197,7 @@ export default function PropiedadesPage() {
             ]}
           />
 
-          <div className="w-px h-6" style={{ background: "#EDE9FE" }} />
+          <div className="w-px h-6" style={{ background: "#E9E5DE" }} />
 
           <FilterDropdown label="Tipo" options={TYPE_OPTIONS} value={type} onChange={setType} />
           <FilterDropdown label="Zona" options={ZONE_OPTIONS} value={zone} onChange={setZone} />
@@ -207,11 +207,11 @@ export default function PropiedadesPage() {
 
           <div className="flex-1" />
 
-          <span className="text-sm whitespace-nowrap" style={{ color: "#7458C4" }}>
-            <span style={{ color: "#1F0A3C", fontWeight: 600 }}>{filtered.length}</span> propiedades
+          <span className="text-sm whitespace-nowrap" style={{ color: "#6B7280" }}>
+            <span style={{ color: "#1A1A1A", fontWeight: 600 }}>{filtered.length}</span> propiedades
           </span>
 
-          <div className="flex items-center gap-0.5 p-1 rounded-xl" style={{ background: "#F5F3FF" }}>
+          <div className="flex items-center gap-0.5 p-1 rounded-xl" style={{ background: "#F7F0FF" }}>
             <ViewToggle mode="grid" active={viewMode === "grid"} onClick={() => setViewMode("grid")} />
             <ViewToggle mode="list" active={viewMode === "list"} onClick={() => setViewMode("list")} />
           </div>
@@ -221,7 +221,7 @@ export default function PropiedadesPage() {
 
         {filtered.length === 0 ? (
           <EmptyState
-            icon={<HomeIcon size={24} color="#7C3AED" />}
+            icon={<HomeIcon size={24} color="#9B21FF" />}
             title={properties.length === 0 ? "Todavía no cargaste propiedades" : "Sin resultados"}
             description={
               properties.length === 0
@@ -270,13 +270,13 @@ function ViewToggle({
   active: boolean;
   onClick: () => void;
 }) {
-  const color = active ? "#7C3AED" : "#A78BFA";
+  const color = active ? "#9B21FF" : "#BF7FFF";
   return (
     <button
       onClick={onClick}
       aria-label={mode === "grid" ? "Ver en grilla" : "Ver en lista"}
       className="w-8 h-8 flex items-center justify-center rounded-lg transition-all"
-      style={active ? { background: "white", boxShadow: "0 1px 4px rgba(124,58,237,0.15)" } : {}}
+      style={active ? { background: "white", boxShadow: "0 1px 4px rgba(168, 85, 255,0.15)" } : {}}
     >
       {mode === "grid" ? (
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
@@ -305,8 +305,8 @@ function MatchBanner({ total }: { total: number }) {
     <div
       className="mt-5 rounded-2xl px-6 py-4 flex items-center justify-between gap-4 overflow-hidden relative flex-wrap"
       style={{
-        background: "linear-gradient(135deg, #F5F3FF 0%, #FAF0FD 50%, #FDE7F5 100%)",
-        border: "1px solid #EDE9FE",
+        background: "linear-gradient(135deg, #F7F0FF 0%, #F7F0FF 50%, #FFF1FA 100%)",
+        border: "1px solid #E9E5DE",
       }}
     >
       <div
@@ -315,7 +315,7 @@ function MatchBanner({ total }: { total: number }) {
       />
       <div
         className="absolute right-0 bottom-0 w-32 h-32 rounded-full opacity-10 pointer-events-none"
-        style={{ background: "#EC4899", filter: "blur(24px)" }}
+        style={{ background: "#FF5ECA", filter: "blur(24px)" }}
       />
 
       <div className="flex items-center gap-4 relative z-10">
@@ -324,24 +324,24 @@ function MatchBanner({ total }: { total: number }) {
             className="w-12 h-12 rounded-2xl flex items-center justify-center"
             style={{
               background: "var(--gradient-brand)",
-              boxShadow: "0 4px 16px rgba(124,58,237,0.35)",
+              boxShadow: "0 4px 16px rgba(168, 85, 255,0.35)",
             }}
           >
             <MatchesSolidIcon size={22} />
           </div>
           <span
             className="absolute -top-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center text-white"
-            style={{ background: "#EC4899", fontSize: "8px", fontWeight: 800 }}
+            style={{ background: "#FF5ECA", fontSize: "8px", fontWeight: 800 }}
           >
             ✦
           </span>
         </div>
 
         <div>
-          <p className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <p className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             Encontramos personas compatibles
           </p>
-          <p className="text-sm mt-0.5" style={{ color: "#7C6A99" }}>
+          <p className="text-sm mt-0.5" style={{ color: "#6B7280" }}>
             <span className="text-gradient-brand-h" style={{ fontWeight: 800 }}>
               {total} matches
             </span>{" "}
@@ -382,9 +382,9 @@ function PropertyCard({
     <div
       onClick={onOpen}
       className="rounded-2xl border overflow-hidden flex flex-col cursor-pointer group transition-all hover:shadow-xl"
-      style={{ background: "white", borderColor: "#EDE9FE", boxShadow: "var(--shadow-card-lg)" }}
+      style={{ background: "white", borderColor: "#E9E5DE", boxShadow: "var(--shadow-card-lg)" }}
     >
-      <div className="relative h-48 overflow-hidden" style={{ background: "#F5F3FF" }}>
+      <div className="relative h-48 overflow-hidden" style={{ background: "#F7F0FF" }}>
         {photo ? (
           <img
             src={photo}
@@ -394,12 +394,12 @@ function PropertyCard({
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <HomeIcon size={36} color="#DDD6FE" />
+            <HomeIcon size={36} color="#DDD8CF" />
           </div>
         )}
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to top, rgba(31,10,60,0.35) 0%, transparent 60%)" }}
+          style={{ background: "linear-gradient(to top, rgba(8, 11, 31,0.35) 0%, transparent 60%)" }}
         />
         {/* Solo visual (CSS): la foto no se toca. Arriba van estado y estrella; abajo a la izquierda, «Publicada…». */}
         {photo && <PhotoLogoOverlay logo={photoLogo} avoid={["top-left", "top-right", "bottom-left"]} />}
@@ -438,7 +438,7 @@ function PropertyCard({
             className="text-xs backdrop-blur-sm rounded-lg px-2 py-1"
             style={{
               background: "rgba(255,255,255,0.85)",
-              color: "#7C6A99",
+              color: "#6B7280",
               fontWeight: 500,
               fontSize: "11px",
             }}
@@ -450,21 +450,21 @@ function PropertyCard({
 
       <div className="p-4 flex flex-col flex-1">
         <div className="flex items-start justify-between gap-2 mb-2">
-          <Badge bg="#F5F3FF" text="#7C3AED" size="xs">
+          <Badge bg="#F7F0FF" text="#9B21FF" size="xs">
             {PROPERTY_TYPE_LABEL[p.type]}
           </Badge>
-          <span className="text-lg tracking-tight" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+          <span className="text-lg tracking-tight" style={{ color: "#1A1A1A", fontWeight: 800 }}>
             {money(p.price, p.currency)}
           </span>
         </div>
 
-        <h3 className="text-sm leading-snug mb-1" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <h3 className="text-sm leading-snug mb-1" style={{ color: "#1A1A1A", fontWeight: 700 }}>
           {p.title} <SampleBadge record={p} />
         </h3>
 
         <div className="flex items-center gap-1 mb-3">
           <MapPinIcon />
-          <span className="text-xs" style={{ color: "#7458C4" }}>
+          <span className="text-xs" style={{ color: "#6B7280" }}>
             {[p.zone, p.province].filter(Boolean).join(", ")}
           </span>
         </div>
@@ -474,7 +474,7 @@ function PropertyCard({
             <span
               key={tag}
               className="text-xs px-2 py-0.5 rounded-full"
-              style={{ background: "#F9F7FF", color: "#9CA3AF", fontWeight: 500 }}
+              style={{ background: "#FAF8F5", color: "#9CA3AF", fontWeight: 500 }}
             >
               {tag}
             </span>
@@ -483,7 +483,7 @@ function PropertyCard({
 
         <div
           className="flex items-center gap-3 pt-3 pb-3 border-t border-b mt-auto"
-          style={{ borderColor: "#F3F0FF" }}
+          style={{ borderColor: "#F0EDE6" }}
         >
           <Spec value={p.rooms} unit="amb." />
           <Spec value={p.bedrooms} unit="dorm." />
@@ -500,7 +500,7 @@ function PropertyCard({
                 >
                   <MatchesSolidIcon size={11} />
                 </div>
-                <span className="text-xs truncate" style={{ color: "#7C6A99" }}>
+                <span className="text-xs truncate" style={{ color: "#6B7280" }}>
                   <span className="text-gradient-brand-h" style={{ fontWeight: 700 }}>
                     {stats.count} {stats.count === 1 ? "persona" : "personas"}
                   </span>{" "}
@@ -511,8 +511,8 @@ function PropertyCard({
                 className="text-xs px-2.5 py-1 rounded-full flex-shrink-0"
                 style={{
                   background: "var(--gradient-soft)",
-                  border: "1px solid #EDE9FE",
-                  color: "#7C3AED",
+                  border: "1px solid #E9E5DE",
+                  color: "#9B21FF",
                   fontWeight: 700,
                 }}
               >
@@ -520,7 +520,7 @@ function PropertyCard({
               </div>
             </>
           ) : (
-            <span className="text-xs" style={{ color: "#7C6A99" }}>
+            <span className="text-xs" style={{ color: "#6B7280" }}>
               Sin interesados compatibles todavía
             </span>
           )}
@@ -534,7 +534,7 @@ function Spec({ value, unit }: { value: number | null; unit: string }) {
   if (value === null) return null;
   return (
     <span className="text-xs" style={{ color: "#374151" }}>
-      <strong style={{ color: "#1F0A3C", fontWeight: 700 }}>{value}</strong> {unit}
+      <strong style={{ color: "#1A1A1A", fontWeight: 700 }}>{value}</strong> {unit}
     </span>
   );
 }
@@ -555,16 +555,16 @@ function PropertyList({
   return (
     <div
       className="mt-6 rounded-2xl border overflow-hidden overflow-x-auto"
-      style={{ borderColor: "#EDE9FE", boxShadow: "var(--shadow-card)" }}
+      style={{ borderColor: "#E9E5DE", boxShadow: "var(--shadow-card)" }}
     >
       <table className="w-full bg-white" style={{ minWidth: 900 }}>
         <thead>
-          <tr style={{ background: "#FDFCFF", borderBottom: "1px solid #F3F0FF" }}>
+          <tr style={{ background: "#FAF8F5", borderBottom: "1px solid #F0EDE6" }}>
             {["Propiedad", "Tipo", "Precio", "Detalles", "Estado", "Matches", ""].map((h, i) => (
               <th
                 key={h || `col-${i}`}
                 className="text-left px-5 py-3.5 text-xs uppercase tracking-wide whitespace-nowrap"
-                style={{ color: "#7458C4", letterSpacing: "0.06em", fontWeight: 600 }}
+                style={{ color: "#6B7280", letterSpacing: "0.06em", fontWeight: 600 }}
               >
                 {h}
               </th>
@@ -581,25 +581,25 @@ function PropertyList({
                 key={p.id}
                 onClick={() => onOpen(p.id)}
                 className="transition-all hover:bg-violet-50 cursor-pointer"
-                style={{ borderBottom: idx < properties.length - 1 ? "1px solid #F9F7FF" : undefined }}
+                style={{ borderBottom: idx < properties.length - 1 ? "1px solid #FAF8F5" : undefined }}
               >
                 <td className="px-5 py-3.5">
                   <div className="flex items-center gap-3">
                     <div
                       className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0"
-                      style={{ background: "#F5F3FF" }}
+                      style={{ background: "#F7F0FF" }}
                     >
                       {photo && (
                         <img src={photo} alt="" loading="lazy" className="w-full h-full object-cover" />
                       )}
                     </div>
                     <div className="min-w-0">
-                      <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                      <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                         {p.title} <SampleBadge record={p} />
                       </p>
                       <div className="flex items-center gap-1 mt-0.5">
                         <MapPinIcon size={10} />
-                        <span className="text-xs" style={{ color: "#7458C4" }}>
+                        <span className="text-xs" style={{ color: "#6B7280" }}>
                           {p.zone}
                         </span>
                       </div>
@@ -607,12 +607,12 @@ function PropertyList({
                   </div>
                 </td>
                 <td className="px-5 py-3.5">
-                  <Badge bg="#F5F3FF" text="#7C3AED" size="xs">
+                  <Badge bg="#F7F0FF" text="#9B21FF" size="xs">
                     {PROPERTY_TYPE_LABEL[p.type]}
                   </Badge>
                 </td>
                 <td className="px-5 py-3.5 whitespace-nowrap">
-                  <span className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                  <span className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                     {money(p.price, p.currency)}
                   </span>
                 </td>
@@ -623,17 +623,17 @@ function PropertyList({
                   >
                     {p.rooms !== null && (
                       <span>
-                        <strong style={{ color: "#1F0A3C" }}>{p.rooms}</strong> amb.
+                        <strong style={{ color: "#1A1A1A" }}>{p.rooms}</strong> amb.
                       </span>
                     )}
                     {p.bedrooms !== null && (
                       <span>
-                        <strong style={{ color: "#1F0A3C" }}>{p.bedrooms}</strong> dorm.
+                        <strong style={{ color: "#1A1A1A" }}>{p.bedrooms}</strong> dorm.
                       </span>
                     )}
                     {p.surface_total !== null && (
                       <span>
-                        <strong style={{ color: "#1F0A3C" }}>{p.surface_total}</strong> m²
+                        <strong style={{ color: "#1A1A1A" }}>{p.surface_total}</strong> m²
                       </span>
                     )}
                   </div>
@@ -649,12 +649,12 @@ function PropertyList({
                       <span className="text-sm text-gradient-brand-h" style={{ fontWeight: 700 }}>
                         {stats.count}
                       </span>
-                      <span className="text-xs" style={{ color: "#7C6A99" }}>
+                      <span className="text-xs" style={{ color: "#6B7280" }}>
                         personas
                       </span>
                     </div>
                   ) : (
-                    <span className="text-xs" style={{ color: "#DDD6FE" }}>
+                    <span className="text-xs" style={{ color: "#DDD8CF" }}>
                       —
                     </span>
                   )}
@@ -667,9 +667,9 @@ function PropertyList({
                     }}
                     aria-label="Destacar propiedad"
                     className="w-7 h-7 rounded-lg flex items-center justify-center transition-all hover:bg-violet-100"
-                    style={{ background: p.is_featured ? "var(--gradient-brand)" : "#F5F3FF" }}
+                    style={{ background: p.is_featured ? "var(--gradient-brand)" : "#F7F0FF" }}
                   >
-                    <MatchesIcon size={12} color={p.is_featured ? "white" : "#A78BFA"} />
+                    <MatchesIcon size={12} color={p.is_featured ? "white" : "#BF7FFF"} />
                   </button>
                 </td>
               </tr>

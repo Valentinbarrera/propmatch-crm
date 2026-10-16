@@ -14,11 +14,11 @@ import { STATUS_META, STATUS_ORDER } from "./agendaModel";
  */
 
 const TYPES: { value: EventType; label: string; color: string }[] = [
-  { value: "visita", label: "Visita", color: "#7C3AED" },
+  { value: "visita", label: "Visita", color: "#9B21FF" },
   { value: "llamada", label: "Llamada", color: "#3B82F6" },
-  { value: "reunion", label: "Reunión", color: "#EC4899" },
+  { value: "reunion", label: "Reunión", color: "#FF5ECA" },
   { value: "seguimiento", label: "Seguimiento", color: "#F59E0B" },
-  { value: "publicacion", label: "Publicación", color: "#DB2777" },
+  { value: "publicacion", label: "Publicación", color: "#CB1093" },
 ];
 
 const DURATIONS = [30, 45, 60, 90, 120];
@@ -164,7 +164,7 @@ export function EventFormModal({
   return (
     <div
       className="pm-backdrop fixed inset-0 z-50 flex items-center justify-center p-6"
-      style={{ background: "rgba(31,10,60,0.35)" }}
+      style={{ background: "rgba(8, 11, 31,0.35)" }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -178,7 +178,7 @@ export function EventFormModal({
         {/* Cabecera */}
         <div
           className="px-6 py-5 border-b flex items-center gap-3 flex-shrink-0"
-          style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}
+          style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}
         >
           <div
             className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -187,10 +187,10 @@ export function EventFormModal({
             <AgendaIcon size={18} color="white" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-lg tracking-tight" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <p className="text-lg tracking-tight" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               {isEdit ? "Editar evento" : "Nuevo evento"}
             </p>
-            <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+            <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
               {isEdit
                 ? "Los cambios se ven al instante en el calendario."
                 : "Queda en el calendario y en el historial del contacto."}
@@ -200,7 +200,7 @@ export function EventFormModal({
             onClick={onClose}
             aria-label="Cerrar"
             className="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:bg-violet-50 flex-shrink-0"
-            style={{ color: "#7458C4", fontSize: 20, lineHeight: 1 }}
+            style={{ color: "#6B7280", fontSize: 20, lineHeight: 1 }}
           >
             ×
           </button>
@@ -222,7 +222,7 @@ export function EventFormModal({
                     style={
                       active
                         ? { background: t.color, color: "white", borderColor: "transparent", fontWeight: 600 }
-                        : { background: "white", color: "#7C6A99", borderColor: "#EDE9FE", fontWeight: 500 }
+                        : { background: "white", color: "#6B7280", borderColor: "#E9E5DE", fontWeight: 500 }
                     }
                   >
                     <EventTypeIcon type={t.value} color={active ? "white" : t.color} size={12} />
@@ -354,7 +354,7 @@ export function EventFormModal({
         {/* Pie */}
         <div
           className="px-6 py-4 border-t flex items-center justify-end gap-3 flex-shrink-0"
-          style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}
+          style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}
         >
           {event && (
             <div className="mr-auto flex items-center gap-2">
@@ -377,7 +377,7 @@ export function EventFormModal({
                   <button
                     onClick={() => setConfirmDelete(false)}
                     className="px-3 py-2 rounded-lg text-xs transition-all hover:bg-violet-50"
-                    style={{ color: "#7C6A99", fontWeight: 600 }}
+                    style={{ color: "#6B7280", fontWeight: 600 }}
                   >
                     No
                   </button>
@@ -396,7 +396,7 @@ export function EventFormModal({
           <button
             onClick={onClose}
             className="px-5 py-2.5 rounded-xl text-sm border transition-all hover:bg-violet-50"
-            style={{ borderColor: "#EDE9FE", color: "#7C6A99", fontWeight: 600, background: "white" }}
+            style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 600, background: "white" }}
           >
             Cancelar
           </button>
@@ -417,22 +417,22 @@ export function EventFormModal({
 
 const inputClass = (hasError: boolean) =>
   "w-full px-4 py-2.5 rounded-xl text-sm border outline-none transition-all bg-white " +
-  "text-[#1F0A3C] placeholder:text-[#7C6A99] focus:ring-4 focus:ring-[#EDE9FE] " +
-  (hasError ? "border-[#FECDD3] focus:border-[#FB7185]" : "border-[#EDE9FE] focus:border-[#7C3AED]");
+  "text-[#1A1A1A] placeholder:text-[#6B7280] focus:ring-4 focus:ring-[#E9E5DE] " +
+  (hasError ? "border-[#FECDD3] focus:border-[#FB7185]" : "border-[#E9E5DE] focus:border-[#9B21FF]");
 
 const selectClass =
   "w-full px-4 py-2.5 rounded-xl text-sm border outline-none transition-all bg-white " +
-  "text-[#1F0A3C] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE]";
+  "text-[#1A1A1A] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE]";
 
 const selectClassError =
   "w-full px-4 py-2.5 rounded-xl text-sm border outline-none transition-all bg-white " +
-  "text-[#1F0A3C] border-[#FECDD3] focus:border-[#FB7185] focus:ring-4 focus:ring-[#EDE9FE]";
+  "text-[#1A1A1A] border-[#FECDD3] focus:border-[#FB7185] focus:ring-4 focus:ring-[#E9E5DE]";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <p
       className="text-xs uppercase mb-3"
-      style={{ color: "#7C3AED", fontWeight: 700, letterSpacing: "0.1em" }}
+      style={{ color: "#9B21FF", fontWeight: 700, letterSpacing: "0.1em" }}
     >
       {children}
     </p>
@@ -450,7 +450,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+      <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label}
       </span>
       {children}

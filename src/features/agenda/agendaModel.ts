@@ -70,7 +70,7 @@ export const STATUS_META: Record<VisitStatus, StatusMeta> = {
     label: "Reprogramada",
     bg: "var(--color-lavender)",
     text: "var(--color-lilac-text)",
-    border: "#DDD6FE",
+    border: "#DDD8CF",
   },
   no_show: {
     label: "No vino",
@@ -99,11 +99,11 @@ export const APP_STATUS_MAP: Record<AppVisitStatus, VisitStatus> = {
 const CLOSED_WITHOUT_FEEDBACK: VisitStatus[] = ["no_show", "cancelada", "reprogramada"];
 
 export const TYPE_COLOR: Record<EventType, string> = {
-  visita: "#7C3AED",
+  visita: "#9B21FF",
   llamada: "#3B82F6",
-  reunion: "#EC4899",
+  reunion: "#FF5ECA",
   seguimiento: "#F59E0B",
-  publicacion: "#DB2777",
+  publicacion: "#CB1093",
 };
 
 export const TYPE_LABEL: Record<EventType, string> = {

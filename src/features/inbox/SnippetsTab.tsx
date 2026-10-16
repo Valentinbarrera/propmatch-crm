@@ -91,7 +91,7 @@ export function SnippetsTab({
 
   return (
     <div className="space-y-3">
-      <p className="text-sm" style={{ color: "#4B3B73" }}>
+      <p className="text-sm" style={{ color: "#374151" }}>
         Aparecen como botones arriba del cuadro de mensaje. Al tocarlas, el texto se arma con los datos de la conversación y
         lo revisás antes de enviar.
       </p>
@@ -120,20 +120,20 @@ export function SnippetsTab({
         )}
       </div>
       {config.snippets.length === 0 && (
-        <p className="text-sm py-6 text-center" style={{ color: "#6B5A8E" }}>
+        <p className="text-sm py-6 text-center" style={{ color: "#6B7280" }}>
           No tenés respuestas rápidas. Creá una o restaurá las de fábrica.
         </p>
       )}
       <ul className="space-y-2">
         {config.snippets.map((s, i) => (
-          <li key={s.id} className="rounded-xl border p-3 space-y-2 bg-white" style={{ borderColor: "#EDE9FE" }}>
+          <li key={s.id} className="rounded-xl border p-3 space-y-2 bg-white" style={{ borderColor: "#E9E5DE" }}>
             <div className="flex items-center gap-2 flex-wrap">
               <p className="text-sm flex-1 min-w-0 truncate" style={{ color: INK, fontWeight: 700 }}>
                 {s.title}
               </p>
               {s.factoryId && <Pill tone="gray">De fábrica</Pill>}
             </div>
-            <p className="text-xs whitespace-pre-wrap break-words line-clamp-3" style={{ color: "#4B3B73" }}>
+            <p className="text-xs whitespace-pre-wrap break-words line-clamp-3" style={{ color: "#374151" }}>
               {s.text}
             </p>
             <div className="flex flex-wrap gap-1.5">

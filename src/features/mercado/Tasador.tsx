@@ -17,7 +17,7 @@ const OPERATIONS: { value: OperationType; label: string }[] = [
 
 const fieldClass =
   "w-full px-3 min-h-11 py-2 rounded-xl text-sm border outline-none transition-all bg-white " +
-  "text-[#1F0A3C] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE]";
+  "text-[#1A1A1A] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE]";
 
 interface FormState {
   operation: OperationType;
@@ -88,31 +88,31 @@ export function Tasador({
   return (
     <section aria-labelledby="tasador-title">
       <Card>
-        <div className="px-5 py-4 border-b" style={{ borderColor: "#F3F0FF", background: "var(--gradient-soft)" }}>
-          <h2 id="tasador-title" className="text-base" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+        <div className="px-5 py-4 border-b" style={{ borderColor: "#F0EDE6", background: "var(--gradient-soft)" }}>
+          <h2 id="tasador-title" className="text-base" style={{ color: "#1A1A1A", fontWeight: 800 }}>
             ¿Cuánto pedir?
           </h2>
-          <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
             Tasador rápido: precio sugerido y rango competitivo a partir de propiedades similares activas, en USD.
           </p>
         </div>
 
         <form onSubmit={onSubmit} className="p-5 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 items-end" noValidate>
           <fieldset className="lg:col-span-2 min-w-0">
-            <legend className="text-xs mb-1.5" style={{ color: "#7458C4", fontWeight: 700 }}>
+            <legend className="text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 700 }}>
               Operación
             </legend>
-            <div className="flex gap-1 p-1 rounded-xl" style={{ background: "#F5F3FF" }}>
+            <div className="flex gap-1 p-1 rounded-xl" style={{ background: "#F7F0FF" }}>
               {OPERATIONS.map((o) => {
                 const active = form.operation === o.value;
                 return (
                   <label
                     key={o.value}
-                    className="flex-1 min-h-9 flex items-center justify-center rounded-lg text-sm cursor-pointer transition-all has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[#7C3AED]"
+                    className="flex-1 min-h-9 flex items-center justify-center rounded-lg text-sm cursor-pointer transition-all has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-[#9B21FF]"
                     style={
                       active
                         ? { background: "var(--gradient-brand)", color: "white", fontWeight: 600 }
-                        : { color: "#7C6A99", fontWeight: 500 }
+                        : { color: "#6B7280", fontWeight: 500 }
                     }
                   >
                     <input
@@ -167,7 +167,7 @@ export function Tasador({
             <input id={`${ids}-m2`} type="number" inputMode="decimal" min={1} value={form.surface} onChange={(e) => set("surface", e.target.value)} className={fieldClass} />
           </Field>
           <div className="lg:col-span-2 flex flex-col gap-1">
-            <span className="text-xs" style={{ color: "#7458C4", fontWeight: 700 }}>
+            <span className="text-xs" style={{ color: "#6B7280", fontWeight: 700 }}>
               Moneda
             </span>
             <span className="min-h-11 flex items-center text-sm" style={{ color: "#374151" }}>
@@ -208,7 +208,7 @@ function Field({
 }) {
   return (
     <div className={`flex flex-col gap-1 min-w-0 ${className}`}>
-      <label htmlFor={htmlFor} className="text-xs" style={{ color: "#7458C4", fontWeight: 700 }}>
+      <label htmlFor={htmlFor} className="text-xs" style={{ color: "#6B7280", fontWeight: 700 }}>
         {label}
       </label>
       {children}
@@ -236,9 +236,9 @@ function Result({ d, input }: { d: PropertyDiagnostic; input: ValuationInput }) 
     .join(" · ");
 
   return (
-    <div className="px-5 pb-5 pt-1 space-y-6 border-t" style={{ borderColor: "#F3F0FF" }}>
-      <p className="text-xs pt-4" style={{ color: "#7C6A99" }}>
-        Estimación para: <strong style={{ color: "#1F0A3C" }}>{summary}</strong>
+    <div className="px-5 pb-5 pt-1 space-y-6 border-t" style={{ borderColor: "#F0EDE6" }}>
+      <p className="text-xs pt-4" style={{ color: "#6B7280" }}>
+        Estimación para: <strong style={{ color: "#1A1A1A" }}>{summary}</strong>
         {input.operation === "alquiler" && " (precio mensual)"}
       </p>
 
@@ -252,14 +252,14 @@ function Result({ d, input }: { d: PropertyDiagnostic; input: ValuationInput }) 
 
       {price.showRange ? (
         <div className="grid gap-4 md:grid-cols-[minmax(0,240px)_minmax(0,1fr)] items-stretch">
-          <div className="rounded-2xl p-4 flex flex-col justify-center" style={{ background: "#FDFCFF", border: "1px solid #EDE9FE" }}>
-            <p className="text-xs" style={{ color: "#7458C4", fontWeight: 700 }}>
+          <div className="rounded-2xl p-4 flex flex-col justify-center" style={{ background: "#FAF8F5", border: "1px solid #E9E5DE" }}>
+            <p className="text-xs" style={{ color: "#6B7280", fontWeight: 700 }}>
               Precio sugerido
             </p>
             <p className="text-4xl tracking-tight text-gradient-brand mt-1" style={{ fontWeight: 800 }}>
               {money(price.suggested, "USD")}
             </p>
-            <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
+            <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
               {price.roomsAdjustment != null
                 ? price.roomsAdjustment === 0
                   ? `Mediana de comparables, sin ajuste (misma cantidad de ambientes que la mediana: ${price.medianRooms}).`
@@ -300,7 +300,7 @@ function Result({ d, input }: { d: PropertyDiagnostic; input: ValuationInput }) 
       )}
 
       {price.showRange && (
-        <div className="rounded-xl p-4" style={{ border: "1px solid #F3F0FF" }}>
+        <div className="rounded-xl p-4" style={{ border: "1px solid #F0EDE6" }}>
           <RangeBar price={price} />
         </div>
       )}
@@ -350,7 +350,7 @@ export function SourceChip({ crm, app }: { crm: number; app: number }) {
   return (
     <span
       className="inline-flex items-center text-xs px-2.5 py-1 rounded-full border whitespace-nowrap"
-      style={{ background: "#F5F3FF", color: "#6D28D9", borderColor: "#DDD6FE", fontWeight: 700 }}
+      style={{ background: "#F7F0FF", color: "#7C0BD8", borderColor: "#DDD8CF", fontWeight: 700 }}
     >
       Fuente: {crm} de tu inventario · {app} de la app
     </span>

@@ -42,15 +42,15 @@ export function VideoCoverPanel({ media, kind, videoUrl, coverUrl, onChange }: P
 
   return (
     <Card>
-      <div className="px-5 py-4 border-b" style={{ borderColor: "#F3F0FF" }}>
-        <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>{kind === "reel" ? "Video del Reel" : "Video de la Story"}</h3>
-        <p className="text-xs mt-0.5" style={{ color: "#6B5A8A" }}>
+      <div className="px-5 py-4 border-b" style={{ borderColor: "#F0EDE6" }}>
+        <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>{kind === "reel" ? "Video del Reel" : "Video de la Story"}</h3>
+        <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
           Subí el video ya editado, en 9:16. Acá no recortamos ni comprimimos video: elegís la portada y se publica tal cual.
         </p>
       </div>
       <div className="p-5 grid gap-5 md:grid-cols-[minmax(0,200px)_minmax(0,1fr)] items-start">
         <div className="mx-auto w-full" style={{ maxWidth: 200 }}>
-          <div className="rounded-xl overflow-hidden border" style={{ aspectRatio: "9 / 16", background: "#111", borderColor: "#DDD6FE" }}>
+          <div className="rounded-xl overflow-hidden border" style={{ aspectRatio: "9 / 16", background: "#111", borderColor: "#DDD8CF" }}>
             {videoUrl ? (
               <video ref={video} src={videoUrl} muted playsInline preload="auto" className="w-full h-full object-cover" aria-label="Fotograma elegido para la portada" />
             ) : (
@@ -61,19 +61,19 @@ export function VideoCoverPanel({ media, kind, videoUrl, coverUrl, onChange }: P
         <div className="flex flex-col gap-4 min-w-0">
           <div>
             <div className="flex items-center justify-between text-xs">
-              <label htmlFor="cover-t" style={{ color: "#1F0A3C", fontWeight: 600 }}>Buscar fotograma</label>
+              <label htmlFor="cover-t" style={{ color: "#1A1A1A", fontWeight: 600 }}>Buscar fotograma</label>
               <output htmlFor="cover-t" style={{ color: "#4B5563" }}>{t.toFixed(1).replace(".", ",")} s de {duration.toFixed(1).replace(".", ",")} s</output>
             </div>
-            <input id="cover-t" type="range" min={0} max={Math.max(0.1, duration)} step={0.1} value={t} onChange={(e) => setT(Number(e.target.value))} className="w-full min-h-11 cursor-pointer" style={{ accentColor: "#7C3AED" }} disabled={!duration} />
+            <input id="cover-t" type="range" min={0} max={Math.max(0.1, duration)} step={0.1} value={t} onChange={(e) => setT(Number(e.target.value))} className="w-full min-h-11 cursor-pointer" style={{ accentColor: "#9B21FF" }} disabled={!duration} />
           </div>
           <div className="flex flex-wrap items-center gap-3">
             <button type="button" onClick={use} disabled={busy || !videoUrl} className="px-4 min-h-11 rounded-xl text-sm text-white hover:opacity-90 disabled:opacity-40" style={{ background: "var(--gradient-brand)", fontWeight: 700 }}>
               {busy ? "Capturando…" : "Usar este fotograma como portada"}
             </button>
-            {coverUrl && <img src={coverUrl} alt="Portada elegida" className="h-16 rounded-lg border" style={{ borderColor: "#EDE9FE" }} />}
+            {coverUrl && <img src={coverUrl} alt="Portada elegida" className="h-16 rounded-lg border" style={{ borderColor: "#E9E5DE" }} />}
           </div>
           <p role="status" aria-live="polite" className="text-xs" style={{ color: msg.startsWith("Portada") ? "#15803D" : "#BE123C" }}>{msg}</p>
-          <p className="text-xs" style={{ color: "#6B5A8A" }}>
+          <p className="text-xs" style={{ color: "#6B7280" }}>
             La portada se descarga como JPEG junto al video. Al publicar a mano, Instagram te deja elegir la portada desde el propio video; este fotograma sirve para la vista previa y como referencia (cómo se aplica por API: <code>cover_url</code> o <code>thumb_offset</code>).
           </p>
           <VideoChecks media={media} kind={kind} />

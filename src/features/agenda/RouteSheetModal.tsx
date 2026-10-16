@@ -90,11 +90,11 @@ export function RouteSheetModal({
       .join("");
     w.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Hoja de ruta — ${esc(dateLabel)}</title>
 <style>
-body{font-family:Inter,system-ui,sans-serif;color:#1F0A3C;margin:32px}
-h1{font-size:20px;margin:0 0 4px}p{margin:0 0 16px;color:#7458C4;font-size:13px}
+body{font-family:Inter,system-ui,sans-serif;color:#1A1A1A;margin:32px}
+h1{font-size:20px;margin:0 0 4px}p{margin:0 0 16px;color:#6B7280;font-size:13px}
 table{width:100%;border-collapse:collapse;font-size:13px}
-th,td{border-bottom:1px solid #EDE9FE;padding:8px 6px;text-align:left;vertical-align:top}
-th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#7458C4}
+th,td{border-bottom:1px solid #E9E5DE;padding:8px 6px;text-align:left;vertical-align:top}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#6B7280}
 .n{width:24px;font-weight:700}.h{white-space:nowrap;font-weight:700}.c{font-size:18px;text-align:center}
 .route{margin-top:16px;font-size:12px;word-break:break-all}
 </style></head><body>
@@ -111,7 +111,7 @@ ${routeUrl ? `<p class="route">Recorrido en Google Maps: ${esc(routeUrl)}</p>` :
   return (
     <div
       className="pm-backdrop fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
-      style={{ background: "rgba(31,10,60,0.35)" }}
+      style={{ background: "rgba(8, 11, 31,0.35)" }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -122,29 +122,29 @@ ${routeUrl ? `<p class="route">Recorrido en Google Maps: ${esc(routeUrl)}</p>` :
         style={{ background: "white", boxShadow: "var(--shadow-pop)" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="px-6 py-5 border-b flex items-center gap-3 flex-wrap" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+        <div className="px-6 py-5 border-b flex items-center gap-3 flex-wrap" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
           <div className="flex-1 min-w-0">
-            <h2 id="route-sheet-title" className="text-lg tracking-tight" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <h2 id="route-sheet-title" className="text-lg tracking-tight" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               Hoja de ruta
             </h2>
-            <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+            <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
               Visitas del día en orden de horario.
             </p>
           </div>
-          <label className="flex items-center gap-2 text-xs" style={{ color: "#7C6A99", fontWeight: 600 }}>
+          <label className="flex items-center gap-2 text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
             Día
             <input
               type="date"
               value={day}
               onChange={(e) => e.target.value && setDay(e.target.value)}
-              className="min-h-11 px-3 rounded-xl text-sm border outline-none bg-white text-[#1F0A3C] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE]"
+              className="min-h-11 px-3 rounded-xl text-sm border outline-none bg-white text-[#1A1A1A] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE]"
             />
           </label>
           <button
             onClick={onClose}
             aria-label="Cerrar"
             className="w-11 h-11 rounded-lg flex items-center justify-center transition-all hover:bg-violet-50"
-            style={{ color: "#7458C4", fontSize: 22, lineHeight: 1 }}
+            style={{ color: "#6B7280", fontSize: 22, lineHeight: 1 }}
           >
             ×
           </button>
@@ -152,13 +152,13 @@ ${routeUrl ? `<p class="route">Recorrido en Google Maps: ${esc(routeUrl)}</p>` :
 
         <div className="flex-1 overflow-y-auto px-6 py-5">
           {stops.length === 0 ? (
-            <p className="text-sm text-center py-8" style={{ color: "#7C6A99" }}>
+            <p className="text-sm text-center py-8" style={{ color: "#6B7280" }}>
               No hay visitas agendadas para el {dateLabel}.
             </p>
           ) : (
             <ol className="space-y-2">
               {stops.map((s, n) => (
-                <li key={s.item.key} className="flex gap-3 p-3 rounded-xl border" style={{ borderColor: "#EDE9FE" }}>
+                <li key={s.item.key} className="flex gap-3 p-3 rounded-xl border" style={{ borderColor: "#E9E5DE" }}>
                   <span
                     className="w-7 h-7 rounded-full flex items-center justify-center text-xs text-white flex-shrink-0"
                     style={{ background: "var(--gradient-brand)", fontWeight: 800 }}
@@ -167,14 +167,14 @@ ${routeUrl ? `<p class="route">Recorrido en Google Maps: ${esc(routeUrl)}</p>` :
                     {n + 1}
                   </span>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                    <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                       {fmtHour(s.item.start)}–{fmtHour(s.item.end)} · {s.property?.title ?? s.item.title}
                     </p>
-                    <p className="text-xs flex items-start gap-1 mt-0.5" style={{ color: s.address ? "#7C6A99" : "var(--color-state-amber-text)" }}>
-                      <MapPinIcon size={11} color="#7458C4" className="mt-0.5 flex-shrink-0" />
+                    <p className="text-xs flex items-start gap-1 mt-0.5" style={{ color: s.address ? "#6B7280" : "var(--color-state-amber-text)" }}>
+                      <MapPinIcon size={11} color="#6B7280" className="mt-0.5 flex-shrink-0" />
                       {s.address ?? "Sin dirección cargada: no entra en el recorrido"}
                     </p>
-                    <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+                    <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                       {[s.who, s.phone].filter(Boolean).join(" · ") || "Sin contacto"}
                       {s.item.status ? ` · ${STATUS_META[s.item.status].label}` : ""}
                     </p>
@@ -184,19 +184,19 @@ ${routeUrl ? `<p class="route">Recorrido en Google Maps: ${esc(routeUrl)}</p>` :
             </ol>
           )}
           {withoutAddress > 0 && stops.length > 0 && (
-            <p className="text-xs mt-3" style={{ color: "#7C6A99" }}>
+            <p className="text-xs mt-3" style={{ color: "#6B7280" }}>
               {withoutAddress === 1 ? "1 visita no tiene" : `${withoutAddress} visitas no tienen`} dirección: cargala en la ficha de la propiedad para sumarla al recorrido.
             </p>
           )}
         </div>
 
-        <div className="px-6 py-4 border-t flex items-center justify-end gap-3 flex-wrap" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+        <div className="px-6 py-4 border-t flex items-center justify-end gap-3 flex-wrap" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
           <button
             type="button"
             onClick={print}
             disabled={stops.length === 0}
             className="min-h-11 px-5 rounded-xl text-sm border transition-all hover:bg-violet-50 disabled:opacity-50"
-            style={{ borderColor: "#EDE9FE", color: "#6D28D9", fontWeight: 600, background: "white" }}
+            style={{ borderColor: "#E9E5DE", color: "#7C0BD8", fontWeight: 600, background: "white" }}
           >
             Imprimir
           </button>

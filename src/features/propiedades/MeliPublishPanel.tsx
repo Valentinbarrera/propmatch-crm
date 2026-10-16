@@ -73,8 +73,8 @@ export function saveExtras(propertyId: string, e: Extras) {
   }
 }
 
-const INK = "#1F0A3C";
-const MUTED = "#6B5A8E";
+const INK = "#1A1A1A";
+const MUTED = "#6B7280";
 
 export function MeliPublishPanel({
   property,
@@ -180,8 +180,8 @@ export function MeliPublishPanel({
   );
 
   const btn = "min-h-[44px] px-4 rounded-xl text-sm disabled:opacity-50 disabled:cursor-not-allowed";
-  const primary = { background: "#7C3AED", color: "white", fontWeight: 700 };
-  const secondary = { background: "white", color: "#5B21B6", border: "1px solid #DDD6FE", fontWeight: 700 };
+  const primary = { background: "#9B21FF", color: "white", fontWeight: 700 };
+  const secondary = { background: "white", color: "#7C0BD8", border: "1px solid #DDD8CF", fontWeight: 700 };
   const danger = { background: "white", color: "#BE123C", border: "1px solid #FECDD3", fontWeight: 700 };
   /** Lleva al control del panel: en la ubicación, al primer select que falta (provincia, ciudad o barrio). */
   const focusExtra = (k: MeliExtraKey) => {
@@ -218,7 +218,7 @@ export function MeliPublishPanel({
 
   return (
     <Card>
-      <div className="px-5 py-4 border-b flex flex-wrap items-center justify-between gap-2" style={{ borderColor: "#F3F0FF" }}>
+      <div className="px-5 py-4 border-b flex flex-wrap items-center justify-between gap-2" style={{ borderColor: "#F0EDE6" }}>
         <div className="flex items-center gap-3">
           <span className="w-9 h-9 rounded-lg flex items-center justify-center text-xs" style={{ background: "#FFE600", color: "#1F2937", fontWeight: 800 }}>
             ML
@@ -255,7 +255,7 @@ export function MeliPublishPanel({
           </p>
         )}
         {!blockReason && kind === "crm" && (
-          <p className="text-sm px-4 py-3 rounded-xl" style={{ background: "#F5F3FF", color: "#5B21B6" }}>
+          <p className="text-sm px-4 py-3 rounded-xl" style={{ background: "#F7F0FF", color: "#7C0BD8" }}>
             {property.currency === "ARS" ? "Precio en pesos: " : ""}esta propiedad no está en la app de PropMatch, pero se
             publica igual en Mercado Libre. Las fotos se suben a la carpeta de tu inmobiliaria y Mercado Libre las toma de ahí.
           </p>
@@ -265,7 +265,7 @@ export function MeliPublishPanel({
           <div className="flex flex-wrap items-center gap-2 text-sm">
             <span style={{ color: INK, fontWeight: 700 }}>Aviso {channel.externalId}</span>
             {channel.externalUrl && (
-              <a href={channel.externalUrl} target="_blank" rel="noopener noreferrer" className="underline text-sm" style={{ color: "#7C3AED", fontWeight: 700 }}>
+              <a href={channel.externalUrl} target="_blank" rel="noopener noreferrer" className="underline text-sm" style={{ color: "#9B21FF", fontWeight: 700 }}>
                 Ver en Mercado Libre
               </a>
             )}
@@ -308,7 +308,7 @@ export function MeliPublishPanel({
                       value={extras.guests ?? ""}
                       onChange={(e) => update({ guests: e.target.value ? Number(e.target.value) : null })}
                       className="w-full min-h-[44px] px-3 rounded-xl border text-sm"
-                      style={{ borderColor: "#DDD6FE", color: INK }}
+                      style={{ borderColor: "#DDD8CF", color: INK }}
                     />
                   </label>
                 )}
@@ -320,7 +320,7 @@ export function MeliPublishPanel({
                       value={extras.landAccess ?? ""}
                       onChange={(e) => update({ landAccess: e.target.value || null })}
                       className="w-full min-h-[44px] px-3 rounded-xl border text-sm bg-white"
-                      style={{ borderColor: "#DDD6FE", color: INK }}
+                      style={{ borderColor: "#DDD8CF", color: INK }}
                     >
                       <option value="">Elegí…</option>
                       {MELI_LAND_ACCESS.map((a) => (
@@ -338,7 +338,7 @@ export function MeliPublishPanel({
                 value={extras.listingType}
                 onChange={(e) => update({ listingType: e.target.value as MeliListingType })}
                 className="w-full min-h-[44px] px-3 rounded-xl border text-sm bg-white"
-                style={{ borderColor: "#DDD6FE", color: INK }}
+                style={{ borderColor: "#DDD8CF", color: INK }}
               >
                 {MELI_LISTING_TYPES.map((t) => (
                   <option key={t.id} value={t.id}>{t.label}</option>

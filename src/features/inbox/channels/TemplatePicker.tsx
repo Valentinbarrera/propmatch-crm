@@ -45,14 +45,14 @@ export function TemplatePicker({
 
   if (templates === null) {
     return (
-      <p className="text-xs" style={{ color: "#7458C4" }}>
+      <p className="text-xs" style={{ color: "#6B7280" }}>
         Cargando plantillas…
       </p>
     );
   }
   if (templates.length === 0) {
     return (
-      <p className="text-xs" style={{ color: "#7C6A99" }}>
+      <p className="text-xs" style={{ color: "#6B7280" }}>
         No hay plantillas aprobadas. Creálas en WhatsApp Manager y sincronizalas desde Configuración → Canales.
       </p>
     );
@@ -65,7 +65,7 @@ export function TemplatePicker({
         onChange={(e) => setSelected(e.target.value)}
         aria-label="Elegir plantilla"
         className="w-full min-h-[44px] md:min-h-[38px] px-3 rounded-xl text-sm border bg-white"
-        style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }}
+        style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }}
       >
         <option value="">Elegí una plantilla aprobada…</option>
         {templates.map((t) => (
@@ -86,10 +86,10 @@ export function TemplatePicker({
               aria-label={`Variable ${i + 1}`}
               maxLength={1024}
               className="w-full min-h-[44px] md:min-h-[36px] px-3 rounded-xl text-sm border bg-white"
-              style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }}
+              style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }}
             />
           ))}
-          <p className="text-xs rounded-xl px-3 py-2 whitespace-pre-wrap" style={{ background: "#F9F7FF", color: "#4C1D95" }}>
+          <p className="text-xs rounded-xl px-3 py-2 whitespace-pre-wrap" style={{ background: "#FAF8F5", color: "#56148F" }}>
             {preview}
           </p>
           {tpl.category === "MARKETING" && (

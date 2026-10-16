@@ -593,6 +593,9 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       setData(loadUserData(userId));
     }
 
+    const { data: userData } = await supabase.auth.getUser();
+    const meta = (userData.user?.user_metadata ?? {}) as { full_name?: string; name?: string; agency_name?: string };
+
     const { data: membership } = await supabase
       .from("agency_members")
       .select("role, agencies(id, name, owner_user_id)")
@@ -603,10 +606,13 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       | { id: string; name: string; owner_user_id: string | null }
       | null;
 
-    if (membership && agency?.owner_user_id) {
+    // Con membresía y agencia, la cuenta está vinculada. Las inmobiliarias
+    // creadas por /api/saas/signup antes del 16/10 no tenían owner_user_id y
+    // caían en modo local: el admin que entra hace de dueño.
+    if (membership && agency) {
       setAgencyContext({
         agencyId: agency.id,
-        agencyOwnerUserId: agency.owner_user_id,
+        agencyOwnerUserId: agency.owner_user_id ?? userId,
         managedByUserId: userId,
       });
 
@@ -616,14 +622,22 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       setData((d) => {
         // Ejemplos visibles por defecto (marcados, nunca se sincronizan), salvo que eligió "Usar mis datos reales".
         const clean = adoptSamples(d, userId);
-        return { ...clean, agency: { ...clean.agency, id: agency.id, name: agency.name } };
+        // Si la agencia local es todavía la de ejemplo ("Inmobiliaria PropMatch",
+        // La Plata, +54 221…), no heredar su contacto. Solo la de ejemplo: una
+        // cuenta que venía en modo local (`local-…`) conserva lo que cargó.
+        const fromSeed = clean.agency.id === seedAgency.id;
+        return {
+          ...clean,
+          agency: fromSeed
+            ? { ...clean.agency, id: agency.id, name: agency.name, phone: null, email: null, city: null, province: null }
+            : { ...clean.agency, id: agency.id, name: agency.name },
+        };
       });
     } else {
       // Cuenta sin inmobiliaria: entra igual y trabaja en modo local (sin
       // sincronizar con la app) hasta que alguien la vincule. La agencia local
       // toma el nombre que cargó al registrarse.
-      const { data: userData } = await supabase.auth.getUser();
-      const agencyName = (userData.user?.user_metadata?.agency_name as string | undefined)?.trim();
+      const agencyName = meta.agency_name?.trim();
       setAgencyContext(null);
       setData((d) => {
         const clean = adoptSamples(d, userId);
@@ -641,7 +655,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         if (!email || existing.email === email) return d;
         return { ...d, profiles: d.profiles.map((p) => (p.id === userId ? { ...p, email } : p)) };
       }
-      const name = email?.split("@")[0] ?? "Agente";
+      const name = meta.full_name?.trim() || meta.name?.trim() || email?.split("@")[0] || "Agente";
       const newProfile: Profile = {
         id: userId,
         agency_id: d.agency.id,

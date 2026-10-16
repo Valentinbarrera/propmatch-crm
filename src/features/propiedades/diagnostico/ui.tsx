@@ -42,18 +42,18 @@ export function Metric({
 }) {
   const missing = value === null;
   return (
-    <div className="rounded-xl px-3 py-2.5 min-w-0" style={{ background: "#FDFCFF", border: "1px solid #F3F0FF" }}>
-      <p className="text-xs" style={{ color: "#7458C4", fontWeight: 600 }}>
+    <div className="rounded-xl px-3 py-2.5 min-w-0" style={{ background: "#FAF8F5", border: "1px solid #F0EDE6" }}>
+      <p className="text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label}
       </p>
       <p
         className={missing ? "text-sm mt-0.5" : "text-lg"}
-        style={{ color: missing ? "#475569" : "#1F0A3C", fontWeight: missing ? 600 : 800 }}
+        style={{ color: missing ? "#475569" : "#1A1A1A", fontWeight: missing ? 600 : 800 }}
       >
         {missing ? "Sin datos" : value}
       </p>
       {(missing ? missingReason : hint) && (
-        <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+        <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
           {missing ? missingReason : hint}
         </p>
       )}
@@ -64,13 +64,13 @@ export function Metric({
 /** Desplegable nativo (`details`): teclado y lector de pantalla sin código extra. */
 export function Disclosure({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <details className="group rounded-xl border" style={{ borderColor: "#EDE9FE" }}>
+    <details className="group rounded-xl border" style={{ borderColor: "#E9E5DE" }}>
       <summary
         className="min-h-11 px-4 py-2.5 flex items-center justify-between gap-3 cursor-pointer list-none rounded-xl hover:bg-violet-50"
-        style={{ color: "#1F0A3C", fontWeight: 700 }}
+        style={{ color: "#1A1A1A", fontWeight: 700 }}
       >
         <span className="text-sm">{title}</span>
-        <span aria-hidden="true" className="text-xs transition-transform group-open:rotate-180" style={{ color: "#7C3AED" }}>
+        <span aria-hidden="true" className="text-xs transition-transform group-open:rotate-180" style={{ color: "#9B21FF" }}>
           ▼
         </span>
       </summary>
@@ -81,7 +81,7 @@ export function Disclosure({ title, children }: { title: string; children: React
 
 export function BlockTitle({ children, id }: { children: ReactNode; id?: string }) {
   return (
-    <h3 id={id} className="text-xs uppercase mb-3" style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.1em" }}>
+    <h3 id={id} className="text-xs uppercase mb-3" style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.1em" }}>
       {children}
     </h3>
   );

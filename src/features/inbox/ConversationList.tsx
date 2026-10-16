@@ -61,10 +61,10 @@ export function ConversationList({
   if (items.length === 0) {
     return (
       <div className="px-6 py-12 text-center">
-        <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
           {error ? "No pudimos cargar tus conversaciones" : hasAny ? "Nada coincide con este filtro" : "Todavía no hay conversaciones"}
         </p>
-        <p className="text-xs mt-1.5" style={{ color: "#7C6A99" }}>
+        <p className="text-xs mt-1.5" style={{ color: "#6B7280" }}>
           {error
             ? "Probá de nuevo en unos segundos; se reintenta solo."
             : hasAny
@@ -76,49 +76,49 @@ export function ConversationList({
   }
 
   return (
-    <ul className="divide-y" style={{ borderColor: "#F3F0FF" }} aria-label="Conversaciones">
+    <ul className="divide-y" style={{ borderColor: "#F0EDE6" }} aria-label="Conversaciones">
       {items.map((c) => {
         const selected = c.id === selectedId;
         const preview = c.last
           ? `${c.last.sender_id === c.demandanteId ? "" : "Vos: "}${c.last.content ?? ""}`
           : "Match nuevo, todavía sin mensajes";
         return (
-          <li key={c.id} style={{ borderColor: "#F3F0FF" }}>
+          <li key={c.id} style={{ borderColor: "#F0EDE6" }}>
             <button
               onClick={() => onSelect(c.id)}
               aria-current={selected ? "true" : undefined}
               className="w-full text-left flex gap-3 px-4 py-3 min-h-[72px] transition-colors hover:bg-violet-50"
-              style={{ background: selected ? "#F5F3FF" : undefined }}
+              style={{ background: selected ? "#F7F0FF" : undefined }}
             >
               <Avatar name={c.name} />
               <div className="min-w-0 flex-1">
                 <div className="flex items-baseline justify-between gap-2">
                   <span
                     className="text-sm truncate"
-                    style={{ color: "#1F0A3C", fontWeight: c.unread ? 800 : 600 }}
+                    style={{ color: "#1A1A1A", fontWeight: c.unread ? 800 : 600 }}
                   >
                     {c.name}
                   </span>
-                  <span className="text-xs flex-shrink-0" style={{ color: "#7458C4" }}>
+                  <span className="text-xs flex-shrink-0" style={{ color: "#6B7280" }}>
                     {shortTime(c.lastAt)}
                   </span>
                 </div>
                 {c.property && (
                   <span
                     className="inline-block max-w-full truncate align-top text-[11px] px-2 py-0.5 rounded-full mt-0.5"
-                    style={{ background: "#F5F3FF", color: "#6D28D9", fontWeight: 600 }}
+                    style={{ background: "#F7F0FF", color: "#7C0BD8", fontWeight: 600 }}
                   >
                     {c.property.title}
                   </span>
                 )}
                 <p
                   className="text-xs mt-1 line-clamp-2"
-                  style={{ color: c.unread ? "#1F0A3C" : "#7C6A99", fontWeight: c.unread ? 600 : 400 }}
+                  style={{ color: c.unread ? "#1A1A1A" : "#6B7280", fontWeight: c.unread ? 600 : 400 }}
                 >
                   {preview}
                 </p>
                 <div className="flex items-center gap-2 mt-1.5">
-                  <span className="text-[11px]" style={{ color: "#7458C4", fontWeight: 600 }}>
+                  <span className="text-[11px]" style={{ color: "#6B7280", fontWeight: 600 }}>
                     {CHANNEL_META[c.channel].label}
                   </span>
                   {c.unanswered && (
@@ -131,7 +131,7 @@ export function ConversationList({
                   )}
                   {c.unread && (
                     <span className="ml-auto flex items-center">
-                      <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#7C3AED" }} aria-hidden="true" />
+                      <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#9B21FF" }} aria-hidden="true" />
                       <span className="sr-only">No leída</span>
                     </span>
                   )}

@@ -4,8 +4,8 @@ import type { ReactNode } from "react";
 
 export const inputClass =
   "w-full px-4 py-2.5 rounded-xl text-sm border outline-none transition-all bg-white " +
-  "text-[#1F0A3C] placeholder:text-[#7C6A99] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE] " +
-  "disabled:bg-[#FAFAFF] disabled:text-[#7C6A99] disabled:cursor-not-allowed";
+  "text-[#1A1A1A] placeholder:text-[#6B7280] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE] " +
+  "disabled:bg-[#FAF8F5] disabled:text-[#6B7280] disabled:cursor-not-allowed";
 
 export function Field({
   label,
@@ -18,7 +18,7 @@ export function Field({
 }) {
   return (
     <label className={`block ${className}`}>
-      <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+      <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label}
       </span>
       {children}

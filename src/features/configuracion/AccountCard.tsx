@@ -26,7 +26,7 @@ export function AccountCard({ onDone }: { onDone: (msg: string) => void }) {
       <Card>
         <SectionHeader inCard title="Mi cuenta" subtitle="Disponible con tu cuenta" />
         <div className="p-5">
-          <p className="text-sm" style={{ color: "#4C3A6B" }}>
+          <p className="text-sm" style={{ color: "#374151" }}>
             Estás en la demo, sin una cuenta real. Cuando entres con tu cuenta vas a poder cambiar acá tu email y
             tu contraseña.
           </p>
@@ -79,10 +79,10 @@ function RealAccountCard({ fallbackEmail, onDone }: { fallbackEmail: string | nu
       <SectionHeader inCard title="Mi cuenta" subtitle="El email y la contraseña con los que entrás" />
       <div className="p-5 space-y-5">
         <div>
-          <p className="text-xs" style={{ color: "#7C6A99", fontWeight: 600 }}>
+          <p className="text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
             Email de la cuenta
           </p>
-          <p className="text-sm mt-1 break-all" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <p className="text-sm mt-1 break-all" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             {authEmail ?? "Sin email"}
           </p>
           {pendingEmail && (
@@ -173,11 +173,11 @@ function EmailChangeForm({
 
   if (state === "sent") {
     return (
-      <div className="rounded-xl p-4" style={{ background: "#F5F3FF" }} role="status">
-        <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+      <div className="rounded-xl p-4" style={{ background: "#F7F0FF" }} role="status">
+        <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
           Revisá tu correo
         </p>
-        <p className="text-sm mt-1.5" style={{ color: "#4C3A6B" }}>
+        <p className="text-sm mt-1.5" style={{ color: "#374151" }}>
           Te mandamos un mail a <strong>{sentTo}</strong> con un link para confirmar el cambio.
           {currentEmail && (
             <>
@@ -187,7 +187,7 @@ function EmailChangeForm({
             </>
           )}
         </p>
-        <p className="text-xs mt-2" style={{ color: "#7C6A99" }}>
+        <p className="text-xs mt-2" style={{ color: "#6B7280" }}>
           Hasta que confirmes, tu email sigue siendo {currentEmail ?? "el actual"} y entrás con ese. Si no llega,
           mirá en spam o pedilo de nuevo en unos minutos.
         </p>
@@ -221,7 +221,7 @@ function EmailChangeForm({
           />
         </Field>
       </div>
-      <p className="text-xs" style={{ color: "#7C6A99" }}>
+      <p className="text-xs" style={{ color: "#6B7280" }}>
         Te vamos a mandar un mail para confirmar. Según la configuración de la cuenta, puede pedirte confirmar
         desde el email actual y desde el nuevo. El cambio se aplica recién cuando confirmes.
       </p>
@@ -317,7 +317,7 @@ function PasswordChangeForm({ onCancel, onChanged }: { onCancel: () => void; onC
         )}
       </div>
       {needsCode ? (
-        <p className="text-xs" style={{ color: "#7C6A99" }} role="status">
+        <p className="text-xs" style={{ color: "#6B7280" }} role="status">
           {info ?? "Por seguridad, para cambiar la contraseña tenés que confirmar con un código que te mandamos por mail."}{" "}
           <button
             type="button"
@@ -326,13 +326,13 @@ function PasswordChangeForm({ onCancel, onChanged }: { onCancel: () => void; onC
               void sendCode();
             }}
             className="underline"
-            style={{ color: "#7C3AED", fontWeight: 600 }}
+            style={{ color: "#9B21FF", fontWeight: 600 }}
           >
             Mandar otro código
           </button>
         </p>
       ) : (
-        <p className="text-xs" style={{ color: "#7C6A99" }}>
+        <p className="text-xs" style={{ color: "#6B7280" }}>
           Vas a seguir con la sesión abierta. La próxima vez entrá con tu email y esta contraseña.
         </p>
       )}
@@ -368,7 +368,7 @@ function FormActions({
         type="button"
         onClick={onCancel}
         className="px-4 py-2 rounded-xl text-sm transition-all hover:bg-violet-50"
-        style={{ color: "#7C6A99", fontWeight: 600 }}
+        style={{ color: "#6B7280", fontWeight: 600 }}
       >
         Cancelar
       </button>
@@ -385,5 +385,5 @@ function FormActions({
 }
 
 const secondaryButton =
-  "px-4 py-2 rounded-xl text-sm border transition-all bg-white border-[#DDD6FE] text-[#7C3AED] font-semibold " +
+  "px-4 py-2 rounded-xl text-sm border transition-all bg-white border-[#DDD8CF] text-[#9B21FF] font-semibold " +
   "hover:bg-violet-50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white";

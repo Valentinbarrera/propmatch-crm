@@ -6,12 +6,12 @@ import { CheckIcon, PlusIcon } from "@/components/ui/icons";
 
 export const inputClass = (hasError: boolean) =>
   "w-full px-4 min-h-11 py-2.5 rounded-xl text-sm border outline-none transition-all bg-white " +
-  "text-[#1F0A3C] placeholder:text-[#7C6A99] focus:ring-4 focus:ring-[#EDE9FE] disabled:opacity-50 " +
-  (hasError ? "border-[#FECDD3] focus:border-[#FB7185]" : "border-[#EDE9FE] focus:border-[#7C3AED]");
+  "text-[#1A1A1A] placeholder:text-[#6B7280] focus:ring-4 focus:ring-[#E9E5DE] disabled:opacity-50 " +
+  (hasError ? "border-[#FECDD3] focus:border-[#FB7185]" : "border-[#E9E5DE] focus:border-[#9B21FF]");
 
 export const selectClass =
   "w-full px-4 min-h-11 py-2.5 rounded-xl text-sm border outline-none transition-all bg-white " +
-  "text-[#1F0A3C] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE]";
+  "text-[#1A1A1A] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE]";
 
 /** Card numerada con ancla (`id`) para el subnav. */
 export function FormSection({
@@ -33,25 +33,25 @@ export function FormSection({
   return (
     <section id={id} aria-labelledby={headingId} className="scroll-mt-20">
       <Card>
-        <div className="px-5 py-4 border-b flex items-center gap-3" style={{ borderColor: "#F3F0FF" }}>
+        <div className="px-5 py-4 border-b flex items-center gap-3" style={{ borderColor: "#F0EDE6" }}>
           <span
             className="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 text-sm"
             style={
               done
                 ? { background: "var(--gradient-brand)", color: "white", fontWeight: 800 }
-                : { background: "#F5F3FF", color: "#7C3AED", fontWeight: 800 }
+                : { background: "#F7F0FF", color: "#9B21FF", fontWeight: 800 }
             }
             aria-hidden="true"
           >
             {done ? <CheckIcon size={14} color="white" /> : number}
           </span>
           <div className="min-w-0">
-            <h2 id={headingId} tabIndex={-1} className="text-base outline-none" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <h2 id={headingId} tabIndex={-1} className="text-base outline-none" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               {number}. {title}
               {done && <span className="sr-only"> (completa)</span>}
             </h2>
             {subtitle && (
-              <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+              <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                 {subtitle}
               </p>
             )}
@@ -77,7 +77,7 @@ export function Field({
 }) {
   return (
     <label className="block">
-      <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+      <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label}
       </span>
       {children}
@@ -121,7 +121,7 @@ export function MoneyField({
   const id = idProp ?? autoId;
   return (
     <div>
-      <label htmlFor={id} className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+      <label htmlFor={id} className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label}
       </label>
       <div className="flex gap-2">
@@ -168,23 +168,23 @@ export function Stepper({
 }) {
   return (
     <div role="group" aria-label={label}>
-      <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+      <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label}
       </span>
       <div
         className="flex items-center justify-between px-1.5 min-h-11 rounded-xl border"
-        style={{ borderColor: "#EDE9FE", background: "white" }}
+        style={{ borderColor: "#E9E5DE", background: "white" }}
       >
         <button
           type="button"
           onClick={() => onChange(Math.max(0, value - 1))}
           aria-label={`Restar ${label.toLowerCase()}`}
           className="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:bg-violet-100"
-          style={{ background: "#F5F3FF", color: "#7C3AED", fontWeight: 700 }}
+          style={{ background: "#F7F0FF", color: "#9B21FF", fontWeight: 700 }}
         >
           −
         </button>
-        <span className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }} aria-live="polite">
+        <span className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }} aria-live="polite">
           {value}
         </span>
         <button
@@ -193,9 +193,9 @@ export function Stepper({
           onClick={() => onChange(value + 1)}
           aria-label={`Sumar ${label.toLowerCase()}`}
           className="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:bg-violet-100"
-          style={{ background: "#F5F3FF" }}
+          style={{ background: "#F7F0FF" }}
         >
-          <PlusIcon size={12} color="#7C3AED" />
+          <PlusIcon size={12} color="#9B21FF" />
         </button>
       </div>
     </div>
@@ -220,7 +220,7 @@ export function Chip({
       style={
         active
           ? { background: "var(--gradient-brand)", color: "white", borderColor: "transparent", fontWeight: 600 }
-          : { background: "white", color: "#7C6A99", borderColor: "#EDE9FE", fontWeight: 500 }
+          : { background: "white", color: "#6B7280", borderColor: "#E9E5DE", fontWeight: 500 }
       }
     >
       {active && "✓ "}
@@ -251,20 +251,20 @@ export function Switch({
     >
       <span
         className="relative w-10 h-6 rounded-full flex-shrink-0 transition-all"
-        style={{ background: checked ? "var(--gradient-brand)" : "#DDD6FE" }}
+        style={{ background: checked ? "var(--gradient-brand)" : "#DDD8CF" }}
         aria-hidden="true"
       >
         <span
           className="absolute top-0.5 w-5 h-5 rounded-full bg-white transition-all"
-          style={{ left: checked ? 18 : 2, boxShadow: "0 1px 3px rgba(31,10,60,0.25)" }}
+          style={{ left: checked ? 18 : 2, boxShadow: "0 1px 3px rgba(8, 11, 31,0.25)" }}
         />
       </span>
       <span>
-        <span className="block text-sm" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+        <span className="block text-sm" style={{ color: "#1A1A1A", fontWeight: 600 }}>
           {label}
         </span>
         {description && (
-          <span className="block text-xs" style={{ color: "#7C6A99" }}>
+          <span className="block text-xs" style={{ color: "#6B7280" }}>
             {description}
           </span>
         )}

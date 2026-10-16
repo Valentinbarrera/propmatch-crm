@@ -27,7 +27,7 @@ function Pill({ tone, children }: { tone: "ok" | "warn" | "muted" | "bad"; child
   const s = {
     ok: { background: "#DCFCE7", color: "#166534" },
     warn: { background: "#FEF3C7", color: "#92400E" },
-    muted: { background: "#F5F3FF", color: "#6B5A8E" },
+    muted: { background: "#F7F0FF", color: "#6B7280" },
     bad: { background: "#FEE2E2", color: "#991B1B" },
   }[tone];
   return (
@@ -144,24 +144,24 @@ export function ChannelsSettings() {
 
   function AccountRow({ a }: { a: ChannelAccount }) {
     return (
-      <div className="flex items-center gap-3 p-3 rounded-xl" style={{ background: "#F9F7FF", border: "1px solid #F3F0FF" }}>
+      <div className="flex items-center gap-3 p-3 rounded-xl" style={{ background: "#FAF8F5", border: "1px solid #F0EDE6" }}>
         <div className="min-w-0 flex-1">
-          <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             {a.display_phone ?? (a.username ? `@${a.username}` : a.display_name ?? "Cuenta conectada")}
           </p>
-          <p className="text-xs truncate" style={{ color: "#7C6A99" }}>
+          <p className="text-xs truncate" style={{ color: "#6B7280" }}>
             {a.display_name ?? ""}
             {a.coexistence ? " · también en WhatsApp Business del celular" : ""}
           </p>
         </div>
         {a.status === "connected" ? <Pill tone="ok">Conectado</Pill> : a.status === "needs_reauth" ? <Pill tone="bad">Reconectar</Pill> : <Pill tone="warn">{a.status}</Pill>}
         {canAdmin && a.channel === "whatsapp" && (
-          <button disabled={busy === a.id} onClick={() => void syncTemplates(a)} className={secondary} style={{ borderColor: "#EDE9FE", color: "#6D28D9", fontWeight: 600 }}>
+          <button disabled={busy === a.id} onClick={() => void syncTemplates(a)} className={secondary} style={{ borderColor: "#E9E5DE", color: "#7C0BD8", fontWeight: 600 }}>
             Plantillas
           </button>
         )}
         {canAdmin && (
-          <button disabled={busy === a.id} onClick={() => void disconnect(a)} className={secondary} style={{ borderColor: "#EDE9FE", color: "#6B5A8E", fontWeight: 600 }}>
+          <button disabled={busy === a.id} onClick={() => void disconnect(a)} className={secondary} style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 600 }}>
             Desconectar
           </button>
         )}
@@ -182,12 +182,12 @@ export function ChannelsSettings() {
             <SourceIcon source="whatsapp" size={18} />
             {loading ? <Pill tone="muted">Revisando…</Pill> : !waReady ? <Pill tone="warn">Falta configurar</Pill> : wa.length ? <Pill tone="ok">Conectado</Pill> : <Pill tone="muted">Desconectado</Pill>}
           </div>
-          <p className="text-sm" style={{ color: "#4C1D95" }}>
+          <p className="text-sm" style={{ color: "#56148F" }}>
             <strong>Seguís usando WhatsApp Business en tu celular.</strong> Conectás el mismo número y lo vinculás desde la app
             WhatsApp Business (escaneando el QR o con el código que te muestra Meta). Los mensajes entran acá y en el celular;
             lo que respondas desde cualquiera de los dos queda en el historial.
           </p>
-          <ul className="text-xs space-y-1 list-disc pl-4" style={{ color: "#6B5A8E" }}>
+          <ul className="text-xs space-y-1 list-disc pl-4" style={{ color: "#6B7280" }}>
             <li>Necesitás la app WhatsApp Business actualizada (no la WhatsApp común).</li>
             <li>Se pueden traer hasta 6 meses de historial y tus contactos, solo en las primeras 24 h.</li>
             <li>Pasadas 24 h del último mensaje del cliente, solo se le puede escribir con una plantilla aprobada.</li>
@@ -216,7 +216,7 @@ export function ChannelsSettings() {
                 disabled={!waReady || !!busy}
                 onClick={() => void connectWhatsApp(false)}
                 className={secondary}
-                style={{ borderColor: "#EDE9FE", color: "#6D28D9", fontWeight: 600 }}
+                style={{ borderColor: "#E9E5DE", color: "#7C0BD8", fontWeight: 600 }}
                 title="Para un número que NO está en ninguna app de WhatsApp"
               >
                 {busy === "wa_new" ? "Conectando…" : "Usar un número nuevo"}
@@ -224,7 +224,7 @@ export function ChannelsSettings() {
             </div>
           ) : (
             !loading && (
-              <p className="text-xs" style={{ color: "#7C6A99" }}>
+              <p className="text-xs" style={{ color: "#6B7280" }}>
                 Solo un administrador de la inmobiliaria puede conectar canales.
               </p>
             )
@@ -248,7 +248,7 @@ export function ChannelsSettings() {
               <Pill tone="muted">Desconectado</Pill>
             )}
           </div>
-          <p className="text-sm" style={{ color: "#4C1D95" }}>
+          <p className="text-sm" style={{ color: "#56148F" }}>
             Conectás tu Página de Facebook y la cuenta profesional de Instagram vinculada. Podés responder dentro de las 24 h desde
             el último mensaje de la persona.
           </p>
@@ -257,7 +257,7 @@ export function ChannelsSettings() {
           ))}
           {pages && (
             <div className="space-y-2">
-              <p className="text-xs" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+              <p className="text-xs" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                 Elegí la Página a conectar:
               </p>
               {pages.map((p) => (
@@ -266,7 +266,7 @@ export function ChannelsSettings() {
                   disabled={!!busy}
                   onClick={() => void connectMessaging(p.id)}
                   className={`${secondary} w-full text-left`}
-                  style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }}
+                  style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }}
                 >
                   {p.name}
                   {p.instagram ? ` · @${p.instagram}` : " · sin Instagram"}

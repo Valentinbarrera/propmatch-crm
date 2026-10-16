@@ -42,10 +42,10 @@ const initialsOf = (name: string) =>
 function Spec({ label, value }: { label: string; value: string }) {
   return (
     <div className="min-w-0">
-      <p className="text-[10px] uppercase" style={{ color: "#7458C4", fontWeight: 600, letterSpacing: "0.06em" }}>
+      <p className="text-[10px] uppercase" style={{ color: "#6B7280", fontWeight: 600, letterSpacing: "0.06em" }}>
         {label}
       </p>
-      <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+      <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
         {value}
       </p>
     </div>
@@ -92,7 +92,7 @@ function ChannelRow({
   return (
     <div
       className="flex flex-wrap items-center gap-3 px-5 py-4 border-b last:border-b-0"
-      style={{ borderColor: "#F3F0FF" }}
+      style={{ borderColor: "#F0EDE6" }}
     >
       <div
         className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 text-sm"
@@ -101,7 +101,7 @@ function ChannelRow({
         {info.short}
       </div>
       <div className="min-w-0 flex-1" style={{ minWidth: 160 }}>
-        <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
           {info.name}
         </p>
         <p className="text-xs mt-0.5 flex items-center gap-1.5" style={{ color: line.color, fontWeight: 600 }}>
@@ -119,7 +119,7 @@ function ChannelRow({
           <button
             onClick={onDesign}
             className="px-3 py-2 min-h-11 md:min-h-0 md:py-1.5 rounded-lg text-xs border hover:bg-violet-50"
-            style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700 }}
+            style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}
           >
             Diseñar publicación
           </button>
@@ -138,7 +138,7 @@ function ChannelRow({
             target="_blank"
             rel="noopener noreferrer"
             className="px-3 py-1.5 rounded-lg text-xs border hover:bg-violet-50"
-            style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 700 }}
+            style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 700 }}
           >
             Ver ficha
           </a>
@@ -147,7 +147,7 @@ function ChannelRow({
           <a
             href={isMeli ? "#mercadolibre" : isWeb ? "#web" : "#meta"}
             className="px-3 py-1.5 rounded-lg text-xs border hover:bg-violet-50"
-            style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 700 }}
+            style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 700 }}
           >
             Gestionar
           </a>
@@ -168,7 +168,7 @@ function ChannelRow({
             onChange={onToggle}
             aria-label={`Seleccionar ${info.name}`}
             className="w-5 h-5 cursor-pointer"
-            style={{ accentColor: "#7C3AED" }}
+            style={{ accentColor: "#9B21FF" }}
           />
         )}
       </div>
@@ -207,7 +207,7 @@ export default function MultipublicadorVivoPage() {
         <div className="flex-1 overflow-y-auto px-4 md:px-8 pb-10">
           <Card className="mt-8">
             <EmptyState
-              icon={<HomeIcon size={24} color="#7C3AED" />}
+              icon={<HomeIcon size={24} color="#9B21FF" />}
               title="No encontramos esta propiedad"
               description="Puede que se haya eliminado o que el enlace no sea correcto."
               action={{ label: "Volver al multipublicador", onClick: () => navigate("/publicador") }}
@@ -289,7 +289,7 @@ export default function MultipublicadorVivoPage() {
         <button
           onClick={() => navigate("/publicador")}
           className="px-3 py-2 rounded-xl text-xs border flex items-center gap-1 hover:bg-violet-50"
-          style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 700, background: "white" }}
+          style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 700, background: "white" }}
         >
           <ChevronLeftIcon size={12} /> Volver
         </button>
@@ -305,51 +305,51 @@ export default function MultipublicadorVivoPage() {
                   <SampleNotice>{SAMPLE_PUBLISH_BLOCKED}. Sirve para ver cómo funciona el multipublicador.</SampleNotice>
                 </div>
               )}
-              <p className="text-[11px] uppercase" style={{ color: "#7C3AED", fontWeight: 700, letterSpacing: "0.08em" }}>
+              <p className="text-[11px] uppercase" style={{ color: "#9B21FF", fontWeight: 700, letterSpacing: "0.08em" }}>
                 Distribución multicanal
               </p>
-              <h2 className="text-xl md:text-2xl tracking-tight mt-1" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+              <h2 className="text-xl md:text-2xl tracking-tight mt-1" style={{ color: "#1A1A1A", fontWeight: 800 }}>
                 Distribución de la propiedad en {involved} {involved === 1 ? "canal" : "canales"}
               </h2>
 
               <div
                 className="mt-5 rounded-2xl border p-4 flex flex-col sm:flex-row gap-4"
-                style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}
+                style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}
               >
                 <div
                   className="relative w-full sm:w-44 h-40 sm:h-32 rounded-xl overflow-hidden flex-shrink-0"
-                  style={{ background: "#F5F3FF" }}
+                  style={{ background: "#F7F0FF" }}
                 >
                   {cover ? (
                     <img src={cover} alt={property.title} className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                      <HomeIcon size={28} color="#DDD6FE" />
+                      <HomeIcon size={28} color="#DDD8CF" />
                     </div>
                   )}
                   <span
                     className="absolute left-2 bottom-2 text-[10px] px-2 py-0.5 rounded-full text-white"
-                    style={{ background: "rgba(31,10,60,0.75)", fontWeight: 700 }}
+                    style={{ background: "rgba(8, 11, 31,0.75)", fontWeight: 700 }}
                   >
                     {photoList.length} {photoList.length === 1 ? "FOTO" : "FOTOS"}
                   </span>
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-2xl" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+                    <span className="text-2xl" style={{ color: "#1A1A1A", fontWeight: 800 }}>
                       {money(property.price, property.currency)}
                     </span>
                     {property.authorization_type === "exclusiva" && (
-                      <Badge bg="#F5F3FF" text="#7C3AED" size="xs">Exclusiva</Badge>
+                      <Badge bg="#F7F0FF" text="#9B21FF" size="xs">Exclusiva</Badge>
                     )}
                     <Badge bg="#F3F4F6" text="#4B5563" size="xs">#{property.id.slice(0, 6)}</Badge>
-                    <Badge bg="#F5F3FF" text="#7C3AED" size="xs">{PROPERTY_TYPE_LABEL[property.type]}</Badge>
+                    <Badge bg="#F7F0FF" text="#9B21FF" size="xs">{PROPERTY_TYPE_LABEL[property.type]}</Badge>
                   </div>
-                  <p className="text-sm mt-1" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                  <p className="text-sm mt-1" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                     {property.title} <SampleBadge record={property} />
                   </p>
                   {address && (
-                    <p className="text-xs mt-0.5 flex items-center gap-1" style={{ color: "#7C6A99" }}>
+                    <p className="text-xs mt-0.5 flex items-center gap-1" style={{ color: "#6B7280" }}>
                       <MapPinIcon size={12} /> {address}
                     </p>
                   )}
@@ -364,14 +364,14 @@ export default function MultipublicadorVivoPage() {
 
               <div className="mt-5">
                 <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-2">
-                  <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                  <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                     {published} de {total} canales publicados
                   </p>
-                  <p className="text-xs" style={{ color: "#7C6A99" }}>
+                  <p className="text-xs" style={{ color: "#6B7280" }}>
                     {pending} en cola · {errored.length} con error
                   </p>
                 </div>
-                <div className="h-2 rounded-full overflow-hidden" style={{ background: "#F3F0FF" }}>
+                <div className="h-2 rounded-full overflow-hidden" style={{ background: "#F0EDE6" }}>
                   <div
                     className="h-full rounded-full transition-all"
                     style={{ width: `${(published / total) * 100}%`, background: "var(--gradient-brand)" }}
@@ -381,8 +381,8 @@ export default function MultipublicadorVivoPage() {
             </Card>
 
             <Card>
-              <div className="px-5 py-4 border-b" style={{ borderColor: "#F3F0FF" }}>
-                <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+              <div className="px-5 py-4 border-b" style={{ borderColor: "#F0EDE6" }}>
+                <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                   Canales de distribución
                 </h3>
               </div>
@@ -394,7 +394,7 @@ export default function MultipublicadorVivoPage() {
               )}
 
               {loading ? (
-                <p className="px-5 py-10 text-sm text-center" style={{ color: "#7458C4" }}>
+                <p className="px-5 py-10 text-sm text-center" style={{ color: "#6B7280" }}>
                   Cargando publicaciones…
                 </p>
               ) : (
@@ -414,13 +414,13 @@ export default function MultipublicadorVivoPage() {
                 </div>
               )}
 
-              <div className="px-5 py-4 border-t flex flex-col gap-3" style={{ borderColor: "#F3F0FF" }}>
+              <div className="px-5 py-4 border-t flex flex-col gap-3" style={{ borderColor: "#F0EDE6" }}>
                 <div className="flex flex-wrap gap-3">
                   <button
                     type="button"
                     onClick={() => setPortalsOpen(true)}
                     className="px-5 py-2.5 rounded-xl text-sm text-white transition-all hover:opacity-90 active:scale-95"
-                    style={{ background: "#7C3AED", fontWeight: 700 }}
+                    style={{ background: "#9B21FF", fontWeight: 700 }}
                   >
                     Publicar en portales
                   </button>
@@ -443,8 +443,8 @@ export default function MultipublicadorVivoPage() {
                     </button>
                   )}
                 </div>
-                <p className="text-xs flex items-start gap-2" style={{ color: "#7C6A99" }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" strokeWidth="2" strokeLinecap="round" className="flex-shrink-0 mt-px">
+                <p className="text-xs flex items-start gap-2" style={{ color: "#6B7280" }}>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#BF7FFF" strokeWidth="2" strokeLinecap="round" className="flex-shrink-0 mt-px">
                     <circle cx="12" cy="12" r="10" />
                     <path d="M12 16v-4M12 8h.01" />
                   </svg>
@@ -482,8 +482,8 @@ export default function MultipublicadorVivoPage() {
           {/* Columna lateral */}
           <div className="flex flex-col gap-6 min-w-0">
             <Card>
-              <div className="px-5 py-4 border-b flex items-center justify-between gap-3" style={{ borderColor: "#F3F0FF" }}>
-                <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+              <div className="px-5 py-4 border-b flex items-center justify-between gap-3" style={{ borderColor: "#F0EDE6" }}>
+                <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                   Diagnóstico previo
                 </h3>
                 <Badge
@@ -510,7 +510,7 @@ export default function MultipublicadorVivoPage() {
                     <span>
                       También conviene completar{" "}
                       {optionalItems.length > 0 && (
-                        <span className="text-xs px-2 py-0.5 rounded-full bg-lavender" style={{ color: "#7C3AED" }}>
+                        <span className="text-xs px-2 py-0.5 rounded-full bg-lavender" style={{ color: "#9B21FF" }}>
                           {optionalItems.length}
                         </span>
                       )}
@@ -526,9 +526,9 @@ export default function MultipublicadorVivoPage() {
             </Card>
 
             <Card>
-              <div className="px-5 py-4 border-b flex items-center gap-2" style={{ borderColor: "#F3F0FF" }}>
-                <SparkIcon size={16} color="#7C3AED" />
-                <h3 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+              <div className="px-5 py-4 border-b flex items-center gap-2" style={{ borderColor: "#F0EDE6" }}>
+                <SparkIcon size={16} color="#9B21FF" />
+                <h3 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                   Match automático
                 </h3>
               </div>
@@ -540,14 +540,14 @@ export default function MultipublicadorVivoPage() {
                 />
               ) : (
                 <div className="p-5">
-                  <p className="text-3xl" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+                  <p className="text-3xl" style={{ color: "#1A1A1A", fontWeight: 800 }}>
                     {compatible.length}
-                    <span className="text-sm ml-2" style={{ color: "#7C6A99", fontWeight: 600 }}>
+                    <span className="text-sm ml-2" style={{ color: "#6B7280", fontWeight: 600 }}>
                       {compatible.length === 1 ? "comprador compatible" : "compradores compatibles"}
                     </span>
                   </p>
-                  <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
-                    Mejor coincidencia: <strong style={{ color: "#7C3AED" }}>{compatible[0].score}%</strong>
+                  <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
+                    Mejor coincidencia: <strong style={{ color: "#9B21FF" }}>{compatible[0].score}%</strong>
                   </p>
                   <div className="flex items-center mt-4">
                     {buyers.map((c, i) => (
@@ -563,13 +563,13 @@ export default function MultipublicadorVivoPage() {
                     {extraBuyers > 0 && (
                       <span
                         className="w-9 h-9 rounded-full flex items-center justify-center text-xs border-2 border-white"
-                        style={{ background: "#F5F3FF", color: "#7C3AED", fontWeight: 700, marginLeft: -8 }}
+                        style={{ background: "#F7F0FF", color: "#9B21FF", fontWeight: 700, marginLeft: -8 }}
                       >
                         +{extraBuyers}
                       </span>
                     )}
                   </div>
-                  <p className="text-xs mt-4" style={{ color: "#7C6A99" }}>
+                  <p className="text-xs mt-4" style={{ color: "#6B7280" }}>
                     Cuando se confirmen los canales, PropMatch puede avisar por WhatsApp a estos compradores.
                   </p>
                 </div>

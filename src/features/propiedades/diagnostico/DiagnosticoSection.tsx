@@ -48,12 +48,12 @@ export function DiagnosticoSection({
   return (
     <section id="diagnostico" aria-labelledby="diagnostico-title" className="scroll-mt-4">
       <Card>
-        <div className="px-5 py-4 border-b flex items-center justify-between gap-3 flex-wrap" style={{ borderColor: "#F3F0FF", background: "var(--gradient-soft)" }}>
+        <div className="px-5 py-4 border-b flex items-center justify-between gap-3 flex-wrap" style={{ borderColor: "#F0EDE6", background: "var(--gradient-soft)" }}>
           <div className="min-w-0">
-            <h2 id="diagnostico-title" tabIndex={-1} className="text-base outline-none" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <h2 id="diagnostico-title" tabIndex={-1} className="text-base outline-none" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               Diagnóstico PropMatch
             </h2>
-            <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+            <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
               Precio frente a similares, demanda real y qué conviene hacer
               {d && <> · Calculado {whenFmt(d.computedAt)}</>}
             </p>
@@ -63,7 +63,7 @@ export function DiagnosticoSection({
             onClick={recalc}
             disabled={loading}
             className="min-h-11 px-4 rounded-xl text-sm border bg-white hover:bg-violet-50 disabled:opacity-60"
-            style={{ borderColor: "#DDD6FE", color: "#6D28D9", fontWeight: 700 }}
+            style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
           >
             {loading ? "Calculando…" : "Recalcular"}
           </button>
@@ -109,8 +109,8 @@ function Body({ d, property, onShare }: { d: PropertyDiagnostic; property: Prope
     <div className="p-5 space-y-7">
       {/* Resumen */}
       <div className="grid gap-4 md:grid-cols-[180px_minmax(0,1fr)] items-stretch">
-        <div className="rounded-2xl p-4 flex flex-col items-center justify-center text-center" style={{ background: "#FDFCFF", border: "1px solid #EDE9FE" }}>
-          <p className="text-xs" style={{ color: "#7458C4", fontWeight: 700 }}>
+        <div className="rounded-2xl p-4 flex flex-col items-center justify-center text-center" style={{ background: "#FAF8F5", border: "1px solid #E9E5DE" }}>
+          <p className="text-xs" style={{ color: "#6B7280", fontWeight: 700 }}>
             Score PropMatch
           </p>
           {d.score.value != null ? (
@@ -118,7 +118,7 @@ function Body({ d, property, onShare }: { d: PropertyDiagnostic; property: Prope
               <p className="text-5xl tracking-tight text-gradient-brand" style={{ fontWeight: 800 }} aria-label={`${d.score.value} sobre 100`}>
                 {d.score.value}
               </p>
-              <p className="text-xs" style={{ color: "#7C6A99" }}>de 100 · {scoreLabel(d.score.value)}</p>
+              <p className="text-xs" style={{ color: "#6B7280" }}>de 100 · {scoreLabel(d.score.value)}</p>
             </>
           ) : (
             <p className="text-sm mt-2" style={{ color: "#475569", fontWeight: 700 }}>
@@ -205,7 +205,7 @@ function Body({ d, property, onShare }: { d: PropertyDiagnostic; property: Prope
           )}
         </div>
         {price.showRange ? (
-          <div className="mt-4 rounded-xl p-4" style={{ border: "1px solid #F3F0FF" }}>
+          <div className="mt-4 rounded-xl p-4" style={{ border: "1px solid #F0EDE6" }}>
             <RangeBar price={price} />
           </div>
         ) : (
@@ -218,14 +218,14 @@ function Body({ d, property, onShare }: { d: PropertyDiagnostic; property: Prope
             type="button"
             onClick={() => navigate(editPath)}
             className="min-h-11 px-4 rounded-xl text-sm border hover:bg-violet-50"
-            style={{ borderColor: "#DDD6FE", color: "#6D28D9", fontWeight: 700 }}
+            style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
           >
             Editar precio
           </button>
           {d.notes
             .filter((t) => !t.startsWith("No se pudo leer"))
             .map((t) => (
-              <p key={t} className="text-xs" style={{ color: "#7458C4" }}>
+              <p key={t} className="text-xs" style={{ color: "#6B7280" }}>
                 {t}
               </p>
             ))}
@@ -313,12 +313,12 @@ function Body({ d, property, onShare }: { d: PropertyDiagnostic; property: Prope
           })}
         </ul>
         {d.narrative.length > 0 && (
-          <div className="mt-4 rounded-xl p-4 space-y-2" style={{ background: "#F5F3FF" }}>
-            <p className="text-xs" style={{ color: "#6D28D9", fontWeight: 700 }}>
+          <div className="mt-4 rounded-xl p-4 space-y-2" style={{ background: "#F7F0FF" }}>
+            <p className="text-xs" style={{ color: "#7C0BD8", fontWeight: 700 }}>
               Diagnóstico
             </p>
             {d.narrative.map((r) => (
-              <p key={r.id} className="text-sm leading-relaxed" style={{ color: "#1F0A3C" }}>
+              <p key={r.id} className="text-sm leading-relaxed" style={{ color: "#1A1A1A" }}>
                 {r.text}
               </p>
             ))}
@@ -336,11 +336,11 @@ function Body({ d, property, onShare }: { d: PropertyDiagnostic; property: Prope
         ) : (
           <ol className="space-y-2">
             {d.recommendations.map((r) => (
-              <li key={r.id} className="rounded-xl p-3 border flex flex-col sm:flex-row sm:items-center gap-3" style={{ borderColor: "#EDE9FE" }}>
+              <li key={r.id} className="rounded-xl p-3 border flex flex-col sm:flex-row sm:items-center gap-3" style={{ borderColor: "#E9E5DE" }}>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                  <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                     {r.title}
-                    <span className="ml-2 text-xs align-middle" style={{ color: r.priority === 1 ? "#BE123C" : "#7458C4", fontWeight: 600 }}>
+                    <span className="ml-2 text-xs align-middle" style={{ color: r.priority === 1 ? "#BE123C" : "#6B7280", fontWeight: 600 }}>
                       {PRIORITY_LABEL[r.priority]}
                     </span>
                   </p>
@@ -385,12 +385,12 @@ function ScoreBreakdown({ d }: { d: PropertyDiagnostic }) {
       </p>
       <ul className="space-y-2">
         {d.score.components.map((comp) => (
-          <li key={comp.id} className="rounded-xl p-3" style={{ background: comp.included ? "#FDFCFF" : "#F8FAFC", border: "1px solid #F3F0FF" }}>
+          <li key={comp.id} className="rounded-xl p-3" style={{ background: comp.included ? "#FAF8F5" : "#F8FAFC", border: "1px solid #F0EDE6" }}>
             <div className="flex items-center justify-between gap-2 flex-wrap">
-              <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+              <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                 {comp.label}
               </p>
-              <p className="text-xs" style={{ color: comp.included ? "#6D28D9" : "#475569", fontWeight: 700 }}>
+              <p className="text-xs" style={{ color: comp.included ? "#7C0BD8" : "#475569", fontWeight: 700 }}>
                 {comp.included ? `${comp.value}/100` : "Sin datos"} · peso {pct(comp.weight)}
                 {comp.effectiveWeight != null && comp.effectiveWeight !== comp.weight && ` → ${pct(comp.effectiveWeight)}`}
               </p>
@@ -398,7 +398,7 @@ function ScoreBreakdown({ d }: { d: PropertyDiagnostic }) {
             <p className="text-xs mt-1" style={{ color: "#374151" }}>
               {comp.source}
             </p>
-            <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+            <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
               Fórmula: {comp.formula}
             </p>
           </li>

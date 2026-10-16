@@ -44,36 +44,36 @@ export function OnboardingChecklist({ hasProperties, hasContacts, hasMeli, hasAp
   return (
     <div
       className="mt-6 md:mt-8 rounded-2xl overflow-hidden pm-enter"
-      style={{ border: "1px solid #EDE9FE", background: "white", boxShadow: "var(--shadow-card)" }}
+      style={{ border: "1px solid #E9E5DE", background: "white", boxShadow: "var(--shadow-card)" }}
     >
       <div
         className="px-5 py-4 flex items-center justify-between"
-        style={{ background: "var(--gradient-soft)", borderBottom: "1px solid #EDE9FE" }}
+        style={{ background: "var(--gradient-soft)", borderBottom: "1px solid #E9E5DE" }}
       >
         <div>
-          <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             Bienvenido a PropMatch CRM
           </p>
-          <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
             Completá estos pasos para empezar a trabajar con tu inmobiliaria.
           </p>
         </div>
         <span
           className="text-xs px-2 py-1 rounded-lg"
-          style={{ background: "#F5F3FF", color: "#7C3AED", fontWeight: 600 }}
+          style={{ background: "#F7F0FF", color: "#9B21FF", fontWeight: 600 }}
         >
           {steps.filter((s) => s.done).length}/{steps.length}
         </span>
       </div>
 
-      <div className="divide-y" style={{ borderColor: "#F9F7FF" }}>
+      <div className="divide-y" style={{ borderColor: "#FAF8F5" }}>
         {steps.map((step) => (
           <div key={step.id} className="flex items-center gap-4 px-5 py-3.5">
             <div
               className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
               style={{
                 background: step.done ? "var(--gradient-brand)" : "white",
-                border: step.done ? "none" : "2px solid #DDD6FE",
+                border: step.done ? "none" : "2px solid #DDD8CF",
               }}
             >
               {step.done && (
@@ -84,7 +84,7 @@ export function OnboardingChecklist({ hasProperties, hasContacts, hasMeli, hasAp
             </div>
             <p
               className="flex-1 text-sm"
-              style={{ color: step.done ? "#9CA3AF" : "#1F0A3C", fontWeight: step.done ? 400 : 500, textDecoration: step.done ? "line-through" : "none" }}
+              style={{ color: step.done ? "#9CA3AF" : "#1A1A1A", fontWeight: step.done ? 400 : 500, textDecoration: step.done ? "line-through" : "none" }}
             >
               {step.label}
             </p>
@@ -101,11 +101,11 @@ export function OnboardingChecklist({ hasProperties, hasContacts, hasMeli, hasAp
         ))}
       </div>
 
-      <div className="px-5 py-3 flex justify-end" style={{ borderTop: "1px solid #F9F7FF" }}>
+      <div className="px-5 py-3 flex justify-end" style={{ borderTop: "1px solid #FAF8F5" }}>
         <button
           onClick={skip}
           className="text-xs transition-all hover:opacity-70"
-          style={{ color: "#A78BFA" }}
+          style={{ color: "#BF7FFF" }}
         >
           Saltear por ahora
         </button>

@@ -41,7 +41,7 @@ const TONE_ICON: Record<FixTone, { bg: string; border: string; color: string; sr
   ok: { bg: "#F0FDF4", border: "#BBF7D0", color: "#16A34A", sr: "cumple" },
   block: { bg: "#FFF1F2", border: "#FECDD3", color: "#E11D48", sr: "falta" },
   warn: { bg: "#FFFBEB", border: "#FDE68A", color: "#D97706", sr: "sugerencia" },
-  optional: { bg: "#F5F3FF", border: "#EDE9FE", color: "#7C3AED", sr: "opcional" },
+  optional: { bg: "#F7F0FF", border: "#E9E5DE", color: "#9B21FF", sr: "opcional" },
 };
 
 /* ── Lista ─────────────────────────────────────────────────────────────── */
@@ -120,7 +120,7 @@ function ToneDot({ tone }: { tone: FixTone }) {
 
 const fixBtn =
   "inline-flex items-center gap-1 px-3 min-h-11 rounded-xl text-xs border transition-all hover:bg-violet-50 " +
-  "focus-visible:ring-4 focus-visible:ring-[#EDE9FE] outline-none";
+  "focus-visible:ring-4 focus-visible:ring-[#E9E5DE] outline-none";
 
 function FixRow({
   item,
@@ -136,7 +136,7 @@ function FixRow({
   const [open, setOpen] = useState<FieldKey | null>(null);
   const panelId = useId();
   const fieldFixes = item.fixes.filter((f) => f.kind === "field");
-  const detailColor = item.tone === "block" ? "#BE123C" : item.tone === "warn" ? "#B45309" : "#7C6A99";
+  const detailColor = item.tone === "block" ? "#BE123C" : item.tone === "warn" ? "#B45309" : "#6B7280";
 
   return (
     <li className={`${dense ? "py-2.5" : "py-3"} border-b last:border-b-0 border-divider-soft`}>
@@ -170,8 +170,8 @@ function FixRow({
                       className={fixBtn}
                       style={
                         isOpen
-                          ? { background: "#F5F3FF", borderColor: "#C4B5FD", color: "#5B21B6", fontWeight: 700 }
-                          : { background: "white", borderColor: "#DDD6FE", color: "#7C3AED", fontWeight: 700 }
+                          ? { background: "#F7F0FF", borderColor: "#D4AAFF", color: "#7C0BD8", fontWeight: 700 }
+                          : { background: "white", borderColor: "#DDD8CF", color: "#9B21FF", fontWeight: 700 }
                       }
                     >
                       {fieldFixes.length > 1 && <span aria-hidden="true">+</span>}
@@ -185,7 +185,7 @@ function FixRow({
                       key={f.key}
                       to={f.to}
                       className={fixBtn}
-                      style={{ background: "white", borderColor: "#DDD6FE", color: "#7C3AED", fontWeight: 700 }}
+                      style={{ background: "white", borderColor: "#DDD8CF", color: "#9B21FF", fontWeight: 700 }}
                     >
                       {f.label} <span aria-hidden="true">→</span>
                     </Link>
@@ -197,7 +197,7 @@ function FixRow({
                     type="button"
                     onClick={f.onClick}
                     className={fixBtn}
-                    style={{ background: "white", borderColor: "#DDD6FE", color: "#7C3AED", fontWeight: 700 }}
+                    style={{ background: "white", borderColor: "#DDD8CF", color: "#9B21FF", fontWeight: 700 }}
                   >
                     {f.label}
                   </button>
@@ -207,7 +207,7 @@ function FixRow({
           )}
 
           {open && (
-            <div id={panelId} className="mt-3 rounded-xl p-3 border border-lilac" style={{ background: "#FDFCFF" }}>
+            <div id={panelId} className="mt-3 rounded-xl p-3 border border-lilac" style={{ background: "#FAF8F5" }}>
               <InlineFieldEditor
                 key={open}
                 property={property}
@@ -447,9 +447,9 @@ function NumberFix({ property, field, onDone, onCancel }: EditorProps) {
         label={meta.label}
         hint={
           field === "rooms" && current == null && property.bedrooms != null ? (
-            <span style={{ color: "#7458C4" }}>Sugerido: dormitorios + 1</span>
+            <span style={{ color: "#6B7280" }}>Sugerido: dormitorios + 1</span>
           ) : field === "surface_covered" && property.surface_total ? (
-            <span style={{ color: "#7458C4" }}>Total cargada: {property.surface_total} m²</span>
+            <span style={{ color: "#6B7280" }}>Total cargada: {property.surface_total} m²</span>
           ) : undefined
         }
       >

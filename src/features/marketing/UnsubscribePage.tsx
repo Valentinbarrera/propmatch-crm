@@ -59,12 +59,12 @@ export default function UnsubscribePage() {
 
   const who = info?.agencyName ?? "esta inmobiliaria";
   return (
-    <main className="min-h-screen flex items-center justify-center p-4" style={{ background: "#F5F3FF" }}>
-      <div className="w-full max-w-md rounded-2xl p-6 sm:p-8 text-center" style={{ background: "white", boxShadow: "0 10px 30px rgba(31,10,60,0.08)" }}>
+    <main className="min-h-screen flex items-center justify-center p-4" style={{ background: "#F7F0FF" }}>
+      <div className="w-full max-w-md rounded-2xl p-6 sm:p-8 text-center" style={{ background: "white", boxShadow: "0 10px 30px rgba(8, 11, 31,0.08)" }}>
         {state === "loading" && <p style={{ color: "#6B7280" }}>Un momento…</p>}
         {state === "invalid" && (
           <>
-            <h1 className="text-xl mb-2" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <h1 className="text-xl mb-2" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               Link inválido
             </h1>
             <p className="text-sm" style={{ color: "#4B5563" }}>
@@ -74,7 +74,7 @@ export default function UnsubscribePage() {
         )}
         {state === "error" && (
           <>
-            <h1 className="text-xl mb-2" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <h1 className="text-xl mb-2" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               No pudimos procesarlo
             </h1>
             <p className="text-sm" style={{ color: "#4B5563" }}>
@@ -84,7 +84,7 @@ export default function UnsubscribePage() {
         )}
         {state === "ready" && info && (
           <>
-            <h1 className="text-xl mb-2" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <h1 className="text-xl mb-2" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               ¿No querés recibir más mensajes?
             </h1>
             <p className="text-sm mb-5" style={{ color: "#4B5563" }}>
@@ -94,11 +94,11 @@ export default function UnsubscribePage() {
               <button
                 onClick={() => confirm(info.channel)}
                 className="w-full py-3 rounded-xl text-white"
-                style={{ background: "#7C3AED", fontWeight: 700 }}
+                style={{ background: "#9B21FF", fontWeight: 700 }}
               >
                 No quiero recibir más {info.channel === "email" ? "emails" : "mensajes de WhatsApp"}
               </button>
-              <button onClick={() => confirm("all")} className="w-full py-3 rounded-xl border" style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 600 }}>
+              <button onClick={() => confirm("all")} className="w-full py-3 rounded-xl border" style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 600 }}>
                 No quiero recibir nada por ningún canal
               </button>
             </div>
@@ -106,7 +106,7 @@ export default function UnsubscribePage() {
         )}
         {state === "done" && (
           <>
-            <h1 className="text-xl mb-2" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <h1 className="text-xl mb-2" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               Listo, te dimos de baja
             </h1>
             <p className="text-sm" style={{ color: "#4B5563" }}>

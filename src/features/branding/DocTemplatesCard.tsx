@@ -18,13 +18,13 @@ import {
 import type { DealKind, DocTemplate } from "@/types/db";
 import { DocPaper } from "./DocPaper";
 
-const INK = "#1F0A3C";
-const SOFT = "#6B5A8E";
+const INK = "#1A1A1A";
+const SOFT = "#6B7280";
 const KINDS = Object.keys(TEMPLATE_KIND_LABEL) as TemplateKind[];
 const GROUPS = [...new Set(TEMPLATE_VARIABLES.map((v) => v.group))];
 
 const btn = "min-h-9 px-3 rounded-lg text-xs border bg-white disabled:opacity-40";
-const btnStyle = { borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 } as const;
+const btnStyle = { borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 } as const;
 
 const scopeLabel = (t: Pick<DocTemplate, "kind" | "deal_kind">) =>
   t.kind !== "reserva" ? "" : t.deal_kind === "venta" ? " · ventas" : t.deal_kind === "alquiler" ? " · alquileres" : " · ventas y alquileres";
@@ -70,7 +70,7 @@ export function DocTemplatesCard({ onSaved }: { onSaved: (msg: string) => void }
             Todavía usás los modelos de PropMatch. Creá una plantilla acá o, desde un documento de una operación, tocá «Guardar como plantilla».
           </p>
         ) : (
-          <ul className="divide-y" style={{ borderColor: "#F3F0FF" }}>
+          <ul className="divide-y" style={{ borderColor: "#F0EDE6" }}>
             {[...list]
               .sort((a, b) => KINDS.indexOf(a.kind) - KINDS.indexOf(b.kind) || a.name.localeCompare(b.name))
               .map((t) => (
@@ -108,7 +108,7 @@ export function DocTemplatesCard({ onSaved }: { onSaved: (msg: string) => void }
         )}
         {canEdit && !editing && (
           <div className="flex flex-wrap items-center gap-2 mt-4">
-            <select value={newKind} onChange={(e) => setNewKind(e.target.value as TemplateKind)} className="min-h-9 px-2 rounded-lg border text-sm bg-white" style={{ borderColor: "#DDD6FE", color: INK }} aria-label="Tipo de documento">
+            <select value={newKind} onChange={(e) => setNewKind(e.target.value as TemplateKind)} className="min-h-9 px-2 rounded-lg border text-sm bg-white" style={{ borderColor: "#DDD8CF", color: INK }} aria-label="Tipo de documento">
               {KINDS.map((k) => (
                 <option key={k} value={k}>
                   {TEMPLATE_KIND_LABEL[k]}
@@ -174,15 +174,15 @@ function TemplateEditor({ initial, onCancel, onSave }: { initial: DocTemplate; o
   };
 
   return (
-    <div className="mt-5 rounded-2xl border p-4" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+    <div className="mt-5 rounded-2xl border p-4" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
       <div className="grid gap-3 sm:grid-cols-[1fr_auto] items-end">
-        <label className="block text-xs" style={{ color: "#7C6A99", fontWeight: 600 }}>
+        <label className="block text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
           Nombre de la plantilla
           <input
             value={tpl.name}
             onChange={(e) => setTpl((t) => ({ ...t, name: e.target.value }))}
             className="mt-1 w-full px-3 py-2 rounded-xl text-sm border bg-white"
-            style={{ borderColor: "#EDE9FE", color: INK }}
+            style={{ borderColor: "#E9E5DE", color: INK }}
           />
         </label>
         <p className="text-xs pb-2" style={{ color: SOFT, fontWeight: 700 }}>
@@ -190,13 +190,13 @@ function TemplateEditor({ initial, onCancel, onSave }: { initial: DocTemplate; o
         </p>
       </div>
       {tpl.kind === "reserva" && (
-        <label className="block text-xs mt-3" style={{ color: "#7C6A99", fontWeight: 600 }}>
+        <label className="block text-xs mt-3" style={{ color: "#6B7280", fontWeight: 600 }}>
           Sirve para
           <select
             value={tpl.deal_kind ?? "ambas"}
             onChange={(e) => setTpl((t) => ({ ...t, deal_kind: e.target.value === "ambas" ? null : (e.target.value as DealKind) }))}
             className="mt-1 block px-3 py-2 rounded-xl text-sm border bg-white"
-            style={{ borderColor: "#EDE9FE", color: INK }}
+            style={{ borderColor: "#E9E5DE", color: INK }}
           >
             <option value="ambas">Ventas y alquileres</option>
             <option value="venta">Ventas</option>
@@ -212,7 +212,7 @@ function TemplateEditor({ initial, onCancel, onSave }: { initial: DocTemplate; o
             if (e.target.value) insert(`{{${e.target.value}}}`);
           }}
           className="min-h-9 px-2 rounded-lg border text-xs bg-white"
-          style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+          style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
           aria-label="Insertar variable"
         >
           <option value="">+ Insertar variable…</option>
@@ -233,7 +233,7 @@ function TemplateEditor({ initial, onCancel, onSave }: { initial: DocTemplate; o
             if (key) insert(`{{${sign}${key}}}…{{/${key}}}`);
           }}
           className="min-h-9 px-2 rounded-lg border text-xs bg-white"
-          style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+          style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
           aria-label="Insertar sección condicional"
         >
           <option value="">+ Texto condicional…</option>
@@ -277,7 +277,7 @@ function TemplateEditor({ initial, onCancel, onSave }: { initial: DocTemplate; o
           spellCheck
           aria-label="Texto de la plantilla"
           className="w-full rounded-xl border p-3 text-xs font-mono leading-relaxed bg-white"
-          style={{ borderColor: "#DDD6FE", color: INK }}
+          style={{ borderColor: "#DDD8CF", color: INK }}
         />
         {showPreview && (
           <div>
@@ -289,14 +289,14 @@ function TemplateEditor({ initial, onCancel, onSave }: { initial: DocTemplate; o
                     onClick={() => setSample(k)}
                     aria-pressed={sample === k}
                     className="px-3 py-1.5 rounded-lg border"
-                    style={{ borderColor: "#DDD6FE", background: sample === k ? "#F5F3FF" : "white", color: "#5B21B6", fontWeight: 700 }}
+                    style={{ borderColor: "#DDD8CF", background: sample === k ? "#F7F0FF" : "white", color: "#7C0BD8", fontWeight: 700 }}
                   >
                     Ejemplo: {k}
                   </button>
                 ))}
               </div>
             )}
-            <div className="rounded-xl border overflow-auto" style={{ borderColor: "#EDE9FE", maxHeight: 560, background: "#F3F0FF", padding: 12 }}>
+            <div className="rounded-xl border overflow-auto" style={{ borderColor: "#E9E5DE", maxHeight: 560, background: "#F0EDE6", padding: 12 }}>
               <DocPaper blocks={blocks} brand={brand} highlightVars style={{ padding: "28px 30px", fontSize: 12 }} />
             </div>
             <p className="text-xs mt-1" style={{ color: SOFT }}>

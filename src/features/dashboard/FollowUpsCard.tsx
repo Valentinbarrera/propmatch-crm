@@ -19,7 +19,7 @@ import type { FollowUp } from "@/lib/followups";
 const PRIORITY_STYLE = {
   1: { dot: "#E11D48", label: "Urgente" },
   2: { dot: "#F59E0B", label: "Hoy" },
-  3: { dot: "#A78BFA", label: "Cuando puedas" },
+  3: { dot: "#BF7FFF", label: "Cuando puedas" },
 } as const;
 
 const COLLAPSED = 5;
@@ -55,13 +55,13 @@ export function FollowUpsCard() {
     <Card>
       <div
         className="px-5 py-4 border-b flex items-center justify-between gap-3"
-        style={{ borderColor: "#F3F0FF", background: "white" }}
+        style={{ borderColor: "#F0EDE6", background: "white" }}
       >
         <div className="min-w-0">
-          <h2 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <h2 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             Para contactar hoy
           </h2>
-          <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
             {followUps.length === 0
               ? "Estás al día con tus contactos"
               : `${followUps.length} ${followUps.length === 1 ? "contacto" : "contactos"}${urgent ? ` · ${urgent} ${urgent === 1 ? "urgente" : "urgentes"}` : ""}`}
@@ -77,7 +77,7 @@ export function FollowUpsCard() {
       {followUps.length === 0 ? (
         <div className="px-5 py-10 text-center">
           <p className="text-3xl">🎉</p>
-          <p className="text-sm mt-2" style={{ color: "#7C6A99" }}>
+          <p className="text-sm mt-2" style={{ color: "#6B7280" }}>
             Nadie esperando respuesta. Buen momento para cargar propiedades.
           </p>
         </div>
@@ -104,11 +104,11 @@ export function FollowUpsCard() {
                   <button
                     onClick={() => navigate(`/contactos/${f.contact.id}`)}
                     className="text-sm truncate block max-w-full text-left hover:underline"
-                    style={{ color: "#1F0A3C", fontWeight: 600 }}
+                    style={{ color: "#1A1A1A", fontWeight: 600 }}
                   >
                     {f.contact.full_name}
                   </button>
-                  <p className="text-xs truncate" style={{ color: f.priority === 1 ? "#BE123C" : "#7C6A99", fontWeight: f.priority === 1 ? 600 : 400 }}>
+                  <p className="text-xs truncate" style={{ color: f.priority === 1 ? "#BE123C" : "#6B7280", fontWeight: f.priority === 1 ? 600 : 400 }}>
                     {f.reason}
                   </p>
                 </div>
@@ -117,7 +117,7 @@ export function FollowUpsCard() {
                   <button
                     onClick={() => markDone(f)}
                     className="h-11 sm:h-9 px-3 sm:px-2.5 rounded-xl text-xs border transition-all hover:bg-white"
-                    style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "#FDFCFF" }}
+                    style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "#FAF8F5" }}
                     title="Ya hablé con este contacto por otro medio"
                   >
                     ✓ Hecho
@@ -125,7 +125,7 @@ export function FollowUpsCard() {
                   <button
                     onClick={() => snoozeFollowUp(f.contact.id, 3)}
                     className="h-11 sm:h-9 px-3 sm:px-2.5 rounded-xl text-xs transition-all hover:bg-white"
-                    style={{ color: "#7458C4", fontWeight: 600 }}
+                    style={{ color: "#6B7280", fontWeight: 600 }}
                     title="No mostrar por 3 días"
                   >
                     Posponer
@@ -138,7 +138,7 @@ export function FollowUpsCard() {
             <button
               onClick={() => setExpanded((v) => !v)}
               className="w-full mt-1 py-2 rounded-xl text-xs transition-all hover:bg-violet-50"
-              style={{ color: "#7C3AED", fontWeight: 600 }}
+              style={{ color: "#9B21FF", fontWeight: 600 }}
             >
               {expanded ? "Ver menos" : `Ver los ${followUps.length - COLLAPSED} restantes`}
             </button>

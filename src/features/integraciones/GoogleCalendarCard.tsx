@@ -19,10 +19,10 @@ export function GoogleCalendarCard() {
           <CalendarIcon size={20} color="#2563EB" />
         </span>
         <div className="min-w-0 flex-1">
-          <h2 className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>Google Calendar</h2>
-          <p className="text-xs mt-0.5" style={{ color: "#6B5A8E" }}>
+          <h2 className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>Google Calendar</h2>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
             Tu agenda del CRM en tu calendario de Google. Es personal: cada agente conecta su propia cuenta. También lo encontrás en{" "}
-            <Link to="/agenda" className="underline" style={{ color: "#7C3AED", fontWeight: 700 }}>Agenda</Link> → «Google Calendar».
+            <Link to="/agenda" className="underline" style={{ color: "#9B21FF", fontWeight: 700 }}>Agenda</Link> → «Google Calendar».
           </p>
         </div>
       </div>
@@ -33,7 +33,7 @@ export function GoogleCalendarCard() {
       )}
       <div className="mt-4 space-y-6">
         <ConnectSection sync={sync} ret="integraciones" />
-        <hr style={{ borderColor: "#EDE9FE" }} />
+        <hr style={{ borderColor: "#E9E5DE" }} />
         <FeedSection feed={feed} />
       </div>
     </Card>

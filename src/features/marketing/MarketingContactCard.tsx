@@ -38,7 +38,7 @@ export function MarketingContactCard({ contact }: { contact: Contact }) {
   return (
     <Card padded>
       <div className="flex items-center gap-2 mb-3">
-        <p className="text-sm flex-1" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <p className="text-sm flex-1" style={{ color: "#1A1A1A", fontWeight: 700 }}>
           Marketing
         </p>
         <NoContactBadge label={block.label} size="sm" />
@@ -53,7 +53,7 @@ export function MarketingContactCard({ contact }: { contact: Contact }) {
             key={t}
             onClick={() => setTags(agency.id, contact.id, tags.filter((x) => x !== t))}
             className="text-[11px] px-2 py-0.5 rounded-full border"
-            style={{ borderColor: "#EDE9FE", color: "#7C3AED" }}
+            style={{ borderColor: "#E9E5DE", color: "#9B21FF" }}
             title="Quitar etiqueta"
           >
             {t} ×

@@ -117,7 +117,7 @@ export function SettingsIcon({ size = 20, color = "currentColor", className }: I
 
 /* ── Acciones y utilidades ───────────────────────────────────────────────── */
 
-export function SearchIcon({ size = 16, color = "#A78BFA", className }: IconProps) {
+export function SearchIcon({ size = 16, color = "#BF7FFF", className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
       <circle cx="11" cy="11" r="8" stroke={color} strokeWidth="2" />
@@ -126,7 +126,7 @@ export function SearchIcon({ size = 16, color = "#A78BFA", className }: IconProp
   );
 }
 
-export function BellIcon({ size = 18, color = "#7C3AED", className }: IconProps) {
+export function BellIcon({ size = 18, color = "#9B21FF", className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
       <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -143,7 +143,7 @@ export function PlusIcon({ size = 14, color = "white", className }: IconProps) {
   );
 }
 
-export function ChevronDownIcon({ size = 12, color = "#C4B5FD", className }: IconProps) {
+export function ChevronDownIcon({ size = 12, color = "#D4AAFF", className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
       <path d="M6 9L12 15L18 9" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -175,7 +175,7 @@ export function CheckIcon({ size = 12, color = "currentColor", className }: Icon
   );
 }
 
-export function MapPinIcon({ size = 12, color = "#A78BFA", className }: IconProps) {
+export function MapPinIcon({ size = 12, color = "#BF7FFF", className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
       <path d="M12 21C12 21 5 13.5 5 9a7 7 0 0 1 14 0c0 4.5-7 12-7 12z" stroke={color} strokeWidth="2" />
@@ -184,7 +184,7 @@ export function MapPinIcon({ size = 12, color = "#A78BFA", className }: IconProp
   );
 }
 
-export function ClockIcon({ size = 11, color = "#C4B5FD", className }: IconProps) {
+export function ClockIcon({ size = 11, color = "#D4AAFF", className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
       <circle cx="12" cy="12" r="10" stroke={color} strokeWidth="2" />
@@ -224,7 +224,7 @@ export function MailIcon({ size = 13, color = "currentColor", className }: IconP
   );
 }
 
-export function EditIcon({ size = 13, color = "#7C3AED", className }: IconProps) {
+export function EditIcon({ size = 13, color = "#9B21FF", className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
       <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -241,7 +241,7 @@ export function StarIcon({ size = 12, color = "white", className }: IconProps) {
   );
 }
 
-export function StarOutlineIcon({ size = 22, color = "#A855F7", className }: IconProps) {
+export function StarOutlineIcon({ size = 22, color = "#A855FF", className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
       <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke={color} strokeWidth="2" strokeLinejoin="round" />
@@ -266,7 +266,7 @@ export function UserIcon({ size = 16, color = "currentColor", className }: IconP
   );
 }
 
-export function UsersIcon({ size = 22, color = "#7C3AED", className }: IconProps) {
+export function UsersIcon({ size = 22, color = "#9B21FF", className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
       <circle cx="9" cy="7" r="4" stroke={color} strokeWidth="2" />
@@ -351,26 +351,26 @@ export function PropertyTypeIcon({ type, size = 14 }: { type: string; size?: num
   if (t === "casa" || t === "house")
     return (
       <svg {...base(size)}>
-        <path d="M3 12L12 3L21 12V21H15V15H9V21H3V12Z" stroke="#7C3AED" strokeWidth="2" strokeLinejoin="round" />
+        <path d="M3 12L12 3L21 12V21H15V15H9V21H3V12Z" stroke="#9B21FF" strokeWidth="2" strokeLinejoin="round" />
       </svg>
     );
   if (t === "departamento" || t === "apartment")
     return (
       <svg {...base(size)}>
-        <rect x="3" y="3" width="18" height="18" rx="2" stroke="#EC4899" strokeWidth="2" />
-        <path d="M9 9H9.01M15 9H15.01M9 15H9.01M15 15H15.01" stroke="#EC4899" strokeWidth="2" strokeLinecap="round" />
+        <rect x="3" y="3" width="18" height="18" rx="2" stroke="#FF5ECA" strokeWidth="2" />
+        <path d="M9 9H9.01M15 9H15.01M9 15H9.01M15 15H15.01" stroke="#FF5ECA" strokeWidth="2" strokeLinecap="round" />
       </svg>
     );
   if (t === "terreno" || t === "lote" || t === "land")
     return (
       <svg {...base(size)}>
-        <path d="M3 20L21 20M5 20V10L12 4L19 10V20" stroke="#A855F7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M3 20L21 20M5 20V10L12 4L19 10V20" stroke="#A855FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     );
   return (
     <svg {...base(size)}>
-      <rect x="3" y="6" width="18" height="15" rx="2" stroke="#8B5CF6" strokeWidth="2" />
-      <path d="M3 11H21M8 6V3M16 6V3" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" />
+      <rect x="3" y="6" width="18" height="15" rx="2" stroke="#A855FF" strokeWidth="2" />
+      <path d="M3 11H21M8 6V3M16 6V3" stroke="#A855FF" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }

@@ -146,11 +146,11 @@ export default function ReportesPage() {
     const visited = opportunities.filter((o) => ["visita", "negociacion", "cierre"].includes(o.stage));
     const closed = opportunities.filter((o) => o.stage === "cierre");
     return [
-      { label: "Matches generados", value: matches.length, color: "#7C3AED" },
-      { label: "Convertidos en oportunidad", value: opportunities.length, color: "#A855F7" },
-      { label: "Contactados o más", value: contacted.length, color: "#EC4899" },
-      { label: "Visitas coordinadas", value: visited.length, color: "#F472B6" },
-      { label: "Operaciones cerradas", value: closed.length, color: "#F9A8D4" },
+      { label: "Matches generados", value: matches.length, color: "#9B21FF" },
+      { label: "Convertidos en oportunidad", value: opportunities.length, color: "#A855FF" },
+      { label: "Contactados o más", value: contacted.length, color: "#FF5ECA" },
+      { label: "Visitas coordinadas", value: visited.length, color: "#FF7ED5" },
+      { label: "Operaciones cerradas", value: closed.length, color: "#FFC7EC" },
     ];
   }, [matches, opportunities]);
 
@@ -250,9 +250,9 @@ export default function ReportesPage() {
     if (top) {
       out.push({
         emoji: "🔥",
-        accent: "#EC4899",
-        accentBg: "#FDF2F8",
-        accentBorder: "#FCE7F3",
+        accent: "#FF5ECA",
+        accentBg: "#FFF1FA",
+        accentBorder: "#FFF1FA",
         label: "Propiedad destacada",
         text: `${top.property.title} es la que más interesados generó: ${top.matchCount} matches.`,
         cta: "Ver propiedades",
@@ -329,9 +329,9 @@ export default function ReportesPage() {
           <button
             onClick={() => setOpen((v) => !v)}
             className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm border transition-all hover:border-violet-300"
-            style={{ borderColor: "#EDE9FE", background: "white", color: "#1F0A3C", fontWeight: 600 }}
+            style={{ borderColor: "#E9E5DE", background: "white", color: "#1A1A1A", fontWeight: 600 }}
           >
-            <CalendarIcon size={14} color="#A78BFA" />
+            <CalendarIcon size={14} color="#BF7FFF" />
             {PERIODS.find((p) => p.value === days)?.label}
             <ChevronDownIcon />
           </button>
@@ -340,7 +340,7 @@ export default function ReportesPage() {
               className="absolute right-0 top-full mt-1 rounded-xl overflow-hidden z-50 py-1"
               style={{
                 background: "white",
-                border: "1px solid #EDE9FE",
+                border: "1px solid #E9E5DE",
                 boxShadow: "var(--shadow-pop)",
                 minWidth: 180,
               }}
@@ -354,7 +354,7 @@ export default function ReportesPage() {
                   }}
                   className="w-full text-left px-4 py-2.5 text-sm transition-all hover:bg-violet-50"
                   style={{
-                    color: p.value === days ? "#7C3AED" : "#374151",
+                    color: p.value === days ? "#9B21FF" : "#374151",
                     fontWeight: p.value === days ? 700 : 500,
                   }}
                 >
@@ -369,7 +369,7 @@ export default function ReportesPage() {
         <button
           onClick={exportCsv}
           className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm border transition-all hover:bg-violet-50"
-          style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+          style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "white" }}
         >
           <DownloadIcon />
           Exportar
@@ -379,7 +379,7 @@ export default function ReportesPage() {
       <div className="flex-1 overflow-y-auto px-4 md:px-8 pb-10">
         {!hasData ? (
           <EmptyState
-            icon={<OpportunitiesIcon size={24} color="#7C3AED" />}
+            icon={<OpportunitiesIcon size={24} color="#9B21FF" />}
             title="Todavía no hay datos para reportar"
             description="Cargá propiedades y contactos: las métricas se calculan solas a partir de la actividad real."
             action={{ label: "Ir a Propiedades", onClick: () => navigate("/propiedades") }}
@@ -393,33 +393,33 @@ export default function ReportesPage() {
                 label="Leads generados"
                 sub={`Últimos ${days} días`}
                 trend={delta(kpis.leads.length, kpis.prev.leads)}
-                grad="linear-gradient(135deg,#7C3AED,#A855F7)"
-                iconBg="#F5F3FF"
-                icon={<ContactsIcon size={22} color="#7C3AED" />}
+                grad="var(--gradient-brand)"
+                iconBg="#F7F0FF"
+                icon={<ContactsIcon size={22} color="#9B21FF" />}
                 series={series.map((s) => s.leads)}
-                color="#7C3AED"
+                color="#9B21FF"
               />
               <ReportKpi
                 value={String(matches.length)}
                 label="Matches vigentes"
                 sub={`${kpis.newMatches.length} en el período`}
                 trend={delta(kpis.newMatches.length, kpis.prev.matches)}
-                grad="linear-gradient(135deg,#A855F7,#EC4899)"
-                iconBg="#FDF2F8"
-                icon={<MatchesIcon size={22} color="#EC4899" />}
+                grad="var(--gradient-brand)"
+                iconBg="#FFF1FA"
+                icon={<MatchesIcon size={22} color="#FF5ECA" />}
                 series={series.map((s) => s.ops)}
-                color="#A855F7"
+                color="#A855FF"
               />
               <ReportKpi
                 value={String(kpis.openOpps.length)}
                 label="Oportunidades activas"
                 sub="En el pipeline"
                 trend={delta(kpis.openOpps.length, kpis.prev.opps)}
-                grad="linear-gradient(135deg,#EC4899,#F472B6)"
-                iconBg="#FDF2F8"
-                icon={<OpportunitiesIcon size={22} color="#EC4899" />}
+                grad="linear-gradient(135deg,#FF5ECA,#FF7ED5)"
+                iconBg="#FFF1FA"
+                icon={<OpportunitiesIcon size={22} color="#FF5ECA" />}
                 series={series.map((s) => s.ops)}
-                color="#EC4899"
+                color="#FF5ECA"
               />
               <ReportKpi
                 value={String(kpis.closed.length)}
@@ -439,17 +439,17 @@ export default function ReportesPage() {
               <Card padded>
                 <div className="flex items-start justify-between mb-6 gap-4 flex-wrap">
                   <div>
-                    <h2 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                    <h2 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                       Evolución de la actividad
                     </h2>
-                    <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+                    <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                       Últimos {days} días
                     </p>
                   </div>
                   <div className="flex items-center gap-4">
                     {[
-                      { label: "Leads", color: "#7C3AED" },
-                      { label: "Oportunidades", color: "#EC4899" },
+                      { label: "Leads", color: "#9B21FF" },
+                      { label: "Oportunidades", color: "#FF5ECA" },
                       { label: "Cierres", color: "#06B6D4" },
                     ].map((s) => (
                       <div key={s.label} className="flex items-center gap-1.5">
@@ -464,17 +464,17 @@ export default function ReportesPage() {
 
                 <ResponsiveContainer width="100%" height={240}>
                   <LineChart data={series} margin={{ top: 4, right: 8, left: -20, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="4 4" stroke="#F3F0FF" vertical={false} />
+                    <CartesianGrid strokeDasharray="4 4" stroke="#F0EDE6" vertical={false} />
                     <XAxis
                       dataKey="date"
-                      tick={{ fill: "#7C6A99", fontSize: 10 }}
+                      tick={{ fill: "#6B7280", fontSize: 10 }}
                       tickLine={false}
                       axisLine={false}
                       interval="preserveStartEnd"
                       minTickGap={24}
                     />
                     <YAxis
-                      tick={{ fill: "#7C6A99", fontSize: 10 }}
+                      tick={{ fill: "#6B7280", fontSize: 10 }}
                       tickLine={false}
                       axisLine={false}
                       allowDecimals={false}
@@ -484,19 +484,19 @@ export default function ReportesPage() {
                       type="monotone"
                       dataKey="leads"
                       name="Leads"
-                      stroke="#7C3AED"
+                      stroke="#9B21FF"
                       strokeWidth={2.5}
                       dot={false}
-                      activeDot={{ r: 4, fill: "#7C3AED", stroke: "white", strokeWidth: 2 }}
+                      activeDot={{ r: 4, fill: "#9B21FF", stroke: "white", strokeWidth: 2 }}
                     />
                     <Line
                       type="monotone"
                       dataKey="ops"
                       name="Oportunidades"
-                      stroke="#EC4899"
+                      stroke="#FF5ECA"
                       strokeWidth={2}
                       dot={false}
-                      activeDot={{ r: 4, fill: "#EC4899", stroke: "white", strokeWidth: 2 }}
+                      activeDot={{ r: 4, fill: "#FF5ECA", stroke: "white", strokeWidth: 2 }}
                     />
                     <Line
                       type="monotone"
@@ -524,7 +524,7 @@ export default function ReportesPage() {
                       pct: matches.length
                         ? Math.round((opportunities.length / matches.length) * 100)
                         : 0,
-                      color: "#7C3AED",
+                      color: "#9B21FF",
                     },
                     {
                       label: "Oportunidad → Visita",
@@ -537,7 +537,7 @@ export default function ReportesPage() {
                               100,
                           )
                         : 0,
-                      color: "#EC4899",
+                      color: "#FF5ECA",
                     },
                     {
                       label: "Visita → Cierre",
@@ -564,12 +564,12 @@ export default function ReportesPage() {
                           {r.pct}%
                         </span>
                       </div>
-                      <div className="h-1.5 rounded-full" style={{ background: "#F5F3FF" }}>
+                      <div className="h-1.5 rounded-full" style={{ background: "#F7F0FF" }}>
                         <div
                           className="h-full rounded-full transition-all"
                           style={{
                             width: `${Math.min(100, r.pct)}%`,
-                            background: `linear-gradient(90deg, ${r.color}, #EC4899)`,
+                            background: `linear-gradient(90deg, ${r.color}, #FF5ECA)`,
                           }}
                         />
                       </div>
@@ -583,10 +583,10 @@ export default function ReportesPage() {
             <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-5">
               <Card padded>
                 <div className="mb-6">
-                  <h2 className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                  <h2 className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                     Rendimiento del matching
                   </h2>
-                  <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+                  <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                     De la compatibilidad detectada a la operación cerrada
                   </p>
                 </div>
@@ -610,22 +610,22 @@ export default function ReportesPage() {
                             {rate !== null && (
                               <span
                                 className="text-xs px-2 py-0.5 rounded-full"
-                                style={{ background: "#F5F3FF", color: "#7C3AED", fontWeight: 600 }}
+                                style={{ background: "#F7F0FF", color: "#9B21FF", fontWeight: 600 }}
                               >
                                 {rate}%
                               </span>
                             )}
-                            <span className="text-sm" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+                            <span className="text-sm" style={{ color: "#1A1A1A", fontWeight: 800 }}>
                               {step.value}
                             </span>
                           </div>
                         </div>
-                        <div className="h-3 rounded-full overflow-hidden" style={{ background: "#F5F3FF" }}>
+                        <div className="h-3 rounded-full overflow-hidden" style={{ background: "#F7F0FF" }}>
                           <div
                             className="h-full rounded-full transition-all"
                             style={{
                               width: `${(step.value / Math.max(1, funnel[0].value)) * 100}%`,
-                              background: `linear-gradient(90deg, ${step.color}, #EC4899)`,
+                              background: `linear-gradient(90deg, ${step.color}, #FF5ECA)`,
                             }}
                           />
                         </div>
@@ -635,9 +635,9 @@ export default function ReportesPage() {
                 </div>
                 <div
                   className="mt-6 pt-4 border-t flex items-center justify-between"
-                  style={{ borderColor: "#F3F0FF" }}
+                  style={{ borderColor: "#F0EDE6" }}
                 >
-                  <span className="text-xs" style={{ color: "#7458C4" }}>
+                  <span className="text-xs" style={{ color: "#6B7280" }}>
                     Conversión total del funnel
                   </span>
                   <span className="text-gradient-brand-h" style={{ fontWeight: 800 }}>
@@ -659,12 +659,12 @@ export default function ReportesPage() {
                   <div className="overflow-x-auto">
                     <table className="w-full" style={{ minWidth: 460 }}>
                       <thead>
-                        <tr style={{ background: "#FDFCFF", borderBottom: "1px solid #F3F0FF" }}>
+                        <tr style={{ background: "#FAF8F5", borderBottom: "1px solid #F0EDE6" }}>
                           {["Propiedad", "Matches", "Oportunidades", "Visitas", "Estado"].map((h) => (
                             <th
                               key={h}
                               className="text-left px-5 py-3 text-xs uppercase tracking-wide whitespace-nowrap"
-                              style={{ color: "#7458C4", letterSpacing: "0.06em", fontWeight: 600 }}
+                              style={{ color: "#6B7280", letterSpacing: "0.06em", fontWeight: 600 }}
                             >
                               {h}
                             </th>
@@ -680,17 +680,17 @@ export default function ReportesPage() {
                               className="transition-all hover:bg-violet-50 cursor-pointer"
                               style={{
                                 borderBottom:
-                                  idx < propertyPerf.length - 1 ? "1px solid #F9F7FF" : undefined,
+                                  idx < propertyPerf.length - 1 ? "1px solid #FAF8F5" : undefined,
                               }}
                             >
                               <td className="px-5 py-3">
                                 <p
                                   className="text-sm truncate max-w-[160px]"
-                                  style={{ color: "#1F0A3C", fontWeight: 600 }}
+                                  style={{ color: "#1A1A1A", fontWeight: 600 }}
                                 >
                                   {row.property.title}
                                 </p>
-                                <p className="text-xs" style={{ color: "#7C6A99" }}>
+                                <p className="text-xs" style={{ color: "#6B7280" }}>
                                   {PROPERTY_TYPE_LABEL[row.property.type]}
                                 </p>
                               </td>
@@ -698,7 +698,7 @@ export default function ReportesPage() {
                                 <div className="flex items-center gap-2">
                                   <div
                                     className="h-1.5 w-14 rounded-full overflow-hidden"
-                                    style={{ background: "#EDE9FE" }}
+                                    style={{ background: "#E9E5DE" }}
                                   >
                                     <div
                                       className="h-full rounded-full"
@@ -753,7 +753,7 @@ export default function ReportesPage() {
                     <div
                       key={ins.label}
                       className="rounded-2xl border overflow-hidden transition-all hover:shadow-md cursor-pointer"
-                      style={{ background: "white", borderColor: "#EDE9FE", boxShadow: "var(--shadow-card)" }}
+                      style={{ background: "white", borderColor: "#E9E5DE", boxShadow: "var(--shadow-card)" }}
                       onClick={() => navigate(ins.to)}
                     >
                       <div className="h-1" style={{ background: ins.accent }} />
@@ -764,7 +764,7 @@ export default function ReportesPage() {
                         >
                           {ins.emoji}
                         </div>
-                        <p className="text-sm mb-1.5" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                        <p className="text-sm mb-1.5" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                           {ins.label}
                         </p>
                         <p className="text-xs leading-relaxed mb-4" style={{ color: "#6B7280" }}>
@@ -799,12 +799,12 @@ export default function ReportesPage() {
                   <div className="overflow-x-auto">
                     <table className="w-full" style={{ minWidth: 560 }}>
                       <thead>
-                        <tr style={{ background: "#FDFCFF", borderBottom: "1px solid #F3F0FF" }}>
+                        <tr style={{ background: "#FAF8F5", borderBottom: "1px solid #F0EDE6" }}>
                           {["#", "Agente", "Oportunidades", "Cierres"].map((h) => (
                             <th
                               key={h}
                               className="text-left px-6 py-3 text-xs uppercase tracking-wide"
-                              style={{ color: "#7458C4", fontWeight: 600, letterSpacing: "0.06em" }}
+                              style={{ color: "#6B7280", fontWeight: 600, letterSpacing: "0.06em" }}
                             >
                               {h}
                             </th>
@@ -817,7 +817,7 @@ export default function ReportesPage() {
                             key={row.agent.id}
                             className="transition-all hover:bg-violet-50"
                             style={{
-                              borderBottom: idx < team.length - 1 ? "1px solid #F9F7FF" : undefined,
+                              borderBottom: idx < team.length - 1 ? "1px solid #FAF8F5" : undefined,
                             }}
                           >
                             <td className="px-6 py-4">
@@ -826,7 +826,7 @@ export default function ReportesPage() {
                                 style={
                                   idx === 0
                                     ? { background: "var(--gradient-brand)", color: "white", fontWeight: 800 }
-                                    : { background: "#F5F3FF", color: "#7458C4", fontWeight: 700 }
+                                    : { background: "#F7F0FF", color: "#6B7280", fontWeight: 700 }
                                 }
                               >
                                 {idx + 1}
@@ -841,10 +841,10 @@ export default function ReportesPage() {
                                   {initials(row.agent.full_name)}
                                 </div>
                                 <div>
-                                  <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                                  <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                                     {row.agent.full_name}
                                   </p>
-                                  <p className="text-xs" style={{ color: "#7458C4" }}>
+                                  <p className="text-xs" style={{ color: "#6B7280" }}>
                                     {row.agent.role === "owner" ? "Dueño" : "Agente inmobiliario"}
                                   </p>
                                 </div>
@@ -852,22 +852,22 @@ export default function ReportesPage() {
                             </td>
                             <td className="px-6 py-4">
                               <div className="max-w-[120px]">
-                                <span className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                                <span className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                                   {row.opps}
                                 </span>
-                                <div className="h-1.5 rounded-full mt-1" style={{ background: "#F5F3FF" }}>
+                                <div className="h-1.5 rounded-full mt-1" style={{ background: "#F7F0FF" }}>
                                   <div
                                     className="h-full rounded-full"
                                     style={{
                                       width: `${(row.opps / Math.max(1, team[0].opps)) * 100}%`,
-                                      background: "linear-gradient(90deg,#7C3AED,#A855F7)",
+                                      background: "var(--gradient-brand-h)",
                                     }}
                                   />
                                 </div>
                               </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                              <span className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                              <span className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                                 {row.conv}
                               </span>
                               <span
@@ -926,7 +926,7 @@ function ReportKpi({
   return (
     <div
       className="rounded-2xl border overflow-hidden transition-all hover:shadow-lg"
-      style={{ background: "white", borderColor: "#EDE9FE", boxShadow: "var(--shadow-card-lg)" }}
+      style={{ background: "white", borderColor: "#E9E5DE", boxShadow: "var(--shadow-card-lg)" }}
     >
       <div className="px-5 pt-5 pb-4 flex items-start justify-between">
         <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ background: iconBg }}>
@@ -964,7 +964,7 @@ function ReportKpi({
         <p className="text-sm mt-1.5" style={{ color: "#374151", fontWeight: 600 }}>
           {label}
         </p>
-        <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+        <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
           {sub}
         </p>
       </div>
@@ -996,11 +996,11 @@ function ConversionRing({ pct }: { pct: number }) {
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
         <defs>
           <linearGradient id="convGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#7C3AED" />
-            <stop offset="100%" stopColor="#EC4899" />
+            <stop offset="0%" stopColor="#9B21FF" />
+            <stop offset="100%" stopColor="#FF5ECA" />
           </linearGradient>
         </defs>
-        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#EDE9FE" strokeWidth={sw} />
+        <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke="#E9E5DE" strokeWidth={sw} />
         <circle
           cx={size / 2}
           cy={size / 2}
@@ -1019,7 +1019,7 @@ function ConversionRing({ pct }: { pct: number }) {
         <span className="text-gradient-brand" style={{ fontSize: 32, fontWeight: 800, lineHeight: 1 }}>
           {pct}%
         </span>
-        <span style={{ color: "#7458C4", fontWeight: 600, fontSize: 11, marginTop: 2 }}>
+        <span style={{ color: "#6B7280", fontWeight: 600, fontSize: 11, marginTop: 2 }}>
           conversión
         </span>
       </div>
@@ -1040,9 +1040,9 @@ function ChartTooltip({
   return (
     <div
       className="rounded-xl px-4 py-3"
-      style={{ background: "white", border: "1px solid #EDE9FE", boxShadow: "var(--shadow-pop)" }}
+      style={{ background: "white", border: "1px solid #E9E5DE", boxShadow: "var(--shadow-pop)" }}
     >
-      <p className="text-xs mb-2" style={{ color: "#7458C4", fontWeight: 600 }}>
+      <p className="text-xs mb-2" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label}
       </p>
       {payload.map((e) => (
@@ -1051,7 +1051,7 @@ function ChartTooltip({
           <span className="text-xs" style={{ color: "#6B7280" }}>
             {e.name}:
           </span>
-          <span className="text-xs" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <span className="text-xs" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             {e.value}
           </span>
         </div>

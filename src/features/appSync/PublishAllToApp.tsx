@@ -43,9 +43,9 @@ import {
   useBulkJob,
 } from "./bulkAppSync";
 
-const INK = "#1F0A3C";
-const MUTED = "#6B5A8E";
-const VIOLET = "#7C3AED";
+const INK = "#1A1A1A";
+const MUTED = "#6B7280";
+const VIOLET = "#9B21FF";
 
 export const NOT_LINKED_TEXT = "Tu cuenta todavía no está vinculada a la app PropMatch";
 const NOT_ADMIN_TEXT = "Solo los administradores de la inmobiliaria pueden publicar todas en la app";
@@ -129,7 +129,7 @@ export function BulkAppSyncHost() {
           type="button"
           onClick={() => setDialogOpen(true)}
           className="fixed z-40 right-4 lg:right-6 bottom-[calc(148px+env(safe-area-inset-bottom))] lg:bottom-24 flex items-center gap-2 px-4 py-2.5 rounded-full text-sm"
-          style={{ background: "white", color: INK, fontWeight: 700, boxShadow: "var(--shadow-pop)", border: "1px solid #EDE9FE" }}
+          style={{ background: "white", color: INK, fontWeight: 700, boxShadow: "var(--shadow-pop)", border: "1px solid #E9E5DE" }}
           aria-label={`Publicación en la app: ${p.done} de ${p.total}. Ver detalle`}
         >
           <span
@@ -209,7 +209,7 @@ export function AppPropMatchCard() {
             />
           </div>
           {access.agencyId && access.reason && (
-            <p className="mt-2 text-xs px-3 py-2 rounded-lg" style={{ background: "#F5F3FF", color: "#5B21B6" }}>
+            <p className="mt-2 text-xs px-3 py-2 rounded-lg" style={{ background: "#F7F0FF", color: "#7C0BD8" }}>
               {access.reason}.
             </p>
           )}
@@ -235,7 +235,7 @@ function PublishAllDialog({ onClose }: { onClose: () => void }) {
   return (
     <div
       className="pm-backdrop fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6"
-      style={{ background: "rgba(31,10,60,0.35)" }}
+      style={{ background: "rgba(8, 11, 31,0.35)" }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -246,12 +246,12 @@ function PublishAllDialog({ onClose }: { onClose: () => void }) {
         style={{ background: "white", boxShadow: "var(--shadow-pop)" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="px-6 py-5 border-b flex items-center gap-3" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+        <div className="px-6 py-5 border-b flex items-center gap-3" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
           <div className="flex-1 min-w-0">
             <p id="publish-all-h" className="text-lg tracking-tight" style={{ color: INK, fontWeight: 800 }}>
               {refresh ? "Actualizar las fotos en la app PropMatch" : "Publicar todas en la app PropMatch"}
             </p>
-            <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+            <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
               {refresh
                 ? "Vuelve a mandar, en tandas, las fotos de las propiedades que ya están en la app, con el logo como está configurado ahora."
                 : "Sube en tandas las propiedades del CRM que todavía no están en la app."}
@@ -262,14 +262,14 @@ function PublishAllDialog({ onClose }: { onClose: () => void }) {
             onClick={onClose}
             aria-label="Cerrar"
             className="w-10 h-10 rounded-lg flex items-center justify-center hover:bg-violet-50"
-            style={{ color: "#7458C4", fontSize: 22 }}
+            style={{ color: "#6B7280", fontSize: 22 }}
           >
             ×
           </button>
         </div>
         <div className="flex-1 overflow-y-auto px-6 py-5 flex flex-col gap-4">
           {!access.allowed ? (
-            <p className="text-sm px-4 py-3 rounded-xl" style={{ background: "#F5F3FF", color: "#5B21B6" }}>
+            <p className="text-sm px-4 py-3 rounded-xl" style={{ background: "#F7F0FF", color: "#7C0BD8" }}>
               {access.reason}.
             </p>
           ) : job ? (
@@ -284,7 +284,7 @@ function PublishAllDialog({ onClose }: { onClose: () => void }) {
 }
 
 function Stat({ value, label, tone }: { value: number; label: string; tone: "ok" | "info" | "muted" }) {
-  const c = tone === "ok" ? { bg: "#F0FDF4", fg: "#15803D" } : tone === "info" ? { bg: "#F5F3FF", fg: VIOLET } : { bg: "#F9FAFB", fg: "#4B5563" };
+  const c = tone === "ok" ? { bg: "#F0FDF4", fg: "#15803D" } : tone === "info" ? { bg: "#F7F0FF", fg: VIOLET } : { bg: "#F9FAFB", fg: "#4B5563" };
   return (
     <div className="flex-1 min-w-[120px] rounded-xl px-4 py-3" style={{ background: c.bg }}>
       <p className="text-2xl" style={{ color: c.fg, fontWeight: 800 }}>{value}</p>
@@ -380,7 +380,7 @@ function NotGoingList({ summary, open = false, title }: { summary: BulkSummary; 
   const reasons = Object.entries(summary.reasonCounts) as [IneligibleReason, number][];
   const fixable = (r: IneligibleReason[]) => !r.includes("sample") && !r.includes("currency") && !r.includes("closed");
   return (
-    <details className="rounded-xl border px-4 py-3" style={{ borderColor: "#EDE9FE" }} open={open}>
+    <details className="rounded-xl border px-4 py-3" style={{ borderColor: "#E9E5DE" }} open={open}>
       <summary className="text-sm cursor-pointer" style={{ color: INK, fontWeight: 700 }}>
         {title ?? `Por qué no van ${summary.ineligible.length} propiedades`}
       </summary>
@@ -435,7 +435,7 @@ function JobProgress() {
   const finished = job.status === "done" || job.status === "cancelled";
   const refresh = job.kind === "refresh";
   const btn = "inline-flex items-center min-h-[44px] px-4 rounded-xl text-sm border hover:bg-violet-50";
-  const btnStyle = { borderColor: "#EDE9FE", color: VIOLET, fontWeight: 600, background: "white" } as const;
+  const btnStyle = { borderColor: "#E9E5DE", color: VIOLET, fontWeight: 600, background: "white" } as const;
 
   return (
     <>
@@ -450,7 +450,7 @@ function JobProgress() {
         </div>
         <div
           className="mt-2 h-2.5 rounded-full overflow-hidden"
-          style={{ background: "#EDE9FE" }}
+          style={{ background: "#E9E5DE" }}
           role="progressbar"
           aria-valuemin={0}
           aria-valuemax={p.total}
@@ -535,7 +535,7 @@ function JobProgress() {
       )}
 
       {p.photoFailures > 0 && (
-        <details className="rounded-xl border px-4 py-3" style={{ borderColor: "#EDE9FE" }}>
+        <details className="rounded-xl border px-4 py-3" style={{ borderColor: "#E9E5DE" }}>
           <summary className="text-sm cursor-pointer" style={{ color: INK, fontWeight: 700 }}>
             Propiedades con fotos que no se pudieron copiar
           </summary>
@@ -611,7 +611,7 @@ export function UpdateAppPhotos({ fingerprint }: { fingerprint: string }) {
               setDialogOpen(true);
             }}
             className="min-h-9 px-3 rounded-lg text-xs border bg-white disabled:opacity-50 disabled:cursor-not-allowed"
-            style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+            style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
           >
             Actualizar las fotos en la app
           </button>
@@ -663,7 +663,7 @@ export function AppChannelRow({ propertyId }: { propertyId: string }) {
       : null;
 
   return (
-    <div className="flex flex-wrap items-center gap-3 px-5 py-4 border-b" style={{ borderColor: "#F3F0FF" }}>
+    <div className="flex flex-wrap items-center gap-3 px-5 py-4 border-b" style={{ borderColor: "#F0EDE6" }}>
       <div
         className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 text-sm text-white"
         style={{ background: "var(--gradient-brand)", fontWeight: 800 }}
@@ -687,7 +687,7 @@ export function AppChannelRow({ propertyId }: { propertyId: string }) {
           disabled={!canAct}
           onClick={() => startJob(access.agencyId!, [{ id: property.id, title: property.title || "(sin título)" }])}
           className="px-3 py-1.5 rounded-lg text-xs border hover:bg-violet-50 disabled:opacity-40 disabled:cursor-not-allowed"
-          style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 700 }}
+          style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 700 }}
         >
           {working ? "Publicando…" : inApp ? "Actualizar en la app" : "Publicar en la app"}
         </button>

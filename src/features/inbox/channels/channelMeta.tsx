@@ -6,9 +6,9 @@ import { norm } from "../conversations";
 export type InboxSource = "all" | "app" | ExternalChannel;
 
 export const SOURCE_META: Record<Exclude<InboxSource, "all">, { label: string; color: string; bg: string }> = {
-  app: { label: "App PropMatch", color: "#7C3AED", bg: "#F5F3FF" },
+  app: { label: "App PropMatch", color: "#9B21FF", bg: "#F7F0FF" },
   whatsapp: { label: "WhatsApp", color: "#128C7E", bg: "#E7F8F1" },
-  instagram: { label: "Instagram", color: "#C13584", bg: "#FDF0F7" },
+  instagram: { label: "Instagram", color: "#C13584", bg: "#FFF1FA" },
   messenger: { label: "Messenger", color: "#0866FF", bg: "#EAF2FF" },
 };
 

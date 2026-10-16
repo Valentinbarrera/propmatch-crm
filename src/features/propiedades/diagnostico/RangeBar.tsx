@@ -35,7 +35,7 @@ export function RangeBar({ price }: { price: PriceAnalysis }) {
         {/* Rango total de comparables */}
         <div
           className="absolute top-1/2 -translate-y-1/2 h-2 rounded-full"
-          style={{ left: pos(min), width: `calc(${pos(max)} - ${pos(min)})`, background: "#EDE9FE" }}
+          style={{ left: pos(min), width: `calc(${pos(max)} - ${pos(min)})`, background: "#E9E5DE" }}
         />
         {/* Banda P25–P75 */}
         <div
@@ -43,54 +43,54 @@ export function RangeBar({ price }: { price: PriceAnalysis }) {
           style={{
             left: pos(p25),
             width: `max(4px, calc(${pos(p75)} - ${pos(p25)}))`,
-            background: "#C4B5FD",
-            border: "1px solid #7C3AED",
+            background: "#D4AAFF",
+            border: "1px solid #9B21FF",
           }}
         />
         {median != null && (
-          <div className="absolute top-1/2 -translate-y-1/2 w-0.5 h-4" style={{ left: pos(median), background: "#5B21B6" }} />
+          <div className="absolute top-1/2 -translate-y-1/2 w-0.5 h-4" style={{ left: pos(median), background: "#7C0BD8" }} />
         )}
         {suggested != null && (
           <div
             className="absolute top-0 bottom-0 -translate-x-1/2"
-            style={{ left: pos(suggested), borderLeft: "2px dashed #7C3AED" }}
+            style={{ left: pos(suggested), borderLeft: "2px dashed #9B21FF" }}
           />
         )}
         {current != null && (
           <div className="absolute top-0 bottom-0 -translate-x-1/2 flex flex-col items-center" style={{ left: pos(current) }}>
-            <span aria-hidden="true" style={{ color: "#1F0A3C", fontSize: 10, lineHeight: "10px" }}>
+            <span aria-hidden="true" style={{ color: "#1A1A1A", fontSize: 10, lineHeight: "10px" }}>
               ▼
             </span>
-            <span className="flex-1 w-0.5" style={{ background: "#1F0A3C" }} />
+            <span className="flex-1 w-0.5" style={{ background: "#1A1A1A" }} />
           </div>
         )}
       </div>
 
-      <div className="flex justify-between text-xs mt-1" style={{ color: "#7458C4", fontWeight: 600 }}>
+      <div className="flex justify-between text-xs mt-1" style={{ color: "#6B7280", fontWeight: 600 }}>
         <span>Mín. {money(min, currency)}</span>
         <span>Máx. {money(max, currency)}</span>
       </div>
 
       <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5 text-xs" style={{ color: "#374151" }}>
         <li className="flex items-center gap-1.5">
-          <span aria-hidden="true" className="inline-block w-4 h-3 rounded-sm" style={{ background: "#C4B5FD", border: "1px solid #7C3AED" }} />
+          <span aria-hidden="true" className="inline-block w-4 h-3 rounded-sm" style={{ background: "#D4AAFF", border: "1px solid #9B21FF" }} />
           Rango competitivo (P25–P75): <strong>{money(p25, currency)} – {money(p75, currency)}</strong>
         </li>
         {median != null && (
           <li className="flex items-center gap-1.5">
-            <span aria-hidden="true" className="inline-block w-0.5 h-3" style={{ background: "#5B21B6" }} />
+            <span aria-hidden="true" className="inline-block w-0.5 h-3" style={{ background: "#7C0BD8" }} />
             Mediana: <strong>{money(median, currency)}</strong>
           </li>
         )}
         {current != null && (
           <li className="flex items-center gap-1.5">
-            <span aria-hidden="true" className="inline-block w-0.5 h-3" style={{ background: "#1F0A3C" }} />
+            <span aria-hidden="true" className="inline-block w-0.5 h-3" style={{ background: "#1A1A1A" }} />
             Precio publicado: <strong>{money(current, currency)}</strong>
           </li>
         )}
         {suggested != null && (
           <li className="flex items-center gap-1.5">
-            <span aria-hidden="true" className="inline-block h-3" style={{ borderLeft: "2px dashed #7C3AED" }} />
+            <span aria-hidden="true" className="inline-block h-3" style={{ borderLeft: "2px dashed #9B21FF" }} />
             Sugerido: <strong>{money(suggested, currency)}</strong>
           </li>
         )}

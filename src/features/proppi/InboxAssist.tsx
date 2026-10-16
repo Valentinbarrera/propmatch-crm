@@ -126,17 +126,17 @@ export function InboxAssist({
   return (
     <div className="mb-2">
       {summary !== null && (
-        <div className="mb-2 rounded-xl px-3.5 py-2.5 border relative" style={{ borderColor: "#EDE9FE", background: "#F9F7FF" }}>
-          <p className="text-[11px] mb-1" style={{ color: "#7458C4", fontWeight: 700 }}>
+        <div className="mb-2 rounded-xl px-3.5 py-2.5 border relative" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
+          <p className="text-[11px] mb-1" style={{ color: "#6B7280", fontWeight: 700 }}>
             Resumen de Proppi
           </p>
-          <div aria-live="polite" aria-busy={busy === "summary"} style={{ color: "#1F0A3C" }}>
+          <div aria-live="polite" aria-busy={busy === "summary"} style={{ color: "#1A1A1A" }}>
             <RichText text={summary || "…"} />
           </div>
           <button
             onClick={() => setSummary(null)}
             className="absolute top-1.5 right-2 text-xs min-h-[28px] px-2"
-            style={{ color: "#6D28D9", fontWeight: 600 }}
+            style={{ color: "#7C0BD8", fontWeight: 600 }}
             aria-label="Cerrar resumen"
           >
             Cerrar
@@ -148,16 +148,16 @@ export function InboxAssist({
           onClick={() => run("draft")}
           disabled={!!busy || limitReached}
           className={chip}
-          style={{ borderColor: "#C4B5FD", color: "#6D28D9", background: "white", fontWeight: 700 }}
+          style={{ borderColor: "#D4AAFF", color: "#7C0BD8", background: "white", fontWeight: 700 }}
         >
-          <ProppiIcon size={15} color="#7C3AED" />
+          <ProppiIcon size={15} color="#9B21FF" />
           {busy === "draft" ? "Escribiendo borrador…" : "Sugerir respuesta con Proppi"}
         </button>
         <button
           onClick={() => run("summary")}
           disabled={!!busy || limitReached || messages.length === 0}
           className={chip}
-          style={{ borderColor: "#DDD6FE", color: "#6D28D9", background: "#F9F7FF", fontWeight: 600 }}
+          style={{ borderColor: "#DDD8CF", color: "#7C0BD8", background: "#FAF8F5", fontWeight: 600 }}
         >
           {busy === "summary" ? "Resumiendo…" : "Resumir conversación"}
         </button>
@@ -168,12 +168,12 @@ export function InboxAssist({
               setBusy(null);
             }}
             className="text-xs min-h-[32px] px-2 underline underline-offset-2"
-            style={{ color: "#7458C4", fontWeight: 600 }}
+            style={{ color: "#6B7280", fontWeight: 600 }}
           >
             Cancelar
           </button>
         )}
-        <span role="status" className="text-xs" style={{ color: "#7458C4", fontWeight: 600 }}>
+        <span role="status" className="text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
           {busy && status ? `Proppi está ${status}…` : notice ?? ""}
         </span>
       </div>

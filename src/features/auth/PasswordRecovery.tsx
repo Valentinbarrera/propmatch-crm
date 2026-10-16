@@ -46,7 +46,7 @@ export function PasswordRecovery() {
   }
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ background: "rgba(31,10,60,0.45)" }}>
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ background: "rgba(8, 11, 31,0.45)" }}>
       <div
         role="dialog"
         aria-modal="true"
@@ -54,7 +54,7 @@ export function PasswordRecovery() {
         className="w-full max-w-sm rounded-2xl bg-white p-6"
         style={{ boxShadow: "var(--shadow-card)" }}
       >
-        <h2 id="recovery-title" className="text-lg" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+        <h2 id="recovery-title" className="text-lg" style={{ color: "#1A1A1A", fontWeight: 800 }}>
           {state === "done" ? "Contraseña actualizada" : "Elegí tu contraseña nueva"}
         </h2>
         {state === "done" ? (
@@ -73,7 +73,7 @@ export function PasswordRecovery() {
           </>
         ) : (
           <form onSubmit={save} className="mt-4 space-y-3">
-            <label className="block text-xs" style={{ color: "#7458C4", fontWeight: 700 }} htmlFor="recovery-password">
+            <label className="block text-xs" style={{ color: "#6B7280", fontWeight: 700 }} htmlFor="recovery-password">
               Contraseña nueva
             </label>
             <input
@@ -86,8 +86,8 @@ export function PasswordRecovery() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Mínimo 8 caracteres"
-              className="w-full min-h-11 px-3 rounded-xl text-sm border outline-none focus-visible:ring-4 focus-visible:ring-[#EDE9FE]"
-              style={{ borderColor: "#DDD6FE" }}
+              className="w-full min-h-11 px-3 rounded-xl text-sm border outline-none focus-visible:ring-4 focus-visible:ring-[#E9E5DE]"
+              style={{ borderColor: "#DDD8CF" }}
             />
             {error && (
               <p role="alert" className="text-xs" style={{ color: "#E11D48" }}>

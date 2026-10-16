@@ -31,16 +31,16 @@ export function EmptyState({
       {icon && (
         <div
           className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4"
-          style={{ background: "var(--gradient-soft)", border: "1px solid #EDE9FE" }}
+          style={{ background: "var(--gradient-soft)", border: "1px solid #E9E5DE" }}
         >
           {icon}
         </div>
       )}
-      <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+      <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
         {title}
       </p>
       {description && (
-        <p className="text-xs mt-1.5 max-w-xs" style={{ color: "#7C6A99" }}>
+        <p className="text-xs mt-1.5 max-w-xs" style={{ color: "#6B7280" }}>
           {description}
         </p>
       )}
@@ -79,17 +79,17 @@ export function ErrorState({
           <path d="M12 8v4M12 16h.01" stroke="#E11D48" strokeWidth="2" strokeLinecap="round" />
         </svg>
       </div>
-      <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+      <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
         No pudimos cargar esta información
       </p>
-      <p className="text-xs mt-1.5 max-w-sm" style={{ color: "#7C6A99" }}>
+      <p className="text-xs mt-1.5 max-w-sm" style={{ color: "#6B7280" }}>
         {message}
       </p>
       {onRetry && (
         <button
           onClick={onRetry}
           className="mt-5 px-4 py-2 rounded-xl text-sm border transition-all hover:border-violet-300"
-          style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "#F9F7FF" }}
+          style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "#FAF8F5" }}
         >
           Reintentar
         </button>
@@ -103,7 +103,7 @@ export function Skeleton({ className = "", style }: { className?: string; style?
   return (
     <div
       className={`animate-pulse rounded-xl ${className}`}
-      style={{ background: "#F5F3FF", ...style }}
+      style={{ background: "#F7F0FF", ...style }}
     />
   );
 }
@@ -133,7 +133,7 @@ export function SkeletonRows({ rows = 5 }: { rows?: number }) {
 /** Pantalla completa de carga (arranque de la app). */
 export function FullPageLoader() {
   return (
-    <div className="h-full flex items-center justify-center" style={{ background: "#FDFCFF" }}>
+    <div className="h-full flex items-center justify-center" style={{ background: "#FAF8F5" }}>
       <div className="flex flex-col items-center gap-4">
         <div
           className="w-11 h-11 rounded-xl flex items-center justify-center animate-pulse"
@@ -144,7 +144,7 @@ export function FullPageLoader() {
             <circle cx="16" cy="8" r="3" fill="white" fillOpacity="0.7" />
           </svg>
         </div>
-        <p className="text-xs" style={{ color: "#7458C4", fontWeight: 600 }}>
+        <p className="text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
           Cargando PropMatch…
         </p>
       </div>

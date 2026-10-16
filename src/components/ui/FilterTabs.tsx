@@ -19,7 +19,7 @@ export function FilterTabs<T extends string>({
   return (
     <div
       className="flex items-center gap-1 p-1 rounded-xl flex-shrink-0"
-      style={{ background: "#F5F3FF" }}
+      style={{ background: "#F7F0FF" }}
     >
       {options.map((opt) => {
         const active = opt.value === value;
@@ -36,9 +36,9 @@ export function FilterTabs<T extends string>({
                     background: "var(--gradient-brand)",
                     color: "white",
                     fontWeight: 600,
-                    boxShadow: "0 2px 8px rgba(124,58,237,0.25)",
+                    boxShadow: "0 2px 8px rgba(168, 85, 255,0.25)",
                   }
-                : { color: "#7C6A99", fontWeight: 500 }
+                : { color: "#6B7280", fontWeight: 500 }
             }
           >
             {opt.label}
@@ -93,12 +93,12 @@ export function FilterDropdown<T extends string>({
         className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-sm border transition-all hover:border-violet-300 whitespace-nowrap"
         style={
           isActive
-            ? { background: "#F5F3FF", borderColor: "#DDD6FE", color: "#7C3AED", fontWeight: 600 }
-            : { background: "white", borderColor: "#EDE9FE", color: "#7C6A99", fontWeight: 500 }
+            ? { background: "#F7F0FF", borderColor: "#DDD8CF", color: "#9B21FF", fontWeight: 600 }
+            : { background: "white", borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 500 }
         }
       >
         {selected ? `${label}: ${selected.label}` : label}
-        <ChevronDownIcon color={isActive ? "#A78BFA" : "#C4B5FD"} />
+        <ChevronDownIcon color={isActive ? "#BF7FFF" : "#D4AAFF"} />
       </button>
 
       {open && (
@@ -106,7 +106,7 @@ export function FilterDropdown<T extends string>({
           className="absolute left-0 top-full mt-1 rounded-xl overflow-hidden z-50 py-1 max-h-72 overflow-y-auto"
           style={{
             background: "white",
-            border: "1px solid #EDE9FE",
+            border: "1px solid #E9E5DE",
             boxShadow: "var(--shadow-pop)",
             minWidth: 190,
           }}
@@ -117,7 +117,7 @@ export function FilterDropdown<T extends string>({
               setOpen(false);
             }}
             className="w-full text-left px-4 py-2.5 text-sm transition-all hover:bg-violet-50"
-            style={{ color: value === null ? "#7C3AED" : "#374151", fontWeight: value === null ? 700 : 500 }}
+            style={{ color: value === null ? "#9B21FF" : "#374151", fontWeight: value === null ? 700 : 500 }}
           >
             {value === null && <span className="mr-2">✓</span>}
             {allLabel}
@@ -131,7 +131,7 @@ export function FilterDropdown<T extends string>({
               }}
               className="w-full text-left px-4 py-2.5 text-sm transition-all hover:bg-violet-50"
               style={{
-                color: opt.value === value ? "#7C3AED" : "#374151",
+                color: opt.value === value ? "#9B21FF" : "#374151",
                 fontWeight: opt.value === value ? 700 : 500,
               }}
             >

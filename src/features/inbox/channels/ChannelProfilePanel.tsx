@@ -83,7 +83,7 @@ export function ChannelProfilePanel({ conversation, onBack }: { conversation: Ch
 
   return (
     <div className="h-full overflow-y-auto p-4 space-y-4">
-      <button onClick={onBack} className="xl:hidden flex items-center gap-1 text-sm min-h-[44px]" style={{ color: "#7C3AED", fontWeight: 600 }}>
+      <button onClick={onBack} className="xl:hidden flex items-center gap-1 text-sm min-h-[44px]" style={{ color: "#9B21FF", fontWeight: 600 }}>
         <ChevronLeftIcon size={16} /> Volver al chat
       </button>
 
@@ -91,10 +91,10 @@ export function ChannelProfilePanel({ conversation, onBack }: { conversation: Ch
         <div className="flex items-center gap-3">
           <Avatar name={name} size={48} />
           <div className="min-w-0">
-            <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+            <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
               {name}
             </p>
-            <p className="text-xs truncate" style={{ color: "#7C6A99" }}>
+            <p className="text-xs truncate" style={{ color: "#6B7280" }}>
               {SOURCE_META[conversation.channel].label}
               {conversation.contact_phone ? ` · ${conversation.contact_phone}` : ""}
               {conversation.contact_username ? ` · @${conversation.contact_username}` : ""}
@@ -104,19 +104,19 @@ export function ChannelProfilePanel({ conversation, onBack }: { conversation: Ch
       </Card>
 
       <Card padded>
-        <p className="text-sm mb-2" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <p className="text-sm mb-2" style={{ color: "#1A1A1A", fontWeight: 700 }}>
           Contacto del CRM
         </p>
         {linked ? (
           <div className="space-y-2">
-            <p className="text-sm" style={{ color: "#1F0A3C" }}>
+            <p className="text-sm" style={{ color: "#1A1A1A" }}>
               Vinculada a <strong>{linked.full_name}</strong>
             </p>
             <div className="flex gap-2 flex-wrap">
-              <button onClick={() => navigate(`/contactos/${linked.id}`)} className={btn} style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "#F9F7FF" }}>
+              <button onClick={() => navigate(`/contactos/${linked.id}`)} className={btn} style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "#FAF8F5" }}>
                 Ver ficha
               </button>
-              <button disabled={busy} onClick={() => void link(null)} className={btn} style={{ borderColor: "#EDE9FE", color: "#6B5A8E", fontWeight: 600 }}>
+              <button disabled={busy} onClick={() => void link(null)} className={btn} style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 600 }}>
                 Desvincular
               </button>
             </div>
@@ -135,7 +135,7 @@ export function ChannelProfilePanel({ conversation, onBack }: { conversation: Ch
               placeholder="Buscar contacto por nombre o teléfono…"
               aria-label="Buscar contacto"
               className="w-full min-h-[44px] md:min-h-[36px] px-3 rounded-xl text-sm border bg-white"
-              style={{ borderColor: "#EDE9FE", color: "#1F0A3C" }}
+              style={{ borderColor: "#E9E5DE", color: "#1A1A1A" }}
             />
             {!query && byPhone.length > 0 && (
               <p className="text-[11px]" style={{ color: "#166534", fontWeight: 600 }}>
@@ -145,20 +145,20 @@ export function ChannelProfilePanel({ conversation, onBack }: { conversation: Ch
             <ul className="space-y-1">
               {results.map((c) => (
                 <li key={c.id} className="flex items-center gap-2">
-                  <span className="text-sm flex-1 truncate" style={{ color: "#1F0A3C" }}>
+                  <span className="text-sm flex-1 truncate" style={{ color: "#1A1A1A" }}>
                     {c.full_name}
-                    <span className="text-xs ml-1" style={{ color: "#7C6A99" }}>
+                    <span className="text-xs ml-1" style={{ color: "#6B7280" }}>
                       {c.phone ?? ""}
                     </span>
                   </span>
-                  <button disabled={busy} onClick={() => void link(c)} className={btn} style={{ borderColor: "#DDD6FE", color: "#6D28D9", fontWeight: 700 }}>
+                  <button disabled={busy} onClick={() => void link(c)} className={btn} style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}>
                     Vincular
                   </button>
                 </li>
               ))}
             </ul>
             {query && results.length === 0 && (
-              <p className="text-xs" style={{ color: "#7C6A99" }}>
+              <p className="text-xs" style={{ color: "#6B7280" }}>
                 Ningún contacto coincide.
               </p>
             )}

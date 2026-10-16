@@ -28,13 +28,13 @@ import {
   type PhotoLogoSize,
 } from "../../../shared/brand";
 
-const INK = "#1F0A3C";
-const SOFT = "#6B5A8E";
+const INK = "#1A1A1A";
+const SOFT = "#6B7280";
 
 const inputClass =
   "w-full px-4 py-2.5 rounded-xl text-sm border outline-none transition-all bg-white " +
-  "text-[#1F0A3C] placeholder:text-[#7C6A99] border-[#EDE9FE] focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE] " +
-  "disabled:bg-[#FAFAFF] disabled:text-[#7C6A99] disabled:cursor-not-allowed";
+  "text-[#1A1A1A] placeholder:text-[#6B7280] border-[#E9E5DE] focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE] " +
+  "disabled:bg-[#FAF8F5] disabled:text-[#6B7280] disabled:cursor-not-allowed";
 
 /**
  * Configuración → «Marca de tu inmobiliaria». Logo, colores (con chequeo de
@@ -139,7 +139,7 @@ export function BrandingCard({ onSaved }: { onSaved: (msg: string) => void }) {
           <div className="sm:col-span-2 flex items-center gap-4">
             <div
               className="w-28 h-20 rounded-xl border flex items-center justify-center overflow-hidden flex-shrink-0"
-              style={{ borderColor: "#EDE9FE", background: "repeating-conic-gradient(#F5F3FF 0% 25%, white 0% 50%) 50% / 16px 16px" }}
+              style={{ borderColor: "#E9E5DE", background: "repeating-conic-gradient(#F7F0FF 0% 25%, white 0% 50%) 50% / 16px 16px" }}
             >
               {form.logoUrl ? (
                 <img src={form.logoUrl} alt="Logo actual" className="max-w-full max-h-full object-contain" />
@@ -168,7 +168,7 @@ export function BrandingCard({ onSaved }: { onSaved: (msg: string) => void }) {
                   disabled={!canEdit}
                   onClick={() => fileRef.current?.click()}
                   className="min-h-9 px-3 rounded-lg text-xs border bg-white disabled:opacity-50"
-                  style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+                  style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
                 >
                   {form.logoUrl ? "Cambiar logo" : "Subir logo"}
                 </button>
@@ -197,7 +197,7 @@ export function BrandingCard({ onSaved }: { onSaved: (msg: string) => void }) {
             disabled={!canEdit}
             onChange={(v) => set("secondary", v)}
           />
-          <div className="sm:col-span-2 rounded-xl p-3 text-xs grid gap-1" style={{ background: "#FAFAFF", color: INK }}>
+          <div className="sm:col-span-2 rounded-xl p-3 text-xs grid gap-1" style={{ background: "#FAF8F5", color: INK }}>
             <ContrastLine ok={btn.aa} warn={btn.aaLarge} text={`Texto de los botones sobre el principal: ${btn.ratio}:1`} />
             <ContrastLine
               ok={primaryText.aa}
@@ -282,7 +282,7 @@ export function BrandingCard({ onSaved }: { onSaved: (msg: string) => void }) {
         </div>
       </div>
       {canEdit && (
-        <div className="px-5 py-3.5 border-t flex flex-wrap items-center justify-end gap-3" style={{ borderColor: "#F3F0FF", background: "#FDFCFF" }}>
+        <div className="px-5 py-3.5 border-t flex flex-wrap items-center justify-end gap-3" style={{ borderColor: "#F0EDE6", background: "#FAF8F5" }}>
           {(error || status) && (
             <span role={error ? "alert" : "status"} className="mr-auto text-xs" style={{ color: error ? "#BE123C" : "#15803D", fontWeight: 600 }}>
               {error ?? status}
@@ -356,11 +356,11 @@ function PhotoLogoSection({
   const chip = "min-h-9 px-3 rounded-lg text-xs border transition-colors disabled:opacity-50 disabled:cursor-not-allowed";
   const chipStyle = (active: boolean): CSSProperties =>
     active
-      ? { background: "#F5F3FF", borderColor: "#7C3AED", color: "#5B21B6", fontWeight: 700 }
-      : { background: "white", borderColor: "#DDD6FE", color: INK, fontWeight: 600 };
+      ? { background: "#F7F0FF", borderColor: "#9B21FF", color: "#7C0BD8", fontWeight: 700 }
+      : { background: "white", borderColor: "#DDD8CF", color: INK, fontWeight: 600 };
 
   return (
-    <div className="sm:col-span-2 rounded-xl border p-4 grid gap-4" style={{ borderColor: "#EDE9FE" }}>
+    <div className="sm:col-span-2 rounded-xl border p-4 grid gap-4" style={{ borderColor: "#E9E5DE" }}>
       <div>
         <p className="text-sm" style={{ color: INK, fontWeight: 700 }}>Logo sobre las fotos</p>
         <p className="text-xs mt-0.5" style={{ color: SOFT }}>
@@ -399,12 +399,12 @@ function PhotoLogoSection({
       <div className="flex items-center gap-4">
         <div
           className="w-28 h-20 rounded-xl border flex items-center justify-center overflow-hidden flex-shrink-0"
-          style={{ borderColor: "#EDE9FE", background: "repeating-conic-gradient(#3B2A55 0% 25%, #1F0A3C 0% 50%) 50% / 16px 16px" }}
+          style={{ borderColor: "#E9E5DE", background: "repeating-conic-gradient(#374151 0% 25%, #1A1A1A 0% 50%) 50% / 16px 16px" }}
         >
           {form.photoLogoUrl ? (
             <img src={form.photoLogoUrl} alt="Logo para fotos" className="max-w-full max-h-full object-contain p-2" />
           ) : (
-            <span className="text-xs text-center px-2" style={{ color: "#E9E3F5" }}>Sin versión para fotos</span>
+            <span className="text-xs text-center px-2" style={{ color: "#E9E5DE" }}>Sin versión para fotos</span>
           )}
         </div>
         <div className="min-w-0">
@@ -432,7 +432,7 @@ function PhotoLogoSection({
               disabled={!canEdit}
               onClick={() => inputRef.current?.click()}
               className="min-h-9 px-3 rounded-lg text-xs border bg-white disabled:opacity-50"
-              style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}
+              style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
             >
               {hasOwn ? "Cambiar versión para fotos" : "Subir versión para fotos"}
             </button>
@@ -446,7 +446,7 @@ function PhotoLogoSection({
       </div>
 
       <fieldset>
-        <legend className="text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>Posición</legend>
+        <legend className="text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>Posición</legend>
         <div className="grid grid-cols-2 gap-2 max-w-sm">
           {PHOTO_LOGO_POSITIONS.map((pos) => (
             <button
@@ -469,7 +469,7 @@ function PhotoLogoSection({
 
       <div className="grid gap-4 sm:grid-cols-2">
         <fieldset>
-          <legend className="text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>Tamaño</legend>
+          <legend className="text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>Tamaño</legend>
           <div className="flex gap-2">
             {PHOTO_LOGO_SIZES.map((size) => (
               <button
@@ -487,7 +487,7 @@ function PhotoLogoSection({
           </div>
         </fieldset>
         <fieldset>
-          <legend className="text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>Fondo para que se lea</legend>
+          <legend className="text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>Fondo para que se lea</legend>
           <div className="flex flex-wrap gap-2">
             {PHOTO_LOGO_BACKDROPS.map((b) => {
               const active = hasOwn ? settings.backdrop === b : b === "light";
@@ -523,7 +523,7 @@ function PhotoLogoSection({
             {SAMPLE_PHOTOS.map((ph) => (
               <figure key={ph.label} className="m-0">
                 <div className="relative rounded-xl overflow-hidden aspect-[4/3]" style={{ background: ph.background }}>
-                  <span aria-hidden="true" className="absolute top-3 left-3 text-[11px] px-2 py-0.5 rounded-full bg-white" style={{ color: "#5B21B6", fontWeight: 700 }}>
+                  <span aria-hidden="true" className="absolute top-3 left-3 text-[11px] px-2 py-0.5 rounded-full bg-white" style={{ color: "#7C0BD8", fontWeight: 700 }}>
                     Venta
                   </span>
                   <PhotoLogoOverlay logo={preview} avoid={["top-left"]} />
@@ -572,7 +572,7 @@ function ColorField({
   const id = useId();
   return (
     <div>
-      <label htmlFor={id} className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+      <label htmlFor={id} className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label} <span style={{ fontWeight: 400 }}>· {hint}</span>
       </label>
       <div className="flex items-center gap-2">
@@ -583,7 +583,7 @@ function ColorField({
           disabled={disabled}
           onChange={(e) => onChange(e.target.value.toUpperCase())}
           className="w-11 h-11 rounded-lg border cursor-pointer disabled:cursor-not-allowed"
-          style={{ borderColor: "#EDE9FE", padding: 2, background: "white" }}
+          style={{ borderColor: "#E9E5DE", padding: 2, background: "white" }}
         />
         <input
           id={id}
@@ -651,7 +651,7 @@ export function BrandPreview({
 function Field({ label, className = "", children }: { label: string; className?: string; children: React.ReactNode }) {
   return (
     <label className={`block ${className}`}>
-      <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+      <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label}
       </span>
       {children}

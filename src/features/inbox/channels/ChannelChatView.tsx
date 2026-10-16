@@ -146,23 +146,23 @@ export function ChannelChatView({
 
   return (
     <section className="flex flex-col min-h-0 h-full bg-white" aria-label={`Conversación con ${name} por ${meta.label}`}>
-      <header className="flex items-center gap-3 px-3 md:px-4 py-3 border-b flex-shrink-0" style={{ borderColor: "#EDE9FE" }}>
-        <button onClick={onBack} aria-label="Volver a la bandeja" className="md:hidden w-11 h-11 -ml-1 flex items-center justify-center rounded-xl" style={{ color: "#7C3AED" }}>
+      <header className="flex items-center gap-3 px-3 md:px-4 py-3 border-b flex-shrink-0" style={{ borderColor: "#E9E5DE" }}>
+        <button onClick={onBack} aria-label="Volver a la bandeja" className="md:hidden w-11 h-11 -ml-1 flex items-center justify-center rounded-xl" style={{ color: "#9B21FF" }}>
           <ChevronLeftIcon size={20} />
         </button>
         <Avatar name={name} size={40} />
         <div className="min-w-0 flex-1">
-          <h2 className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <h2 className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             {name}
           </h2>
-          <p className="text-xs truncate flex items-center gap-1" style={{ color: "#7C6A99" }}>
+          <p className="text-xs truncate flex items-center gap-1" style={{ color: "#6B7280" }}>
             <SourceIcon source={conversation.channel} size={12} />
             {meta.label}
             {conversation.contact_phone ? ` · ${conversation.contact_phone}` : ""}
             {conversation.contact_username ? ` · @${conversation.contact_username}` : ""}
           </p>
         </div>
-        <button onClick={onProfile} className={`${btn} xl:hidden`} style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600 }}>
+        <button onClick={onProfile} className={`${btn} xl:hidden`} style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600 }}>
           {conversation.crm_contact_id ? "Contacto" : "Vincular"}
         </button>
       </header>
@@ -172,7 +172,7 @@ export function ChannelChatView({
           className="flex items-center gap-2 px-4 py-2 text-xs border-b flex-shrink-0"
           role="status"
           style={{
-            borderColor: "#F3F0FF",
+            borderColor: "#F0EDE6",
             background: win.open ? (win.closingSoon ? "#FFFBEB" : "#F0FDF4") : "#FEF2F2",
             color: win.open ? (win.closingSoon ? "#92400E" : "#166534") : "#991B1B",
             fontWeight: 600,
@@ -183,13 +183,13 @@ export function ChannelChatView({
         </div>
       ) : null}
 
-      <div ref={scroller} role="log" aria-live="polite" aria-label="Mensajes" className="flex-1 min-h-0 overflow-y-auto px-4 py-4 space-y-2" style={{ background: "#FDFCFF" }}>
+      <div ref={scroller} role="log" aria-live="polite" aria-label="Mensajes" className="flex-1 min-h-0 overflow-y-auto px-4 py-4 space-y-2" style={{ background: "#FAF8F5" }}>
         {loading ? (
-          <p className="text-xs text-center" style={{ color: "#7458C4" }}>
+          <p className="text-xs text-center" style={{ color: "#6B7280" }}>
             Cargando mensajes…
           </p>
         ) : messages.length === 0 ? (
-          <p className="text-xs text-center py-8" style={{ color: "#7C6A99" }}>
+          <p className="text-xs text-center py-8" style={{ color: "#6B7280" }}>
             Todavía no hay mensajes.
           </p>
         ) : (
@@ -202,7 +202,7 @@ export function ChannelChatView({
               <div key={m.id}>
                 {showDay && (
                   <div className="flex justify-center py-2">
-                    <span className="text-[11px] px-3 py-1 rounded-full" style={{ background: "#F5F3FF", color: "#7458C4", fontWeight: 600 }}>
+                    <span className="text-[11px] px-3 py-1 rounded-full" style={{ background: "#F7F0FF", color: "#6B7280", fontWeight: 600 }}>
                       {dayLabel(m.created_at)}
                     </span>
                   </div>
@@ -211,8 +211,8 @@ export function ChannelChatView({
                   <div
                     className="max-w-[85%] md:max-w-[75%] rounded-2xl px-3.5 py-2"
                     style={{
-                      background: inbound ? "#F3F0FF" : m.status === "failed" ? "#9F1239" : "#7C3AED",
-                      color: inbound ? "#1F0A3C" : "white",
+                      background: inbound ? "#F0EDE6" : m.status === "failed" ? "#9F1239" : "#9B21FF",
+                      color: inbound ? "#1A1A1A" : "white",
                       borderBottomLeftRadius: inbound ? 6 : undefined,
                       borderBottomRightRadius: inbound ? undefined : 6,
                     }}
@@ -232,7 +232,7 @@ export function ChannelChatView({
                       <p className="text-sm italic opacity-80">{m.type === "unsupported" ? "Mensaje no soportado por la API" : `(${m.type})`}</p>
                     )}
                     <Attachment m={m} />
-                    <p className="text-[11px] mt-0.5 text-right" style={{ color: inbound ? "#7458C4" : "rgba(255,255,255,0.8)" }}>
+                    <p className="text-[11px] mt-0.5 text-right" style={{ color: inbound ? "#6B7280" : "rgba(255,255,255,0.8)" }}>
                       {new Date(m.created_at).toLocaleTimeString("es-AR", { hour: "2-digit", minute: "2-digit" })}
                       <DeliveryMark m={m} />
                     </p>
@@ -249,7 +249,7 @@ export function ChannelChatView({
         )}
       </div>
 
-      <div className="border-t px-3 md:px-4 pt-2 pb-3 flex-shrink-0" style={{ borderColor: "#EDE9FE" }}>
+      <div className="border-t px-3 md:px-4 pt-2 pb-3 flex-shrink-0" style={{ borderColor: "#E9E5DE" }}>
         {error && (
           <p role="alert" className="text-xs mb-2" style={{ color: "#BE123C", fontWeight: 600 }}>
             {error}
@@ -281,7 +281,7 @@ export function ChannelChatView({
               aria-label="Escribir un mensaje"
               placeholder={`Responder por ${meta.label}… (Shift+Enter para salto de línea)`}
               maxLength={isWa ? 4096 : conversation.channel === "messenger" ? 2000 : 1000}
-              className="flex-1 px-3.5 py-2.5 rounded-xl text-sm border outline-none resize-none bg-white text-[#1F0A3C] placeholder:text-[#7C6A99] border-[#EDE9FE] focus:border-[#7C3AED] min-h-[44px] max-h-32"
+              className="flex-1 px-3.5 py-2.5 rounded-xl text-sm border outline-none resize-none bg-white text-[#1A1A1A] placeholder:text-[#6B7280] border-[#E9E5DE] focus:border-[#9B21FF] min-h-[44px] max-h-32"
             />
             <button
               onClick={() => void submit()}
@@ -294,7 +294,7 @@ export function ChannelChatView({
           </div>
         ) : (
           <div className="space-y-2">
-            <p className="text-xs" style={{ color: "#7C6A99" }}>
+            <p className="text-xs" style={{ color: "#6B7280" }}>
               {closedHint(conversation.channel)}
             </p>
             {isWa && (

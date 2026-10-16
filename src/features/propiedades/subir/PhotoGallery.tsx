@@ -102,8 +102,8 @@ export function PhotoGallery({
         }}
         className="rounded-xl border-2 border-dashed p-6 flex flex-col items-center justify-center text-center transition-all"
         style={{
-          borderColor: dragOverZone ? "#7C3AED" : "#DDD6FE",
-          background: dragOverZone ? "#F5F3FF" : "#FDFCFF",
+          borderColor: dragOverZone ? "#9B21FF" : "#DDD8CF",
+          background: dragOverZone ? "#F7F0FF" : "#FAF8F5",
         }}
       >
         <input
@@ -119,12 +119,12 @@ export function PhotoGallery({
         />
         <div
           className="w-12 h-12 rounded-2xl flex items-center justify-center mb-3"
-          style={{ background: "var(--gradient-soft)", border: "1px solid #EDE9FE" }}
+          style={{ background: "var(--gradient-soft)", border: "1px solid #E9E5DE" }}
           aria-hidden="true"
         >
-          <StarIcon size={20} color="#7C3AED" />
+          <StarIcon size={20} color="#9B21FF" />
         </div>
-        <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+        <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
           Arrastrá las fotos acá
         </p>
         <button
@@ -132,11 +132,11 @@ export function PhotoGallery({
           type="button"
           onClick={() => fileInput.current?.click()}
           className="mt-2 px-4 min-h-11 rounded-xl text-sm border transition-all hover:bg-violet-50"
-          style={{ borderColor: "#DDD6FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+          style={{ borderColor: "#DDD8CF", color: "#9B21FF", fontWeight: 600, background: "white" }}
         >
           Seleccionar archivos
         </button>
-        <p className="text-xs mt-2" style={{ color: "#7C6A99" }}>
+        <p className="text-xs mt-2" style={{ color: "#6B7280" }}>
           JPG, PNG o WEBP · Máximo {MAX_PHOTO_MB} MB por foto · Se achican a 1280 px para que entren en el navegador
         </p>
       </div>
@@ -185,8 +185,8 @@ export function PhotoGallery({
               className="relative rounded-xl overflow-hidden group cursor-grab active:cursor-grabbing"
               style={{
                 aspectRatio: "4/3",
-                background: "#F5F3FF",
-                outline: overIndex === idx && dragIndex !== idx ? "2px solid #7C3AED" : undefined,
+                background: "#F7F0FF",
+                outline: overIndex === idx && dragIndex !== idx ? "2px solid #9B21FF" : undefined,
                 opacity: dragIndex === idx ? 0.5 : 1,
               }}
             >
@@ -200,7 +200,7 @@ export function PhotoGallery({
                 </span>
               )}
               {busy === idx && (
-                <span className="absolute inset-0 flex items-center justify-center text-xs" style={{ background: "rgba(255,255,255,0.7)", color: "#7C3AED", fontWeight: 700 }}>
+                <span className="absolute inset-0 flex items-center justify-center text-xs" style={{ background: "rgba(255,255,255,0.7)", color: "#9B21FF", fontWeight: 700 }}>
                   Girando…
                 </span>
               )}
@@ -217,7 +217,7 @@ export function PhotoGallery({
                 </TileButton>
                 {idx !== 0 && (
                   <TileButton label={`Usar foto ${idx + 1} como portada`} onClick={() => move(idx, 0)}>
-                    <StarIcon size={12} color="#7C3AED" />
+                    <StarIcon size={12} color="#9B21FF" />
                   </TileButton>
                 )}
                 <TileButton label={`Eliminar foto ${idx + 1}`} danger onClick={() => onChange((prev) => prev.filter((_, i) => i !== idx))}>
@@ -232,7 +232,7 @@ export function PhotoGallery({
                 type="button"
                 onClick={() => setExpanded(true)}
                 className="w-full h-full rounded-xl flex flex-col items-center justify-center border transition-all hover:bg-violet-50"
-                style={{ aspectRatio: "4/3", borderColor: "#DDD6FE", background: "#FDFCFF", color: "#7C3AED" }}
+                style={{ aspectRatio: "4/3", borderColor: "#DDD8CF", background: "#FAF8F5", color: "#9B21FF" }}
               >
                 <span className="text-xl" style={{ fontWeight: 800 }}>+{hidden}</span>
                 <span className="text-xs" style={{ fontWeight: 600 }}>fotos más</span>
@@ -246,7 +246,7 @@ export function PhotoGallery({
           type="button"
           onClick={() => setExpanded(false)}
           className="text-xs min-h-11 px-3 rounded-lg hover:bg-violet-50"
-          style={{ color: "#7C3AED", fontWeight: 600 }}
+          style={{ color: "#9B21FF", fontWeight: 600 }}
         >
           Mostrar menos fotos
         </button>
@@ -276,7 +276,7 @@ function TileButton({
       aria-label={label}
       title={label}
       className="flex-1 min-h-11 rounded-lg flex items-center justify-center backdrop-blur-sm disabled:opacity-40"
-      style={{ background: "rgba(255,255,255,0.92)", color: danger ? "#E11D48" : "#7C3AED", fontWeight: 700 }}
+      style={{ background: "rgba(255,255,255,0.92)", color: danger ? "#E11D48" : "#9B21FF", fontWeight: 700 }}
     >
       {children}
     </button>

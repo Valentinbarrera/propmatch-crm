@@ -346,23 +346,23 @@ export default function SubirPropiedadPage() {
 
   return (
     <>
-      <header className="flex-shrink-0 border-b px-4 md:px-8 py-3 md:py-4" style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}>
+      <header className="flex-shrink-0 border-b px-4 md:px-8 py-3 md:py-4" style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}>
         <div className="flex flex-col xl:flex-row xl:items-center gap-3 xl:gap-6">
           <div className="min-w-0 flex-1">
-            <nav aria-label="Migas" className="text-xs mb-1" style={{ color: "#7458C4", fontWeight: 500 }}>
+            <nav aria-label="Migas" className="text-xs mb-1" style={{ color: "#6B7280", fontWeight: 500 }}>
               <button type="button" onClick={() => leave("/propiedades")} className="hover:underline">
                 Propiedades
               </button>
-              <span aria-hidden="true" style={{ color: "#DDD6FE" }}>
+              <span aria-hidden="true" style={{ color: "#DDD8CF" }}>
                 {" "}
                 /{" "}
               </span>
-              <span aria-current="page" style={{ color: "#7C3AED", fontWeight: 600 }}>
+              <span aria-current="page" style={{ color: "#9B21FF", fontWeight: 600 }}>
                 {editing ? editing.title : "Nueva propiedad"}
               </span>
             </nav>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-              <h1 className="text-xl md:text-2xl tracking-tight truncate max-w-full" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+              <h1 className="text-xl md:text-2xl tracking-tight truncate max-w-full" style={{ color: "#1A1A1A", fontWeight: 800 }}>
                 {editing ? "Editar propiedad" : "Subir propiedad"}
               </h1>
               {isExclusive && (
@@ -370,7 +370,7 @@ export default function SubirPropiedadPage() {
                   Exclusiva
                 </span>
               )}
-              <span className="text-xs" style={{ color: "#7458C4" }}>
+              <span className="text-xs" style={{ color: "#6B7280" }}>
                 {savedAt
                   ? `Borrador guardado · ${relativeTime(savedAt).toLowerCase()}`
                   : touched
@@ -396,7 +396,7 @@ export default function SubirPropiedadPage() {
                 type="button"
                 onClick={() => jumpTo("informacion")}
                 className="text-xs px-3 min-h-11 rounded-xl border"
-                style={{ borderColor: "#EDE9FE", color: "#7C6A99", fontWeight: 600, background: "white" }}
+                style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 600, background: "white" }}
               >
                 Estado: {PROPERTY_STATUS_LABEL[form.status]}
               </button>
@@ -428,7 +428,7 @@ export default function SubirPropiedadPage() {
         <nav
           aria-label="Secciones del formulario"
           className="sticky top-0 z-10 border-b px-4 md:px-8"
-          style={{ background: "rgba(253,252,255,0.96)", borderColor: "#EDE9FE", backdropFilter: "blur(6px)" }}
+          style={{ background: "rgba(250, 248, 245,0.96)", borderColor: "#E9E5DE", backdropFilter: "blur(6px)" }}
         >
           <ol className="flex gap-1 overflow-x-auto py-2">
             {SECTIONS.map((s, i) => {
@@ -445,8 +445,8 @@ export default function SubirPropiedadPage() {
                     className="flex items-center gap-1.5 px-3 min-h-11 rounded-xl text-sm whitespace-nowrap transition-all hover:bg-violet-50"
                     style={
                       isActive
-                        ? { background: "var(--gradient-nav-active)", color: "#7C3AED", fontWeight: 700 }
-                        : { color: "#7C6A99", fontWeight: 500 }
+                        ? { background: "var(--gradient-nav-active)", color: "#9B21FF", fontWeight: 700 }
+                        : { color: "#6B7280", fontWeight: 500 }
                     }
                   >
                     {done[s.id] ? (
@@ -472,16 +472,16 @@ export default function SubirPropiedadPage() {
             <ol
               aria-label="Pasos para publicar"
               className="mt-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 rounded-2xl border px-4 py-3 text-sm"
-              style={{ background: "#F5F3FF", borderColor: "#EDE9FE" }}
+              style={{ background: "#F7F0FF", borderColor: "#E9E5DE" }}
             >
-              <li aria-current="step" className="flex items-center gap-2" style={{ color: "#1F0A3C", fontWeight: 700 }}>
-                <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs text-white" style={{ background: "#7C3AED" }}>
+              <li aria-current="step" className="flex items-center gap-2" style={{ color: "#1A1A1A", fontWeight: 700 }}>
+                <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs text-white" style={{ background: "#9B21FF" }}>
                   1
                 </span>
                 Paso 1 de 2 · Cargá la propiedad
               </li>
-              <li className="flex items-center gap-2" style={{ color: "#6B5A8E", fontWeight: 600 }}>
-                <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs border" style={{ borderColor: "#C4B5FD", color: "#6B5A8E" }}>
+              <li className="flex items-center gap-2" style={{ color: "#6B7280", fontWeight: 600 }}>
+                <span className="w-6 h-6 rounded-full flex items-center justify-center text-xs border" style={{ borderColor: "#D4AAFF", color: "#6B7280" }}>
                   2
                 </span>
                 Paso 2 · Elegí dónde publicar
@@ -557,10 +557,10 @@ export default function SubirPropiedadPage() {
                 </div>
 
                 <div role="radiogroup" aria-labelledby="spp-operation-label">
-                  <span id="spp-operation-label" className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+                  <span id="spp-operation-label" className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
                     Operación
                   </span>
-                  <div className="flex items-center gap-1 p-1 rounded-xl" style={{ background: "#F5F3FF" }}>
+                  <div className="flex items-center gap-1 p-1 rounded-xl" style={{ background: "#F7F0FF" }}>
                     {OPERATIONS.map((op) => (
                       <button
                         key={op.value}
@@ -571,8 +571,8 @@ export default function SubirPropiedadPage() {
                         className="flex-1 px-3 min-h-11 rounded-lg text-sm transition-all"
                         style={
                           form.operation === op.value
-                            ? { background: "var(--gradient-brand)", color: "white", fontWeight: 600, boxShadow: "0 2px 8px rgba(124,58,237,0.25)" }
-                            : { color: "#7C6A99", fontWeight: 500 }
+                            ? { background: "var(--gradient-brand)", color: "white", fontWeight: 600, boxShadow: "0 2px 8px rgba(168, 85, 255,0.25)" }
+                            : { color: "#6B7280", fontWeight: 500 }
                         }
                       >
                         {op.label}
@@ -692,8 +692,8 @@ export default function SubirPropiedadPage() {
                   <Switch checked={form.acceptsSwap} onChange={(v) => set("acceptsSwap", v)} label="Acepta permuta" />
                 </div>
 
-                <div className="rounded-xl p-4 space-y-3" style={{ background: "#FAFAFF", border: "1px dashed #C4B5FD" }}>
-                  <p className="text-xs uppercase" style={{ color: "#5B21B6", fontWeight: 700, letterSpacing: "0.08em" }}>
+                <div className="rounded-xl p-4 space-y-3" style={{ background: "#FAF8F5", border: "1px dashed #D4AAFF" }}>
+                  <p className="text-xs uppercase" style={{ color: "#7C0BD8", fontWeight: 700, letterSpacing: "0.08em" }}>
                     Confidencial · solo para el equipo
                   </p>
                   <MoneyField
@@ -704,7 +704,7 @@ export default function SubirPropiedadPage() {
                     onCurrency={(c) => set("reserveCurrency", c)}
                     placeholder="Lo mínimo que acepta el propietario"
                   />
-                  <p className="text-xs" style={{ color: "#7C6A99" }}>
+                  <p className="text-xs" style={{ color: "#6B7280" }}>
                     No sale del CRM: no aparece en la ficha que recibe el cliente, ni en los CSV, ni en el informe al propietario, ni en la app.
                   </p>
                 </div>
@@ -719,7 +719,7 @@ export default function SubirPropiedadPage() {
                   <NumberField label="Descubierta (m²)" value={form.surfaceUncovered} onChange={(v) => set("surfaceUncovered", v)} placeholder="25" />
                 </div>
                 <div className="grid gap-4 grid-cols-2 sm:grid-cols-3">
-                  <Field label="Ambientes" hint={!form.rooms ? <span style={{ color: "#7458C4" }}>Sugerido: dormitorios + 1</span> : undefined}>
+                  <Field label="Ambientes" hint={!form.rooms ? <span style={{ color: "#6B7280" }}>Sugerido: dormitorios + 1</span> : undefined}>
                     <input
                       id={fid("rooms")}
                       value={form.rooms}
@@ -799,7 +799,7 @@ export default function SubirPropiedadPage() {
                   </Field>
                 </div>
 
-                <div className="rounded-xl p-4 space-y-3" style={{ background: "#FAFAFF", border: "1px solid #EDE9FE" }}>
+                <div className="rounded-xl p-4 space-y-3" style={{ background: "#FAF8F5", border: "1px solid #E9E5DE" }}>
                   <Field label="Pegá un link de Google Maps (opcional)">
                     <input
                       id={fid("coords")}
@@ -834,7 +834,7 @@ export default function SubirPropiedadPage() {
                       />
                     </Field>
                   </div>
-                  <p className="text-xs" style={{ color: "#7458C4" }}>
+                  <p className="text-xs" style={{ color: "#6B7280" }}>
                     Quedan guardadas en el CRM. Todavía no se mandan a la app.
                     {coords && (
                       <>
@@ -843,7 +843,7 @@ export default function SubirPropiedadPage() {
                           href={`https://www.google.com/maps?q=${coords.lat},${coords.lng}`}
                           target="_blank"
                           rel="noreferrer"
-                          style={{ color: "#7C3AED", fontWeight: 600 }}
+                          style={{ color: "#9B21FF", fontWeight: 600 }}
                         >
                           Ver en Google Maps ↗
                         </a>
@@ -881,7 +881,7 @@ export default function SubirPropiedadPage() {
                 done={done.propietario}
               >
                 {newOwner ? (
-                  <div className="rounded-xl p-4 space-y-3" style={{ background: "#FAFAFF", border: "1px solid #EDE9FE" }}>
+                  <div className="rounded-xl p-4 space-y-3" style={{ background: "#FAF8F5", border: "1px solid #E9E5DE" }}>
                     <div className="grid gap-3 sm:grid-cols-2">
                       <Field label="Nombre del propietario">
                         <input
@@ -902,7 +902,7 @@ export default function SubirPropiedadPage() {
                       </Field>
                     </div>
                     <div className="flex justify-end gap-2">
-                      <button type="button" onClick={() => setNewOwner(null)} className="px-4 min-h-11 rounded-xl text-xs" style={{ color: "#7C6A99", fontWeight: 600 }}>
+                      <button type="button" onClick={() => setNewOwner(null)} className="px-4 min-h-11 rounded-xl text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
                         Cancelar
                       </button>
                       <button
@@ -960,7 +960,7 @@ export default function SubirPropiedadPage() {
                         type="button"
                         onClick={() => setNewOwner({ name: "", phone: "" })}
                         className="px-3.5 min-h-11 rounded-xl text-xs border whitespace-nowrap transition-all hover:bg-violet-50"
-                        style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+                        style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "white" }}
                       >
                         + Nuevo
                       </button>
@@ -1048,7 +1048,7 @@ export default function SubirPropiedadPage() {
                     type="button"
                     onClick={() => handleSave("save")}
                     className="w-full min-h-11 rounded-xl text-sm border transition-all hover:bg-violet-50"
-                    style={{ borderColor: "#DDD6FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+                    style={{ borderColor: "#DDD8CF", color: "#9B21FF", fontWeight: 600, background: "white" }}
                   >
                     {publishAfter ? "Solo guardar" : editing ? "Guardar cambios" : "Guardar"}
                   </button>
@@ -1056,12 +1056,12 @@ export default function SubirPropiedadPage() {
                     type="button"
                     onClick={saveDraftNow}
                     className="w-full min-h-11 rounded-xl text-sm transition-all hover:bg-violet-50"
-                    style={{ color: "#7C6A99", fontWeight: 600 }}
+                    style={{ color: "#6B7280", fontWeight: 600 }}
                   >
                     Guardar borrador
                   </button>
                 </div>
-                <p className="text-xs mt-3" style={{ color: "#7458C4" }}>
+                <p className="text-xs mt-3" style={{ color: "#6B7280" }}>
                   El borrador queda solo en este navegador. Ambientes: {roomsValue(form)} · Fotos: {form.photos.length}
                 </p>
               </Card>
@@ -1081,14 +1081,14 @@ export default function SubirPropiedadPage() {
             {toast.kind === "ok" ? <CheckIcon size={14} color="#16A34A" /> : <span style={{ color: "#E11D48", fontWeight: 700 }}>!</span>}
           </div>
           <div className="flex-1">
-            <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+            <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
               {toast.title ?? (toast.kind === "ok" ? (editing ? "Cambios guardados" : "Propiedad guardada") : "No pudimos guardar la propiedad")}
             </p>
-            <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+            <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
               {toast.text}
             </p>
           </div>
-          <button onClick={() => setToast(null)} aria-label="Cerrar aviso" className="w-8 h-8 -mr-2 -mt-1 rounded-lg" style={{ color: "#7C6A99", lineHeight: 1 }}>
+          <button onClick={() => setToast(null)} aria-label="Cerrar aviso" className="w-8 h-8 -mr-2 -mt-1 rounded-lg" style={{ color: "#6B7280", lineHeight: 1 }}>
             ×
           </button>
         </div>
@@ -1098,7 +1098,7 @@ export default function SubirPropiedadPage() {
       {confirm && (
         <div
           className="pm-backdrop fixed inset-0 z-50 flex items-center justify-center p-6"
-          style={{ background: "rgba(31,10,60,0.35)" }}
+          style={{ background: "rgba(8, 11, 31,0.35)" }}
           onClick={() => setConfirm(null)}
         >
           <div
@@ -1109,10 +1109,10 @@ export default function SubirPropiedadPage() {
             style={{ background: "white", boxShadow: "var(--shadow-pop)" }}
             onClick={(e) => e.stopPropagation()}
           >
-            <p id="spp-confirm-title" className="text-lg" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <p id="spp-confirm-title" className="text-lg" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               {confirm.kind === "discard" ? "¿Descartar los cambios?" : "¿Salir sin guardar?"}
             </p>
-            <p className="text-sm mt-1.5" style={{ color: "#7C6A99" }}>
+            <p className="text-sm mt-1.5" style={{ color: "#6B7280" }}>
               {confirm.kind === "discard"
                 ? "Se borran los cambios y el borrador de este navegador. La propiedad guardada no se toca."
                 : "Los cambios quedan como borrador en este navegador: la próxima vez que abras el formulario te ofrecemos recuperarlos."}
@@ -1122,7 +1122,7 @@ export default function SubirPropiedadPage() {
                 autoFocus
                 onClick={() => setConfirm(null)}
                 className="flex-1 min-h-11 rounded-xl text-sm border transition-all hover:border-violet-300"
-                style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600 }}
+                style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600 }}
               >
                 Seguir editando
               </button>
@@ -1160,8 +1160,8 @@ function HeaderButton({
     variant === "primary"
       ? { background: "var(--gradient-brand)", color: "white", fontWeight: 700, boxShadow: "var(--shadow-cta)" }
       : variant === "outline"
-        ? { background: "white", color: "#7C3AED", fontWeight: 600, border: "1px solid #DDD6FE" }
-        : { color: "#7C6A99", fontWeight: 600 };
+        ? { background: "white", color: "#9B21FF", fontWeight: 600, border: "1px solid #DDD8CF" }
+        : { color: "#6B7280", fontWeight: 600 };
   return (
     <button
       type="button"

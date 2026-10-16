@@ -33,7 +33,7 @@ function PostThumb({ post }: { post: InstagramPost }) {
       {src ? (
         m.kind === "image" || covers[m.id] ? <img src={src} alt="" className="w-full h-full object-cover" /> : <video src={src} muted preload="metadata" className="w-full h-full object-cover" />
       ) : (
-        <InstagramIcon size={24} color="#C4B5FD" />
+        <InstagramIcon size={24} color="#D4AAFF" />
       )}
     </div>
   );
@@ -61,11 +61,11 @@ function MonthCalendar({ posts, selected, onSelect }: { posts: InstagramPost[]; 
   return (
     <Card padded>
       <div className="flex items-center justify-between mb-2">
-        <button type="button" onClick={() => shift(-1)} aria-label="Mes anterior" className="w-11 h-11 rounded-lg hover:bg-violet-50 flex items-center justify-center"><ChevronLeftIcon size={14} color="#7458C4" /></button>
-        <p className="text-sm capitalize" style={{ color: "#1F0A3C", fontWeight: 700 }} aria-live="polite">{label}</p>
-        <button type="button" onClick={() => shift(1)} aria-label="Mes siguiente" className="w-11 h-11 rounded-lg hover:bg-violet-50 flex items-center justify-center"><ChevronRightIcon size={14} color="#7458C4" /></button>
+        <button type="button" onClick={() => shift(-1)} aria-label="Mes anterior" className="w-11 h-11 rounded-lg hover:bg-violet-50 flex items-center justify-center"><ChevronLeftIcon size={14} color="#6B7280" /></button>
+        <p className="text-sm capitalize" style={{ color: "#1A1A1A", fontWeight: 700 }} aria-live="polite">{label}</p>
+        <button type="button" onClick={() => shift(1)} aria-label="Mes siguiente" className="w-11 h-11 rounded-lg hover:bg-violet-50 flex items-center justify-center"><ChevronRightIcon size={14} color="#6B7280" /></button>
       </div>
-      <div className="grid grid-cols-7 gap-1 text-center text-[11px] mb-1" style={{ color: "#6B5A8A" }} aria-hidden="true">
+      <div className="grid grid-cols-7 gap-1 text-center text-[11px] mb-1" style={{ color: "#6B7280" }} aria-hidden="true">
         {["L", "M", "M", "J", "V", "S", "D"].map((d, i) => <span key={i}>{d}</span>)}
       </div>
       <div className="grid grid-cols-7 gap-1">
@@ -82,10 +82,10 @@ function MonthCalendar({ posts, selected, onSelect }: { posts: InstagramPost[]; 
               aria-pressed={on}
               aria-label={`${d} de ${label}${n ? `: ${n} ${n === 1 ? "publicación" : "publicaciones"}` : ""}${date === today ? " (hoy)" : ""}`}
               className="min-h-11 md:min-h-9 rounded-lg text-xs flex flex-col items-center justify-center"
-              style={{ background: on ? "#7C3AED" : n ? "#F5F3FF" : "transparent", color: on ? "white" : "#1F0A3C", border: `1px solid ${date === today ? "#7C3AED" : "transparent"}`, fontWeight: n ? 700 : 500 }}
+              style={{ background: on ? "#9B21FF" : n ? "#F7F0FF" : "transparent", color: on ? "white" : "#1A1A1A", border: `1px solid ${date === today ? "#9B21FF" : "transparent"}`, fontWeight: n ? 700 : 500 }}
             >
               {d}
-              {n > 0 && <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full" style={{ background: on ? "white" : "#7C3AED" }} />}
+              {n > 0 && <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full" style={{ background: on ? "white" : "#9B21FF" }} />}
             </button>
           );
         })}
@@ -159,14 +159,14 @@ export default function InstagramStudioPage() {
     setNotice("Publicación eliminada.");
   };
 
-  const chip = (active: boolean) => ({ borderColor: active ? "#7C3AED" : "#EDE9FE", background: active ? "#F5F3FF" : "white", color: active ? "#4C2E91" : "#7458C4", fontWeight: 700 }) as const;
+  const chip = (active: boolean) => ({ borderColor: active ? "#9B21FF" : "#E9E5DE", background: active ? "#F7F0FF" : "white", color: active ? "#56148F" : "#6B7280", fontWeight: 700 }) as const;
 
   return (
     <>
       <AppHeader title="Instagram" subtitle="Armá carruseles, fotos, stories y reels, programá el recordatorio y publicá." breadcrumb={["Publicaciones", "Instagram"]} action={{ label: "Nueva publicación", onClick: () => navigate("/instagram/nueva") }} />
       <div className="flex-1 overflow-y-auto px-4 md:px-8 pb-10">
         {!isDemo && (
-          <p className="mt-4 text-xs" style={{ color: "#6B5A8A" }}>
+          <p className="mt-4 text-xs" style={{ color: "#6B7280" }}>
             Tus publicaciones se guardan en este navegador (no en un servidor): si borrás los datos del sitio o abrís PropMatch en otro equipo, no van a estar.
           </p>
         )}
@@ -175,7 +175,7 @@ export default function InstagramStudioPage() {
         {posts.length === 0 ? (
           <Card className="mt-6">
             <EmptyState
-              icon={<InstagramIcon size={26} color="#7C3AED" />}
+              icon={<InstagramIcon size={26} color="#9B21FF" />}
               title="Todavía no armaste ninguna publicación"
               description="Subí tus fotos o un video, editalos, mirá cómo queda en Instagram y programá un recordatorio para publicar."
               action={{ label: "Nueva publicación", onClick: () => navigate("/instagram/nueva") }}
@@ -194,11 +194,11 @@ export default function InstagramStudioPage() {
               <div className="flex flex-wrap gap-3">
                 <div className="flex-1 min-w-[200px]">
                   <label htmlFor="ig-search" className="sr-only">Buscar publicaciones</label>
-                  <input id="ig-search" type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar por nombre o texto" className="w-full rounded-lg border px-3 min-h-11 text-sm" style={{ borderColor: "#EDE9FE", color: "#1F0A3C", background: "white" }} />
+                  <input id="ig-search" type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Buscar por nombre o texto" className="w-full rounded-lg border px-3 min-h-11 text-sm" style={{ borderColor: "#E9E5DE", color: "#1A1A1A", background: "white" }} />
                 </div>
                 <div>
                   <label htmlFor="ig-sort" className="sr-only">Ordenar</label>
-                  <select id="ig-sort" value={sort} onChange={(e) => setSort(e.target.value as Sort)} className="rounded-lg border px-3 min-h-11 text-sm" style={{ borderColor: "#EDE9FE", color: "#1F0A3C", background: "white" }}>
+                  <select id="ig-sort" value={sort} onChange={(e) => setSort(e.target.value as Sort)} className="rounded-lg border px-3 min-h-11 text-sm" style={{ borderColor: "#E9E5DE", color: "#1A1A1A", background: "white" }}>
                     <option value="fecha-asc">Fecha: próximas primero</option>
                     <option value="fecha-desc">Fecha: lejanas primero</option>
                     <option value="recientes">Editadas recientemente</option>
@@ -206,7 +206,7 @@ export default function InstagramStudioPage() {
                 </div>
               </div>
               {day && (
-                <p className="text-xs" style={{ color: "#4C2E91" }}>
+                <p className="text-xs" style={{ color: "#56148F" }}>
                   Mostrando el {day.split("-").reverse().join("/")}. <button type="button" onClick={() => setDay(null)} className="underline min-h-11 px-1">Quitar filtro de día</button>
                 </p>
               )}
@@ -224,8 +224,8 @@ export default function InstagramStudioPage() {
                           <div className="p-3 flex flex-wrap items-start gap-3">
                             <button type="button" onClick={() => navigate(`/instagram/${p.id}`)} aria-label={`Abrir ${p.title || "publicación sin título"}`} className="rounded-xl"><PostThumb post={p} /></button>
                             <div className="flex-1 min-w-[160px]">
-                              <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>{p.title.trim() || "Publicación sin título"}</p>
-                              <p className="text-xs mt-0.5 flex items-center gap-1.5 flex-wrap" style={{ color: "#6B5A8A" }}>
+                              <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>{p.title.trim() || "Publicación sin título"}</p>
+                              <p className="text-xs mt-0.5 flex items-center gap-1.5 flex-wrap" style={{ color: "#6B7280" }}>
                                 <Badge bg="#F3F4F6" text="#4B5563" size="xs">{kind.label}{p.kind === "carousel" ? ` · ${p.media.length}` : ""}</Badge>
                                 <Badge bg={meta.bg} text={meta.text} size="xs">{meta.label}</Badge>
                               </p>
@@ -234,9 +234,9 @@ export default function InstagramStudioPage() {
                               </p>
                             </div>
                             <div className="flex flex-wrap gap-1.5 ml-auto">
-                              <button type="button" onClick={() => navigate(`/instagram/${p.id}`)} className="px-3 min-h-11 md:min-h-9 rounded-lg border text-xs hover:bg-violet-50" style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700 }}>Editar</button>
-                              {s !== "published" && <button type="button" onClick={() => navigate(`/instagram/${p.id}?paso=programar`)} className="px-3 min-h-11 md:min-h-9 rounded-lg border text-xs hover:bg-violet-50" style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700 }}>{p.scheduledAt ? "Reprogramar" : "Programar"}</button>}
-                              <button type="button" onClick={() => void duplicate(p)} className="px-3 min-h-11 md:min-h-9 rounded-lg border text-xs hover:bg-violet-50" style={{ borderColor: "#EDE9FE", color: "#7458C4", fontWeight: 700 }}>Duplicar</button>
+                              <button type="button" onClick={() => navigate(`/instagram/${p.id}`)} className="px-3 min-h-11 md:min-h-9 rounded-lg border text-xs hover:bg-violet-50" style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}>Editar</button>
+                              {s !== "published" && <button type="button" onClick={() => navigate(`/instagram/${p.id}?paso=programar`)} className="px-3 min-h-11 md:min-h-9 rounded-lg border text-xs hover:bg-violet-50" style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}>{p.scheduledAt ? "Reprogramar" : "Programar"}</button>}
+                              <button type="button" onClick={() => void duplicate(p)} className="px-3 min-h-11 md:min-h-9 rounded-lg border text-xs hover:bg-violet-50" style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 700 }}>Duplicar</button>
                               <button type="button" onClick={() => remove(p)} className="px-3 min-h-11 md:min-h-9 rounded-lg border text-xs hover:bg-rose-50" style={{ borderColor: "#FECDD3", color: "#BE123C", fontWeight: 700 }}>Eliminar</button>
                             </div>
                           </div>

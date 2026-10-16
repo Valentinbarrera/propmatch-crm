@@ -106,7 +106,7 @@ export function OpportunityFormModal({
   return (
     <div
       className="pm-backdrop fixed inset-0 z-50 flex items-center justify-center p-6"
-      style={{ background: "rgba(31,10,60,0.35)" }}
+      style={{ background: "rgba(8, 11, 31,0.35)" }}
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -120,7 +120,7 @@ export function OpportunityFormModal({
         {/* Cabecera */}
         <div
           className="px-6 py-5 border-b flex items-center gap-3 flex-shrink-0"
-          style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}
+          style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}
         >
           <div
             className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -129,10 +129,10 @@ export function OpportunityFormModal({
             <OpportunitiesIcon size={18} color="white" />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-lg tracking-tight" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+            <p className="text-lg tracking-tight" style={{ color: "#1A1A1A", fontWeight: 800 }}>
               Nueva oportunidad
             </p>
-            <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+            <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
               Entra al pipeline en {STAGE_LABEL[stage]}.
             </p>
           </div>
@@ -140,7 +140,7 @@ export function OpportunityFormModal({
             onClick={onClose}
             aria-label="Cerrar"
             className="w-8 h-8 rounded-lg flex items-center justify-center transition-all hover:bg-violet-50 flex-shrink-0"
-            style={{ color: "#7458C4", fontSize: 20, lineHeight: 1 }}
+            style={{ color: "#6B7280", fontSize: 20, lineHeight: 1 }}
           >
             ×
           </button>
@@ -187,10 +187,10 @@ export function OpportunityFormModal({
             {pairScore !== null && (
               <div
                 className="flex items-center gap-2 mt-3 px-3.5 py-2.5 rounded-xl"
-                style={{ background: "#F5F3FF" }}
+                style={{ background: "#F7F0FF" }}
               >
-                <MatchesSolidIcon size={12} color="#7C3AED" />
-                <p className="text-xs" style={{ color: "#5B21B6" }}>
+                <MatchesSolidIcon size={12} color="#9B21FF" />
+                <p className="text-xs" style={{ color: "#7C0BD8" }}>
                   Este par ya tiene <strong>{pairScore}% de match</strong> según lo que busca el
                   contacto.
                 </p>
@@ -217,7 +217,7 @@ export function OpportunityFormModal({
                             borderColor: "transparent",
                             fontWeight: 600,
                           }
-                        : { background: "white", color: "#7C6A99", borderColor: "#EDE9FE", fontWeight: 500 }
+                        : { background: "white", color: "#6B7280", borderColor: "#E9E5DE", fontWeight: 500 }
                     }
                   >
                     {STAGE_LABEL[s]}
@@ -260,7 +260,7 @@ export function OpportunityFormModal({
               </Field>
             </div>
             {property?.price != null && !valueTouched && (
-              <p className="text-xs mt-2" style={{ color: "#7458C4" }}>
+              <p className="text-xs mt-2" style={{ color: "#6B7280" }}>
                 Tomado del precio publicado: {money(property.price, property.currency)}
               </p>
             )}
@@ -287,12 +287,12 @@ export function OpportunityFormModal({
         {/* Pie */}
         <div
           className="px-6 py-4 border-t flex items-center justify-end gap-3 flex-shrink-0"
-          style={{ borderColor: "#EDE9FE", background: "#FDFCFF" }}
+          style={{ borderColor: "#E9E5DE", background: "#FAF8F5" }}
         >
           <button
             onClick={onClose}
             className="px-5 py-2.5 rounded-xl text-sm border transition-all hover:bg-violet-50"
-            style={{ borderColor: "#EDE9FE", color: "#7C6A99", fontWeight: 600, background: "white" }}
+            style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 600, background: "white" }}
           >
             Cancelar
           </button>
@@ -318,19 +318,19 @@ const toNumber = (v: string): number | null => {
 
 const inputClass =
   "w-full px-4 py-2.5 rounded-xl text-sm border outline-none transition-all bg-white " +
-  "text-[#1F0A3C] placeholder:text-[#7C6A99] focus:ring-4 focus:ring-[#EDE9FE] " +
-  "border-[#EDE9FE] focus:border-[#7C3AED]";
+  "text-[#1A1A1A] placeholder:text-[#6B7280] focus:ring-4 focus:ring-[#E9E5DE] " +
+  "border-[#E9E5DE] focus:border-[#9B21FF]";
 
 const selectClass = (hasError: boolean) =>
   "w-full px-4 py-2.5 rounded-xl text-sm border outline-none transition-all bg-white " +
-  "text-[#1F0A3C] focus:ring-4 focus:ring-[#EDE9FE] " +
-  (hasError ? "border-[#FECDD3] focus:border-[#FB7185]" : "border-[#EDE9FE] focus:border-[#7C3AED]");
+  "text-[#1A1A1A] focus:ring-4 focus:ring-[#E9E5DE] " +
+  (hasError ? "border-[#FECDD3] focus:border-[#FB7185]" : "border-[#E9E5DE] focus:border-[#9B21FF]");
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <p
       className="text-xs uppercase mb-3"
-      style={{ color: "#7C3AED", fontWeight: 700, letterSpacing: "0.1em" }}
+      style={{ color: "#9B21FF", fontWeight: 700, letterSpacing: "0.1em" }}
     >
       {children}
     </p>
@@ -348,7 +348,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="block text-xs mb-1.5" style={{ color: "#7C6A99", fontWeight: 600 }}>
+      <span className="block text-xs mb-1.5" style={{ color: "#6B7280", fontWeight: 600 }}>
         {label}
       </span>
       {children}

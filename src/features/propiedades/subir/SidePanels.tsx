@@ -32,11 +32,11 @@ import {
 } from "../completar/fields";
 
 const PANEL_TITLE = "text-xs uppercase";
-const PANEL_TITLE_STYLE = { color: "#7458C4", fontWeight: 700, letterSpacing: "0.1em" } as const;
+const PANEL_TITLE_STYLE = { color: "#6B7280", fontWeight: 700, letterSpacing: "0.1em" } as const;
 
 const fixBtnClass =
   "inline-flex items-center gap-1 px-3 min-h-11 rounded-xl text-xs border transition-all hover:bg-violet-50 bg-white";
-const fixBtnStyle = { borderColor: "#DDD6FE", color: "#7C3AED", fontWeight: 700 } as const;
+const fixBtnStyle = { borderColor: "#DDD8CF", color: "#9B21FF", fontWeight: 700 } as const;
 
 /* ── (a) Índice de calidad ─────────────────────────────────────────────── */
 
@@ -62,9 +62,9 @@ export function QualityPanel({
       </h2>
       <div className="flex items-center gap-4 mt-3">
         <ScoreRing score={pct} size={76} strokeWidth={7} />
-        <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+        <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 600 }}>
           {ok} de {checks.length} requisitos para publicar en portales
-          <span className="block text-xs mt-0.5" style={{ color: "#7C6A99", fontWeight: 500 }}>
+          <span className="block text-xs mt-0.5" style={{ color: "#6B7280", fontWeight: 500 }}>
             Las mismas reglas que revisa el Multipublicador.
           </span>
         </p>
@@ -83,11 +83,11 @@ export function QualityPanel({
                 {c.ok ? <CheckIcon size={10} color="#16A34A" /> : <span style={{ color: "#B45309", fontSize: 11, fontWeight: 800 }}>!</span>}
               </span>
               <span className="min-w-0 flex-1">
-                <span className="block text-sm" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                <span className="block text-sm" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                   {c.label}
                   <span className="sr-only">{c.ok ? ": cumple" : ": falta"}</span>
                 </span>
-                <span className="block text-xs" style={{ color: c.ok ? "#7C6A99" : "#B45309" }}>
+                <span className="block text-xs" style={{ color: c.ok ? "#6B7280" : "#B45309" }}>
                   {c.ok || c.id !== "size" ? c.detail : `Falta: ${missing.join(", ")}.`}
                 </span>
                 {fixes.length > 0 && (
@@ -251,7 +251,7 @@ export function ChannelsPanel({
       key: "app",
       name: "App PropMatch",
       short: "PM",
-      color: "#7C3AED",
+      color: "#9B21FF",
       ...app,
       requirements: [{ text: "Precio en USD", ok: usd }],
       missing: usd ? [] : [{ text: "precio en USD", target: editorFieldId("currency") }],
@@ -301,10 +301,10 @@ export function ChannelsPanel({
       <h2 className={PANEL_TITLE} style={PANEL_TITLE_STYLE}>
         Estado por canal
       </h2>
-      <p className="text-xs mt-1" style={{ color: "#7C6A99" }}>
+      <p className="text-xs mt-1" style={{ color: "#6B7280" }}>
         Los portales se conectan desde el Multipublicador. Hasta que haya conector, lo que publiques queda en cola.
       </p>
-      <ul className="mt-3 divide-y" style={{ borderColor: "#F3F0FF" }}>
+      <ul className="mt-3 divide-y" style={{ borderColor: "#F0EDE6" }}>
         {rows.map((r) => (
           <ChannelRow key={r.key} row={r} onFix={onFix} onNavigate={onNavigate} />
         ))}
@@ -325,7 +325,7 @@ function ChannelRow({
   const tone = TONE[row.tone];
   const logo = row.color;
   return (
-    <li className="py-2.5" style={{ borderColor: "#F3F0FF" }}>
+    <li className="py-2.5" style={{ borderColor: "#F0EDE6" }}>
       <div className="flex items-center gap-3">
         <span
           className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-xs"
@@ -334,7 +334,7 @@ function ChannelRow({
         >
           {row.short}
         </span>
-        <span className="min-w-0 flex-1 text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+        <span className="min-w-0 flex-1 text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
           {row.name}
         </span>
         <span
@@ -348,7 +348,7 @@ function ChannelRow({
         </span>
       </div>
       {row.detail && (
-        <p className="text-xs mt-1 ml-11" style={{ color: row.tone === "error" ? "#BE123C" : "#7C6A99" }}>
+        <p className="text-xs mt-1 ml-11" style={{ color: row.tone === "error" ? "#BE123C" : "#6B7280" }}>
           {row.detail}
         </p>
       )}
@@ -362,7 +362,7 @@ function ChannelRow({
                   type="button"
                   onClick={() => (m.target ? onFix(m.target) : m.path && onNavigate(m.path))}
                   aria-label={`Completar ${m.text} (${row.name})`}
-                  className="inline py-1.5 rounded underline decoration-dotted underline-offset-2 hover:text-[#7C3AED] focus-visible:text-[#7C3AED]"
+                  className="inline py-1.5 rounded underline decoration-dotted underline-offset-2 hover:text-[#9B21FF] focus-visible:text-[#9B21FF]"
                 >
                   {m.text}
                 </button>
@@ -381,13 +381,13 @@ function ChannelRow({
       )}
       {row.requirements.length > 0 && (
         <details className="ml-11 mt-1">
-          <summary className="text-xs cursor-pointer min-h-8 flex items-center" style={{ color: "#7C3AED", fontWeight: 600 }}>
+          <summary className="text-xs cursor-pointer min-h-8 flex items-center" style={{ color: "#9B21FF", fontWeight: 600 }}>
             {row.key === "app" ? "Requisitos" : "Requisitos de la cuenta"}
           </summary>
           <ul className="mt-1 space-y-1">
             {row.requirements.map((req) => (
-              <li key={req.text} className="text-xs flex gap-1.5" style={{ color: "#7C6A99" }}>
-                <span aria-hidden="true" style={{ color: req.ok === undefined ? "#C4B5FD" : req.ok ? "#16A34A" : "#B45309", fontWeight: 800 }}>
+              <li key={req.text} className="text-xs flex gap-1.5" style={{ color: "#6B7280" }}>
+                <span aria-hidden="true" style={{ color: req.ok === undefined ? "#D4AAFF" : req.ok ? "#16A34A" : "#B45309", fontWeight: 800 }}>
                   {req.ok === undefined ? "•" : req.ok ? "✓" : "!"}
                 </span>
                 <span>
@@ -449,16 +449,16 @@ export function BuyersPanel({ result, onSeeAll }: { result: CompatibleBuyers | n
         </h2>
       </div>
       {result === null ? (
-        <p className="text-sm mt-3" style={{ color: "#7C6A99" }}>
+        <p className="text-sm mt-3" style={{ color: "#6B7280" }}>
           Completá el precio para calcular con quién podría encajar.
         </p>
       ) : result.count === 0 ? (
-        <p className="text-sm mt-3" style={{ color: "#7C6A99" }}>
+        <p className="text-sm mt-3" style={{ color: "#6B7280" }}>
           Todavía ningún contacto de tu cartera encaja con estos datos.
         </p>
       ) : (
         <>
-          <p className="mt-3 text-sm" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+          <p className="mt-3 text-sm" style={{ color: "#1A1A1A", fontWeight: 600 }}>
             <span className="text-2xl text-gradient-brand-h" style={{ fontWeight: 800 }}>
               {result.count}
             </span>{" "}
@@ -467,10 +467,10 @@ export function BuyersPanel({ result, onSeeAll }: { result: CompatibleBuyers | n
           <ul className="mt-3 space-y-1.5">
             {result.top.map((b) => (
               <li key={b.id} className="flex items-center justify-between gap-2 text-sm">
-                <span className="truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                <span className="truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                   {b.name}
                 </span>
-                <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: "#F5F3FF", color: "#7C3AED", fontWeight: 700 }}>
+                <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: "#F7F0FF", color: "#9B21FF", fontWeight: 700 }}>
                   {b.score}%
                 </span>
               </li>
@@ -491,7 +491,7 @@ export function BuyersPanel({ result, onSeeAll }: { result: CompatibleBuyers | n
         type="button"
         onClick={onSeeAll}
         className="w-full mt-4 min-h-11 rounded-xl text-sm border transition-all hover:bg-violet-50"
-        style={{ borderColor: "#DDD6FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+        style={{ borderColor: "#DDD8CF", color: "#9B21FF", fontWeight: 600, background: "white" }}
       >
         Ver compradores
       </button>

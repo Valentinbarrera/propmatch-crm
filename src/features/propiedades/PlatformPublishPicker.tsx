@@ -87,7 +87,7 @@ export function PlatformPublishPicker({
   };
 
   return (
-    <div className="pm-backdrop fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4" style={{ background: "rgba(31,10,60,0.45)" }} onClick={onClose}>
+    <div className="pm-backdrop fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4" style={{ background: "rgba(8, 11, 31,0.45)" }} onClick={onClose}>
       <div
         role="dialog"
         aria-modal="true"
@@ -96,11 +96,11 @@ export function PlatformPublishPicker({
         style={{ boxShadow: "var(--shadow-card)" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="px-5 pt-5 pb-3 border-b" style={{ borderColor: "#F3F0FF" }}>
-          <h2 id="picker-title" className="text-base" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+        <div className="px-5 pt-5 pb-3 border-b" style={{ borderColor: "#F0EDE6" }}>
+          <h2 id="picker-title" className="text-base" style={{ color: "#1A1A1A", fontWeight: 800 }}>
             Publicar en {info.name}
           </h2>
-          <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
             Elegí la propiedad. En la pantalla siguiente revisás qué falta y publicás.
           </p>
           <label className="block mt-3">
@@ -111,8 +111,8 @@ export function PlatformPublishPicker({
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Buscar por título o zona"
-              className="w-full min-h-11 px-3 rounded-xl border text-sm outline-none focus-visible:ring-4 focus-visible:ring-[#EDE9FE]"
-              style={{ borderColor: "#DDD6FE" }}
+              className="w-full min-h-11 px-3 rounded-xl border text-sm outline-none focus-visible:ring-4 focus-visible:ring-[#E9E5DE]"
+              style={{ borderColor: "#DDD8CF" }}
             />
           </label>
         </div>
@@ -136,22 +136,22 @@ export function PlatformPublishPicker({
                         type="button"
                         onClick={() => go(p)}
                         className="w-full text-left min-h-11 rounded-xl border px-3 py-2.5 flex items-center gap-3 hover:bg-violet-50"
-                        style={{ borderColor: "#EDE9FE" }}
+                        style={{ borderColor: "#E9E5DE" }}
                       >
                         <span className="flex-1 min-w-0">
-                          <span className="block text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                          <span className="block text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                             {p.title}
                           </span>
-                          <span className="block text-xs" style={{ color: "#6B5A8E" }}>
+                          <span className="block text-xs" style={{ color: "#6B7280" }}>
                             {[p.zone, p.price != null ? money(p.price, p.currency) : null].filter(Boolean).join(" · ")}
                           </span>
                         </span>
                         {st && (
-                          <span className="text-[11px] px-2 py-0.5 rounded-full" style={{ background: "#F5F3FF", color: "#5B21B6", fontWeight: 700 }}>
+                          <span className="text-[11px] px-2 py-0.5 rounded-full" style={{ background: "#F7F0FF", color: "#7C0BD8", fontWeight: 700 }}>
                             {STATUS_TEXT[st] ?? st}
                           </span>
                         )}
-                        <span aria-hidden="true" style={{ color: "#7C3AED" }}>→</span>
+                        <span aria-hidden="true" style={{ color: "#9B21FF" }}>→</span>
                       </button>
                     </li>
                   );
@@ -181,8 +181,8 @@ export function PlatformPublishPicker({
           )}
         </div>
 
-        <div className="px-5 py-3 border-t flex justify-end" style={{ borderColor: "#F3F0FF" }}>
-          <button type="button" onClick={onClose} className="min-h-11 px-4 rounded-xl text-sm border" style={{ borderColor: "#DDD6FE", color: "#5B21B6", fontWeight: 700 }}>
+        <div className="px-5 py-3 border-t flex justify-end" style={{ borderColor: "#F0EDE6" }}>
+          <button type="button" onClick={onClose} className="min-h-11 px-4 rounded-xl text-sm border" style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}>
             Cerrar
           </button>
         </div>

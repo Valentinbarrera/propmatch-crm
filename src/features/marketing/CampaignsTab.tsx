@@ -11,7 +11,7 @@ import { Btn, fmtDate, pct } from "./ui";
 export const CAMPAIGN_STATUS: Record<CampaignStatus, { label: string; bg: string; text: string }> = {
   borrador: { label: "Borrador", bg: "#F3F4F6", text: "#4B5563" },
   programada: { label: "Programada", bg: "#EFF6FF", text: "#1D4ED8" },
-  enviando: { label: "Enviando", bg: "#F5F3FF", text: "#7C3AED" },
+  enviando: { label: "Enviando", bg: "#F7F0FF", text: "#9B21FF" },
   enviada: { label: "Enviada", bg: "#F0FDF4", text: "#15803D" },
   pausada: { label: "Pausada", bg: "#FFFBEB", text: "#B45309" },
   cancelada: { label: "Cancelada", bg: "#FFF1F2", text: "#BE123C" },
@@ -41,7 +41,7 @@ export function CampaignsTab() {
         </Card>
       ) : (
         <Card>
-          <ul className="divide-y" style={{ borderColor: "#F3F0FF" }}>
+          <ul className="divide-y" style={{ borderColor: "#F0EDE6" }}>
             {m.campaigns.map((c) => (
               <CampaignRow key={c.id} c={c} onOpen={() => navigate(`/marketing/campanas/${c.id}`)} />
             ))}
@@ -59,14 +59,14 @@ function CampaignRow({ c, onOpen }: { c: Campaign; onOpen: () => void }) {
   return (
     <li>
       <button onClick={onOpen} className="w-full text-left px-4 md:px-5 py-4 hover:bg-violet-50/40 transition-all flex flex-wrap items-center gap-3">
-        <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: c.channel === "email" ? "#F5F3FF" : "#DCFCE7" }}>
-          {c.channel === "email" ? <MailIcon size={15} color="#7C3AED" /> : <WhatsAppIcon size={15} color="#16A34A" />}
+        <span className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: c.channel === "email" ? "#F7F0FF" : "#DCFCE7" }}>
+          {c.channel === "email" ? <MailIcon size={15} color="#9B21FF" /> : <WhatsAppIcon size={15} color="#16A34A" />}
         </span>
         <div className="min-w-0 flex-1">
-          <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             {c.name}
           </p>
-          <p className="text-xs" style={{ color: "#7C6A99" }}>
+          <p className="text-xs" style={{ color: "#6B7280" }}>
             {c.status === "programada" && c.scheduledAt ? `Sale el ${fmtDate(c.scheduledAt)}` : `Creada ${fmtDate(c.created_at)}`}
             {c.audienceSize !== null ? ` · ${c.audienceSize} destinatarios` : ""}
           </p>
@@ -91,7 +91,7 @@ function CampaignRow({ c, onOpen }: { c: Campaign; onOpen: () => void }) {
 function Metric({ label, value }: { label: string; value: string }) {
   return (
     <span className="text-center">
-      <span className="block" style={{ fontWeight: 800, color: "#1F0A3C" }}>
+      <span className="block" style={{ fontWeight: 800, color: "#1A1A1A" }}>
         {value}
       </span>
       <span style={{ fontSize: 10 }}>{label}</span>

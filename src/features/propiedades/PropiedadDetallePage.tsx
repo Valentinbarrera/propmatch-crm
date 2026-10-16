@@ -111,7 +111,7 @@ export default function PropiedadDetallePage() {
         <AppHeader title="Propiedad" breadcrumb={["Propiedades"]} compact />
         <div className="flex-1 overflow-y-auto px-4 md:px-8">
           <EmptyState
-            icon={<HomeIcon size={24} color="#7C3AED" />}
+            icon={<HomeIcon size={24} color="#9B21FF" />}
             title="Esta propiedad no existe"
             description="Puede que la hayas eliminado o que el link esté desactualizado."
             action={{ label: "Volver a Propiedades", onClick: () => navigate("/propiedades") }}
@@ -140,9 +140,9 @@ export default function PropiedadDetallePage() {
         <button
           onClick={() => navigate("/propiedades")}
           className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm border transition-all hover:border-violet-300"
-          style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+          style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "white" }}
         >
-          <ChevronLeftIcon size={14} color="#7C3AED" />
+          <ChevronLeftIcon size={14} color="#9B21FF" />
           Volver
         </button>
         <button
@@ -156,7 +156,7 @@ export default function PropiedadDetallePage() {
         <button
           onClick={() => navigate(`/operaciones?propiedad=${property.id}`)}
           className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm border transition-all hover:bg-violet-50"
-          style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+          style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "white" }}
         >
           Iniciar operación
         </button>
@@ -171,8 +171,8 @@ export default function PropiedadDetallePage() {
         <select
           value={property.status}
           onChange={(e) => updateProperty(property.id, { status: e.target.value as PropertyStatus })}
-          className="px-4 py-2.5 rounded-xl text-sm border outline-none transition-all focus:border-[#7C3AED] focus:ring-4 focus:ring-[#EDE9FE]"
-          style={{ borderColor: "#EDE9FE", background: "white", color: "#1F0A3C", fontWeight: 600 }}
+          className="px-4 py-2.5 rounded-xl text-sm border outline-none transition-all focus:border-[#9B21FF] focus:ring-4 focus:ring-[#E9E5DE]"
+          style={{ borderColor: "#E9E5DE", background: "white", color: "#1A1A1A", fontWeight: 600 }}
           aria-label="Estado de la propiedad"
         >
           {STATUSES.map((s) => (
@@ -208,13 +208,13 @@ export default function PropiedadDetallePage() {
           <div className="space-y-6 min-w-0">
             {/* Galería */}
             <Card>
-              <div className="relative" style={{ height: 380, background: "#F5F3FF" }}>
+              <div className="relative" style={{ height: 380, background: "#F7F0FF" }}>
                 {cover ? (
                   <img src={cover} alt={property.title} className="w-full h-full object-cover" />
                 ) : (
                   <div className="w-full h-full flex flex-col items-center justify-center gap-3">
-                    <HomeIcon size={44} color="#DDD6FE" />
-                    <p className="text-sm" style={{ color: "#7C6A99" }}>
+                    <HomeIcon size={44} color="#DDD8CF" />
+                    <p className="text-sm" style={{ color: "#6B7280" }}>
                       Sin fotos cargadas
                     </p>
                   </div>
@@ -234,7 +234,7 @@ export default function PropiedadDetallePage() {
                   </span>
                   <span
                     className="text-xs px-2.5 py-1 rounded-full backdrop-blur-sm"
-                    style={{ background: "rgba(255,255,255,0.9)", color: "#7C3AED", fontWeight: 600 }}
+                    style={{ background: "rgba(255,255,255,0.9)", color: "#9B21FF", fontWeight: 600 }}
                   >
                     {PROPERTY_TYPE_LABEL[property.type]} · {OPERATION_LABEL[property.operation]}
                   </span>
@@ -264,7 +264,7 @@ export default function PropiedadDetallePage() {
                       style={{
                         width: 80,
                         height: 56,
-                        outline: idx === activePhoto ? "2px solid #7C3AED" : "1px solid #EDE9FE",
+                        outline: idx === activePhoto ? "2px solid #9B21FF" : "1px solid #E9E5DE",
                         outlineOffset: idx === activePhoto ? 1 : 0,
                       }}
                     >
@@ -277,15 +277,15 @@ export default function PropiedadDetallePage() {
 
             {/* Datos */}
             <Card>
-              <div className="px-6 py-5 border-b" style={{ borderColor: "#F3F0FF" }}>
+              <div className="px-6 py-5 border-b" style={{ borderColor: "#F0EDE6" }}>
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                   <div className="min-w-0">
-                    <h2 className="text-xl tracking-tight" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+                    <h2 className="text-xl tracking-tight" style={{ color: "#1A1A1A", fontWeight: 800 }}>
                       {property.title} <SampleBadge record={property} size="sm" />
                     </h2>
                     <div className="flex items-center gap-1.5 mt-1">
                       <MapPinIcon size={13} />
-                      <span className="text-sm" style={{ color: "#7458C4" }}>
+                      <span className="text-sm" style={{ color: "#6B7280" }}>
                         {[property.street, property.street_number, property.zone, property.province]
                           .filter(Boolean)
                           .join(" ")}
@@ -293,10 +293,10 @@ export default function PropiedadDetallePage() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-2xl tracking-tight" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+                    <p className="text-2xl tracking-tight" style={{ color: "#1A1A1A", fontWeight: 800 }}>
                       {money(property.price, property.currency)}
                     </p>
-                    <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+                    <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                       Publicada {relativeTime(property.published_at).toLowerCase()}
                     </p>
                     <button
@@ -306,7 +306,7 @@ export default function PropiedadDetallePage() {
                         document.getElementById("diagnostico-title")?.focus({ preventScroll: true });
                       }}
                       className="mt-1 min-h-11 px-3 rounded-xl text-xs hover:bg-violet-50"
-                      style={{ color: "#6D28D9", fontWeight: 700 }}
+                      style={{ color: "#7C0BD8", fontWeight: 700 }}
                     >
                       Ver diagnóstico ↓
                     </button>
@@ -328,12 +328,12 @@ export default function PropiedadDetallePage() {
                   <div
                     key={spec.label}
                     className="rounded-xl p-3 text-center"
-                    style={{ background: "#FDFCFF", border: "1px solid #F3F0FF" }}
+                    style={{ background: "#FAF8F5", border: "1px solid #F0EDE6" }}
                   >
-                    <p className="text-base" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                    <p className="text-base" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                       {spec.value ?? "—"}
                     </p>
-                    <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+                    <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                       {spec.label}
                     </p>
                   </div>
@@ -344,7 +344,7 @@ export default function PropiedadDetallePage() {
                 <div className="px-6 pb-6">
                   <p
                     className="text-xs uppercase mb-2"
-                    style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.1em" }}
+                    style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.1em" }}
                   >
                     Descripción
                   </p>
@@ -358,7 +358,7 @@ export default function PropiedadDetallePage() {
                 <div className="px-6 pb-6">
                   <p
                     className="text-xs uppercase mb-2"
-                    style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.1em" }}
+                    style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.1em" }}
                   >
                     Características
                   </p>
@@ -367,7 +367,7 @@ export default function PropiedadDetallePage() {
                       <span
                         key={f}
                         className="text-xs px-3 py-1.5 rounded-full"
-                        style={{ background: "#F5F3FF", color: "#7C3AED", fontWeight: 500 }}
+                        style={{ background: "#F7F0FF", color: "#9B21FF", fontWeight: 500 }}
                       >
                         {f}
                       </span>
@@ -380,20 +380,20 @@ export default function PropiedadDetallePage() {
                 <div className="px-6 pb-6 flex gap-6 flex-wrap">
                   {property.expenses !== null && (
                     <div>
-                      <p className="text-xs" style={{ color: "#7458C4", fontWeight: 600 }}>
+                      <p className="text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
                         Expensas
                       </p>
-                      <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                      <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                         {money(property.expenses, "ARS")}
                       </p>
                     </div>
                   )}
                   {property.taxes !== null && (
                     <div>
-                      <p className="text-xs" style={{ color: "#7458C4", fontWeight: 600 }}>
+                      <p className="text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
                         Impuestos
                       </p>
-                      <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+                      <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 700 }}>
                         {money(property.taxes, "ARS")}
                       </p>
                     </div>
@@ -424,7 +424,7 @@ export default function PropiedadDetallePage() {
                       <div
                         key={opp.id}
                         className="flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all hover:bg-violet-50"
-                        style={{ border: "1px solid #F3F0FF" }}
+                        style={{ border: "1px solid #F0EDE6" }}
                         onClick={() => contact && navigate(`/contactos/${contact.id}`)}
                       >
                         <div
@@ -434,14 +434,14 @@ export default function PropiedadDetallePage() {
                           {initials(contact?.full_name)}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                          <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                             {contact?.full_name ?? "Sin contacto"}
                           </p>
-                          <p className="text-xs mt-0.5" style={{ color: "#7458C4" }}>
+                          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
                             {relativeTime(opp.updated_at)}
                           </p>
                         </div>
-                        <Badge bg="#F5F3FF" text="#7C3AED" border="#DDD6FE">
+                        <Badge bg="#F7F0FF" text="#9B21FF" border="#DDD8CF">
                           {STAGE_LABEL[opp.stage]}
                         </Badge>
                       </div>
@@ -469,17 +469,17 @@ export default function PropiedadDetallePage() {
                   Publicar en portales
                 </button>
               </div>
-              <div className="w-full text-left text-sm" style={{ borderTop: "1px solid #F3F0FF" }}>
-                <div className="grid grid-cols-4 px-4 py-3 text-xs font-bold text-[#7458C4] border-b" style={{ borderColor: "#F3F0FF" }}>
+              <div className="w-full text-left text-sm" style={{ borderTop: "1px solid #F0EDE6" }}>
+                <div className="grid grid-cols-4 px-4 py-3 text-xs font-bold text-[#6B7280] border-b" style={{ borderColor: "#F0EDE6" }}>
                   <div>Canal</div>
                   <div>Estado</div>
                   <div>ID externo</div>
                   <div className="text-right">Link</div>
                 </div>
-                <div className="divide-y" style={{ borderColor: "#F3F0FF" }}>
+                <div className="divide-y" style={{ borderColor: "#F0EDE6" }}>
                   {publications.map((c) => (
-                    <div key={c.info.channel} className="grid grid-cols-4 px-4 py-3 items-center hover:bg-[#FAFAFF]">
-                      <div className="font-bold text-[#1F0A3C]">{c.info.name}</div>
+                    <div key={c.info.channel} className="grid grid-cols-4 px-4 py-3 items-center hover:bg-[#FAF8F5]">
+                      <div className="font-bold text-[#1A1A1A]">{c.info.name}</div>
                       <div>
                         {c.info.channel === "web" && <Badge bg="#F8FAFC" text="#475569" border="#E2E8F0">Propio</Badge>}
                         {c.info.channel !== "web" && c.status === "published" && <Badge bg="#F0FDF4" text="#15803D" border="#BBF7D0">Publicada</Badge>}
@@ -489,10 +489,10 @@ export default function PropiedadDetallePage() {
                           <Badge bg="#F8FAFC" text="#475569" border="#E2E8F0">Inactiva</Badge>
                         )}
                       </div>
-                      <div className="text-xs text-[#7C6A99] font-mono">{c.externalId || "—"}</div>
+                      <div className="text-xs text-[#6B7280] font-mono">{c.externalId || "—"}</div>
                       <div className="text-right">
                         {c.externalUrl ? (
-                          <a href={c.externalUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-[#7C3AED] hover:underline font-bold">
+                          <a href={c.externalUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-[#9B21FF] hover:underline font-bold">
                             Ver aviso ↗
                           </a>
                         ) : (
@@ -531,18 +531,18 @@ export default function PropiedadDetallePage() {
                       <button
                         onClick={() => navigate(`/contactos/${owner.id}`)}
                         className="text-sm truncate block text-left hover:underline"
-                        style={{ color: "#1F0A3C", fontWeight: 700 }}
+                        style={{ color: "#1A1A1A", fontWeight: 700 }}
                       >
                         {owner.full_name}
                       </button>
-                      <p className="text-xs truncate" style={{ color: "#7C6A99" }}>
+                      <p className="text-xs truncate" style={{ color: "#6B7280" }}>
                         {owner.phone ?? "Sin teléfono"}
                       </p>
                     </div>
                     <WhatsAppButton compact label="Mandar informe por WhatsApp" onClick={() => setReportOpen(true)} />
                   </div>
                 ) : (
-                  <p className="text-sm" style={{ color: "#7458C4" }}>
+                  <p className="text-sm" style={{ color: "#6B7280" }}>
                     Todavía no cargaste quién es el dueño.
                   </p>
                 )}
@@ -561,11 +561,11 @@ export default function PropiedadDetallePage() {
                     { label: "En conversación", value: report.inProgress },
                     { label: "Visitas", value: report.visitsDone + report.visitsUpcoming },
                   ].map((k) => (
-                    <div key={k.label} className="rounded-xl px-3 py-2.5" style={{ background: "#FAFAFF", border: "1px solid #F3F0FF" }}>
-                      <p className="text-lg" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+                    <div key={k.label} className="rounded-xl px-3 py-2.5" style={{ background: "#FAF8F5", border: "1px solid #F0EDE6" }}>
+                      <p className="text-lg" style={{ color: "#1A1A1A", fontWeight: 800 }}>
                         {k.value}
                       </p>
-                      <p className="text-xs" style={{ color: "#7458C4", fontWeight: 600 }}>
+                      <p className="text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
                         {k.label}
                       </p>
                     </div>
@@ -582,7 +582,7 @@ export default function PropiedadDetallePage() {
                   title="Ofertas"
                   subtitle={`${propertyOffers.filter((o) => o.status === "pending").length} pendientes de ${propertyOffers.length}`}
                 />
-                <div className="divide-y" style={{ borderColor: "#F3F0FF" }}>
+                <div className="divide-y" style={{ borderColor: "#F0EDE6" }}>
                   {propertyOffers.map((offer) => {
                     const offerContact = contactById(offer.contact_id);
                     return (
@@ -591,11 +591,11 @@ export default function PropiedadDetallePage() {
                           <button
                             onClick={() => navigate(`/contactos/${offer.contact_id}`)}
                             className="text-sm truncate block text-left hover:underline"
-                            style={{ color: "#1F0A3C", fontWeight: 700 }}
+                            style={{ color: "#1A1A1A", fontWeight: 700 }}
                           >
                             {offerContact?.full_name ?? "Sin contacto"} <SampleBadge record={offer} />
                           </button>
-                          <p className="text-xs" style={{ color: "#7458C4" }}>
+                          <p className="text-xs" style={{ color: "#6B7280" }}>
                             {money(offer.amount_usd, "USD")}
                           </p>
                         </div>
@@ -617,7 +617,7 @@ export default function PropiedadDetallePage() {
                               disabled={respondingOfferId === offer.app_offer_id}
                               onClick={() => handleRespondOffer(offer.app_offer_id, "reject")}
                               className="text-xs px-2.5 py-1.5 rounded-lg border disabled:opacity-50"
-                              style={{ borderColor: "#EDE9FE", color: "#7C6A99", fontWeight: 600 }}
+                              style={{ borderColor: "#E9E5DE", color: "#6B7280", fontWeight: 600 }}
                             >
                               Rechazar
                             </button>
@@ -660,7 +660,7 @@ export default function PropiedadDetallePage() {
               {propertyMatches.length === 0 ? (
                 <EmptyState
                   compact
-                  icon={<MatchesIcon size={22} color="#7C3AED" />}
+                  icon={<MatchesIcon size={22} color="#9B21FF" />}
                   title="Nadie encaja todavía"
                   description="Ningún contacto llega al 50% con los criterios que tienen cargados."
                   action={{ label: "Ver contactos", onClick: () => navigate("/contactos") }}
@@ -675,7 +675,7 @@ export default function PropiedadDetallePage() {
                       <div
                         key={match.id}
                         className="p-3 rounded-xl transition-all hover:bg-violet-50 cursor-pointer"
-                        style={{ border: "1px solid #F3F0FF" }}
+                        style={{ border: "1px solid #F0EDE6" }}
                         onClick={() => navigate(`/matches/${match.id}`)}
                       >
                         <div className="flex items-center gap-2.5 mb-2">
@@ -686,10 +686,10 @@ export default function PropiedadDetallePage() {
                             {initials(contact.full_name)}
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                            <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                               {contact.full_name}
                             </p>
-                            <p className="text-xs" style={{ color: "#7458C4" }}>
+                            <p className="text-xs" style={{ color: "#6B7280" }}>
                               {contact.phone ?? contact.email ?? "Sin contacto"}
                             </p>
                           </div>
@@ -697,8 +697,8 @@ export default function PropiedadDetallePage() {
                             className="text-xs px-2 py-1 rounded-full flex-shrink-0"
                             style={{
                               background: "var(--gradient-soft)",
-                              border: "1px solid #EDE9FE",
-                              color: "#7C3AED",
+                              border: "1px solid #E9E5DE",
+                              color: "#9B21FF",
                               fontWeight: 700,
                             }}
                           >
@@ -711,7 +711,7 @@ export default function PropiedadDetallePage() {
                             <span
                               key={r}
                               className="text-xs px-2 py-0.5 rounded-full"
-                              style={{ background: "#F5F3FF", color: "#7C3AED", fontWeight: 500, fontSize: 10 }}
+                              style={{ background: "#F7F0FF", color: "#9B21FF", fontWeight: 500, fontSize: 10 }}
                             >
                               ✓ {r}
                             </span>
@@ -744,7 +744,7 @@ export default function PropiedadDetallePage() {
               <Card padded>
                 <p
                   className="text-xs uppercase mb-3"
-                  style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.1em" }}
+                  style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.1em" }}
                 >
                   Agente responsable
                 </p>
@@ -756,10 +756,10 @@ export default function PropiedadDetallePage() {
                     {agent.initials}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                    <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                       {agent.full_name}
                     </p>
-                    <p className="text-xs truncate" style={{ color: "#7458C4" }}>
+                    <p className="text-xs truncate" style={{ color: "#6B7280" }}>
                       {agent.email}
                     </p>
                   </div>

@@ -29,9 +29,9 @@ export function DictarButton({
           className ??
           "flex items-center gap-1.5 px-4 min-h-11 rounded-xl text-sm whitespace-nowrap transition-all hover:bg-violet-50 active:scale-[0.98]"
         }
-        style={{ background: "white", color: "#7C3AED", fontWeight: 600, border: "1px solid #DDD6FE" }}
+        style={{ background: "white", color: "#9B21FF", fontWeight: 600, border: "1px solid #DDD8CF" }}
       >
-        <MicIcon size={16} color="#7C3AED" />
+        <MicIcon size={16} color="#9B21FF" />
         {label}
       </button>
       {open && <VozModal kind={kind} applyLabel={applyLabel} onApply={onApply} onClose={() => setOpen(false)} />}

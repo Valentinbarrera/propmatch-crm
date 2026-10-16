@@ -27,7 +27,7 @@ export function AgendaKpis({
     .join(" · ");
 
   return (
-    <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 px-4 md:px-6 py-4" style={{ background: "#FDFCFF" }}>
+    <div className="grid grid-cols-2 xl:grid-cols-4 gap-3 px-4 md:px-6 py-4" style={{ background: "#FAF8F5" }}>
       <Kpi
         label="Visitas de la semana"
         value={String(week.total)}
@@ -77,7 +77,7 @@ const TONE: Record<Tone, { bg: string; text: string }> = {
   green: { bg: "var(--color-state-green-bg)", text: "var(--color-state-green-text)" },
   amber: { bg: "var(--color-state-amber-bg)", text: "var(--color-state-amber-text)" },
   red: { bg: "var(--color-state-red-bg)", text: "var(--color-state-red-text)" },
-  neutral: { bg: "#F5F3FF", text: "#7458C4" },
+  neutral: { bg: "#F7F0FF", text: "#6B7280" },
 };
 
 function Kpi({
@@ -98,9 +98,9 @@ function Kpi({
   conversion?: Kpis["conversion"];
 }) {
   return (
-    <section className="rounded-2xl border p-4 bg-white flex flex-col" style={{ borderColor: "#EDE9FE", boxShadow: "var(--shadow-card)" }} aria-label={label}>
+    <section className="rounded-2xl border p-4 bg-white flex flex-col" style={{ borderColor: "#E9E5DE", boxShadow: "var(--shadow-card)" }} aria-label={label}>
       <div className="flex items-start justify-between gap-2">
-        <p className="text-xs uppercase" style={{ color: "#7458C4", fontWeight: 700, letterSpacing: "0.08em" }}>
+        <p className="text-xs uppercase" style={{ color: "#6B7280", fontWeight: 700, letterSpacing: "0.08em" }}>
           {label}
         </p>
         {badge && (
@@ -110,17 +110,17 @@ function Kpi({
         )}
       </div>
       <p className="mt-1 flex items-baseline gap-1.5 flex-wrap">
-        <span className="text-2xl md:text-3xl tracking-tight" style={{ color: "#1F0A3C", fontWeight: 800 }}>
+        <span className="text-2xl md:text-3xl tracking-tight" style={{ color: "#1A1A1A", fontWeight: 800 }}>
           {value}
         </span>
         {valueSuffix && (
-          <span className="text-xs" style={{ color: "#7C6A99", fontWeight: 600 }}>
+          <span className="text-xs" style={{ color: "#6B7280", fontWeight: 600 }}>
             {valueSuffix}
           </span>
         )}
       </p>
       {lines.filter(Boolean).map((l) => (
-        <p key={l} className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+        <p key={l} className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
           {l}
         </p>
       ))}
@@ -130,7 +130,7 @@ function Kpi({
           type="button"
           onClick={action.onClick}
           className="mt-auto pt-2 self-start min-h-11 sm:min-h-9 px-3 rounded-lg text-xs border hover:bg-violet-50"
-          style={{ borderColor: "#DDD6FE", color: "#6D28D9", fontWeight: 700 }}
+          style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
         >
           {action.label}
         </button>
@@ -144,9 +144,9 @@ function ConversionLine({ conversion }: { conversion: Kpis["conversion"] }) {
   const id = useId();
   return (
     <div className="relative mt-0.5">
-      <p className="text-xs flex items-center gap-1.5" style={{ color: "#7C6A99" }}>
+      <p className="text-xs flex items-center gap-1.5" style={{ color: "#6B7280" }}>
         Conversión visita → oferta:{" "}
-        <strong style={{ color: "#1F0A3C" }}>{conversion ? `${conversion.pct}%` : "—"}</strong>
+        <strong style={{ color: "#1A1A1A" }}>{conversion ? `${conversion.pct}%` : "—"}</strong>
         {conversion && (
           <span>
             ({conversion.converted}/{conversion.done})
@@ -162,7 +162,7 @@ function ConversionLine({ conversion }: { conversion: Kpis["conversion"] }) {
           onMouseLeave={() => setOpen(false)}
           onBlur={() => setOpen(false)}
           className="w-6 h-6 rounded-full border text-[11px] flex items-center justify-center"
-          style={{ borderColor: "#DDD6FE", color: "#6D28D9", fontWeight: 700 }}
+          style={{ borderColor: "#DDD8CF", color: "#7C0BD8", fontWeight: 700 }}
         >
           ?
         </button>
@@ -172,7 +172,7 @@ function ConversionLine({ conversion }: { conversion: Kpis["conversion"] }) {
           id={id}
           role="tooltip"
           className="absolute z-30 right-0 top-full mt-1 w-72 max-w-[80vw] p-3 rounded-xl text-xs"
-          style={{ background: "#1F0A3C", color: "white", lineHeight: 1.5, boxShadow: "var(--shadow-pop)" }}
+          style={{ background: "#1A1A1A", color: "white", lineHeight: 1.5, boxShadow: "var(--shadow-pop)" }}
         >
           {CONVERSION_CRITERIA}
           {!conversion && " Todavía no hay visitas realizadas en la ventana: por eso se muestra «—»."}

@@ -85,7 +85,7 @@ export function EmailChangeNotice() {
       <div
         role="status"
         className="pointer-events-auto w-full max-w-md rounded-2xl px-5 py-4 text-white flex items-start gap-3"
-        style={{ background: notice.kind === "error" ? "#9F1239" : "#1F0A3C", boxShadow: "var(--shadow-pop)" }}
+        style={{ background: notice.kind === "error" ? "#9F1239" : "#1A1A1A", boxShadow: "var(--shadow-pop)" }}
       >
         <div className="flex-1 min-w-0">
           <p className="text-sm break-words" style={{ fontWeight: 700 }}>

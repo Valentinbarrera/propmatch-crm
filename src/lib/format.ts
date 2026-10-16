@@ -139,7 +139,7 @@ export const PROPERTY_STATUS_LABEL = {
 type BadgeStyle = { bg: string; text: string; border: string };
 
 export const CONTACT_STATUS_STYLE: Record<string, BadgeStyle> = {
-  nuevo: { bg: "#F5F3FF", text: "#7C3AED", border: "#DDD6FE" },
+  nuevo: { bg: "#F7F0FF", text: "#9B21FF", border: "#DDD8CF" },
   activo: { bg: "#F0FDF4", text: "#15803D", border: "#BBF7D0" },
   en_seguimiento: { bg: "#FFFBEB", text: "#B45309", border: "#FDE68A" },
   visita_programada: { bg: "#EFF6FF", text: "#2563EB", border: "#BFDBFE" },
@@ -150,8 +150,8 @@ export const CONTACT_STATUS_STYLE: Record<string, BadgeStyle> = {
 export const PROPERTY_STATUS_STYLE: Record<string, BadgeStyle> = {
   disponible: { bg: "#F0FDF4", text: "#15803D", border: "#BBF7D0" },
   reservada: { bg: "#FFFBEB", text: "#B45309", border: "#FDE68A" },
-  vendida: { bg: "#F5F3FF", text: "#7C3AED", border: "#DDD6FE" },
-  alquilada: { bg: "#F5F3FF", text: "#7C3AED", border: "#DDD6FE" },
+  vendida: { bg: "#F7F0FF", text: "#9B21FF", border: "#DDD8CF" },
+  alquilada: { bg: "#F7F0FF", text: "#9B21FF", border: "#DDD8CF" },
   pausada: { bg: "#F9FAFB", text: "#6B7280", border: "#E5E7EB" },
   en_revision: { bg: "#EFF6FF", text: "#2563EB", border: "#BFDBFE" },
 };

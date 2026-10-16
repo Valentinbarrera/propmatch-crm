@@ -144,7 +144,7 @@ export default function ContactosPage() {
         <button
           onClick={() => navigate("/importar?tipo=contactos")}
           className="px-4 py-2.5 rounded-xl text-sm border transition-all hover:bg-violet-50 whitespace-nowrap"
-          style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600, background: "white" }}
+          style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600, background: "white" }}
         >
           Importar Excel
         </button>
@@ -158,31 +158,31 @@ export default function ContactosPage() {
             label="Total contactos"
             sub={`${stats.newThisMonth.length} este mes`}
             icon={<UsersIcon size={22} />}
-            iconBg="#F5F3FF"
+            iconBg="#F7F0FF"
             badge={`+${stats.newThisMonth.length}`}
-            bar="linear-gradient(90deg, #7C3AED, #A855F7)"
+            bar="var(--gradient-brand-h)"
             barWidth={82}
           />
           <StatCard
             value={String(stats.newThisMonth.length)}
             label="Nuevos este mes"
             sub="Últimos 30 días"
-            icon={<UsersIcon size={22} color="#EC4899" />}
-            iconBg="#FDF2F8"
+            icon={<UsersIcon size={22} color="#FF5ECA" />}
+            iconBg="#FFF1FA"
             badge={`+${stats.newThisMonth.length}`}
-            bar="linear-gradient(90deg, #EC4899, #F472B6)"
+            bar="linear-gradient(90deg, #FF5ECA, #FF7ED5)"
             barWidth={(stats.newThisMonth.length / total) * 100}
           />
           <StatCard
             value={String(stats.withMatches.length)}
             label="Contactos con match"
             sub={`${Math.round((stats.withMatches.length / total) * 100)}% del total`}
-            icon={<MatchesIcon size={22} color="#A855F7" />}
-            iconBg="#FAF5FF"
+            icon={<MatchesIcon size={22} color="#A855FF" />}
+            iconBg="#F7F0FF"
             badge={`${matches.length} matches`}
-            badgeBg="#F5F3FF"
-            badgeText="#7C3AED"
-            bar="linear-gradient(90deg, #A855F7, #EC4899)"
+            badgeBg="#F7F0FF"
+            badgeText="#9B21FF"
+            bar="linear-gradient(90deg, #A855FF, #FF5ECA)"
             barWidth={(stats.withMatches.length / total) * 100}
           />
         </div>
@@ -193,8 +193,8 @@ export default function ContactosPage() {
             <div className="flex items-center justify-between mb-4 gap-4 flex-wrap">
               <FilterTabs options={TABS} value={tab} onChange={setTab} />
               <div className="flex items-center gap-2 flex-wrap">
-                <span className="text-sm whitespace-nowrap" style={{ color: "#7458C4" }}>
-                  <span style={{ color: "#1F0A3C", fontWeight: 600 }}>{filtered.length}</span> contactos
+                <span className="text-sm whitespace-nowrap" style={{ color: "#6B7280" }}>
+                  <span style={{ color: "#1A1A1A", fontWeight: 600 }}>{filtered.length}</span> contactos
                 </span>
                 <FilterDropdown label="Tipo" options={TYPE_OPTIONS} value={type} onChange={setType} />
                 <FilterDropdown label="Zona" options={ZONE_OPTIONS} value={zone} onChange={setZone} />
@@ -210,7 +210,7 @@ export default function ContactosPage() {
             {filtered.length === 0 ? (
               <Card>
                 <EmptyState
-                  icon={<ContactsIcon size={24} color="#7C3AED" />}
+                  icon={<ContactsIcon size={24} color="#9B21FF" />}
                   title={contacts.length === 0 ? "Todavía no hay contactos" : "Sin resultados"}
                   description={
                     contacts.length === 0
@@ -233,17 +233,17 @@ export default function ContactosPage() {
               </div>
               <div
                 className="hidden md:block rounded-2xl border overflow-hidden overflow-x-auto"
-                style={{ borderColor: "#EDE9FE", boxShadow: "var(--shadow-card)" }}
+                style={{ borderColor: "#E9E5DE", boxShadow: "var(--shadow-card)" }}
               >
                 <table className="w-full bg-white" style={{ minWidth: 900 }}>
                   <thead>
-                    <tr style={{ background: "#FDFCFF", borderBottom: "1px solid #F3F0FF" }}>
+                    <tr style={{ background: "#FAF8F5", borderBottom: "1px solid #F0EDE6" }}>
                       {["Contacto", "Busca", "Presupuesto", "Estado", "Última actividad", "Matches", ""].map(
                         (h, i) => (
                           <th
                             key={h || `col-${i}`}
                             className="text-left px-5 py-3.5 text-xs uppercase tracking-wide whitespace-nowrap"
-                            style={{ color: "#7458C4", letterSpacing: "0.06em", fontWeight: 600 }}
+                            style={{ color: "#6B7280", letterSpacing: "0.06em", fontWeight: 600 }}
                           >
                             {h}
                           </th>
@@ -320,8 +320,8 @@ function ContactRow({
   return (
     <tr
       onClick={onOpen}
-      className="cursor-pointer transition-all group hover:bg-[#FDFCFF]"
-      style={{ borderBottom: isLast ? undefined : "1px solid #F9F7FF" }}
+      className="cursor-pointer transition-all group hover:bg-[#FAF8F5]"
+      style={{ borderBottom: isLast ? undefined : "1px solid #FAF8F5" }}
     >
       <td className="px-5 py-3.5">
         <div className="flex items-center gap-3">
@@ -332,10 +332,10 @@ function ContactRow({
             {initials(contact.full_name)}
           </div>
           <div className="min-w-0">
-            <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+            <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
               {contact.full_name} <SampleBadge record={contact} /> <ContactNoContactBadge contact={contact} size="xs" />
             </p>
-            <p className="text-xs truncate" style={{ color: "#7C6A99" }}>
+            <p className="text-xs truncate" style={{ color: "#6B7280" }}>
               {requirement?.zones[0] ?? contact.email ?? "—"}
             </p>
           </div>
@@ -347,7 +347,7 @@ function ContactRow({
           <div className="flex items-center gap-2">
             <span
               className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
-              style={{ background: "#F5F3FF" }}
+              style={{ background: "#F7F0FF" }}
             >
               <PropertyTypeIcon type={requirement.property_types[0]} />
             </span>
@@ -356,7 +356,7 @@ function ContactRow({
             </span>
           </div>
         ) : (
-          <span className="text-xs" style={{ color: "#DDD6FE" }}>
+          <span className="text-xs" style={{ color: "#DDD8CF" }}>
             Sin búsqueda cargada
           </span>
         )}
@@ -365,15 +365,15 @@ function ContactRow({
       <td className="px-5 py-3.5 whitespace-nowrap">
         {requirement ? (
           <>
-            <p className="text-sm" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+            <p className="text-sm" style={{ color: "#1A1A1A", fontWeight: 600 }}>
               {money(requirement.budget_min, requirement.currency)}
             </p>
-            <p className="text-xs" style={{ color: "#7458C4" }}>
+            <p className="text-xs" style={{ color: "#6B7280" }}>
               hasta {money(requirement.budget_max, requirement.currency)}
             </p>
           </>
         ) : (
-          <span className="text-xs" style={{ color: "#DDD6FE" }}>
+          <span className="text-xs" style={{ color: "#DDD8CF" }}>
             —
           </span>
         )}
@@ -393,7 +393,7 @@ function ContactRow({
 
       <td className="px-5 py-3.5">
         <div className="flex items-center gap-2">
-          <div className="h-1.5 w-14 rounded-full overflow-hidden" style={{ background: "#EDE9FE" }}>
+          <div className="h-1.5 w-14 rounded-full overflow-hidden" style={{ background: "#E9E5DE" }}>
             <div
               className="h-full rounded-full"
               style={{
@@ -417,7 +417,7 @@ function ContactRow({
             }}
             aria-label="Editar contacto"
             className="w-7 h-7 rounded-lg flex items-center justify-center transition-all hover:bg-violet-100"
-            style={{ background: "#F5F3FF" }}
+            style={{ background: "#F7F0FF" }}
           >
             <EditIcon />
           </button>
@@ -428,9 +428,9 @@ function ContactRow({
             }}
             aria-label="Ver matches"
             className="w-7 h-7 rounded-lg flex items-center justify-center transition-all hover:bg-pink-100"
-            style={{ background: "#FDF2F8" }}
+            style={{ background: "#FFF1FA" }}
           >
-            <MatchesIcon size={13} color="#EC4899" />
+            <MatchesIcon size={13} color="#FF5ECA" />
           </button>
         </div>
       </td>
@@ -454,7 +454,7 @@ function TopMatchesPanel({
   return (
     <div
       className="rounded-2xl border overflow-hidden"
-      style={{ borderColor: "#EDE9FE", boxShadow: "var(--shadow-card)" }}
+      style={{ borderColor: "#E9E5DE", boxShadow: "var(--shadow-card)" }}
     >
       <div className="px-5 py-4 relative overflow-hidden" style={{ background: "var(--gradient-brand-wide)" }}>
         <div className="absolute -right-6 -top-6 w-24 h-24 rounded-full opacity-20" style={{ background: "white" }} />
@@ -480,7 +480,7 @@ function TopMatchesPanel({
 
       <div className="bg-white p-4 space-y-3">
         {rows.length === 0 ? (
-          <p className="text-xs text-center py-4" style={{ color: "#7458C4" }}>
+          <p className="text-xs text-center py-4" style={{ color: "#6B7280" }}>
             Todavía no hay matches para mostrar.
           </p>
         ) : (
@@ -489,7 +489,7 @@ function TopMatchesPanel({
               key={row.contact.id}
               onClick={() => onOpenContact(row.contact.id)}
               className="flex items-center gap-3 p-3 rounded-xl transition-all cursor-pointer hover:bg-violet-50"
-              style={{ border: "1px solid #F3F0FF" }}
+              style={{ border: "1px solid #F0EDE6" }}
             >
               <ScoreRing score={row.bestScore} size={64} strokeWidth={5} labelSize={13} />
 
@@ -501,12 +501,12 @@ function TopMatchesPanel({
                   >
                     {initials(row.contact.full_name)}
                   </div>
-                  <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+                  <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 600 }}>
                     {row.contact.full_name} <SampleBadge record={row.contact} />
                   </p>
                 </div>
-                <p className="text-xs" style={{ color: "#7458C4" }}>
-                  <span style={{ color: "#7C3AED", fontWeight: 700 }}>{row.matchCount}</span>{" "}
+                <p className="text-xs" style={{ color: "#6B7280" }}>
+                  <span style={{ color: "#9B21FF", fontWeight: 700 }}>{row.matchCount}</span>{" "}
                   {row.matchCount === 1 ? "propiedad compatible" : "propiedades compatibles"}
                 </p>
               </div>
@@ -516,7 +516,7 @@ function TopMatchesPanel({
                 style={
                   idx === 0
                     ? { background: "var(--gradient-brand)", color: "white", fontWeight: 700 }
-                    : { background: "#F5F3FF", color: "#7458C4", fontWeight: 600 }
+                    : { background: "#F7F0FF", color: "#6B7280", fontWeight: 600 }
                 }
               >
                 {idx + 1}
@@ -530,7 +530,7 @@ function TopMatchesPanel({
         <button
           onClick={onSeeAll}
           className="w-full py-2.5 rounded-xl text-sm border transition-all hover:border-violet-300 hover:bg-violet-50"
-          style={{ borderColor: "#EDE9FE", color: "#7C3AED", fontWeight: 600 }}
+          style={{ borderColor: "#E9E5DE", color: "#9B21FF", fontWeight: 600 }}
         >
           Ver todos los matches
         </button>
@@ -538,7 +538,7 @@ function TopMatchesPanel({
 
       <div
         className="mx-4 mb-4 rounded-xl p-3 flex items-start gap-3"
-        style={{ background: "var(--gradient-soft)", border: "1px solid #EDE9FE" }}
+        style={{ background: "var(--gradient-soft)", border: "1px solid #E9E5DE" }}
       >
         <div
           className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
@@ -547,10 +547,10 @@ function TopMatchesPanel({
           <SparkIcon size={14} color="white" />
         </div>
         <div>
-          <p className="text-xs" style={{ color: "#1F0A3C", fontWeight: 600 }}>
+          <p className="text-xs" style={{ color: "#1A1A1A", fontWeight: 600 }}>
             {withMatches} contactos con match activo
           </p>
-          <p className="text-xs mt-0.5" style={{ color: "#7C6A99" }}>
+          <p className="text-xs mt-0.5" style={{ color: "#6B7280" }}>
             {Math.round((withMatches / Math.max(1, total)) * 100)}% del total de tu cartera
           </p>
         </div>
@@ -576,7 +576,7 @@ function ContactCardMobile({ row, onOpen }: { row: Row; onOpen: () => void }) {
     <button
       onClick={onOpen}
       className="w-full flex items-center gap-3 p-3 rounded-2xl border text-left active:scale-[0.99] transition-all"
-      style={{ borderColor: "#EDE9FE", background: "white" }}
+      style={{ borderColor: "#E9E5DE", background: "white" }}
     >
       <div
         className={`w-11 h-11 rounded-full bg-gradient-to-br ${avatarGradient(contact.full_name)} flex items-center justify-center text-sm text-white flex-shrink-0`}
@@ -586,7 +586,7 @@ function ContactCardMobile({ row, onOpen }: { row: Row; onOpen: () => void }) {
       </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
-          <p className="text-sm truncate" style={{ color: "#1F0A3C", fontWeight: 700 }}>
+          <p className="text-sm truncate" style={{ color: "#1A1A1A", fontWeight: 700 }}>
             {contact.full_name} <SampleBadge record={contact} /> <ContactNoContactBadge contact={contact} size="xs" />
           </p>
           <span
@@ -596,14 +596,14 @@ function ContactCardMobile({ row, onOpen }: { row: Row; onOpen: () => void }) {
             {CONTACT_STATUS_LABEL[contact.status as ContactStatus]}
           </span>
         </div>
-        <p className="text-xs truncate mt-0.5" style={{ color: "#7C6A99" }}>
+        <p className="text-xs truncate mt-0.5" style={{ color: "#6B7280" }}>
           {busca}
         </p>
       </div>
       {matchCount > 0 && (
         <span
           className="text-xs px-2 py-1 rounded-full flex-shrink-0"
-          style={{ background: "var(--gradient-soft)", color: "#7C3AED", fontWeight: 700 }}
+          style={{ background: "var(--gradient-soft)", color: "#9B21FF", fontWeight: 700 }}
         >
           {matchCount} ♥
         </span>
