@@ -844,14 +844,18 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
           const processedIds: string[] = [];
           const nowIso = new Date().toISOString();
 
-          const findOrCreateContact = (userId: string): Contact => {
-            const existing = contacts.find((c) => c.app_user_id === userId);
+          // Un agente (rol limitado) solo ve lo suyo: el lead queda a nombre de quien
+          // lleva la propiedad, no de quien tenga el CRM abierto en ese momento.
+          const actorIsAgent = d.profiles.find((p) => p.id === actorRef.current)?.role === "agente";
+
+          const findOrCreateContact = (userId: string, ownerId: string | null, strictOwner: boolean): Contact => {
+            const existing = contacts.find((c) => c.app_user_id === userId && (!strictOwner || c.owner_id === ownerId));
             if (existing) return existing;
             const u = userById.get(userId);
             const contact: Contact = {
               id: uid("c"),
               agency_id: d.agency.id,
-              owner_id: actorRef.current,
+              owner_id: ownerId,
               full_name: u?.name || "Interesado desde la app",
               email: null,
               phone: null,
@@ -872,7 +876,11 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
             const property = propertiesRef.current.find((p) => p.app_property_id === event.row.property_id);
             if (!property) continue; // todavía no llegó por la sincronización de propiedades: se reintenta en el próximo poll
 
-            const contact = findOrCreateContact(event.row.demandante_id);
+            // Propiedad de otro agente: la procesa ese agente o un administrador (no se marca como vista).
+            if (actorIsAgent && property.owner_agent_id && property.owner_agent_id !== actorRef.current) continue;
+            const leadOwner = property.owner_agent_id ?? actorRef.current;
+
+            const contact = findOrCreateContact(event.row.demandante_id, leadOwner, Boolean(property.owner_agent_id));
             processedIds.push(event.row.id);
             const existingOpp = opportunities.find(
               (o) => o.contact_id === contact.id && o.property_id === property.id,
@@ -887,7 +895,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
                   contact_id: contact.id,
                   property_id: property.id,
                   match_id: event.kind === "match" ? event.row.id : null,
-                  owner_id: actorRef.current,
+                  owner_id: leadOwner,
                   stage: "nuevos",
                   value: property.price,
                   currency: property.currency,
