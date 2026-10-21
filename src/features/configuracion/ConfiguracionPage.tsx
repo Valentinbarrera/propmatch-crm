@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { AppHeader } from "@/components/layout/AppHeader";
 import { Card, SectionHeader } from "@/components/ui/Card";
-import { useStore, type AgencyInput, type ProfileInput } from "@/data/store";
+import { isLinkedAgencyId, useStore, type AgencyInput, type ProfileInput } from "@/data/store";
+import { TeamCard } from "./TeamCard";
 import { avatarGradient, initials } from "@/lib/format";
 import { ProppiSettingsCard } from "@/features/proppi/ProppiSettingsCard";
 import { ChannelsSettings } from "@/features/inbox/channels/ChannelsSettings";
@@ -16,10 +17,10 @@ import { DocTemplatesCard } from "@/features/branding/DocTemplatesCard";
 /**
  * Configuración.
  *
- * Tres cosas y nada más: los datos de la inmobiliaria (los ve todo el equipo),
- * el perfil propio, la cuenta (email y contraseña, en `AccountCard`) y volver
- * a los datos de ejemplo. Lo demás (roles, invitar
- * agentes, planes) depende de tener backend y no tiene sentido simularlo.
+ * Los datos de la inmobiliaria (los ve todo el equipo), el perfil propio, la
+ * cuenta (email y contraseña, en `AccountCard`), el equipo (invitar vendedores
+ * y cambiar roles, en `TeamCard`, solo para administradores de una cuenta
+ * vinculada) y volver a los datos de ejemplo.
  */
 
 const ROLE_LABEL = { owner: "Dueño", admin: "Administrador", agente: "Agente inmobiliario" } as const;
@@ -27,6 +28,8 @@ const ROLE_LABEL = { owner: "Dueño", admin: "Administrador", agente: "Agente in
 export default function ConfiguracionPage() {
   const { agency, profile, profiles, updateAgency, updateProfile, reset, isDemo } = useStore();
   const canEditAgency = profile.role === "owner" || profile.role === "admin";
+  // El equipo real vive en `agency_members`: solo una cuenta vinculada (no la demo ni la local) lo maneja.
+  const canManageTeam = canEditAgency && !isDemo && isLinkedAgencyId(agency.id);
   const [toast, setToast] = useState<string | null>(null);
 
   useEffect(() => {
@@ -67,6 +70,9 @@ export default function ConfiguracionPage() {
 
           <AccountCard onDone={setToast} />
 
+          {canManageTeam ? (
+            <TeamCard onToast={setToast} />
+          ) : (
           <Card>
             <SectionHeader inCard title="Equipo" subtitle={`${profiles.length} personas en ${agency.name}`} />
             <div className="p-3">
@@ -101,9 +107,14 @@ export default function ConfiguracionPage() {
               ))}
             </div>
             <p className="px-5 pb-4 text-xs" style={{ color: "#6B7280" }}>
-              Invitar agentes y cambiar roles va a estar disponible cuando el CRM tenga backend.
+              {isDemo
+                ? "En la demo no se puede invitar gente. Creá tu cuenta para sumar a tu equipo."
+                : canEditAgency
+                  ? "Para invitar vendedores, vinculá la cuenta a una inmobiliaria."
+                  : "Solo el administrador de la inmobiliaria puede invitar gente y cambiar roles."}
             </p>
           </Card>
+          )}
 
           <IntegracionesLinkCard />
           <ChannelsSettings />

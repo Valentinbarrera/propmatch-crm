@@ -19,7 +19,8 @@
     "test:app-sync": "node --test scripts/appBulkSync.test.ts",
     "test:marca-agua": "node --test scripts/appWatermark.test.ts",
     "test:gcal": "node --test scripts/gcal.test.ts",
-    "test:crm-sync": "node --test scripts/crmSync.test.ts"
+    "test:crm-sync": "node --test scripts/crmSync.test.ts",
+    "test:team": "node --test scripts/team.test.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.131.0",
